@@ -1,4 +1,4 @@
-# Setup notes
+# Setup notes ---
 
 ## First time
 
