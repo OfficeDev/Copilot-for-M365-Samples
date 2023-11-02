@@ -28,5 +28,18 @@ However you downloaded the repository, navigate to the **samples/msgext-northwin
 
 ## Step 4 was 3 - Install and set up Teams Toolkit for Visual Studio Code
 
+![Install Teams Toolkit](./images/01-04-Install-TTK-01.png)
 
+![Install Teams Toolkit](./images/01-04-Install-TTK-02.png)
 
+![Install Teams Toolkit](./images/01-04-Install-TTK-03.png)
+
+![Install Teams Toolkit](./images/01-04-Install-TTK-04.png)
+
+![Install Teams Toolkit](./images/01-04-Install-TTK-05.png)
+
+![Set up Teams Toolkit](./images/01-04-Setup-TTK-01.png)
+
+![Set up Teams Toolkit](./images/01-04-Setup-TTK-02.png)
+
+![Set up Teams Toolkit](./images/01-04-Setup-TTK-03.png)
