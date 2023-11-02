@@ -9,8 +9,6 @@ import cardHandler from "../adaptiveCards/cardHandler";
 
 const COMMAND_ID = "discountSearch";
 
-// #region Query handling
-
 let queryCount = 0;
 async function handleTeamsMessagingExtensionQuery(
     context: TurnContext,
@@ -30,8 +28,8 @@ async function handleTeamsMessagingExtensionQuery(
             `Avg discount ${product.AverageDiscount}%<br />Supplied by ${product.SupplierName} of ${product.SupplierCity}`,
             [product.ImageUrl]);
 
-        const adaptive = cardHandler.getEditCard(product);
-        const attachment = { ...adaptive, preview };
+        const resultCard = cardHandler.getEditCard(product);
+        const attachment = { ...resultCard, preview };
         attachments.push(attachment);
     });
     return {
@@ -54,7 +52,5 @@ function cleanupParam(value: string): string {
         return result;
     }
 }
-
-//#endregion
 
 export default { COMMAND_ID, handleTeamsMessagingExtensionQuery }

@@ -9,8 +9,6 @@ import cardHandler from "../adaptiveCards/cardHandler";
 
 const COMMAND_ID = "inventorySearch";
 
-// #region Query handling
-
 let queryCount = 0;
 async function handleTeamsMessagingExtensionQuery(
     context: TurnContext,
@@ -36,8 +34,8 @@ async function handleTeamsMessagingExtensionQuery(
             `Supplied by ${product.SupplierName} of ${product.SupplierCity}<br />${product.UnitsInStock} in stock`,
             [product.ImageUrl]);
         
-        const adaptive = cardHandler.getEditCard(product);
-        const attachment = { ...adaptive, preview };
+        const resultCard = cardHandler.getEditCard(product);
+        const attachment = { ...resultCard, preview };
         attachments.push(attachment);
     });
     return {
@@ -61,8 +59,4 @@ function cleanupParam(value: string): string {
     }
 }
 
-//#endregion
-
-// #region Card actions
-    // #endregion
 export default { COMMAND_ID, handleTeamsMessagingExtensionQuery }
