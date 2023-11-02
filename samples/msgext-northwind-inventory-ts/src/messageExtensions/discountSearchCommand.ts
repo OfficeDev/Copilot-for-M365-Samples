@@ -4,13 +4,9 @@ import {
     MessagingExtensionQuery,
     MessagingExtensionResponse,
 } from "botbuilder";
-import { updateProduct, getProduct, getDiscountedProductsByCategory } from "../northwindDB/products";
-import { editCard } from './cards/editCard';
-import { successCard } from './cards/successCard';
-import { errorCard } from './cards/errorCard'
+import { getDiscountedProductsByCategory } from "../northwindDB/products";
+import { editCard } from '../adaptiveCards/editCard';
 import * as ACData from "adaptivecards-templating";
-
-import { CreateInvokeResponse, getInventoryStatus } from './utils';
 
 const COMMAND_ID = "discountSearch";
 

@@ -5,8 +5,9 @@ import {
   MessagingExtensionResponse,
   InvokeResponse
 } from "botbuilder";
-import productSearchME from "./messageExtensions/productSearchME";
+import productSearchCommand from "./messageExtensions/productSearchCommand";
 import discountedSearchCommand from "./messageExtensions/discountSearchCommand";
+import actionHandler from "./adaptiveCards/cardHandler";
 export class SearchApp extends TeamsActivityHandler {
   constructor() {
     super();
@@ -19,8 +20,8 @@ export class SearchApp extends TeamsActivityHandler {
   ): Promise<MessagingExtensionResponse> {
 
     switch (query.commandId) {
-      case productSearchME.COMMAND_ID: {
-        return productSearchME.handleTeamsMessagingExtensionQuery(context, query);
+      case productSearchCommand.COMMAND_ID: {
+        return productSearchCommand.handleTeamsMessagingExtensionQuery(context, query);
       }
       case discountedSearchCommand.COMMAND_ID: {
         return discountedSearchCommand.handleTeamsMessagingExtensionQuery(context, query);
@@ -37,13 +38,13 @@ export class SearchApp extends TeamsActivityHandler {
       if(context.activity.name==='adaptiveCard/action'){
         switch (context.activity.value.action.verb) {
           case 'ok': {
-            return productSearchME.handleTeamsCardActionUpdateStock(context);
+            return actionHandler.handleTeamsCardActionUpdateStock(context);
           }
           case 'restock': {
-            return productSearchME.handelTeamsCardActionRestock(context);
+            return actionHandler.handleTeamsCardActionRestock(context);
           }
           case 'cancel': {
-            return productSearchME.handelTeamsCardActionCancelRestock(context);
+            return actionHandler.handleTeamsCardActionCancelRestock(context);
           }
           default:
             runEvents = false;

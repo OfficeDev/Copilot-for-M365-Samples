@@ -4,7 +4,7 @@ import {
 
 import { TableClient } from "@azure/data-tables";
 import config from "../config";
-import { getInventoryStatus } from '../messageExtensions/utils';
+import { getInventoryStatus } from '../adaptiveCards/utils';
 
 // NOTE: We're force fitting a relational database into a non-relational database so please
 // forgive the inefficiencies. This is just for demonstration purposes.
