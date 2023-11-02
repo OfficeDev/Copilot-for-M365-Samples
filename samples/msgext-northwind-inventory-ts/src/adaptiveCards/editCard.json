@@ -1,4 +1,4 @@
-export const editCard = {
+{
     "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
     "type": "AdaptiveCard",
     "version": "1.5",

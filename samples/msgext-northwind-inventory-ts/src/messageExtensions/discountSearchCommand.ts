@@ -5,8 +5,7 @@ import {
     MessagingExtensionResponse,
 } from "botbuilder";
 import { getDiscountedProductsByCategory } from "../northwindDB/products";
-import { editCard } from '../adaptiveCards/editCard';
-import * as ACData from "adaptivecards-templating";
+import cardHandler from "../adaptiveCards/cardHandler";
 
 const COMMAND_ID = "discountSearch";
 
@@ -30,29 +29,8 @@ async function handleTeamsMessagingExtensionQuery(
         const preview = CardFactory.heroCard(product.ProductName,
             `Avg discount ${product.AverageDiscount}%<br />Supplied by ${product.SupplierName} of ${product.SupplierCity}`,
             [product.ImageUrl]);
-        var template = new ACData.Template(editCard);
-        var card = template.expand({
-            $root: {
-                productName: product.ProductName,
-                unitsInStock: product.UnitsInStock,
-                productId: product.ProductID,
-                categoryId: product.CategoryID,
-                imageUrl: product.ImageUrl,
-                supplierName: product.SupplierName,
-                supplierCity: product.SupplierCity,
-                categoryName: product.CategoryName,
-                inventoryStatus: product.InventoryStatus,
-                unitPrice: product.UnitPrice,
-                quantityPerUnit: product.QuantityPerUnit,
-                unitsOnOrder: product.UnitsOnOrder,
-                reorderLevel: product.ReorderLevel,
-                unitSales: product.UnitSales,
-                inventoryValue: product.InventoryCost,
-                revenue: product.Revenue,
-                averageDiscount: product.AverageDiscount
-            }
-        });
-        const adaptive = CardFactory.adaptiveCard(card);
+
+        const adaptive = cardHandler.getEditCard(product);
         const attachment = { ...adaptive, preview };
         attachments.push(attachment);
     });
