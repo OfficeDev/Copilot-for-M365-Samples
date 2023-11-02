@@ -36,6 +36,20 @@ export async function searchProducts(productName: string, categoryName: string, 
     return result;
 }
 
+export async function getDiscountedProductsByCategory(categoryName: string): Promise<ProductEx[]> {
+
+    let result = await getAllProductsEx();
+
+    // Anything with >5% average discount counts as discounted
+    result = result.filter((p) => p.AverageDiscount > 5);
+    if (categoryName) {
+        result = result.filter((p) => p.CategoryName.toLowerCase().startsWith(categoryName.toLowerCase()));
+    }
+
+    return result;
+}
+
+
 // Returns true if the inventory status in a product matches the query using
 // the inventory data rather than just a text match for better accuracy
 function isMatchingStatus(inventoryStatusQuery: string, product: ProductEx): boolean {

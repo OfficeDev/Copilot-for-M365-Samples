@@ -6,6 +6,7 @@ import {
   InvokeResponse
 } from "botbuilder";
 import productSearchME from "./messageExtensions/productSearchME";
+import discountedSearchCommand from "./messageExtensions/discountSearchCommand";
 export class SearchApp extends TeamsActivityHandler {
   constructor() {
     super();
@@ -21,11 +22,14 @@ export class SearchApp extends TeamsActivityHandler {
       case productSearchME.COMMAND_ID: {
         return productSearchME.handleTeamsMessagingExtensionQuery(context, query);
       }
+      case discountedSearchCommand.COMMAND_ID: {
+        return discountedSearchCommand.handleTeamsMessagingExtensionQuery(context, query);
+      }
     }
 
   }
 
-  // Handle adaptive card action
+  // Handle adaptive card actions
   public async onInvokeActivity(context: TurnContext): Promise<InvokeResponse> {
     let runEvents = true;
     // console.log (`🎬 Invoke activity received: ${context.activity.name}`);

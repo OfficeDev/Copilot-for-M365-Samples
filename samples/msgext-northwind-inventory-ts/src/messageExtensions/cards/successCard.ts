@@ -161,7 +161,7 @@ export const successCard =
                                         },
                                         {
                                             "title": "Avg discount",
-                                            "value": "${averageDiscount}"
+                                            "value": "${averageDiscount}%"
                                         }
                                         
                                     ],

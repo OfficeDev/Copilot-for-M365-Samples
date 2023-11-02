@@ -4,7 +4,7 @@ import {
     MessagingExtensionQuery,
     MessagingExtensionResponse,
 } from "botbuilder";
-import { updateProduct, getProduct, getProducts, searchProducts } from "../northwindDB/products";
+import { updateProduct, getProduct, searchProducts } from "../northwindDB/products";
 import { editCard } from './cards/editCard';
 import { successCard } from './cards/successCard';
 import { errorCard } from './cards/errorCard'
@@ -21,8 +21,6 @@ async function handleTeamsMessagingExtensionQuery(
     context: TurnContext,
     query: MessagingExtensionQuery
 ): Promise<MessagingExtensionResponse> {
-
-    // console.log(`🔍 Query JSON:\n${JSON.stringify(query)}`);
 
     // Unpack the parameters. From Copilot they'll come in the parameters array; from a human they'll be comma separated
     let [productName, categoryName, inventoryStatus, supplierCity, stockLevel] = (query.parameters[0]?.value.split(','));
