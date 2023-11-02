@@ -9,23 +9,7 @@
       "verb": "refresh",
       "title": "Refresh",
       "data": {
-        "productName": "${productName}",
-        "unitsInStock": "${unitsInStock}",
-        "productId": "${productId}",
-        "categoryId": "${categoryId}",
-        "imageUrl": "${imageUrl}",
-        "supplierName": "${supplierName}",
-        "supplierCity": "${supplierCity}",
-        "categoryName": "${categoryName}",
-        "inventoryStatus": "${inventoryStatus}",
-        "unitPrice": "${unitPrice}",
-        "quantityPerUnit": "${quantityPerUnit}",
-        "unitsOnOrder": "${unitsOnOrder}",
-        "reorderLevel": "${reorderLevel}",
-        "unitSales": "${unitSales}",
-        "inventoryValue": "${inventoryValue}",
-        "revenue": "${revenue}",
-        "averageDiscount": "${averageDiscount}"
+        "productId": "${productId}"
       }
     }
   },
@@ -228,23 +212,7 @@
                     "title": "Update stock ✅",
                     "verb": "ok",
                     "data": {
-                      "productName": "${productName}",
-                      "unitsInStock": "${unitsInStock}",
-                      "productId": "${productId}",
-                      "categoryId": "${categoryId}",
-                      "imageUrl": "${imageUrl}",
-                      "supplierName": "${supplierName}",
-                      "supplierCity": "${supplierCity}",
-                      "categoryName": "${categoryName}",
-                      "inventoryStatus": "${inventoryStatus}",
-                      "unitPrice": "${unitPrice}",
-                      "quantityPerUnit": "${quantityPerUnit}",
-                      "unitsOnOrder": "${unitsOnOrder}",
-                      "reorderLevel": "${reorderLevel}",
-                      "unitSales": "${unitSales}",
-                      "inventoryValue": "${inventoryValue}",
-                      "revenue": "${revenue}",
-                      "averageDiscount": "${averageDiscount}"
+                      "productId": "${productId}"
                     }
                   },
                   {
@@ -252,23 +220,7 @@
                     "title": "Restock 📦",
                     "verb": "restock",
                     "data": {
-                      "productName": "${productName}",
-                      "unitsInStock": "${unitsInStock}",
-                      "productId": "${productId}",
-                      "categoryId": "${categoryId}",
-                      "imageUrl": "${imageUrl}",
-                      "supplierName": "${supplierName}",
-                      "supplierCity": "${supplierCity}",
-                      "categoryName": "${categoryName}",
-                      "inventoryStatus": "${inventoryStatus}",
-                      "unitPrice": "${unitPrice}",
-                      "quantityPerUnit": "${quantityPerUnit}",
-                      "unitsOnOrder": "${unitsOnOrder}",
-                      "reorderLevel": "${reorderLevel}",
-                      "unitSales": "${unitSales}",
-                      "inventoryValue": "${inventoryValue}",
-                      "revenue": "${revenue}",
-                      "averageDiscount": "${averageDiscount}"
+                      "productId": "${productId}"
                     }
                   },
                   {
@@ -276,23 +228,7 @@
                     "title": "Cancel restock ❌",
                     "verb": "cancel",
                     "data": {
-                      "productName": "${productName}",
-                      "unitsInStock": "${unitsInStock}",
-                      "productId": "${productId}",
-                      "categoryId": "${categoryId}",
-                      "imageUrl": "${imageUrl}",
-                      "supplierName": "${supplierName}",
-                      "supplierCity": "${supplierCity}",
-                      "categoryName": "${categoryName}",
-                      "inventoryStatus": "${inventoryStatus}",
-                      "unitPrice": "${unitPrice}",
-                      "quantityPerUnit": "${quantityPerUnit}",
-                      "unitsOnOrder": "${unitsOnOrder}",
-                      "reorderLevel": "${reorderLevel}",
-                      "unitSales": "${unitSales}",
-                      "inventoryValue": "${inventoryValue}",
-                      "revenue": "${revenue}",
-                      "averageDiscount": "${averageDiscount}"
+                      "productId": "${productId}"
                     }
                   }
                 ]

@@ -2,7 +2,7 @@ import {
     TurnContext,
     CardFactory
 } from "botbuilder";
-import { updateProduct, getProduct } from "../northwindDB/products";
+import { updateProduct, getProductEx } from "../northwindDB/products";
 import { ProductEx } from '../northwindDB/model';
 import editCard from './editCard.json';
 import successCard from './successCard.json';
@@ -46,7 +46,7 @@ async function handleTeamsCardActionUpdateStock(context: TurnContext) {
 
     if (data.txtStock && data.productId) {
         
-        const product = await getProduct(data.productId);
+        const product = await getProductEx(data.productId);
         product.UnitsInStock = Number(data.txtStock);
         await updateProduct(product);
         
@@ -55,21 +55,21 @@ async function handleTeamsCardActionUpdateStock(context: TurnContext) {
             $root: {
                 productName: product.ProductName,
                 unitsInStock: product.UnitsInStock,
-                productId: data.productId,
-                categoryId: data.categoryId,
-                imageUrl: data.imageUrl,
-                supplierName: data.supplierName,
-                supplierCity: data.supplierCity,
-                categoryName: data.categoryName,
+                productId: product.ProductID,
+                categoryId: product.CategoryID,
+                imageUrl: product.ImageUrl,
+                supplierName: product.SupplierName,
+                supplierCity: product.SupplierCity,
+                categoryName: product.CategoryName,
                 inventoryStatus: getInventoryStatus(product),
-                unitPrice: data.unitPrice,
-                quantityPerUnit: data.quantityPerUnit,
-                unitsOnOrder: data.unitsOnOrder,
-                reorderLevel: data.reorderLevel,
-                unitSales: data.unitSales,
+                unitPrice: product.UnitPrice,
+                quantityPerUnit: product.QuantityPerUnit,
+                unitsOnOrder: product.UnitsOnOrder,
+                reorderLevel: product.ReorderLevel,
+                unitSales: product.UnitSales,
                 inventoryValue: product.UnitsInStock * product.UnitPrice,
-                revenue: data.revenue,
-                averageDiscount: data.averageDiscount,
+                revenue: product.Revenue,
+                averageDiscount: product.AverageDiscount,
                 // Card message
                 message: `Stock updated for ${data.productName} to ${product.UnitsInStock}!`
             }
@@ -90,30 +90,30 @@ async function handleTeamsCardActionCancelRestock(context: TurnContext) {
 
     if (data.productId) {
 
-        const product = await getProduct(data.productId);
+        const product = await getProductEx(data.productId);
         product.UnitsOnOrder = 0;
         await updateProduct(product);
 
         var template = new ACData.Template(successCard);
         var card = template.expand({
             $root: {
-                productName: data.productName,
-                unitsInStock: data.unitsInStock,
-                productId: data.productId,
-                categoryId: data.categoryId,
-                imageUrl: data.imageUrl,
-                supplierName: data.supplierName,
-                supplierCity: data.supplierCity,
-                categoryName: data.categoryName,
+                productName: product.ProductName,
+                unitsInStock: product.UnitsInStock,
+                productId: product.ProductID,
+                categoryId: product.CategoryID,
+                imageUrl: product.ImageUrl,
+                supplierName: product.SupplierName,
+                supplierCity: product.SupplierCity,
+                categoryName: product.CategoryName,
                 inventoryStatus: getInventoryStatus(product),
-                unitPrice: data.unitPrice,
-                quantityPerUnit: data.quantityPerUnit,
+                unitPrice: product.UnitPrice,
+                quantityPerUnit: product.QuantityPerUnit,
                 unitsOnOrder: product.UnitsOnOrder,
-                reorderLevel: data.reorderLevel,
-                unitSales: data.unitSales,
-                inventoryValue: data.inventoryValue,
-                revenue: data.revenue,
-                averageDiscount: data.averageDiscount,
+                reorderLevel: product.ReorderLevel,
+                unitSales: product.UnitSales,
+                inventoryValue: product.UnitsInStock * product.UnitPrice,
+                revenue: product.Revenue,
+                averageDiscount: product.AverageDiscount,
                 // Card message                
                 message: `Restock cancelled for ${data.productName}.`
             }
@@ -132,30 +132,30 @@ async function handleTeamsCardActionRestock(context: TurnContext) {
     console.log(`🎬 Handling restock action, quantity=${data.txtStock}`)
     if (data.productId) {
 
-        const product = await getProduct(data.productId);
+        const product = await getProductEx(data.productId);
         product.UnitsOnOrder = Number(product.UnitsOnOrder) + Number(data.txtStock);
         await updateProduct(product);
 
         var template = new ACData.Template(successCard);
         var card = template.expand({
             $root: {
-                productName: data.productName,
+                productName: product.ProductName,
                 unitsInStock: product.UnitsInStock,
-                productId: data.productId,
-                categoryId: data.categoryId,
-                imageUrl: data.imageUrl,
-                supplierName: data.supplierName,
-                supplierCity: data.supplierCity,
-                categoryName: data.categoryName,
+                productId: product.ProductID,
+                categoryId: product.CategoryID,
+                imageUrl: product.ImageUrl,
+                supplierName: product.SupplierName,
+                supplierCity: product.SupplierCity,
+                categoryName: product.CategoryName,
                 inventoryStatus: getInventoryStatus(product),
-                unitPrice: data.unitPrice,
-                quantityPerUnit: data.quantityPerUnit,
+                unitPrice: product.UnitPrice,
+                quantityPerUnit: product.QuantityPerUnit,
                 unitsOnOrder: product.UnitsOnOrder,
-                reorderLevel: data.reorderLevel,
-                unitSales: data.unitSales,
-                inventoryValue: data.inventoryValue,
-                revenue: data.revenue,
-                averageDiscount: data.averageDiscount,
+                reorderLevel: product.ReorderLevel,
+                unitSales: product.UnitSales,
+                inventoryValue: product.UnitsInStock * product.UnitPrice,
+                revenue: product.Revenue,
+                averageDiscount: product.AverageDiscount,
                 // Card message
                 message: `Restocking ${data.productName} placed order for ${data.txtStock ?? 0} units.`
             }

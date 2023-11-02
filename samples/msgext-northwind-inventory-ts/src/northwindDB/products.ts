@@ -2,7 +2,7 @@ import {
     TABLE_NAME, Product, ProductEx, Supplier, Category, OrderDetail
 } from './model';
 
-import { TableClient } from "@azure/data-tables";
+import { TableClient, TableEntityResult } from "@azure/data-tables";
 import config from "../config";
 import { getInventoryStatus } from '../adaptiveCards/utils';
 
@@ -178,68 +178,61 @@ async function getAllProductsEx(): Promise<ProductEx[]> {
     const entities = tableClient.listEntities();
 
     for await (const entity of entities) {
-
-        let p: ProductEx = {
-            etag: entity.etag as string,
-            partitionKey: entity.partitionKey as string,
-            rowKey: entity.rowKey as string,
-            timestamp: new Date(entity.timestamp),
-            ProductID: entity.ProductID as string,
-            ProductName: entity.ProductName as string,
-            SupplierID: entity.SupplierID as string,
-            CategoryID: entity.CategoryID as string,
-            QuantityPerUnit: entity.QuantityPerUnit as string,
-            UnitPrice: Number(entity.UnitPrice),
-            UnitsInStock: Number(entity.UnitsInStock),
-            UnitsOnOrder: Number(entity.UnitsOnOrder),
-            ReorderLevel: Number(entity.ReorderLevel),
-            Discontinued: entity.Discontinued as boolean,
-            ImageUrl: entity.ImageUrl as string,
-            CategoryName: "",
-            SupplierName: "",
-            SupplierCity: "",
-            InventoryStatus: "",
-            InventoryCost: 0,
-            UnitSales: 0,
-            Revenue: 0,
-            AverageDiscount: 0
-        };
-
-        // Fill in extended properties
-        p.CategoryName = categories[p.CategoryID].CategoryName;
-        p.SupplierName = suppliers[p.SupplierID].CompanyName;
-        p.SupplierCity = suppliers[p.SupplierID].City;
-        p.UnitSales =  orderTotals[p.ProductID].totalQuantity;
-        p.InventoryCost = p.UnitsInStock * p.UnitPrice;
-        p.Revenue = orderTotals[p.ProductID].totalRevenue;
-        p.AverageDiscount = +(p.Revenue / orderTotals[p.ProductID].totalDiscount).toFixed(1);
-    
-        // 'in stock', 'low stock', 'on order', or 'out of stock'
-        p.InventoryStatus = getInventoryStatus(p);          
+        const p = getProductExForEntity(entity);
         result.push(p);
     }
     return result;
 }
 
-export async function getProducts(startsWith: string): Promise<Product[]> {
+function getProductExForEntity(entity: TableEntityResult<Record<string, unknown>>): ProductEx {
 
-    const tableClient = TableClient.fromConnectionString(config.storageAccountConnectionString, TABLE_NAME.PRODUCT);
+    let result: ProductEx = {
+        etag: entity.etag as string,
+        partitionKey: entity.partitionKey as string,
+        rowKey: entity.rowKey as string,
+        timestamp: new Date(entity.timestamp),
+        ProductID: entity.ProductID as string,
+        ProductName: entity.ProductName as string,
+        SupplierID: entity.SupplierID as string,
+        CategoryID: entity.CategoryID as string,
+        QuantityPerUnit: entity.QuantityPerUnit as string,
+        UnitPrice: Number(entity.UnitPrice),
+        UnitsInStock: Number(entity.UnitsInStock),
+        UnitsOnOrder: Number(entity.UnitsOnOrder),
+        ReorderLevel: Number(entity.ReorderLevel),
+        Discontinued: entity.Discontinued as boolean,
+        ImageUrl: entity.ImageUrl as string,
+        CategoryName: "",
+        SupplierName: "",
+        SupplierCity: "",
+        InventoryStatus: "",
+        InventoryCost: 0,
+        UnitSales: 0,
+        Revenue: 0,
+        AverageDiscount: 0
+    };
 
-    const entities = tableClient.listEntities();
+    // Fill in extended properties
+    result.CategoryName = categories[result.CategoryID].CategoryName;
+    result.SupplierName = suppliers[result.SupplierID].CompanyName;
+    result.SupplierCity = suppliers[result.SupplierID].City;
+    result.UnitSales =  orderTotals[result.ProductID].totalQuantity;
+    result.InventoryCost = result.UnitsInStock * result.UnitPrice;
+    result.Revenue = orderTotals[result.ProductID].totalRevenue;
+    result.AverageDiscount = +(result.Revenue / orderTotals[result.ProductID].totalDiscount).toFixed(1);
 
-    let result = [];
-    for await (const entity of entities) {
-        if (startsWith && (entity.ProductName as string).toLowerCase().startsWith(startsWith.toLowerCase())) {
-            result.push(entity);
-        }
-    }
+    // 'in stock', 'low stock', 'on order', or 'out of stock'
+    result.InventoryStatus = getInventoryStatus(result);          
+
     return result;
 }
 
-export async function getProduct(productId: number): Promise<Product> {
+export async function getProductEx(productId: number): Promise<ProductEx> {
     const tableClient = TableClient.fromConnectionString(config.storageAccountConnectionString, TABLE_NAME.PRODUCT);
-    const product = await tableClient.getEntity(TABLE_NAME.PRODUCT, productId.toString()) as Product;
-    return product;
+    const entity = await tableClient.getEntity(TABLE_NAME.PRODUCT, productId.toString());
+    const p = getProductExForEntity(entity);
+
+    return p;
 }
 
 export async function updateProduct(updatedProduct: Product): Promise<void> {
