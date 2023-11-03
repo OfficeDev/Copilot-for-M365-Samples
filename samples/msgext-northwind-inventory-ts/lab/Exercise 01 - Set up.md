@@ -41,6 +41,8 @@ The sample application includes some documents for Copilot to reference during t
 
 By doing this step early, there's a good chance that the Microsoft 365 search engine will have discovered them by the time you're ready for them!
 
+If you're using a new tenant, such as in an in-person lab, it would be a good idea to log into the [Microsoft 365 application](https://office.com) at this point and to open Microsoft Teams in browser. Depending on how the tenant is set up, you may be asked to set up multi-factor authentication as part of this process.
+
 ## Step 4 - Install and set up Teams Toolkit for Visual Studio Code
 
 In this step, you'll install the latest version of [Teams Toolkit for Visual Studio Code](https://learn.microsoft.com/microsoftteams/platform/toolkit/teams-toolkit-fundamentals?pivots=visual-studio-code-v5). The easiest way to do this is from right inside of Visual Studio Code.
