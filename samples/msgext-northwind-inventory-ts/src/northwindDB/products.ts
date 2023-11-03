@@ -49,6 +49,21 @@ export async function getDiscountedProductsByCategory(categoryName: string): Pro
     return result;
 }
 
+export async function getProductsByRevenueRange(revenueRange: string): Promise<ProductEx[]> {
+
+    let result = await getAllProductsEx();
+
+    if (revenueRange) {
+        let range = revenueRange;
+        // Handle "low" and "high" keywords
+        if (revenueRange.toLowerCase().startsWith('l')) range = "0-5000";
+        if (revenueRange.toLowerCase().startsWith('h')) range = "50000-"
+        // Filter by numeric range
+        result = result.filter((p) => isInRange(range, p.Revenue));
+    }
+
+    return result;
+}
 
 // Returns true if the inventory status in a product matches the query using
 // the inventory data rather than just a text match for better accuracy
