@@ -1,4 +1,4 @@
-export const editCard = {
+{
     "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
     "type": "AdaptiveCard",
     "version": "1.5",
@@ -9,23 +9,7 @@ export const editCard = {
             "verb": "refresh",
             "title": "Refresh",
             "data": {
-                "productName": "${productName}",
-                "unitsInStock": "${unitsInStock}",
-                "productId": "${productId}",
-                "categoryId": "${categoryId}",
-                "imageUrl": "${imageUrl}",
-                "supplierName": "${supplierName}",
-                "supplierCity": "${supplierCity}",
-                "categoryName": "${categoryName}",
-                "inventoryStatus": "${inventoryStatus}",
-                "unitPrice": "${unitPrice}",
-                "quantityPerUnit": "${quantityPerUnit}",
-                "unitsOnOrder": "${unitsOnOrder}",
-                "reorderLevel": "${reorderLevel}",
-                "unitSales": "${unitSales}",
-                "inventoryValue": "${inventoryValue}",
-                "revenue": "${revenue}",
-                "averageDiscount": "${averageDiscount}"
+                "productId": "${productId}"
             }
         }
     },
@@ -139,16 +123,18 @@ export const editCard = {
                                             "title": "Category",
                                             "value": "${categoryName}"
                                         },
-                                       
                                         {
                                             "title": "Unit price",
                                             "value": "${unitPrice} USD"
                                         },
                                         {
                                             "title": "Avg discount",
-                                            "value": "${string(averageDiscount)}"
-                                        }
-                                        
+                                            "value": "${string(averageDiscount)} %"
+                                        },
+                                        {
+                                            "title": "Inventory valuation",
+                                            "value": "${string(inventoryValue)} USD"
+                                        }                                        
                                     ],
                                     "separator": true
                                 }
@@ -175,6 +161,10 @@ export const editCard = {
                                         {
                                             "title": "Reorder Level",
                                             "value": "${string(reorderLevel)}"
+                                        },
+                                        {
+                                            "title": "Revenue this period",
+                                            "value": "${string(revenue)} USD"
                                         }
                                     ],
                                     "separator": true
@@ -214,23 +204,7 @@ export const editCard = {
                                         "title": "Update stock ✅",
                                         "verb": "ok",
                                         "data": {
-                                            "productName": "${productName}",
-                                            "unitsInStock": "${unitsInStock}",
-                                            "productId": "${productId}",
-                                            "categoryId": "${categoryId}",
-                                            "imageUrl": "${imageUrl}",
-                                            "supplierName": "${supplierName}",
-                                            "supplierCity": "${supplierCity}",
-                                            "categoryName": "${categoryName}",
-                                            "inventoryStatus": "${inventoryStatus}",
-                                            "unitPrice": "${unitPrice}",
-                                            "quantityPerUnit": "${quantityPerUnit}",
-                                            "unitsOnOrder": "${unitsOnOrder}",
-                                            "reorderLevel": "${reorderLevel}",
-                                            "unitSales": "${unitSales}",
-                                            "inventoryValue": "${inventoryValue}",
-                                            "revenue": "${revenue}",
-                                            "averageDiscount": "${averageDiscount}"
+                                            "productId": "${productId}"
                                         }
                                     },
                                     {
@@ -238,23 +212,7 @@ export const editCard = {
                                         "title": "Restock 📦",
                                         "verb": "restock",
                                         "data": {
-                                            "productName": "${productName}",
-                                            "unitsInStock": "${unitsInStock}",
-                                            "productId": "${productId}",
-                                            "categoryId": "${categoryId}",
-                                            "imageUrl": "${imageUrl}",
-                                            "supplierName": "${supplierName}",
-                                            "supplierCity": "${supplierCity}",
-                                            "categoryName": "${categoryName}",
-                                            "inventoryStatus": "${inventoryStatus}",
-                                            "unitPrice": "${unitPrice}",
-                                            "quantityPerUnit": "${quantityPerUnit}",
-                                            "unitsOnOrder": "${unitsOnOrder}",
-                                            "reorderLevel": "${reorderLevel}",
-                                            "unitSales": "${unitSales}",
-                                            "inventoryValue": "${inventoryValue}",
-                                            "revenue": "${revenue}",
-                                            "averageDiscount": "${averageDiscount}"
+                                            "productId": "${productId}"
                                         }
                                         
                                     },
@@ -263,23 +221,7 @@ export const editCard = {
                                         "title": "Cancel restock ❌",
                                         "verb": "cancel",
                                         "data": {
-                                            "productName": "${productName}",
-                                            "unitsInStock": "${unitsInStock}",
-                                            "productId": "${productId}",
-                                            "categoryId": "${categoryId}",
-                                            "imageUrl": "${imageUrl}",
-                                            "supplierName": "${supplierName}",
-                                            "supplierCity": "${supplierCity}",
-                                            "categoryName": "${categoryName}",
-                                            "inventoryStatus": "${inventoryStatus}",
-                                            "unitPrice": "${unitPrice}",
-                                            "quantityPerUnit": "${quantityPerUnit}",
-                                            "unitsOnOrder": "${unitsOnOrder}",
-                                            "reorderLevel": "${reorderLevel}",
-                                            "unitSales": "${unitSales}",
-                                            "inventoryValue": "${inventoryValue}",
-                                            "revenue": "${revenue}",
-                                            "averageDiscount": "${averageDiscount}"
+                                            "productId": "${productId}"
                                         }
                                     }
                                 ]
