@@ -8,9 +8,5 @@ TABLE OF CONTENTS
 * [Exercise 3](./Exercise%2003%20-%20Run%20in%20Copilot.md) - Run the sample as a Copilot plugin
 * [Exercise 4](./Exercise%2004%20-%20Code%20tour.md) - Code tour  (THIS PAGE)
 
-# Exercise 3 -
-
-## Step 1 - Test in Microsoft Copilot for Microsoft 365 (single parameter)
-
-## Step 2 - Test in Microsoft Copilot for Microsoft 365 (multiple parameters)
+# Exercise 4 -
 
