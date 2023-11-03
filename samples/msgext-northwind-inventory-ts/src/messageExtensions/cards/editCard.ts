@@ -146,7 +146,7 @@ export const editCard = {
                                         },
                                         {
                                             "title": "Avg discount",
-                                            "value": "${averageDiscount}"
+                                            "value": "${string(averageDiscount)}"
                                         }
                                         
                                     ],
@@ -166,15 +166,15 @@ export const editCard = {
                                        
                                         {
                                             "title": "Units in stock",
-                                            "value": "${unitsInStock}"
+                                            "value": "${string(unitsInStock)}"
                                         },                                      
                                         {
                                             "title": "Units on order",
-                                            "value": "${unitsOnOrder}"
+                                            "value": "${string(unitsOnOrder)}"
                                         },
                                         {
                                             "title": "Reorder Level",
-                                            "value": "${reorderLevel}"
+                                            "value": "${string(reorderLevel)}"
                                         }
                                     ],
                                     "separator": true
