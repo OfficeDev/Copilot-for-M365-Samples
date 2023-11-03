@@ -161,7 +161,7 @@ export const successCard =
                                         },
                                         {
                                             "title": "Avg discount",
-                                            "value": "${averageDiscount}"
+                                            "value": "${string(averageDiscount)}"
                                         }
                                         
                                     ],
@@ -179,18 +179,18 @@ export const successCard =
                                     "spacing": "Large",
                                     "facts": [
                                        
-                                        {
-                                            "title": "Units in stock",
-                                            "value": "${unitsInStock}"
-                                        },                                      
-                                        {
-                                            "title": "Units on order",
-                                            "value": "${unitsOnOrder}"
-                                        },
-                                        {
-                                            "title": "Reorder Level",
-                                            "value": "${reorderLevel}"
-                                        }
+                                      {
+                                        "title": "Units in stock",
+                                        "value": "${string(unitsInStock)}"
+                                    },                                      
+                                    {
+                                        "title": "Units on order",
+                                        "value": "${string(unitsOnOrder)}"
+                                    },
+                                    {
+                                        "title": "Reorder Level",
+                                        "value": "${string(reorderLevel)}"
+                                    }
                                     ],
                                     "separator": true
                                 }
