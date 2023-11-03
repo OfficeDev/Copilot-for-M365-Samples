@@ -107,7 +107,7 @@ export interface ProductEx extends Product {
     SupplierName: string,
     SupplierCity: string,
     InventoryStatus: string,
-    InventoryCost: number,
+    InventoryValue: number,
     UnitSales: number,
     Revenue: number,
     AverageDiscount: number

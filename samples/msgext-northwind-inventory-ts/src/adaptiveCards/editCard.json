@@ -123,16 +123,18 @@
                                             "title": "Category",
                                             "value": "${categoryName}"
                                         },
-                                       
                                         {
                                             "title": "Unit price",
                                             "value": "${unitPrice} USD"
                                         },
                                         {
                                             "title": "Avg discount",
-                                            "value": "${string(averageDiscount)}"
-                                        }
-                                        
+                                            "value": "${string(averageDiscount)} %"
+                                        },
+                                        {
+                                            "title": "Inventory valuation",
+                                            "value": "${string(inventoryValue)} USD"
+                                        }                                        
                                     ],
                                     "separator": true
                                 }
@@ -159,6 +161,10 @@
                                         {
                                             "title": "Reorder Level",
                                             "value": "${string(reorderLevel)}"
+                                        },
+                                        {
+                                            "title": "Revenue this period",
+                                            "value": "${string(revenue)} USD"
                                         }
                                     ],
                                     "separator": true

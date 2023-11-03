@@ -206,7 +206,7 @@ function getProductExForEntity(entity: TableEntityResult<Record<string, unknown>
         SupplierName: "",
         SupplierCity: "",
         InventoryStatus: "",
-        InventoryCost: 0,
+        InventoryValue: 0,
         UnitSales: 0,
         Revenue: 0,
         AverageDiscount: 0
@@ -217,8 +217,8 @@ function getProductExForEntity(entity: TableEntityResult<Record<string, unknown>
     result.SupplierName = suppliers[result.SupplierID].CompanyName;
     result.SupplierCity = suppliers[result.SupplierID].City;
     result.UnitSales =  orderTotals[result.ProductID].totalQuantity;
-    result.InventoryCost = result.UnitsInStock * result.UnitPrice;
-    result.Revenue = orderTotals[result.ProductID].totalRevenue;
+    result.InventoryValue = Math.round(result.UnitsInStock * result.UnitPrice);
+    result.Revenue = Math.round(orderTotals[result.ProductID].totalRevenue);
     result.AverageDiscount = +(result.Revenue / orderTotals[result.ProductID].totalDiscount).toFixed(1);
 
     // 'in stock', 'low stock', 'on order', or 'out of stock'

@@ -144,9 +144,12 @@
                                         },
                                         {
                                             "title": "Avg discount",
-                                            "value": "${string(averageDiscount)}%"
-                                        }
-                                        
+                                            "value": "${string(averageDiscount)} %"
+                                        },
+                                        {
+                                            "title": "Inventory valuation",
+                                            "value": "${string(inventoryValue)} USD"
+                                        }                                        
                                     ],
                                     "separator": true
                                 }
@@ -162,18 +165,22 @@
                                     "spacing": "Large",
                                     "facts": [
                                        
-                                      {
-                                        "title": "Units in stock",
-                                        "value": "${string(unitsInStock)}"
-                                    },                                      
-                                    {
-                                        "title": "Units on order",
-                                        "value": "${string(unitsOnOrder)}"
-                                    },
-                                    {
-                                        "title": "Reorder Level",
-                                        "value": "${string(reorderLevel)}"
-                                    }
+                                        {
+                                            "title": "Units in stock",
+                                            "value": "${string(unitsInStock)}"
+                                        },                                      
+                                        {
+                                            "title": "Units on order",
+                                            "value": "${string(unitsOnOrder)}"
+                                        },
+                                        {
+                                            "title": "Reorder Level",
+                                            "value": "${string(reorderLevel)}"
+                                        },
+                                        {
+                                            "title": "Revenue this period",
+                                            "value": "${string(revenue)} USD"
+                                        }
                                     ],
                                     "separator": true
                                 }

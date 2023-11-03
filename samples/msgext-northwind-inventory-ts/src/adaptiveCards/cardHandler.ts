@@ -30,7 +30,7 @@ function getEditCard(product: ProductEx): any {
             unitsOnOrder: product.UnitsOnOrder,
             reorderLevel: product.ReorderLevel,
             unitSales: product.UnitSales,
-            inventoryValue: product.InventoryCost,
+            inventoryValue: product.InventoryValue,
             revenue: product.Revenue,
             averageDiscount: product.AverageDiscount
         }
