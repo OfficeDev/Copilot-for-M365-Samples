@@ -8,7 +8,7 @@ Northwind operates a specialty foods ecommerce business out of Walla Walla, Wash
 In Exercise 1, you'll set up your development environment and get the application running.
 
 Then in Exercise 2 you'll run the application as a [message extension](https://learn.microsoft.com/microsoftteams/platform/messaging-extensions/what-are-messaging-extensions) in Microsoft Teams and Outlook.
-The message extension allows users to find products and share them in conversations using adaptive cards. These cards allow users in the conversation to take actions such as updating the stock level or reordering a product; this is a huge convenience as people collaborate at work.
+The message extension allows users to find products and share them in conversations using adaptive cards. These cards allow users in the conversation to take actions such as updating the stock level or restocking a product; this is a huge convenience as people collaborate at work.
 
 ![Adaptive card displaying a product](./images/01-00-Product-card-only.png)
 
