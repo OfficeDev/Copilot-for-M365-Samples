@@ -1,6 +1,6 @@
-# Microsoft 365 Copilot plugins samples
+# Copilot for Microsoft 365 plugins samples
 
-This repository contains [Microsoft 365 Copilot plugins](https://learn.microsoft.com/microsoftteams/platform/copilot/how-to-extend-copilot#what-is-a-plugin) samples.
+This repository contains sample [Copilot for Microsoft 365 plugins](https://learn.microsoft.com/microsoftteams/platform/copilot/how-to-extend-copilot#what-is-a-plugin).
 
 ## Contributing
 
