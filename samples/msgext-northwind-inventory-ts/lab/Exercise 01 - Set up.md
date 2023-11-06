@@ -12,9 +12,13 @@ TABLE OF CONTENTS
 
 ## Step 1 - Install prerequisites
 
-> NOTE: If you are attending an Ignite lab, these prerequisites have already been installed on your workstation; please skip to Step 2.
+**To complete these labs, you will need a login to a Microsoft 365 subscription with permission to upload applications. To complete Lab 3, this account must also be licensed for Microsoft Copilot for Microsoft 365.**
+
+If this is a new tenant, it's a good idea to log into the [Microsoft 365 page](https://office.com) at [https://office.com](https://office.com) before beginning. Depending on how the tenant is configured, you may be asked to set up multi-factor authentication. Ensure you can access Microsoft Teams and Microsoft Outlook before proceeding.
 
 Please install the following on your computer:
+
+> NOTE: If you are attending an Ignite lab, these prerequisites have already been installed on your workstation; please skip to Step 2.
 
 1. [Visual Studio Code](https://code.visualstudio.com/) (latest version)
 
@@ -29,19 +33,43 @@ nvm use 18.18
 
 ## Step 2 - Download the sample code
 
-If you know your way around Github, then clone, or fork and clone, the sample repository at [https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/](https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/).
+If you're in a lab at Microsoft Ignite 2023, please download the sample code from [here](https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/archive/refs/heads/main.zip). Unzip the files to a location on your computer.
 
-If you don't want to deal with Github, you can download a zip file [here](https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/archive/refs/heads/main.zip). Unzip the files to a location on your computer.
+Otherwise please [clone](https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples.git) or [download](https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples.git) the sample repository:  [https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/](https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/).
 
 Within the cloned or downloaded repository, navigate to the **samples/msgext-northwind-inventory-ts** folder. These labs will refer to this as your "working folder" since this is where you'll be working.
 
 ## Step 3 - Copy sample documents to your test user's OneDrive
 
-The sample application includes some documents for Copilot to reference during the labs. You will find a filder, **sampleDocs**. in your working folder. Copy these documents to the OneDrive for whatever user you'll be logged in as when testing Microsoft Copilot for Microsoft 365. If you're sharing a Microsoft 365 tenant with other users, ensure that only you can access the documents so they won't see duplicates when they do the labs.
+The sample application includes some documents for Copilot to reference during the labs. In this step you will copy these files to your user's OneDrive so Copilot can find them. Depending on how the tenant is set up, you may be asked to set up multi-factor authentication as part of this process.
 
-By doing this step early, there's a good chance that the Microsoft 365 search engine will have discovered them by the time you're ready for them!
+Open your browser and browse to Microsoft 365 ([https://www.office.com/](https://www.office.com/)). Log in using the Microsoft 365 account you will be using throughout the lab. You may be asked to set up multi-factor authentication.
 
-If you're using a new tenant, such as in an in-person lab, it would be a good idea to log into the [Microsoft 365 application](https://office.com) at this point and to open Microsoft Teams in browser. Depending on how the tenant is set up, you may be asked to set up multi-factor authentication as part of this process.
+Using the "waffle" menu in the upper left corner of the page 1️⃣ , navigate to the OneDrive application within Microsoft 365 2️⃣ .
+
+![image](./images/01-02-CopySampleFiles-01.png)
+
+Within OneDrive, navigate to "My Files" 1️⃣  and then "Documents" 2️⃣ to access your Documents folder.
+
+![image](./images/01-02-CopySampleFiles-02.png)
+
+Now click "Add new" 1️⃣ and "Folder" 2️⃣ to create a new folder.
+
+![image](./images/01-02-CopySampleFiles-03.png)
+
+Name the folder "Northwind contracts" and click "Create".
+
+![image](./images/01-02-CopySampleFiles-03b.png)
+
+Now, from within this new folder, click "Add new" 1️⃣  again but this time click "Files upload" 2️⃣ .
+
+![image](./images/01-02-CopySampleFiles-04.png)
+
+Now browse to the **sampleDocs** folder within your working folder. Highlight all the files 1️⃣ and click "OK" 2️⃣  to upload them all.
+
+![image](./images/01-02-CopySampleFiles-05.png)
+
+By doing this step early, there's a good chance that the Microsoft 365 search engine will have discovered them by the time you're ready for them.
 
 ## Step 4 - Install and set up Teams Toolkit for Visual Studio Code
 
