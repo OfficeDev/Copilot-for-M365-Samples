@@ -71,7 +71,7 @@ async function handleTeamsCardActionUpdateStock(context: TurnContext) {
                 revenue: product.Revenue,
                 averageDiscount: product.AverageDiscount,
                 // Card message
-                message: `Stock updated for ${data.productName} to ${product.UnitsInStock}!`
+                message: `Stock updated for ${product.ProductName} to ${product.UnitsInStock}!`
             }
         });
         var responseBody = { statusCode: 200, type: "application/vnd.microsoft.card.adaptive", value: card }
@@ -115,7 +115,7 @@ async function handleTeamsCardActionCancelRestock(context: TurnContext) {
                 revenue: product.Revenue,
                 averageDiscount: product.AverageDiscount,
                 // Card message                
-                message: `Restock cancelled for ${data.productName}.`
+                message: `Restock cancelled for ${product.ProductName}.`
             }
         });
         var responseBody = { statusCode: 200, type: "application/vnd.microsoft.card.adaptive", value: card }
@@ -157,7 +157,7 @@ async function handleTeamsCardActionRestock(context: TurnContext) {
                 revenue: product.Revenue,
                 averageDiscount: product.AverageDiscount,
                 // Card message
-                message: `Restocking ${data.productName} placed order for ${data.txtStock ?? 0} units.`
+                message: `Restocking ${product.ProductName} placed order for ${data.txtStock ?? 0} units.`
             }
         });
         var responseBody = { statusCode: 200, type: "application/vnd.microsoft.card.adaptive", value: card }

@@ -20,7 +20,7 @@ In this project, the Northwind database is stored in Azure Table Storage; when y
 
 The necessary setting is provided in a file **env/.env.local.user.sample**. Make a copy of this file in the **env** folder, and call it **.env.local.user**. This is where secret or sensitive settings are stored.
 
-If you're not sure how to do this, here are the steps in Visual Studio Code. Expand the **env** folder and right click on **.env.local.user.sample**. Select "Copy". Then right click anywhere in the **env** folder and select "Paste". You will have a new file called **.env.local.user copy.sample**. Use the same context menu to rename the file to **..env.local.user** and you're done.
+If you're not sure how to do this, here are the steps in Visual Studio Code. Expand the **env** folder and right click on **.env.local.user.sample**. Select "Copy". Then right click anywhere in the **env** folder and select "Paste". You will have a new file called **.env.local.user copy.sample**. Use the same context menu to rename the file to **.env.local.user** and you're done.
 
 ![Set up project](./images/02-01-Setup-Project-01.png)
 
@@ -76,7 +76,7 @@ You can see the card, but you can't use it until you send it. Make any final edi
 
 > NOTE: This is really only useful in conversations with other users; the chat in the Northwind Inventory app is just for testing.
 
-Notice that there is no chai on order 1️⃣ . The authors of this lab are big chai drinkers and they may be stopping by so you'd better order more! Click the "take action" button 2️⃣ to open a child card. Enter a quantity 3️⃣ and click the "reorder" button 4️⃣ . The card will refresh with (hopefully) a success message and an updated number of units on order.
+Notice that there is no chai on order 1️⃣ . The authors of this lab are big chai drinkers and they may be stopping by so you'd better order more! Click the "take action" button 2️⃣ to open a child card. Enter a quantity 3️⃣ and click the "Restock" button 4️⃣ . The card will refresh with (hopefully) a success message and an updated number of units on order.
 
 ![Test in Teams](./images/02-03-TestME-Teams-take2-04.png)
 
