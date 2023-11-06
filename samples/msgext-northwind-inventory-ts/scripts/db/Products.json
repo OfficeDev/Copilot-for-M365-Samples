@@ -339,7 +339,7 @@
     },
     {
       "ProductID": 29,
-      "ProductName": "Thüringer Rostbratwurst",
+      "ProductName": "Thuringer Rostbratwurst",
       "SupplierID": 12,
       "CategoryID": 6,
       "QuantityPerUnit": "50 bags x 30 sausgs.",
@@ -447,7 +447,7 @@
     },
     {
       "ProductID": 38,
-      "ProductName": "Côte de Blaye",
+      "ProductName": "Cote de Blaye",
       "SupplierID": 18,
       "CategoryID": 1,
       "QuantityPerUnit": "12 - 75 cl bottles",
