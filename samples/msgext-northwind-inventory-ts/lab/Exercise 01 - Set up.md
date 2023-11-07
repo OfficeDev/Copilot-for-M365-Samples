@@ -73,7 +73,9 @@ By doing this step early, there's a good chance that the Microsoft 365 search en
 
 ## Step 4 - Install and set up Teams Toolkit for Visual Studio Code
 
-In this step, you'll install the latest version of [Teams Toolkit for Visual Studio Code](https://learn.microsoft.com/microsoftteams/platform/toolkit/teams-toolkit-fundamentals?pivots=visual-studio-code-v5). The easiest way to do this is from right inside of Visual Studio Code.
+In this step, you'll install the current version of [Teams Toolkit for Visual Studio Code](https://learn.microsoft.com/microsoftteams/platform/toolkit/teams-toolkit-fundamentals?pivots=visual-studio-code-v5). The easiest way to do this is from right inside of Visual Studio Code.
+
+> NOTE: Do not install the pre-release version as it hasn't been tested with this lab
 
 Open your working folder in Visual Studio Code. You may be asked to trust the authors of this folder; if so, please do.
 
@@ -81,7 +83,7 @@ In the left sidebar, select the Extensions icon1️⃣. Enter the word "teams" i
 
 ![Install Teams Toolkit](./images/01-04-Install-TTK-01.png)
 
-Now select the Teams Toolkit icon in the left 1️⃣ . If it offers options to create a new project, you're probably in the wrong folder. Instead you should see sections for Accounts, Environment, etc. as shown below.
+Now select the Teams Toolkit icon in the left 1️⃣ . If it offers options to create a new project, you're probably in the wrong folder. In the Visual Studio Code file menu select "Open Folder" and directly open the **msgext-northwind-inventory-ts** folder. You should see sections for Accounts, Environment, etc. as shown below.
 
 Under "Accounts" click "Sign in to Microsoft 365"2️⃣ and log in with the Microsoft 365 account provided by the lab instructors, or with your own Microsoft 365 developer account. You can get a free Microsoft 365 subscription for development purposes by joining the [Microsoft 365 Developer Program](https://developer.microsoft.com/microsoft-365/dev-program).
 
