@@ -134,6 +134,8 @@ You already ran the first command when you searched for a product by name. You c
 
 Enter "Beverages", "Dairy", or "Produce" into the "Discounts" tab, and you'll see the products within those categories that are discounted. Copilot will use this to answer questions about discounted products.
 
+![image](./images/02-03-Test-Multi-02.png)
+
 Enter "high", "low", "0-10000", or "100000-" in the Revenue tab. It works, but it's not very user friendly. We're counting on Copilot to look at the manifest and figure out how to use it:
 
 ~~~json
@@ -156,6 +158,8 @@ Enter "high", "low", "0-10000", or "100000-" in the Revenue tab. It works, but i
     ]
 }
 ~~~
+
+![image](./images/02-03-Test-Multi-03.png)
 
 The parameter description susinctly explains how the queries should be written, and Copilot will read this to answer prompts calling for high revenue products, or products with less than 10,000 items.
 
@@ -198,11 +202,13 @@ Now examine the first command again. You'll notice it has 5 parameters!
 
 Unfortunately, Teams can only display the first parameter, but Copilot can use all 5. This will allow it to do more advanced queries of the Northwind inventory data.
 
-As a work-around to the Teams UI limitation, the application will accept up to 5 parameters comma separated, using the format:
+As a work-around to the Teams UI limitation, in the "Northwind Inventory" tab, the application will accept up to 5 parameters comma separated, using the format:
 
 ~~~text
 name,category,inventoryStatus,supplierCity,supplierName
 ~~~
+
+![image](./images/02-03-Test-Multi-04.png)
 
 Read the descriptions in the JSON above carefully when entering a query. Try entering these, and as you do, keep an eye on the debug console tab in Visual Studio Code, where you'll see each query as it's run.
 
