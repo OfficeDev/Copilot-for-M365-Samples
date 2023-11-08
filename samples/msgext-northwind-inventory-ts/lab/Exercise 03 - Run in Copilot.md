@@ -8,7 +8,7 @@ TABLE OF CONTENTS
 * [Exercise 3](./Exercise%2003%20-%20Run%20in%20Copilot.md) - Run the sample as a Copilot plugin  (THIS PAGE)
 * [Exercise 4](./Exercise%2004%20-%20Code%20tour.md) - Code tour
 
-# Exercise 3 -
+## Exercise 3 -
 
 ## Step 1 - Test in Microsoft Copilot for Microsoft 365 (single parameter)
 
@@ -51,7 +51,7 @@ Feel free to try making up your own prompts. You'll find that they only work if 
 In this exercise, you'll try some prompts that exercise the multi-parameter feature in the sample plugin. These prompts will request data that can be retrieved by name, category, inventory status, supplier city, and stock level, as defined in [the manifest](../appPackage/manifest.json).
 
 For example, try prompting "Find Northwind beverages with more than 100 items in stock". To respond, Copilot must identify products:
- 
+
 * where the category is "beverages"
 * where inventory status is "in stock"
 * where the stock level is more than 100
@@ -80,8 +80,8 @@ Here are some more prompts to try:
 
 * "Northwind will have a booth at Microsoft Community Days  in London. Find products with local suppliers and write a LinkedIn post to promote the booth and products."
 
-    Request an enhancement by prompting, 
-    
+    Request an enhancement by prompting,
+
     "Emphasize how delicious the products are and encourage people to attend our booth"
 
 * "What beverage is high in demand due to social media that is low stock in Northwind in London. Reference the product details to update stock."
@@ -92,8 +92,3 @@ Which prompts work best for you? Try making up your own prompts and observe your
 
 You have completed Exercise 3.
 Please proceed to [Exercise 4](Exercise%2004%20-%20Code%20tour.md) in which you will explore the plugin source code and adaptive cards.
-
-
-
-
-

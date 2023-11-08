@@ -8,13 +8,13 @@ TABLE OF CONTENTS
 * [Exercise 3](./Exercise%2003%20-%20Run%20in%20Copilot.md) - Run the sample as a Copilot plugin
 * [Exercise 4](./Exercise%2004%20-%20Code%20tour.md) - Code tour  (THIS PAGE)
 
-# Exercise 4 - Code tour
+## Exercise 4 - Code tour
 
 In this exercise, you'll review the application code and learn how to implement your own Message Extension plug-in.
 
 ## Step 1 - Examine the manifest
 
-The core of any Microsoft 365 application is its aplication manifest. This is where you provide the information Microsoft 365 needs to access your application.
+The core of any Microsoft 365 application is its application manifest. This is where you provide the information Microsoft 365 needs to access your application.
 
 In your working directory, open the [manifest.json](https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/blob/main/samples/msgext-northwind-inventory-ts/appPackage/manifest.json) file. This JSON file is placed in a zip archive with two icon files to create the application package. The "icons" property includes paths to these icons.
 
@@ -154,7 +154,7 @@ Copilot is able to fill these in, again based on the descriptions, and the messa
 
 ## Step 2 - Examine the "Bot" code
 
-Now open the file **src/searchApp.ts**. This application contains the "bot" code, which communicates with the Azure Bot Framework using the [Bot Builder SDK](https://learn.microsoft.com/azure/bot-service/index-bf-sdk?view=azure-bot-service-4.0). 
+Now open the file **src/searchApp.ts**. This application contains the "bot" code, which communicates with the Azure Bot Framework using the [Bot Builder SDK](https://learn.microsoft.com/azure/bot-service/index-bf-sdk?view=azure-bot-service-4.0).
 
 Notice that the bot extends an SDK class **TeamsActivityHandler**.
 
@@ -194,7 +194,7 @@ The first of these is a Messaging Extension Query activity ("messaging extension
 
 All it's doing is dispatching the query to the based on the command ID. These are the same command ID's used in the manifest above.
 
-The other type of activity our app needs to handle is the adaptive card actions, such as when a user clicks on "Update stock" or "Reorder" on an adaptive card. Since there is no specific method for an adaptive card action, the code overrides `onInvokeActivty()`, which is a much broader class of activity that includes message extension queries. For that reason, the code manually checks the activity name, and dispatches to the appropriate handler. If the activity name isn't for an adaptive card action, the `else` clause runs the base implementation of `onInvokeActivity()` which, among other things, will call our `handleTeamsMessagingExtensionQuery()` method if the Invoke activity is a query.
+The other type of activity our app needs to handle is the adaptive card actions, such as when a user clicks on "Update stock" or "Reorder" on an adaptive card. Since there is no specific method for an adaptive card action, the code overrides `onInvokeActivity()`, which is a much broader class of activity that includes message extension queries. For that reason, the code manually checks the activity name, and dispatches to the appropriate handler. If the activity name isn't for an adaptive card action, the `else` clause runs the base implementation of `onInvokeActivity()` which, among other things, will call our `handleTeamsMessagingExtensionQuery()` method if the Invoke activity is a query.
 
 ~~~typescript
 import {
@@ -238,7 +238,7 @@ export class SearchApp extends TeamsActivityHandler {
   public async onInvokeActivity(context: TurnContext): Promise<InvokeResponse> {
     let runEvents = true;
     // console.log (`🎬 Invoke activity received: ${context.activity.name}`);
-    try {     
+    try {
       if(context.activity.name==='adaptiveCard/action'){
         switch (context.activity.value.action.verb) {
           case 'ok': {
@@ -263,11 +263,11 @@ export class SearchApp extends TeamsActivityHandler {
 
 ## Step 3 - Examine the message extension command code
 
-In an effort to make the code more modular, readable, and reusable, each message extension command has been placed in its own TypeScript module. Have a look at **src/messageExtensions/discountSearchCommandts** as an example.
+In an effort to make the code more modular, readable, and reusable, each message extension command has been placed in its own TypeScript module. Have a look at **src/messageExtensions/discountSearchCommand.ts** as an example.
 
 First, note that the module exports a constant `COMMAND_ID`, which contains the same command ID found in the app manifest, and allows the switch statement in **searchApp.ts** to work properly.
 
-Then it provides a function, `handleTeamsMessagingExtensionQuery()`, to handle incoming queries for discounted products by category. 
+Then it provides a function, `handleTeamsMessagingExtensionQuery()`, to handle incoming queries for discounted products by category.
 
 ~~~json
 async function handleTeamsMessagingExtensionQuery(
@@ -325,7 +325,7 @@ Let's take a look at the edit card in the Adaptive Card Designer. Open your web 
 
 Notice the data binding expressions such as `"text": "📦 ${productName}",`. This binds the `productName` property in the data to the text on the card.
 
-Now select "Microsoft Teams" as the host application 1️⃣ . Paste the entire contents of **editCard.json** into the Card Payload Editor 2️⃣ , and the contents of **sampleData.json** into the Sample Data Editor 3️⃣ . The sample data is identical to a product as provided in the code. 
+Now select "Microsoft Teams" as the host application 1️⃣ . Paste the entire contents of **editCard.json** into the Card Payload Editor 2️⃣ , and the contents of **sampleData.json** into the Sample Data Editor 3️⃣ . The sample data is identical to a product as provided in the code.
 
 ![image](./images/05-01-AdaptiveCardDesigner-02.png)
 
@@ -374,11 +374,11 @@ async function handleTeamsCardActionUpdateStock(context: TurnContext) {
     console.log(`🎬 Handling update stock action, quantity=${data.txtStock}`);
 
     if (data.txtStock && data.productId) {
-        
+
         const product = await getProductEx(data.productId);
         product.UnitsInStock = Number(data.txtStock);
         await updateProduct(product);
-        
+
         var template = new ACData.Template(successCard);
         var card = template.expand({
             $root: {
@@ -390,13 +390,8 @@ async function handleTeamsCardActionUpdateStock(context: TurnContext) {
                 ...
 ~~~
 
-As you can see, the code obtains these two values, updates the database, and then sends a new card that contains a message and the updateed data.
-
+As you can see, the code obtains these two values, updates the database, and then sends a new card that contains a message and the updated data.
 
 ## Congratulations
 
 You have completed Exercise 4 and the Microsoft Copilot for Microsoft 365 Messaging Extensions plugin lab. Thanks very much for doing these labs!
-
-
-
-

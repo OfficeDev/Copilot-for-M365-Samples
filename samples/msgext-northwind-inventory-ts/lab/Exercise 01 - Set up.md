@@ -8,7 +8,7 @@ TABLE OF CONTENTS
 * [Exercise 3](./Exercise%2003%20-%20Run%20in%20Copilot.md) - Run the sample as a Copilot plugin
 * [Exercise 4](./Exercise%2004%20-%20Code%20tour.md) - Code tour
 
-# Exercise 1 - Set up your development environment
+## Exercise 1 - Set up your development environment
 
 ## Step 1 - Install prerequisites
 
@@ -22,12 +22,12 @@ Please install the following on your computer:
 
 1. [Visual Studio Code](https://code.visualstudio.com/) (latest version)
 
-2. [NodeJS version 18.x](https://nodejs.org/download/release/v18.18.2/) - You may want to first install [Node Version Manager](https://github.com/nvm-sh/nvm) or [Node Version Manager for Windows](https://github.com/coreybutler/nvm-windows) so you can change NodeJS versions in the future; if you do, use these commands to install NodeJS version 18.x
+2. [NodeJS version 18.x](https://nodejs.org/download/release/v18.18.2/) - You may want to first install [Node Version Manager](https://github.com/nvm-sh/nvm) or [Node Version Manager for Windows](https://github.com/coreybutler/nvm-windows) so you can change NodeJS versions in the future; if you do, use these commands to install NodeJS version 18.x.
 
-~~~sh
-nvm install 18.18
-nvm use 18.18
-~~~
+    ~~~sh
+    nvm install 18.18
+    nvm use 18.18
+    ~~~
 
 3. [Azure Storage Explorer](https://azure.microsoft.com/products/storage/storage-explorer/) (OPTIONAL) - Download this if you want to view and edit the Northwind database used in this sample
 

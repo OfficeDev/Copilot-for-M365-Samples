@@ -8,7 +8,7 @@ TABLE OF CONTENTS
 * [Exercise 3](./Exercise%2003%20-%20Run%20in%20Copilot.md) - Run the sample as a Copilot plugin
 * [Exercise 4](./Exercise%2004%20-%20Code%20tour.md) - Code tour
 
-# Exercise 2 - Run sample app
+## Exercise 2 - Run sample app
 
 ## Step 1 - Set up the project for first use
 
@@ -16,7 +16,7 @@ Open your working folder in Visual Studio Code.
 
 Teams Toolkit stores environment variables in the **env** folder, and it will fill in all the values automatically when you start your project the first time. However there's one value that's specific to the sample application, and that's the connection string for accessing the Northwind database.
 
-In this project, the Northwind database is stored in Azure Table Storage; when you're debugging locally, it uses the [Azurite](https://learn.microsoft.com/azure/storage/common/storage-use-azurite?tabs=visual-studio) storage emulator. Tha's mostly built into the project, but the project won't build unless you provide the connection string.
+In this project, the Northwind database is stored in Azure Table Storage; when you're debugging locally, it uses the [Azurite](https://learn.microsoft.com/azure/storage/common/storage-use-azurite?tabs=visual-studio) storage emulator. That's mostly built into the project, but the project won't build unless you provide the connection string.
 
 The necessary setting is provided in a file **env/.env.local.user.sample**. Make a copy of this file in the **env** folder, and call it **.env.local.user**. This is where secret or sensitive settings are stored.
 
@@ -31,7 +31,6 @@ SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
 ~~~
 
 (OK it's not a secret! But it could be; if you deploy the project to Azure it will be!)
-
 
 ## Step 2 - Run the application locally
 
@@ -49,18 +48,18 @@ It may take a while the first time as it's loading all the npm packages. Eventua
 
 ![Run application locally](./images/02-02-Run-Project-03.png)
 
-Once you're in, Microsoft Teams should open up and display a dialog offering to install your application. 
-Take note of the information displayed; which is from the [app manifest](../appPackage/manifest.json). 
+Once you're in, Microsoft Teams should open up and display a dialog offering to install your application.
+Take note of the information displayed; which is from the [app manifest](../appPackage/manifest.json).
 
 Click "Add" to add Northwind Inventory as a personal application.
 
 ![Run application locally](./images/02-02-Run-Project-04.png)
 
-You should be directed to a chat within the application, however you could use the app in any chat. 
+You should be directed to a chat within the application, however you could use the app in any chat.
 
 ## Step 3 - Test in Microsoft Teams
 
-In any Teams chat - including the Northwind Inventory chat - begin typing a message 1️⃣ that refers to a product. Then, to insert an adaptive card for the product, click the + 2️⃣ . In the flyup panel, select the Northwind Inventory application you just installed 3️⃣ .
+In any Teams chat - including the Northwind Inventory chat - begin typing a message 1️⃣ that refers to a product. Then, to insert an adaptive card for the product, click the + 2️⃣ . In the fly-up panel, select the Northwind Inventory application you just installed 3️⃣ .
 
 ![Test in Teams](./images/02-03-TestME-Teams-take2-01.png)
 
@@ -70,7 +69,7 @@ Click Chai 3️⃣ to insert an adaptive card into the conversation along with y
 
 ![Test in Teams](./images/02-03-TestME-Teams-take2-02.png)
 
-You can see the card, but you can't use it until you send it. Make any final edits to your message and click "Send". 
+You can see the card, but you can't use it until you send it. Make any final edits to your message and click "Send".
 
 ![Test in Teams](./images/02-03-TestME-Teams-take2-03.png)
 
@@ -122,7 +121,7 @@ Here's an abbreviated version of that JSON for easy reference.
                 "parameters": [ ... ]
             }
         ]
-    }  
+    }
 ],
 ~~~
 
@@ -157,7 +156,7 @@ Enter "high", "low", "0-10000", or "100000-" in the Revenue tab. It works, but i
 }
 ~~~
 
-The parameter description susinctly explains how the queries should be written, and Copilot will read this to answer prompts calling for high revenue products, or products with less than 10,000 items.
+The parameter description succinctly explains how the queries should be written, and Copilot will read this to answer prompts calling for high revenue products, or products with less than 10,000 items.
 
 Now examine the first command again. You'll notice it has 5 parameters!
 
@@ -206,13 +205,13 @@ name,category,inventoryStatus,supplierCity,supplierName
 
 Read the descriptions in the JSON above carefully when entering a query. Try entering these, and as you do, keep an eye on the debug console tab in Visual Studio Code, where you'll see each query as it's run.
 
-   * "chai" - find products with names that begin with "chai
-   * "c,bev" - find products in categories beginning with "bev" and names that begin with "c
-   * ",,out" - find products that are out of stock
-   * ",,on,london" - find products that are on order from suppliers in London
-   * "tofu,produce,,osaka" - find products in the "produce" category with suppliers in Osaka and names that begin with "tofu"
+* "chai" - find products with names that begin with "chai
+* "c,bev" - find products in categories beginning with "bev" and names that begin with "c
+* ",,out" - find products that are out of stock
+* ",,on,london" - find products that are on order from suppliers in London
+* "tofu,produce,,osaka" - find products in the "produce" category with suppliers in Osaka and names that begin with "tofu"
 
-Each query term filters the list of products down. The format of each query term is arbitary - just be sure to explain it to Copilot in the description of each parameter.
+Each query term filters the list of products down. The format of each query term is arbitrary - just be sure to explain it to Copilot in the description of each parameter.
 
 ## Step 5 - Test in Microsoft Outlook (Optional)
 
@@ -244,9 +243,9 @@ Note that the adaptive card won't work until you send the message. If the recipi
 
 ## Step 6 (optional) - View Northwind database in Azure Storage Explorer
 
-The Northwind Databse isn't fancy but it's real! If you want to peek at or even modify the data, open the Azure Storage Explorer while Azurite is running. (Running the app starts Azurite automatically).
+The Northwind Database isn't fancy but it's real! If you want to peek at or even modify the data, open the Azure Storage Explorer while Azurite is running. (Running the app starts Azurite automatically).
 
-To view the Northind data, open "Emulater & Attached", "Storage Accounts", "Emulator - Default Ports", and "Tables". There you'll see the old Northwind database tables, which aren't nearly as handy in a NO SQL environment, but there they are!
+To view the Northwind data, open "Emulator & Attached", "Storage Accounts", "Emulator - Default Ports", and "Tables". There you'll see the old Northwind database tables, which aren't nearly as handy in a NO SQL environment, but there they are!
 
 ![Azure Storage Explorer](./images/02-06-AzureStorageExplorer-01.png)
 
@@ -256,8 +255,3 @@ The code reads the Products table on each query, but the other tables are only a
 
 You have completed Exercise 2.
 Please proceed to [Exercise 3](./Exercise%2003%20-%20Run%20in%20Copilot.md) in which you will run the sample application in Microsoft Copilot for Microsoft 365!
-
-
-
-
-
