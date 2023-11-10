@@ -23,13 +23,13 @@ In the left navigation, click on "M365 Chat" to open Copilot.
 
 Check the lower left of the chat user interface, below the compose box. You should see a plugin icon 1️⃣ . Click this and enable the Northwind Inventory plugin 2️⃣ .
 
-![Plugin panel](./images/03-02-Plugin-Panel.png)
+![Small panel with a toggle for each plugin](./images/03-02-Plugin-Panel.png)
 
 > NOTE: In the Ingite labs you may see a second "Northwind Inventory" app, with an icon that has a yellow background. We've hosted a copy of Northwind Inventory in Microsoft Azure and installed this app into the lab tenants. While it's there as a fallback, if you want to see the queries in your log window you need to use the copy with the blue background, which is the local running copy of the app.
 
 For best results, start a new chat by typing "New chat" before each prompt or set of related prompts.
 
-![New Chat](./images/03-01-New-Chat.png)
+![Copilot showing its new chat screen](./images/03-01-New-Chat.png)
 
 Here are some prompts to try that use only a single parameter of the message extension:
 
@@ -43,15 +43,15 @@ See if this last one also locates any of the documents you uploaded to your OneD
 
 As you're testing, watch the log messages within your application. You should be able to see when Copilot calls your plugin. For example, after requesting "discounted seafood items", Copilot issued this query using the "discountSearch" command.
 
-![log](./images/03-02a-Query-Log1.png)
+![Log file shows a discount search for seafood](./images/03-02a-Query-Log1.png)
 
 You may see citations of the Northwind data in 3 forms. If there's a single reference, Copilot may show the whole card.
 
-![Image](./images/03-03a-response-on-chai.png)
+![Adaptive card for Chai embedded in a Copilot response](./images/03-03a-response-on-chai.png)
 
 If there are multiple references, Copilot may show a small number next to each. You can hover over these numbers to display the adaptive card. Also, it may show a pull-down below the "Copy" button.
 
-![Image](./images/03-03-Response-on-Chai.png)
+![Reference numbers embedded in a Copilot response - hovering over the number shows the adaptive card](./images/03-03-Response-on-Chai.png)
 
 Try using these adaptive cards to take action on the products. Notice that this doesn't affect earlier responses from Copilot.
 
@@ -69,11 +69,11 @@ For example, try prompting "Find Northwind beverages with more than 100 items in
 
 If you look at the log file, you can see that Copilot was able to understand this requirement and fill in 3 of the parameters in the first message extension command.
 
-![Image](./images/03-06-Find-Northwind-Beverages-with-more-than-100.png)
+![Screen shot of log showing a query for categoryName=beverages and stockLevel=100- ](./images/03-06-Find-Northwind-Beverages-with-more-than-100.png)
 
 The plugin code applies all three filters, providing a result set of just 4 products. Using the information on the 4 resulting adaptive cards, Copilot renders a result similar to this:
 
-![Image](./images/03-06b-Find-Northwind-Beverages-with-more-than-100.png)
+![Copilot produced a bulleted list of products with references](./images/03-06b-Find-Northwind-Beverages-with-more-than-100.png)
 
 Now try a follow-up prompt (without starting a new chat):
 
@@ -81,7 +81,7 @@ Now try a follow-up prompt (without starting a new chat):
 
 This prompt won't use your plug-in but if it looks in your OneDrive files it should be able to find the payment terms with each supplier's contract.
 
-![Images](./images/03-06c-PaymentTerms.png)
+![Copilot extracted payment terms from contracts in SharePoint](./images/03-06c-PaymentTerms.png)
 
 Here are some more prompts to try:
 

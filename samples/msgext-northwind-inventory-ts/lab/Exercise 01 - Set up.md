@@ -49,7 +49,7 @@ Open your browser and browse to Microsoft 365 ([https://www.office.com/](https:/
 
 If you're taking a lab at Ignite, then several sample documents have already been uploaded for you. Verify that you can find them by entering the word "agreement" in the search box. You should see several contracts that have been placed in SharePoint.
 
-![image](./images/01-02-CheckSampleFiles.png)
+![Search box with the word agreement](./images/01-02-CheckSampleFiles.png)
 
 ### In your own tenant
 
@@ -57,27 +57,27 @@ If you're not using one of the Ignite lab tenants, you'll need to upload the doc
 
 Using the "waffle" menu in the upper left corner of the page 1️⃣ , navigate to the OneDrive application within Microsoft 365 2️⃣ .
 
-![image](./images/01-02-CopySampleFiles-01.png)
+![Navigating to the OneDrive application in Microsoft 365](./images/01-02-CopySampleFiles-01.png)
 
 Within OneDrive, navigate to "My Files" 1️⃣ . If there's a documents folder, click into that as well. If not, you can work directly within the "My Files" location.
 
-![image](./images/01-02-CopySampleFiles-02.png)
+![Navigating to your documents in OneDrive](./images/01-02-CopySampleFiles-02.png)
 
 Now click "Add new" 1️⃣ and "Folder" 2️⃣ to create a new folder.
 
-![image](./images/01-02-CopySampleFiles-03.png)
+![Adding a new folder in OneDrive](./images/01-02-CopySampleFiles-03.png)
 
 Name the folder "Northwind contracts" and click "Create".
 
-![image](./images/01-02-CopySampleFiles-03b.png)
+![Naming the new folder "Northwind contracts"](./images/01-02-CopySampleFiles-03b.png)
 
 Now, from within this new folder, click "Add new" 1️⃣  again but this time click "Files upload" 2️⃣ .
 
-![image](./images/01-02-CopySampleFiles-04.png)
+![Adding new files to the new folder](./images/01-02-CopySampleFiles-04.png)
 
 Now browse to the **sampleDocs** folder within your working folder. Highlight all the files 1️⃣ and click "OK" 2️⃣  to upload them all.
 
-![image](./images/01-02-CopySampleFiles-05.png)
+![Uploading the sample files from this repo into the folder](./images/01-02-CopySampleFiles-05.png)
 
 By doing this step early, there's a good chance that the Microsoft 365 search engine will have discovered them by the time you're ready for them.
 
@@ -91,19 +91,19 @@ Open your working folder in Visual Studio Code. You may be asked to trust the au
 
 In the left sidebar, select the Extensions icon1️⃣. Enter the word "teams" into the search box 2️⃣ and locate "Teams Toolkit" in the search results. Click "Install" 3️⃣.
 
-![Install Teams Toolkit](./images/01-04-Install-TTK-01.png)
+![Installing Teams Toolkit in Visual Studio Code](./images/01-04-Install-TTK-01.png)
 
 Now select the Teams Toolkit icon in the left 1️⃣ . If it offers options to create a new project, you're probably in the wrong folder. In the Visual Studio Code file menu select "Open Folder" and directly open the **msgext-northwind-inventory-ts** folder. You should see sections for Accounts, Environment, etc. as shown below.
 
 Under "Accounts" click "Sign in to Microsoft 365"2️⃣ and log in with the Microsoft 365 account provided by the lab instructors, or with your own Microsoft 365 developer account. You can get a free Microsoft 365 subscription for development purposes by joining the [Microsoft 365 Developer Program](https://developer.microsoft.com/microsoft-365/dev-program).
 
-![Set up Teams Toolkit](./images/01-04-Setup-TTK-01.png)
+![Logging into Microsoft 365 from within Teams Toolkit](./images/01-04-Setup-TTK-01.png)
 
 A browser window will pop up and offer to log into Microsoft 365. When it says "You are signed in now and close this page", please do so.
 
 Now verify that the "Sideloading enabled" checker has a green checkmark. If it doesn't, that means that your user account doesn't have permission to upload Teams applications. This permission is "off" by default; here are [instructions for enabling users to upload custom apps](https://learn.microsoft.com/microsoftteams/teams-custom-app-policies-and-settings#allow-users-to-upload-custom-apps)
 
-![Set up Teams Toolkit](./images/01-04-Setup-TTK-03.png)
+![Checking that sideloading is enabled](./images/01-04-Setup-TTK-03.png)
 
 ## Congratulations
 
