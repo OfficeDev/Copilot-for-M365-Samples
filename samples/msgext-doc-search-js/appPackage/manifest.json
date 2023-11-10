@@ -11,8 +11,8 @@
         "termsOfUseUrl": "https://www.example.com/privacy"
     },
     "icons": {
-        "color": "color.png",
-        "outline": "outline.png"
+        "color": "ecogroceriescolor.png",
+        "outline": "ecogroceriesoutline.png"
     },
     "name": {
         "short": "EcoGroceries Call Center",

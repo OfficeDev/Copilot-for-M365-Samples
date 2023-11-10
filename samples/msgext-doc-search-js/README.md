@@ -72,20 +72,18 @@ Click F5 to start debugging, or click the start button 1️⃣. You will have an
 
 ![Run application locally](../msgext-northwind-inventory-ts/lab/images/02-02-Run-Project-01.png)
 
-It may take a while the first time as it's loading all the npm packages. Eventually, a browser window will open and invite you to log in.
+A browser window will open and invite you to log in. Once you're in, Microsoft Teams should open up and display a dialog offering to install your application. Select **Add** to add EcoGroceries Call Center as a personal application.
 
-![Run application locally](../msgext-northwind-inventory-ts/lab/images/02-02-Run-Project-03.png)
+![Add application to Teams](./assets/ecogroceries-add.png)
 
-Once you're in, Microsoft Teams should open up and display a dialog offering to install your application.
+Test the message extension on Teams chat first before testing it on Copilot for Microsoft 365.
 
-Select **Add** to add EcoGroceries Call Center as a personal application.
-
-> **Note:** Test the message extension on Teams chat first before testing it on Copilot for Microsoft 365.
+![Test application on Teams chat](./assets/teams-test.png)
 
 ### Step 3 - Test the app in Copilot for Microsoft 365
-Navigate to the Microsoft Copilot for Microsoft 365 chat. Check the lower left of the chat user interface, below the compose box. You should see a plugin icon 1️⃣ . Click this and enable the Northwind Inventory plugin 2️⃣ .
+Navigate to the Microsoft Copilot for Microsoft 365 chat. Check the lower left of the chat user interface, below the compose box. You should see a plugin icon. Click this and enable the EcoGroceries Call Center plugin.
 
-![Plugin panel](./assets/ecogroceries-on-copilot.png)
+![Plugin panel](./assets/copilot-enable.png)
 
 For best results, start a new chat by typing "New chat" before each prompt or set of related prompts.
 
