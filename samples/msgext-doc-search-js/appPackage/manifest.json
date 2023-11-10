@@ -15,12 +15,12 @@
         "outline": "outline.png"
     },
     "name": {
-        "short": "Northwind Benefits Search",
-        "full": "Northwind Benefits Search message extension helping you find employee benefits"
+        "short": "EcoGroceries Call Center",
+        "full": "EcoGroceries Call Center Search message extension helping you find conversation records with clients"
     },
     "description": {
-        "short": "Message extension for employee benefits",
-        "full": "Simple query message extension to retrieve employee benefits from documents"
+        "short": "Message extension to find recorded conversation scripts with clients",
+        "full": "Simple query message extension to retrieve conversation records with clients from documents"
     },
     "accentColor": "#FFFFFF",
     "bots": [],
@@ -34,14 +34,14 @@
                         "compose",
                         "commandBox"
                     ],
-                    "description": "Search employee benefits in documents",
+                    "description": "Search conversation records with clients in documents",
                     "title": "Search",
                     "type": "query",
                     "parameters": [
                         {
                             "name": "searchQuery",
                             "title": "Search Query",
-                            "description": "Search employee benefits in documents",
+                            "description": "Search conversation records with clients in documents",
                             "inputType": "text"
                         }
                     ]
