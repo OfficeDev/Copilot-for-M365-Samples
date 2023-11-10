@@ -73,6 +73,8 @@ You can see the card, but you can't use it until you send it. Make any final edi
 
 ![Test in Teams](./images/02-03-TestME-Teams-take2-03.png)
 
+> NOTE: Card actions won't work until you send the card. If you get an error, please check and make sure you've sent the message and are working with the card after it has been sent.
+
 > NOTE: This is really only useful in conversations with other users; the chat in the Northwind Inventory app is just for testing.
 
 Notice that there is no chai on order 1️⃣ . The authors of this lab are big chai drinkers and they may be stopping by so you'd better order more! Click the "take action" button 2️⃣ to open a child card. Enter a quantity 3️⃣ and click the "Restock" button 4️⃣ . The card will refresh with (hopefully) a success message and an updated number of units on order.

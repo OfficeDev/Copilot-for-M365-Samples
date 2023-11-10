@@ -45,11 +45,21 @@ The sample application includes some documents for Copilot to reference during t
 
 Open your browser and browse to Microsoft 365 ([https://www.office.com/](https://www.office.com/)). Log in using the Microsoft 365 account you will be using throughout the lab. You may be asked to set up multi-factor authentication.
 
+### For the Ignite labs
+
+If you're taking a lab at Ignite, then several sample documents have already been uploaded for you. Verify that you can find them by entering the word "agreement" in the search box. You should see several contracts that have been placed in SharePoint.
+
+![image](./images/01-02-CheckSampleFiles.png)
+
+### In your own tenant
+
+If you're not using one of the Ignite lab tenants, you'll need to upload the documents yourself to demonstrate how Copilot can use them in answering prompts.
+
 Using the "waffle" menu in the upper left corner of the page 1️⃣ , navigate to the OneDrive application within Microsoft 365 2️⃣ .
 
 ![image](./images/01-02-CopySampleFiles-01.png)
 
-Within OneDrive, navigate to "My Files" 1️⃣  and then "Documents" 2️⃣ to access your Documents folder.
+Within OneDrive, navigate to "My Files" 1️⃣ . If there's a documents folder, click into that as well. If not, you can work directly within the "My Files" location.
 
 ![image](./images/01-02-CopySampleFiles-02.png)
 
