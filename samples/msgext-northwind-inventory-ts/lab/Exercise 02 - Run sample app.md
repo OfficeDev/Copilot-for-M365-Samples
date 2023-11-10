@@ -22,7 +22,7 @@ The necessary setting is provided in a file **env/.env.local.user.sample**. Make
 
 If you're not sure how to do this, here are the steps in Visual Studio Code. Expand the **env** folder and right click on **.env.local.user.sample**. Select "Copy". Then right click anywhere in the **env** folder and select "Paste". You will have a new file called **.env.local.user copy.sample**. Use the same context menu to rename the file to **.env.local.user** and you're done.
 
-![Set up project](./images/02-01-Setup-Project-01.png)
+![Copy .env.local.user.sample to .env.local.user](./images/02-01-Setup-Project-01.png)
 
 The resulting **.env.local.user** file should contain this line:
 
@@ -40,20 +40,20 @@ Click F5 to start debugging, or click the start button 1️⃣. You will have an
 
 If you see this screen, you need to fix your **env/.env.local.user** file; this is explained in the previous step.
 
-![Set up project](./images/02-01-Setup-Project-06.png)
+![Error is displayed because of a missing environment variable](./images/02-01-Setup-Project-06.png)
 
 The first time your app runs, you may be prompted to allow NodeJS to go through your firewall; this is necessary to allow the application to communicate.
 
 It may take a while the first time as it's loading all the npm packages. Eventually, a browser window will open and invite you to log in.
 
-![Run application locally](./images/02-02-Run-Project-03.png)
+![Browser window opens with a login form](./images/02-02-Run-Project-03.png)
 
 Once you're in, Microsoft Teams should open up and display a dialog offering to install your application.
 Take note of the information displayed; which is from the [app manifest](../appPackage/manifest.json).
 
 Click "Add" to add Northwind Inventory as a personal application.
 
-![Run application locally](./images/02-02-Run-Project-04.png)
+![App installation screen with large Add button](./images/02-02-Run-Project-04.png)
 
 You should be directed to a chat within the application, however you could use the app in any chat.
 
@@ -61,17 +61,17 @@ You should be directed to a chat within the application, however you could use t
 
 In any Teams chat - including the Northwind Inventory chat - begin typing a message 1️⃣ that refers to a product. Then, to insert an adaptive card for the product, click the + 2️⃣ . In the fly-up panel, select the Northwind Inventory application you just installed 3️⃣ .
 
-![Test in Teams](./images/02-03-TestME-Teams-take2-01.png)
+![Clicking the "+" to open the message extension panel](./images/02-03-TestME-Teams-take2-01.png)
 
 You will see a search dialog with 3 tabs 1️⃣. The "Product Inventory" tab allows searching for products by name; for now, just type a product name, or the beginning of a product name such as "chai" into the search box 2️⃣ . If you pause as you type the first letters, you'll be given more choices of products that begin with the same characters.
 
 Click Chai 3️⃣ to insert an adaptive card into the conversation along with your comment.
 
-![Test in Teams](./images/02-03-TestME-Teams-take2-02.png)
+![Selecting Chai from the results](./images/02-03-TestME-Teams-take2-02.png)
 
 You can see the card, but you can't use it until you send it. Make any final edits to your message and click "Send".
 
-![Test in Teams](./images/02-03-TestME-Teams-take2-03.png)
+![Sending the card](./images/02-03-TestME-Teams-take2-03.png)
 
 > NOTE: Card actions won't work until you send the card. If you get an error, please check and make sure you've sent the message and are working with the card after it has been sent.
 
@@ -79,7 +79,7 @@ You can see the card, but you can't use it until you send it. Make any final edi
 
 Notice that there is no chai on order 1️⃣ . The authors of this lab are big chai drinkers and they may be stopping by so you'd better order more! Click the "take action" button 2️⃣ to open a child card. Enter a quantity 3️⃣ and click the "Restock" button 4️⃣ . The card will refresh with (hopefully) a success message and an updated number of units on order.
 
-![Test in Teams](./images/02-03-TestME-Teams-take2-04.png)
+![Update the quantity of Chai in the adaptive card](./images/02-03-TestME-Teams-take2-04.png)
 
 You can cancel the order or modify the stock levels using the other two buttons.
 
@@ -135,7 +135,7 @@ You already ran the first command when you searched for a product by name. You c
 
 Enter "Beverages", "Dairy", or "Produce" into the "Discounts" tab, and you'll see the products within those categories that are discounted. Copilot will use this to answer questions about discounted products.
 
-![image](./images/02-03-Test-Multi-02.png)
+![Searching for beverages under the discount tab](./images/02-03-Test-Multi-02.png)
 
 Enter "high", "low", "0-10000", or "100000-" in the Revenue tab. It works, but it's not very user friendly. We're counting on Copilot to look at the manifest and figure out how to use it:
 
@@ -160,7 +160,7 @@ Enter "high", "low", "0-10000", or "100000-" in the Revenue tab. It works, but i
 }
 ~~~
 
-![image](./images/02-03-Test-Multi-03.png)
+![Searching for high on the revenue tab](./images/02-03-Test-Multi-03.png)
 
 The parameter description succinctly explains how the queries should be written, and Copilot will read this to answer prompts calling for high revenue products, or products with less than 10,000 items.
 
@@ -209,7 +209,7 @@ As a work-around to the Teams UI limitation, in the "Northwind Inventory" tab, t
 name,category,inventoryStatus,supplierCity,supplierName
 ~~~
 
-![image](./images/02-03-Test-Multi-04.png)
+![Entering multiple comma separated fields into the Northwind Inventory tab](./images/02-03-Test-Multi-04.png)
 
 Read the descriptions in the JSON above carefully when entering a query. Try entering these, and as you do, keep an eye on the debug console tab in Visual Studio Code, where you'll see each query as it's run.
 
@@ -227,27 +227,27 @@ Let's take a brief detour so you can see how message extensions work in Microsof
 
 First, click the "Waffle" menu 1️⃣ and select "Outlook" 2️⃣ .
 
-![Test in Outlook](./images/02-04-Test-ME-Outlook-01.png)
+![Opening Outlook for Microsoft 365](./images/02-04-Test-ME-Outlook-01.png)
 
 Click the "New mail" button to begin composing a message.
 
-![Test in Outlook](./images/02-04-Test-ME-Outlook-02.png)
+![Creating a new email in Outlook](./images/02-04-Test-ME-Outlook-02.png)
 
 Add a recipient 1️⃣ and a subject 2️⃣ , and position your cursor in the body of the message 3️⃣ . You can even type something. When you're ready, click the app button in the toolbar 4️⃣ .
 
-![Test in Outlook](./images/02-04-Test-ME-Outlook-03.png)
+![Clicking the App button while composing an Outlook message](./images/02-04-Test-ME-Outlook-03.png)
 
 Select the Northwind Inventory application, searching if necessary to find it.
 
-![Test in Outlook](./images/02-04-Test-ME-Outlook-04.png)
+![Clicking the Northwind Inventory application](./images/02-04-Test-ME-Outlook-04.png)
 
 Now you can search for "Chai" 1️⃣ as before and select it to insert the adaptive card 2️⃣ .
 
-![Test in Outlook](./images/02-04-Test-ME-Outlook-05.png)
+![Entering a search for Chai](./images/02-04-Test-ME-Outlook-05.png)
 
 Note that the adaptive card won't work until you send the message. If the recipient doesn't have Microsoft Outlook, they won't be able to view the card, and if they don't have the Northwind Inventory app installed, they won't be able to take action on it.
 
-![Test in Outlook](./images/02-04-Test-ME-Outlook-07a.png)
+![Taking action on a message in Outlook](./images/02-04-Test-ME-Outlook-07a.png)
 
 ## Step 6 (optional) - View Northwind database in Azure Storage Explorer
 
@@ -255,7 +255,7 @@ The Northwind Database isn't fancy but it's real! If you want to peek at or even
 
 To view the Northwind data, open "Emulator & Attached", "Storage Accounts", "Emulator - Default Ports", and "Tables". There you'll see the old Northwind database tables, which aren't nearly as handy in a NO SQL environment, but there they are!
 
-![Azure Storage Explorer](./images/02-06-AzureStorageExplorer-01.png)
+![Azure Storage Explorer showing the Northwind database tables](./images/02-06-AzureStorageExplorer-01.png)
 
 The code reads the Products table on each query, but the other tables are only accessed when the app starts. So if you want to add a new category, you'll need to restart the app for it to appear.
 
