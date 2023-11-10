@@ -7,7 +7,7 @@ languages:
 - javascript
 ---
 
-# Call Center message extension with Cognitive Search sample
+# EcoGroceries Call Center message extension with Cognitive Search sample
 
 ![License.](https://img.shields.io/badge/license-MIT-green.svg)
 
