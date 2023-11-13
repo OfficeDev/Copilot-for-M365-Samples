@@ -17,7 +17,7 @@ This sample implements Cognitive Search with a Teams message extension that enab
 
 The message extension allows users to query data inside the [EcoGroceries Call Center records](./documents) and returns the most accurate results with the power of Hybrid Search (Vector + Semantic).
 
-![Screenshot of the EcoGroceries Call Center message extension on Copilot](./assets/ecogroceries-copilot.png)
+![the EcoGroceries Call Center message extension on Copilot](https://github.com/aycabas/Copilot-for-M365-Plugins-Samples/assets/36196437/0d9ad91e-0f78-43c4-88a2-f784ee36e826)
 
 ## Prerequisites
 
@@ -98,3 +98,9 @@ Here are some prompts to try that use only a single parameter of the message ext
 * "How was the call between customer agent and Sarah Ramirez in EcoGroceries?"
 
 As you're testing, watch the log messages within your application. You should be able to see when Copilot calls your plugin.
+
+
+
+https://github.com/aycabas/Copilot-for-M365-Plugins-Samples/assets/36196437/63550b63-2ff7-4dd8-8594-12c3d2f26138
+
+
