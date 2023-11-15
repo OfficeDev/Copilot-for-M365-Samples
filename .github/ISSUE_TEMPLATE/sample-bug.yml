@@ -1,0 +1,55 @@
+name: Bug report
+description: Report a bug in a sample
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: dropdown
+    id: sample
+    attributes:
+      label: Sample
+      description: Which sample are you having an issue with?
+      options:
+        - msgext-doc-search-js
+        - msgext-multiparam-csharp
+        - msgext-multiparam-js
+        - msgext-multiparam-ts
+        - msgext-northwind-inventory-ts
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Provide a short description of the issue you are facing
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Provide the steps you have taken so that we can reproduce the error
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected results
+      description: Provide a description of what you expect to happen
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual results
+      description: Provide a description of what actually happens
+    validations:
+      required: true
+  - type: textarea
+    id: info
+    attributes:
+      label: Additional Info
+      description: |
+        Provide any additional information that may help with the identification of the root cause of this issue
+    validations:
+      required: false

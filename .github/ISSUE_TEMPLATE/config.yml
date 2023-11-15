@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Need help?
+    url: https://learn.microsoft.com/en-us/answers/questions/ask/
+    about: Ask questions about extending Copilot for Microsoft 365 on Microsoft Q & A.
