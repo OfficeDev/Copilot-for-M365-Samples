@@ -31,3 +31,5 @@ languages:
 - Enable the plugin
 - Use a basic prompt: `Find stocks in NASDAQ Stocks`
 - Use an advanced prompt: `Find top 10 stocks in NASDAQ Stocks with P/B < 2 and P/E < 30`
+
+![](https://m365-visitor-stats.azurewebsites.net/SamplesGallery/officedev-copilot-for-m365-plugins-samples-msgext-multiparam-ts)
