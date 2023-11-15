@@ -1,0 +1,38 @@
+[
+  {
+    "companyName": "Fictitious Technologies Inc.",
+    "primaryExchange": "Nasdaq Global Select",
+    "symbol": "FTI",
+    "latestUpdate": 1556913600,
+    "change": 3.12,
+    "changePercent": 0.02541,
+    "latestPrice": 132.5,
+    "open": 130.42,
+    "high": 133.43,
+    "low": 130.25
+  },
+  {
+    "companyName": "Imaginary Software Corp.",
+    "primaryExchange": "Nasdaq Global Select",
+    "symbol": "ISC",
+    "latestUpdate": 1556913600,
+    "change": 1.85,
+    "changePercent": 0.01531,
+    "latestPrice": 125.9,
+    "open": 124.42,
+    "high": 126.43,
+    "low": 124.25
+  },
+  {
+    "companyName": "Phantom Industries Ltd.",
+    "primaryExchange": "Nasdaq Global Select",
+    "symbol": "PIL",
+    "latestUpdate": 1556913600,
+    "change": 2.45,
+    "changePercent": 0.02031,
+    "latestPrice": 127.9,
+    "open": 126.42,
+    "high": 128.43,
+    "low": 126.25
+  }
+]
