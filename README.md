@@ -1,6 +1,18 @@
 # Copilot for Microsoft 365 plugins samples
 
-This repository contains sample [Copilot for Microsoft 365 plugins](https://learn.microsoft.com/microsoftteams/platform/copilot/how-to-extend-copilot#what-is-a-plugin).
+This repository contains sample [Copilot for Microsoft 365 plugins](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/overview-message-extension-bot).
+
+<p style="align:center"><img src="https://learn.microsoft.com/microsoft-365-copilot/extensibility/assets/images/message-extensions-ux.png" alt="Illustration of two different user experiences for message extensions, one way is to invoke from Teams client and another is with Copilot" width="900" /></p>
+
+## Samples
+
+| Name    | Language | Description
+| -------- | :-------: | ------- |
+| [Northwind Inventory](./samples/msgext-northwind-inventory-ts)  | TypeScript | Plugin that allows users to query the Northwind Database |
+| [Document Search](./samples/msgext-doc-search-js) | JavaScript | Plugin that enables Hybrid Search (Vector + Semantic) |
+| [Multi Parameters](./samples/msgext-multiparam-csharp)  | .NET | Plugin that demonstrates how to implement complex utterances and support deep retrieval |
+| [Multi Parameters](./samples/msgext-multiparam-ts)  | TypeScript | Plugin that demonstrates how to implement complex utterances and support deep retrieval |
+| [Multi Parameters](./samples/msgext-multiparam-js)  | JavaScript | Plugin that demonstrates how to implement complex utterances and support deep retrieval |
 
 ## Contributing
 
