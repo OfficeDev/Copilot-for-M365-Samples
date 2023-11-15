@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.16/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.16",
+  "version": "1.0.0",
+  "id": "${{TEAMS_APP_ID}}",
+  "packageName": "com.microsoft.teams.extension",
+  "developer": {
+    "name": "Teams App, Inc.",
+    "websiteUrl": "https://www.example.com",
+    "privacyUrl": "https://www.example.com/termofuse",
+    "termsOfUseUrl": "https://www.example.com/privacy"
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "name": {
+    "short": "NASDAQ",
+    "full": "NASDAQ stocks"
+  },
+  "description": {
+    "short": "Search and share stock quotes.",
+    "full": "Get real-time stock quotes and share them in a conversation. Search by company name, share, or stocks."
+  },
+  "accentColor": "#FFFFFF",
+  "bots": [],
+  "composeExtensions": [
+    {
+      "botId": "${{BOT_ID}}",
+      "commands": [
+        {
+          "id": "Search",
+          "type": "query",
+          "title": "General",
+          "description": "Find number of stocks or listed equities using keywords, key ratios, index, and so on.",
+          "initialRun": true,
+          "fetchTask": false,
+          "context": [ "commandBox", "compose", "message" ],
+          "parameters": [
+            {
+              "name": "StockIndex",
+              "title": "Stock Index",
+              "description": "Name of index in which user wants to find stocks",
+              "inputType": "text"
+            },
+            {
+              "name": "NumberofStocks",
+              "title": "Ranked Number of Stocks",
+              "description": "Number of stocks in ranked order. Output format: Top:<Number of stocks or bottom:<Number of stocks>",
+              "inputType": "text"
+            },
+            {
+              "name": "P/B",
+              "title": "Price to Book Ratio",
+              "description": "P/B or Price to Book ratio of a stock. Output format: >x.xx or <x.xx",
+              "inputType": "text"
+            },
+            {
+              "name": "P/E",
+              "title": "Price to Earnings Ratio",
+              "description": "P/E or Price to Earnings ratio of a stock with comparison. Output format: >x.xx or <x.xx",
+              "inputType": "text"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "configurableTabs": [],
+  "staticTabs": [],
+  "permissions": [ "identity", "messageTeamMembers" ],
+  "validDomains": []
+}
+  
