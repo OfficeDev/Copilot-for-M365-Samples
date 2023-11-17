@@ -13,10 +13,10 @@ namespace MsgExtMultiParamCSharp.Bot
     {
         protected override Task<MessagingExtensionResponse> OnTeamsMessagingExtensionQueryAsync(ITurnContext<IInvokeActivity> turnContext, MessagingExtensionQuery query, CancellationToken cancellationToken)
         {
-            var stockIndex = query?.Parameters?[0]?.Value as string ?? string.Empty;
-            var numberOfStocks = query?.Parameters?[1]?.Value as string ?? string.Empty;
-            var pB = query?.Parameters?[2]?.Value as string ?? string.Empty;
-            var pE = query?.Parameters?[3]?.Value as string ?? string.Empty;
+            var stockIndex = GetQueryData(query, "stockIndex");
+            var numberOfStocks = GetQueryData(query, "NumberofStocks");
+            var pB = GetQueryData(query, "P/B");
+            var pE = GetQueryData(query, "P/E");
 
             // Basic: Find stocks in NASDAQ Stocks
             // [
@@ -36,17 +36,17 @@ namespace MsgExtMultiParamCSharp.Bot
 
             Debug.WriteLine($"🔍 StockIndex: '{stockIndex}' | NumberofStocks: '{numberOfStocks}' | P/B: '{pB}' | P/E: '{pE}'");
 
-            var stockData = File.ReadAllText("stock.data.json");
+            var stockData = File.ReadAllText(@"bot\stock.data.json");
             var stockDataList = JsonConvert.DeserializeObject<List<StockData>>(stockData);
 
-            var adaptiveCardJson = File.ReadAllText("stock.json");
+            var adaptiveCardJson = File.ReadAllText(@"bot\stock.json");
             var template = new AdaptiveCardTemplate(adaptiveCardJson);
 
             var attachments = new List<MessagingExtensionAttachment>();
 
             foreach (var stock in stockDataList)
             {
-                string resultCard = template.Expand(stockData);
+                string resultCard = template.Expand(stock);
 
                 var previewCard = new HeroCard
                 {
@@ -73,6 +73,16 @@ namespace MsgExtMultiParamCSharp.Bot
                     Attachments = attachments,
                 },
             });
+        }
+        private string GetQueryData(MessagingExtensionQuery query, string key)
+        {
+            if (query?.Parameters?.Any() != true)
+                return string.Empty;
+
+            // Use LINQ to find the KeyValuePair with the specified key
+            var foundPair = query.Parameters.FirstOrDefault(pair => pair.Name == key);
+
+            return foundPair?.Value?.ToString() ?? string.Empty;
         }
     }
 }

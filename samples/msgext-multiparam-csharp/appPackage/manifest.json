@@ -33,7 +33,7 @@
           "type": "query",
           "title": "General",
           "description": "Find number of stocks or listed equities using keywords, key ratios, index, and so on.",
-          "initialRun": true,
+          "initialRun": false,
           "fetchTask": false,
           "context": [ "commandBox", "compose", "message" ],
           "parameters": [
