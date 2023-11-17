@@ -46,7 +46,7 @@ namespace MsgExtMultiParamCSharp.Bot
 
             foreach (var stock in stockDataList)
             {
-                string resultCard = template.Expand(stockData);
+                string resultCard = template.Expand(stock);
 
                 var previewCard = new HeroCard
                 {
