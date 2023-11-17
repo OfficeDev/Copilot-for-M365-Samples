@@ -36,10 +36,10 @@ namespace MsgExtMultiParamCSharp.Bot
 
             Debug.WriteLine($"🔍 StockIndex: '{stockIndex}' | NumberofStocks: '{numberOfStocks}' | P/B: '{pB}' | P/E: '{pE}'");
 
-            var stockData = File.ReadAllText("stock.data.json");
+            var stockData = File.ReadAllText(@"bot\stock.data.json");
             var stockDataList = JsonConvert.DeserializeObject<List<StockData>>(stockData);
 
-            var adaptiveCardJson = File.ReadAllText("stock.json");
+            var adaptiveCardJson = File.ReadAllText(@"bot\stock.json");
             var template = new AdaptiveCardTemplate(adaptiveCardJson);
 
             var attachments = new List<MessagingExtensionAttachment>();
