@@ -13,7 +13,7 @@ namespace MsgExtMultiParamCSharp.Bot
     {
         protected override Task<MessagingExtensionResponse> OnTeamsMessagingExtensionQueryAsync(ITurnContext<IInvokeActivity> turnContext, MessagingExtensionQuery query, CancellationToken cancellationToken)
         {
-            var stockIndex = GetQueryData(query, "stockIndex");
+            var stockIndex = GetQueryData(query, "StockIndex");
             var numberOfStocks = GetQueryData(query, "NumberofStocks");
             var pB = GetQueryData(query, "P/B");
             var pE = GetQueryData(query, "P/E");
