@@ -3,6 +3,10 @@ description: Report a bug in a sample
 title: "[Bug]: "
 labels: ["bug", "triage"]
 body:
+  - type: markdown
+    attributes:
+      value: |
+        **Before you raise an issue, please ensure that you meet all the [requirements](https://learn.microsoft.com/microsoft-365-copilot/extensibility/prerequisites) for Microsoft Copilot for Microsoft 365 extensibilty**
   - type: dropdown
     id: sample
     attributes:
