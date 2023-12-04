@@ -56,7 +56,7 @@ namespace MsgExtMultiParamCSharp.Bot
 
                 var attachment = new MessagingExtensionAttachment
                 {
-                    Content = resultCard,
+                    Content = JsonConvert.DeserializeObject(resultCard),
                     ContentType = "application/vnd.microsoft.card.adaptive",
                     Preview = previewCard,
                 };
