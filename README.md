@@ -2,6 +2,9 @@
 
 This repository contains sample [Copilot for Microsoft 365 plugins](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/overview-message-extension-bot).
 
+> [!IMPORTANT]  
+> To develop and test Copilot for Microsoft 365 plugins, you must ensure that your development environment meets the [requirements](https://learn.microsoft.com/microsoft-365-copilot/extensibility/prerequisites)
+
 <p style="align:center"><img src="https://learn.microsoft.com/microsoft-365-copilot/extensibility/assets/images/message-extensions-ux.png" alt="Illustration of two different user experiences for message extensions, one way is to invoke from Teams client and another is with Copilot" width="900" /></p>
 
 ## Samples
