@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RuntimeFrameworkVersion>6.0.10</RuntimeFrameworkVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectCapability Include="TeamsFx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="build/**/*" />
+    <Content Remove="build/**/*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AdaptiveCards.Templating" Version="1.5.0" />
+    <PackageReference Include="Azure.Identity" Version="1.10.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Bot.Builder" Version="4.21.2" />
+    <PackageReference Include="Microsoft.Bot.Builder.Integration.AspNet.Core" Version="4.21.2" />
+    <PackageReference Include="Microsoft.Graph" Version="5.36.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="env\.env.dev.user" />
+    <None Include="env\.env.local.user" />
+  </ItemGroup>
+
+</Project>
