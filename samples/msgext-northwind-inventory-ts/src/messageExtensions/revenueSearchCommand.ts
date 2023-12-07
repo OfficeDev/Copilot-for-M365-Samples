@@ -15,7 +15,8 @@ async function handleTeamsMessagingExtensionQuery(
     query: MessagingExtensionQuery
 ): Promise<MessagingExtensionResponse> {
 
-    let revenueRange = cleanupParam(query.parameters[0]?.value);
+    // Seek the parameter by name, don't assume it's in element 0 of the array
+    let revenueRange = cleanupParam(query.parameters.find((element) => element.name === "revenueRange")?.value);
 
     console.log(`💰 Revenue query #${++queryCount}: Products with revenue in range=${revenueRange}`);
 

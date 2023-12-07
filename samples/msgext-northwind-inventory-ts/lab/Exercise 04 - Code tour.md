@@ -275,8 +275,8 @@ async function handleTeamsMessagingExtensionQuery(
     query: MessagingExtensionQuery
 ): Promise<MessagingExtensionResponse> {
 
-    let categoryName = cleanupParam(query.parameters[0]?.value);
-
+    // Seek the parameter by name, don't assume it's in element 0 of the array
+    let categoryName = cleanupParam(query.parameters.find((element) => element.name === "categoryName")?.value);
     console.log(`💰 Discount query #${++queryCount}: Discounted products with categoryName=${categoryName}`);
 
     const products = await getDiscountedProductsByCategory(categoryName);
@@ -302,6 +302,7 @@ async function handleTeamsMessagingExtensionQuery(
 }
 ~~~
 
+Notice that the index in the `query.parameters` array may not correspond to the parameter's position in the manifest. While this is generally only an issue for a multi-parameter command, the code will still get the value based on the parameter name rather than hard coding an index.
 After cleaning up the parameter (trimming it, and handling the fact that sometimes Copilot assumes "*" is a wildcard that matches everything), the code calls the Northwind data access layer to `getDiscountedProductsByCategory()`.
 
 Then it iterates through the products and creates two cards for each:

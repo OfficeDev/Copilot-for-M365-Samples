@@ -15,14 +15,16 @@ async function handleTeamsMessagingExtensionQuery(
     query: MessagingExtensionQuery
 ): Promise<MessagingExtensionResponse> {
 
-    // Unpack the parameters. From Copilot they'll come in the parameters array; from a human they'll be comma separated
+    // For now we have the ability to pass parameters comma separated for testing until the UI supports it.
+    // So try to unpack the parameters but when issued from Copilot or the multi-param UI they will come
+    // in the parameters array.
     let [productName, categoryName, inventoryStatus, supplierCity, stockLevel] = (query.parameters[0]?.value.split(','));
 
-    productName = cleanupParam(query.parameters[0]?.value);
-    categoryName ??= cleanupParam(query.parameters[1]?.value);
-    inventoryStatus ??= cleanupParam(query.parameters[2]?.value);
-    supplierCity ??= cleanupParam(query.parameters[3]?.value);
-    stockLevel ??= cleanupParam(query.parameters[4]?.value);
+    productName ??= cleanupParam(query.parameters.find((element) => element.name === "productName")?.value);
+    categoryName ??= cleanupParam(query.parameters.find((element) => element.name === "categoryName")?.value);
+    inventoryStatus ??= cleanupParam(query.parameters.find((element) => element.name === "inventoryStatus")?.value);
+    supplierCity ??= cleanupParam(query.parameters.find((element) => element.name === "supplierCity")?.value);
+    stockLevel ??= cleanupParam(query.parameters.find((element) => element.name === "stockQuery")?.value);
     console.log(`🔎 Query #${++queryCount}:\nproductName=${productName}, categoryName=${categoryName}, inventoryStatus=${inventoryStatus}, supplierCity=${supplierCity}, stockLevel=${stockLevel}`);
 
     const products = await searchProducts(productName, categoryName, inventoryStatus, supplierCity, stockLevel);
