@@ -20,11 +20,11 @@ async function handleTeamsMessagingExtensionQuery(
     // in the parameters array.
     let [productName, categoryName, inventoryStatus, supplierCity, stockLevel] = (query.parameters[0]?.value.split(','));
 
-    productName = cleanupParam(query.parameters.find((element) => element.name === "productName")?.value);
-    categoryName = cleanupParam(query.parameters.find((element) => element.name === "categoryName")?.value);
-    inventoryStatus = cleanupParam(query.parameters.find((element) => element.name === "inventoryStatus")?.value);
-    supplierCity = cleanupParam(query.parameters.find((element) => element.name === "supplierCity")?.value);
-    stockLevel = cleanupParam(query.parameters.find((element) => element.name === "stockQuery")?.value);
+    productName ??= cleanupParam(query.parameters.find((element) => element.name === "productName")?.value);
+    categoryName ??= cleanupParam(query.parameters.find((element) => element.name === "categoryName")?.value);
+    inventoryStatus ??= cleanupParam(query.parameters.find((element) => element.name === "inventoryStatus")?.value);
+    supplierCity ??= cleanupParam(query.parameters.find((element) => element.name === "supplierCity")?.value);
+    stockLevel ??= cleanupParam(query.parameters.find((element) => element.name === "stockQuery")?.value);
     console.log(`🔎 Query #${++queryCount}:\nproductName=${productName}, categoryName=${categoryName}, inventoryStatus=${inventoryStatus}, supplierCity=${supplierCity}, stockLevel=${stockLevel}`);
 
     const products = await searchProducts(productName, categoryName, inventoryStatus, supplierCity, stockLevel);
