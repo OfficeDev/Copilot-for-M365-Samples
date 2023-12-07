@@ -15,6 +15,13 @@ This sample implements a Teams message extension that can be used as a plugin fo
 
 ![Screenshot of the sample extension working in Copilot in Microsoft Teams](./lab/images/03-03a-response-on-chai.png)
 
+## Version history
+
+Version|Manifest version|Date|Author|Comments
+-------|--|--|----|--------
+1.0|1.16|November 15, 2023 |Bob German <br/> Garry Trinder <br/> Rabia Williams|Initial release for Ignite 2023 labs
+1.1|1.16|December 7, 2023 |Bob German|Parameters are now passed by name not value
+
 ## Prerequisites
 
 - [Node.js 18.x](https://nodejs.org/download/release/v18.18.2/)
