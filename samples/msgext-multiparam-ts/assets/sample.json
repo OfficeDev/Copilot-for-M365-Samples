@@ -10,7 +10,7 @@
       "This sample demonstrates how to use multiple parameters in a plugin for Microsoft Copilot for Microsoft 365 using TypeScript and Teams Toolkit for Visual Studio Code. It demonstrates how developers can use multi parameters in Microsoft Copilot for Microsoft 365 to support complex utterances and deep retrieval."
     ],
     "creationDateTime": "2023-11-15",
-    "updateDateTime": "2023-11-17",
+    "updateDateTime": "2023-12-11",
     "products": [
       "Microsoft Teams",
       "Microsoft 365 Copilot"
