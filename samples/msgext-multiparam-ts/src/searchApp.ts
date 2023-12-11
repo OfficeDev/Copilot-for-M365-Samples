@@ -5,6 +5,7 @@ import {
   TurnContext,
   MessagingExtensionQuery,
   MessagingExtensionResponse,
+  MessagingExtensionParameter,
 } from "botbuilder";
 import stockCard from "./cards/stock.json";
 import stockCardData from "./cards/stock.data.json";
@@ -34,10 +35,10 @@ export class SearchApp extends TeamsActivityHandler {
     //   { name: 'P/E', value: '<30' }
     // ]
 
-    const stockIndex = parameters[0].value;
-    const numberOfStocks = parameters[1].value;
-    const pB = parameters[2].value;
-    const pE = parameters[3].value;
+    const stockIndex = getParameterByName(parameters, "StockIndex");
+    const numberOfStocks = getParameterByName(parameters, "NumberofStocks");
+    const pB = getParameterByName(parameters, "P/B");
+    const pE = getParameterByName(parameters, "P/E");
 
     console.log(
       `🔍 StockIndex: '${stockIndex}' | NumberofStocks: '${numberOfStocks}' | P/B: '${pB}' | P/E: '${pE}'`
@@ -58,4 +59,9 @@ export class SearchApp extends TeamsActivityHandler {
       },
     };
   }
+}
+
+const getParameterByName = (parameters: MessagingExtensionParameter[], name: string) => {
+  const param = parameters.find(p => p.name === name);
+  return param ? param.value : '';
 }
