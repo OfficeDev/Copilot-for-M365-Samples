@@ -1,8 +1,9 @@
 ---
 page_type: sample
-description: This sample demonstrates how to use a Teams message extension as a plugin in Microsoft Copilot for Microsoft 365.
+description: This sample implements a Teams message extension that can be used as a plugin for Microsoft Copilot for Microsoft 365. The message extension allows users to query the Northwind Database.
 products:
 - office-teams
+- copilot-m365
 languages:
 - typescript
 ---
