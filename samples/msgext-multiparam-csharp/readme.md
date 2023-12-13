@@ -3,6 +3,7 @@ page_type: sample
 description: This sample demonstrates how to use multiple parameters in a plugin for Microsoft Copilot for Microsoft 365 using .NET and Teams Toolkit for Visual Studio.
 products:
 - office-teams
+- copilot-m365
 languages:
 - dotnet
 - csharp
