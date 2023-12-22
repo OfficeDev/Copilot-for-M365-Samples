@@ -1,0 +1,99 @@
+# yaml-language-server: $schema=https://aka.ms/teams-toolkit/1.1.0/yaml.schema.json
+version: 1.1.0
+
+provision:
+
+  - uses: teamsApp/create
+    with:
+      name: ${{APP_INTERNAL_NAME}}-${{TEAMSFX_ENV}}
+    writeToEnvironmentFile: 
+      teamsAppId: TEAMS_APP_ID
+
+  - uses: aadApp/create
+    with:
+      name: ${{APP_INTERNAL_NAME}}-bot-${{TEAMSFX_ENV}}
+      generateClientSecret: true
+      signInAudience: AzureADMultipleOrgs
+    writeToEnvironmentFile:
+      clientId: BOT_ID
+      clientSecret: SECRET_BOT_PASSWORD
+      objectId: BOT_AAD_APP_OBJECT_ID
+      tenantId: BOT_AAD_APP_TENANT_ID
+      authority: BOT_AAD_APP_OAUTH_AUTHORITY
+      authorityHost: BOT_AAD_APP_OAUTH_AUTHORITY_HOST
+
+  - uses: aadApp/update
+    with:
+      manifestPath: "./infra/entra/entra.bot.manifest.json"
+      outputFilePath : "./build/entra.bot.manifest.${{TEAMSFX_ENV}}.json"
+
+  - uses: aadApp/create
+    with:
+      name: ${{APP_INTERNAL_NAME}}-graph-${{TEAMSFX_ENV}}
+      generateClientSecret: true
+      signInAudience: AzureADMultipleOrgs
+    writeToEnvironmentFile:
+      clientId: GRAPH_AAD_APP_ID
+      clientSecret: SECRET_GRAPH_AAD_APP_CLIENT_SECRET
+      objectId: GRAPH_AAD_APP_OBJECT_ID
+      tenantId: GRAPH_AAD_APP_TENANT_ID
+      authority: GRAPH_AAD_APP_OAUTH_AUTHORITY
+      authorityHost: GRAPH_AAD_APP_OAUTH_AUTHORITY_HOST
+
+  - uses: aadApp/update
+    with:
+      manifestPath: "./infra/entra/entra.graph.manifest.json"
+      outputFilePath : "./build/entra.graph.manifest.${{TEAMSFX_ENV}}.json"
+
+  - uses: arm/deploy
+    with:
+      subscriptionId: ${{AZURE_SUBSCRIPTION_ID}}
+      resourceGroupName: ${{AZURE_RESOURCE_GROUP_NAME}}
+      templates:
+        - path: ./infra/azure.local.bicep
+          parameters: ./infra/azure.parameters.local.json
+          deploymentName: Create-resources-for-${{APP_INTERNAL_NAME}}-${{TEAMSFX_ENV}}
+      bicepCliVersion: v0.9.1
+
+  - uses: file/createOrUpdateJsonFile
+    with:
+      target: ./appsettings.Development.json
+      content:
+        BOT_ID: ${{BOT_ID}}
+        BOT_PASSWORD: ${{SECRET_BOT_PASSWORD}}
+        SPO_HOSTNAME: ${{SPO_HOSTNAME}}
+        SPO_SITE_URL: ${{SPO_SITE_URL}}
+        CONNECTION_NAME: ${{CONNECTION_NAME}}
+
+  - uses: teamsApp/validateManifest
+    with:
+      manifestPath: ./appPackage/manifest.json
+
+  - uses: teamsApp/zipAppPackage
+    with:
+      manifestPath: ./appPackage/manifest.json
+      outputZipPath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+      outputJsonPath: ./appPackage/build/manifest.${{TEAMSFX_ENV}}.json
+
+  - uses: teamsApp/validateAppPackage
+    with:
+      appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+
+  - uses: teamsApp/update
+    with:
+      appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+
+  - uses: file/createOrUpdateJsonFile
+    with:
+      target: ./Properties/launchSettings.json
+      content:
+        profiles:
+          Microsoft Teams (browser):
+            commandName: "Project"
+            dotnetRunMessages: true
+            launchBrowser: true
+            launchUrl: "https://teams.microsoft.com/l/app/${{TEAMS_APP_ID}}?installAppPackage=true&webjoin=true&appTenantId=${{TEAMS_APP_TENANT_ID}}&login_hint=${{TEAMSFX_M365_USER_NAME}}"
+            applicationUrl: "https://localhost:7130;http://localhost:5130"
+            environmentVariables:
+              ASPNETCORE_ENVIRONMENT: "Development"
+            hotReloadProfile: "aspnetcore"

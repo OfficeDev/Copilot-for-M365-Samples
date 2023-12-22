@@ -1,0 +1,59 @@
+{
+  "type": "AdaptiveCard",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.6",
+  "body": [
+    {
+      "type": "Input.Text",
+      "label": "Title",
+      "id": "Title",
+      "value": "${Product.Title}",
+      "isRequired": true,
+      "errorMessage": "Title is required"
+    },
+    {
+      "type": "Input.ChoiceSet",
+      "label": "Category",
+      "id": "RetailCategory",
+      "value": "${Product.RetailCategory}",
+      "isRequired": true,
+      "errorMessage": "Category is required",
+      "choices": [
+        {
+          "$data": "${RetailCategories}",
+          "title": "${$data}",
+          "value": "${$data}"
+        }
+      ]
+    },
+    {
+      "type": "Input.Date",
+      "label": "Release date",
+      "id": "ReleaseDate",
+      "value": "${formatDateTime(Product.ReleaseDate,'yyyy-MM-dd')}",
+      "isRequired": true,
+      "errorMessage": "Release date is required"
+    },
+    {
+      "type": "ActionSet",
+      "actions": [
+        {
+          "type": "Action.Execute",
+          "verb": "edit-save",
+          "title": "Save",
+          "data": {
+            "Id": "${Product.Id}"
+          }
+        },
+        {
+          "type": "Action.Execute",
+          "verb": "edit-cancel",
+          "title": "Cancel",
+          "data": {
+            "Id": "${Product.Id}"
+          }
+        }
+      ]
+    }
+  ]
+}
