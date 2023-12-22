@@ -65,7 +65,6 @@
       ]
     }
   ],
-  "defaultInstallScope": "groupchat",
   "permissions": [
     "identity",
     "messageTeamMembers"
