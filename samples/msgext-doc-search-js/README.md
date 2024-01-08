@@ -100,6 +100,6 @@ Here are some prompts to try that use only a single parameter of the message ext
 
 As you're testing, watch the log messages within your application. You should be able to see when Copilot calls your plugin.
 
-https://github.com/aycabas/Copilot-for-M365-Plugins-Samples/assets/36196437/63550b63-2ff7-4dd8-8594-12c3d2f26138
+https://github.com/aycabas/Copilot-for-M365-Plugins-Samples/assets/36196437/25270ded-ead2-482d-94f5-bcd5d4eac518
 
 ![Samples Gallery](https://m365-visitor-stats.azurewebsites.net/SamplesGallery/officedev-copilot-for-m365-plugins-samples-msgext-doc-search-js)
