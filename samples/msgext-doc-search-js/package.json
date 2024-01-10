@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@azure/search-documents": "^12.0.0",
-    "botbuilder": "^4.21.1",
+    "botbuilder": "^4.21.4",
     "restify": "^10.0.0"
   },
   "devDependencies": {
