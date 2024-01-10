@@ -30,10 +30,10 @@ public class SearchApp : TeamsActivityHandler
         Console.WriteLine($"Semantic Hybrid Search Results:");
         await foreach (SearchResult<SearchDocument> result in hybridResponse.GetResultsAsync())
         {
-            Console.WriteLine($"Title: {result.Document["title"]}");
-            Console.WriteLine($"Url: {result.Document["url"]}");
-            Console.WriteLine($"Content: {result.Document["content"]}");
-            Console.WriteLine($"Filepath: {result.Document["filepath"]}\n");
+            Debug.WriteLine($"Title: {result.Document["title"]}");
+            Debug.WriteLine($"Url: {result.Document["url"]}");
+            Debug.WriteLine($"Content: {result.Document["content"]}");
+            Debug.WriteLine($"Filepath: {result.Document["filepath"]}\n");
 
             var previewCard = new HeroCard { Title = result.Document["filepath"].ToString(), Text = result.Document["content"].ToString() };
             var adaptiveCardJson = template.Expand(new { content = result.Document["content"], filepath = result.Document["filepath"], url = result.Document["url"] });
