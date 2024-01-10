@@ -2,15 +2,15 @@
   {
     "name": "officedev-copilot-for-m365-plugins-samples-msgext-doc-search-js",
     "source": "officedev",
-    "title": "Enable Hybrid Search (Vector + Semantic) for your external data on Copilot for Microsoft 365 using Cognitive Search",
-    "shortDescription": "This sample implements Cognitive Search with a Teams message extension that enables Hybrid Search (Vector + Semantic) and can be used as a plugin for Microsoft Copilot for Microsoft 365.",
+    "title": "Enable Hybrid Search (Vector + Semantic) for your external data on Copilot for Microsoft 365 using Azure AI Search and JavaScript",
+    "shortDescription": "This sample implements Azure AI Search with a Teams message extension and JavaScript that enables Hybrid Search (Vector + Semantic) and can be used as a plugin for Microsoft Copilot for Microsoft 365.",
     "url": "https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/tree/main/samples/msgext-doc-search-js",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/tree/main/samples/msgext-doc-search-js",
     "longDescription": [
-      "This sample implements Cognitive Search with a Teams message extension that enables Hybrid Search (Vector + Semantic) and can be used as a plugin for Microsoft Copilot for Microsoft 365. It demonstrates how developers can use Copilot for Microsoft 365 in **Bring Your Own Data** scenarios instead of building a custom GPT powered bot."
+      "This sample implements Azure AI Search with a Teams message extension that enables Hybrid Search (Vector + Semantic) and can be used as a plugin for Microsoft Copilot for Microsoft 365. It demonstrates how developers can use Copilot for Microsoft 365 in **Bring Your Own Data** scenarios instead of building a custom GPT powered bot."
     ],
     "creationDateTime": "2023-11-10",
-    "updateDateTime": "2023-11-10",
+    "updateDateTime": "2024-01-10",
     "products": [
       "Microsoft Teams",
       "Microsoft Azure",
@@ -44,8 +44,8 @@
       {
         "type": "image",
         "order": 50,
-        "url": "https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/raw/main/samples/msgext-doc-search-js/assets/ecogroceries-copilot.png",
-        "alt": "Simplified admin experience in Microsoft Teams admin center"
+        "url": "https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/raw/main/samples/msgext-doc-search-js/assets/CopilotAISearch.gif",
+        "alt": "Using Copilot for Microsoft 365 in **Bring Your Own Data** scenarios instead of building a custom GPT powered bot"
       }
     ],
     "authors": [
