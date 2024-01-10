@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "msgext-doc-search-csharp", "msgext-doc-search-csharp.csproj", "{973ACE37-1816-48CB-97E4-B3B9F4917F98}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{973ACE37-1816-48CB-97E4-B3B9F4917F98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{973ACE37-1816-48CB-97E4-B3B9F4917F98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{973ACE37-1816-48CB-97E4-B3B9F4917F98}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{973ACE37-1816-48CB-97E4-B3B9F4917F98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{973ACE37-1816-48CB-97E4-B3B9F4917F98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{973ACE37-1816-48CB-97E4-B3B9F4917F98}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {25A7551D-D40E-488A-8E91-4405EF621204}
+	EndGlobalSection
+EndGlobal
