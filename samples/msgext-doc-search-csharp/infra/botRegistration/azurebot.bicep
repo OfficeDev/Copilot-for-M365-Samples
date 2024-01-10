@@ -35,3 +35,12 @@ resource botServiceMsTeamsChannel 'Microsoft.BotService/botServices/channels@202
     channelName: 'MsTeamsChannel'
   }
 }
+
+resource botServiceM365ExtensionsChannel 'Microsoft.BotService/botServices/channels@2023-09-15-preview' = {
+  parent: botService
+  location: 'global'
+  name: 'M365Extensions'
+  properties: {
+	channelName: 'M365Extensions'
+  }
+}
