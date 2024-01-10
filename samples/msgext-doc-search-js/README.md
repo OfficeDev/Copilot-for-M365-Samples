@@ -1,6 +1,6 @@
 ---
 page_type: sample
-description: This sample demonstrates how to integrate Azure AI Search in a Teams message extension to enable Hybrid Search (Vector + Semantic) and use the message extension as a plugin in Microsoft Copilot for Microsoft 365.
+description: This sample demonstrates how to integrate Azure AI Search in a Teams message extension to enable Hybrid Search (Vector + Semantic) using Teams Toolkit for Visual Studio Code and JavaScript and use the message extension as a plugin in Microsoft Copilot for Microsoft 365.
 products:
 - office-teams
 - copilot-m365
