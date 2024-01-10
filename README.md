@@ -13,6 +13,7 @@ This repository contains sample [Copilot for Microsoft 365 plugins](https://lear
 | -------- | :-------: | ------- |
 | [Northwind Inventory](./samples/msgext-northwind-inventory-ts)  | TypeScript | Plugin that allows users to query the Northwind Database |
 | [Document Search](./samples/msgext-doc-search-js) | JavaScript | Plugin that enables Hybrid Search (Vector + Semantic) |
+| [Document Search](./samples/msgext-doc-search-csharp) | .NET | Plugin that enables Hybrid Search (Vector + Semantic) |
 | [Product support](./samples/msgext-product-support-sso-csharp) | .NET | Plugin that allows users to query the Products held in SharePoint Online team site via Microsoft Graph |
 | [Multi Parameters](./samples/msgext-multiparam-csharp)  | .NET | Plugin that demonstrates how to implement complex utterances and support deep retrieval |
 | [Multi Parameters](./samples/msgext-multiparam-ts)  | TypeScript | Plugin that demonstrates how to implement complex utterances and support deep retrieval |
