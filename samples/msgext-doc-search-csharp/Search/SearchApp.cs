@@ -27,7 +27,7 @@ public class SearchApp : TeamsActivityHandler
         var text = query?.Parameters?[0]?.Value as string ?? string.Empty;
         var hybridResponse = await _aiSearch.SemanticHybridSearch(text);
         var attachments = new List<MessagingExtensionAttachment>();
-        Console.WriteLine($"Semantic Hybrid Search Results:");
+        Debug.WriteLine($"Hybrid Search Results:");
         await foreach (SearchResult<SearchDocument> result in hybridResponse.GetResultsAsync())
         {
             Debug.WriteLine($"Title: {result.Document["title"]}");
