@@ -60,7 +60,7 @@ Once the documents are successfully uploaded to Azure AI Search index as embeddi
 
 Navigate to the **samples/msgext-doc-search-js** folder and open with Visual Studio Code.
 
-Navigate to the **samples/msgext-doc-search-js/env** folder, rename `.env.local.sample` file to `.env.local.sample` and `.env.local.user.sample` file to `.env.local.user`. In `.env.local.user` file, provide the following variables: 
+Navigate to the **samples/msgext-doc-search-js/env** folder, rename `.env.local.sample` file to `.env.local` and `.env.local.user.sample` file to `.env.local.user`. In `.env.local.user` file, provide the following variables: 
    ```txt
       AZURE_OPENAI_SERVICE_NAME= the name of the Azure OpenAI resource 
       AZURE_OPENAI_DEPLOYMENT_NAME= the deployment name of the `text-embedding-ada-002` model
