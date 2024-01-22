@@ -20,17 +20,28 @@ async function doSemanticHybridSearch(query) {
   );
 
   const response = await searchClient.search(query, {
-    vector: {
-      value: await generateEmbeddings(query),
-      kNearestNeighborsCount: 3,
-      fields: ["contentVector"],
+    vectorSearchOptions: {
+      queries: [{
+        kind: "vector",
+        vector: await generateEmbeddings(query),
+        kNearestNeighborsCount: 3,
+        fields: ["contentVector"],
+      }],
     },
     select: ["title", "content", "url","filepath"],
     queryType: "simple",
     queryLanguage: "en-us",
-    semanticConfiguration: "my-semantic-config",
-    captions: "extractive",
-    answers: "extractive",
+    semanticSearchOptions: {
+      configurationName: "default",
+      /*
+      captions: {
+        captionType: "extractive",
+      },
+      answers: {
+        answerType: "extractive",
+      },
+      */
+    },
     top: 3,
   });
  
