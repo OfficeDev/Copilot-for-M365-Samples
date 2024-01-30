@@ -306,7 +306,7 @@ public class TeamsMessageExtension : TeamsActivityHandler
         {
             AdditionalData = new Dictionary<string, object>
             {
-                { "Title", data.Id },
+                { "Title", data.Title },
                 { "RetailCategory", data.RetailCategory },
                 { "ReleaseDate", data.ReleaseDate.ToString("u") }
             }
