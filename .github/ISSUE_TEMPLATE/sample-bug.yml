@@ -13,11 +13,13 @@ body:
       label: Sample
       description: Which sample are you having an issue with?
       options:
+        - msgext-doc-search-csharp
         - msgext-doc-search-js
         - msgext-multiparam-csharp
         - msgext-multiparam-js
         - msgext-multiparam-ts
         - msgext-northwind-inventory-ts
+        - msgext-product-support-sso-csharp
       default: 0
     validations:
       required: true
