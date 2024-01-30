@@ -13,6 +13,7 @@ using System.Diagnostics;
 using Activity = Microsoft.Bot.Schema.Activity;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Attachment = Microsoft.Bot.Schema.Attachment;
 
 namespace MsgExtProductSupportSSOCSharp.Bot;
 
@@ -69,7 +70,7 @@ public class TeamsMessageExtension : TeamsActivityHandler
         var graphClient = CreateGraphClient(tokenResponse);
 
         // get the Product Marketing site and Product items
-        var site = await GetProductMarketingSite(graphClient, spoHostname, spoSiteUrl, cancellationToken);
+        var site = await GetSharePointSite(graphClient, spoHostname, spoSiteUrl, cancellationToken);
         var items = await GetProducts(graphClient, site.SharepointIds.SiteId, filterQuery, cancellationToken);
 
         // create the adaptive card template
@@ -156,7 +157,7 @@ public class TeamsMessageExtension : TeamsActivityHandler
         var graphClient = CreateGraphClient(tokenResponse);
 
         // get the Product Marketing site, Product item and Product Imagery drive
-        var site = await GetProductMarketingSite(graphClient, spoHostname, spoSiteUrl, cancellationToken);
+        var site = await GetSharePointSite(graphClient, spoHostname, spoSiteUrl, cancellationToken);
         var product = await GetProduct(data.Id, graphClient, site.SharepointIds.SiteId, cancellationToken);
         var drive = await GetSharePointDrive(graphClient, site.SharepointIds.SiteId, "Product Imagery", cancellationToken);
 
@@ -168,6 +169,42 @@ public class TeamsMessageExtension : TeamsActivityHandler
             "edit-cancel" => await HandleCancelAction(graphClient, product, drive.Id, cancellationToken),
             _ => null
         };
+    }
+
+    protected override async Task<MessagingExtensionActionResponse> OnTeamsMessagingExtensionFetchTaskAsync(ITurnContext<IInvokeActivity> turnContext, MessagingExtensionAction action, CancellationToken cancellationToken) {
+        if (action.CommandId.ToUpper() == "SIGNOUT") {
+            var userTokenClient = turnContext.TurnState.Get<UserTokenClient>();
+            
+            await SignOut(userTokenClient, turnContext.Activity.From.Id, turnContext.Activity.ChannelId, connectionName, cancellationToken);
+            
+            return new MessagingExtensionActionResponse
+            {
+                Task = new TaskModuleContinueResponse
+                {
+                    Value = new TaskModuleTaskInfo
+                    {
+                        Card = new Attachment
+                        {
+                            Content = new AdaptiveCard(new AdaptiveSchemaVersion("1.0"))
+                            {
+                                Body = new List<AdaptiveElement>() { new AdaptiveTextBlock() { Text = "You have been signed out." } },
+                                Actions = new List<AdaptiveAction>() { new AdaptiveSubmitAction() { Title = "Close" } },
+                            },
+                            ContentType = AdaptiveCard.ContentType,
+                        },
+                        Height = 200,
+                        Width = 400,
+                        Title = "Signed out",
+                    },
+                },
+            };
+        }
+        return null;
+    }
+    
+    protected override Task<MessagingExtensionActionResponse> OnTeamsMessagingExtensionSubmitActionAsync(ITurnContext<IInvokeActivity> turnContext, MessagingExtensionAction action, CancellationToken cancellationToken)
+    {
+        return Task.FromResult(new MessagingExtensionActionResponse());
     }
 
     #endregion
@@ -244,7 +281,7 @@ public class TeamsMessageExtension : TeamsActivityHandler
         return graphClient;
     }
 
-    private static async Task<Site> GetProductMarketingSite(GraphServiceClient graphClient, string hostName, string siteUrl, CancellationToken cancellationToken)
+    private static async Task<Site> GetSharePointSite(GraphServiceClient graphClient, string hostName, string siteUrl, CancellationToken cancellationToken)
     {
         return await graphClient.Sites[$"{hostName}:/{siteUrl}"].GetAsync(r => r.QueryParameters.Select = new string[] { "sharePointIds" }, cancellationToken);
     }
@@ -391,6 +428,11 @@ public class TeamsMessageExtension : TeamsActivityHandler
                 ConnectionName = connectionName,
             })
         };
+    }
+
+    private static async Task SignOut(UserTokenClient userTokenClient, string userId, string channelId, string connectionName, CancellationToken cancellationToken)
+    {
+        await userTokenClient.SignOutUserAsync(userId, connectionName, channelId, cancellationToken);
     }
 
     #endregion
