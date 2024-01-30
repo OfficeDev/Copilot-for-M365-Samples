@@ -61,10 +61,33 @@
               "inputType": "text"
             }
           ]
+        },
+        {
+          "id": "SignOut",
+          "type": "action",
+          "title": "Sign out",
+          "description": "Sign out",
+          "initialRun": false,
+          "fetchTask": true,
+          "context": [
+            "commandBox",
+            "compose"
+          ],
+          "parameters": [
+            {
+              "name": "param",
+              "title": "param",
+              "description": ""
+            }
+          ]
         }
       ]
     }
   ],
+  "webApplicationInfo": {
+    "id": "${{BOT_ID}}",
+    "resource": "api://${BOT_DOMAIN}/botid-${BOT_ID}"
+  },
   "permissions": [
     "identity",
     "messageTeamMembers"

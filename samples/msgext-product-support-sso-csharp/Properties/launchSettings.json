@@ -12,5 +12,16 @@
 		//  },
 		//  "hotReloadProfile": "aspnetcore"
 		//}
+		"Microsoft Teams (browser)": {
+			"commandName": "Project",
+			"dotnetRunMessages": true,
+			"launchBrowser": true,
+			"launchUrl": "https://teams.microsoft.com/l/app/4cc3ac43-d581-403d-8bbf-ff9c0fbf3fb2?installAppPackage=true&webjoin=true&appTenantId=06fde681-d710-4b73-8bc6-90585c5630e9&login_hint=garrytrinder@m365copilotdev.onmicrosoft.com",
+			"applicationUrl": "https://localhost:7130;http://localhost:5130",
+			"environmentVariables": {
+				"ASPNETCORE_ENVIRONMENT": "Development"
+			},
+			"hotReloadProfile": "aspnetcore"
+		}
 	}
 }
