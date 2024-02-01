@@ -3,12 +3,14 @@ import {
   TurnContext,
   MessagingExtensionQuery,
   MessagingExtensionResponse,
-  InvokeResponse
+  InvokeResponse,
+  AdaptiveCardInvokeResponse
 } from "botbuilder";
 import productSearchCommand from "./messageExtensions/productSearchCommand";
 import discountedSearchCommand from "./messageExtensions/discountSearchCommand";
 import revenueSearchCommand from "./messageExtensions/revenueSearchCommand";
 import actionHandler from "./adaptiveCards/cardHandler";
+import { CreateActionErrorResponse } from "./adaptiveCards/utils";
 
 export class SearchApp extends TeamsActivityHandler {
   constructor() {
@@ -36,11 +38,9 @@ export class SearchApp extends TeamsActivityHandler {
   }
 
   // Handle adaptive card actions
-  public async onInvokeActivity(context: TurnContext): Promise<InvokeResponse> {
-    let runEvents = true;
-    // console.log (`🎬 Invoke activity received: ${context.activity.name}`);
+  public async onAdaptiveCardInvoke(context: TurnContext): Promise<AdaptiveCardInvokeResponse>  {
     try {     
-      if(context.activity.name==='adaptiveCard/action'){
+   
         switch (context.activity.value.action.verb) {
           case 'ok': {
             return actionHandler.handleTeamsCardActionUpdateStock(context);
@@ -52,25 +52,13 @@ export class SearchApp extends TeamsActivityHandler {
             return actionHandler.handleTeamsCardActionCancelRestock(context);
           }
           default:
-            runEvents = false;
-            return super.onInvokeActivity(context);
+            return CreateActionErrorResponse(400, 0, `ActionVerbNotSupported: ${context.activity.value.action.verb} is not a supported action verb.`);
+         
         }
-      } else {
-          runEvents = false;
-          return super.onInvokeActivity(context);
-      }
+     
     } catch (err) {
-      if (err.message === 'NotImplemented') {
-        return { status: 501 };
-      } else if (err.message === 'BadRequest') {
-        return { status: 400 };
-      }
-      throw err;
-    } finally {
-      if (runEvents) {
-        this.defaultNextEvent(context)();
-      }
-    }
+      return CreateActionErrorResponse(500, 0, err.message);
+    } 
   }
 }
 
