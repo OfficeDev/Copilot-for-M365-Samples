@@ -6,10 +6,9 @@ import { updateProduct, getProductEx } from "../northwindDB/products";
 import { ProductEx } from '../northwindDB/model';
 import editCard from './editCard.json';
 import successCard from './successCard.json';
-import errorCard from './errorCard.json'
 import * as ACData from "adaptivecards-templating";
 
-import { CreateInvokeResponse, getInventoryStatus } from './utils';
+import { CreateActionErrorResponse, CreateAdaptiveCardInvokeResponse, getInventoryStatus } from './utils';
 
 function getEditCard(product: ProductEx): any {
 
@@ -74,12 +73,12 @@ async function handleTeamsCardActionUpdateStock(context: TurnContext) {
                 message: `Stock updated for ${product.ProductName} to ${product.UnitsInStock}!`
             }
         });
-        var responseBody = { statusCode: 200, type: "application/vnd.microsoft.card.adaptive", value: card }
-        return CreateInvokeResponse(responseBody);
+       
+        return CreateAdaptiveCardInvokeResponse(200, card );
 
     } else {
-        var errorBody = { statusCode: 200, type: "application/vnd.microsoft.card.adaptive", value: errorCard }
-        return CreateInvokeResponse(errorBody);
+       
+        return CreateActionErrorResponse(400,0, "Invalid request");
     }
 }
 async function handleTeamsCardActionCancelRestock(context: TurnContext) {
@@ -117,13 +116,11 @@ async function handleTeamsCardActionCancelRestock(context: TurnContext) {
                 // Card message                
                 message: `Restock cancelled for ${product.ProductName}.`
             }
-        });
-        var responseBody = { statusCode: 200, type: "application/vnd.microsoft.card.adaptive", value: card }
-        return CreateInvokeResponse(responseBody);
+        });       
+        return CreateAdaptiveCardInvokeResponse(200,card);
 
     } else {
-        var errorBody = { statusCode: 200, type: "application/vnd.microsoft.card.adaptive", value: errorCard }
-        return CreateInvokeResponse(errorBody);
+        return CreateActionErrorResponse(400,0, "Invalid request");
     }
 }
 async function handleTeamsCardActionRestock(context: TurnContext) {
@@ -160,12 +157,10 @@ async function handleTeamsCardActionRestock(context: TurnContext) {
                 message: `Restocking ${product.ProductName} placed order for ${data.txtStock ?? 0} units.`
             }
         });
-        var responseBody = { statusCode: 200, type: "application/vnd.microsoft.card.adaptive", value: card }
-        return CreateInvokeResponse(responseBody);
+        return CreateAdaptiveCardInvokeResponse(200, card);
 
     } else {
-        var errorBody = { statusCode: 200, type: "application/vnd.microsoft.card.adaptive", value: errorCard }
-        return CreateInvokeResponse(errorBody);
+        return CreateActionErrorResponse(400,0, "Invalid request");
     }
 }
 
