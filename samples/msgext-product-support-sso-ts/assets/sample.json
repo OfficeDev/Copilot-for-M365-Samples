@@ -1,0 +1,67 @@
+[
+    {
+      "name": "officedev-copilot-for-m365-plugins-samples-msgext-product-support-sso-ts",
+      "source": "officedev",
+      "title": "Product support plugin for Microsoft Copilot for Microsoft 365 using TypeScript, SharePoint Online and Microsoft Graph",
+      "shortDescription": "This sample demonstrates how to use build a plugin for Microsoft Copilot for Microsoft 365 using TypeScript and Teams Toolkit for Visual Studio Code that returns data from SharePoint Online via Microsoft Graph.",
+      "url": "https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/tree/main/samples/msgext-product-support-sso-ts",
+      "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/tree/main/samples/msgext-product-support-sso-ts",
+      "longDescription": [
+        "This sample implements a Teams message extension that can be used as a plugin for Microsoft Copilot for Microsoft 365. The message extension enables users to query the Products list in the Product support SharePoint Online team site via Microsoft Graph."
+      ],
+      "creationDateTime": "2024-2-07",
+      "updateDateTime": "2024-2-22",
+      "products": [
+        "SharePoint Online",
+        "Microsoft Teams",
+        "Microsoft 365 Copilot"
+      ],
+      "metadata": [
+        {
+          "key": "PLATFORM",
+          "value": "Node.js"
+        },
+        {
+          "key": "LANGUAGE",
+          "value": "TypeScript"
+        },
+        {
+          "key": "TEAMS-PACKAGE",
+          "value": "Yes"
+        }
+      ],
+      "thumbnails": [
+        {
+          "type": "image",
+          "order": 50,
+          "url": "https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/raw/main/samples/msgext-product-support-sso-ts/assets/me-working.gif",
+          "alt": "Plugin response from Copilot with reference preview Adaptive Card displayed"
+        },
+        {
+          "type": "image",
+          "order": 100,
+          "url": "https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/raw/main/samples/msgext-product-support-sso-csharp/assets/edit-card.png",
+          "alt": "Plugin response from Copilot with an Adaptive Card displayed that can be used to update a product"
+        }
+      ],
+      "authors": [
+        {
+          "gitHubAccount": "rabwill",
+          "pictureUrl": "https://avatars.githubusercontent.com/u/20379311?v=4",
+          "name": "Rabia Williams"
+        }
+      ],
+      "references": [
+        {
+          "name": "Extend Microsoft Copilot for Microsoft 365",
+          "description": "Learn more about how to extend Microsoft Copilot for Microsoft 365",
+          "url": "https://aka.ms/extendcopilotm365"
+        },
+        {
+            "name": "Teams Toolkit for Visual Studio Code",
+            "description": "Learn more about the Teams Toolkit for Visual Studio Code.",
+            "url": "https://learn.microsoft.com/microsoftteams/platform/toolkit/teams-toolkit-fundamentals?pivots=visual-studio-code-v5"
+          }
+      ]
+    }
+  ]
