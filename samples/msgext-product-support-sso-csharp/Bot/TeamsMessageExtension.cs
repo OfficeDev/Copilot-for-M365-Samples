@@ -23,13 +23,6 @@ public class TeamsMessageExtension(IConfiguration configuration) : TeamsActivity
     private readonly string spoHostname = configuration["SPO_HOSTNAME"];
     private readonly string spoSiteUrl = configuration["SPO_SITE_URL"];
 
-    public TeamsMessageExtension(IConfiguration configuration)
-    {
-        connectionName = configuration["CONNECTION_NAME"];
-        spoHostname = configuration["SPO_HOSTNAME"];
-        spoSiteUrl = configuration["SPO_SITE_URL"];
-    }
-
     #region TeamsActivityHandler overrides
 
     protected override async Task<MessagingExtensionResponse> OnTeamsMessagingExtensionQueryAsync(ITurnContext<IInvokeActivity> turnContext, MessagingExtensionQuery query, CancellationToken cancellationToken)
@@ -60,7 +53,7 @@ public class TeamsMessageExtension(IConfiguration configuration) : TeamsActivity
         var filters = new List<string> { nameFilter, retailCategoryFilter };
 
         // remove any empty filters
-        filters.RemoveAll(f => string.IsNullOrEmpty(f));
+        filters.RemoveAll(string.IsNullOrEmpty);
 
         // create the filter string to be used when querying SharePoint
         var filterQuery = filters.Count == 1 ? filters.FirstOrDefault() : string.Join(" and ", filters);
@@ -111,7 +104,7 @@ public class TeamsMessageExtension(IConfiguration configuration) : TeamsActivity
             {
                 Title = product.Title,
                 Subtitle = product.RetailCategory,
-                Images = new List<CardImage> { new() { Url = thumbnails.Small.Url } }
+                Images = [new() { Url = thumbnails.Small.Url }]
             }.ToAttachment();
 
             // create the attachment to be sent in the response using the adaptive card and preview card
@@ -171,12 +164,14 @@ public class TeamsMessageExtension(IConfiguration configuration) : TeamsActivity
         };
     }
 
-    protected override async Task<MessagingExtensionActionResponse> OnTeamsMessagingExtensionFetchTaskAsync(ITurnContext<IInvokeActivity> turnContext, MessagingExtensionAction action, CancellationToken cancellationToken) {
-        if (action.CommandId.ToUpper() == "SIGNOUT") {
+    protected override async Task<MessagingExtensionActionResponse> OnTeamsMessagingExtensionFetchTaskAsync(ITurnContext<IInvokeActivity> turnContext, MessagingExtensionAction action, CancellationToken cancellationToken)
+    {
+        if (action.CommandId.Equals("SIGNOUT", StringComparison.CurrentCultureIgnoreCase))
+        {
             var userTokenClient = turnContext.TurnState.Get<UserTokenClient>();
-            
+
             await SignOut(userTokenClient, turnContext.Activity.From.Id, turnContext.Activity.ChannelId, connectionName, cancellationToken);
-            
+
             return new MessagingExtensionActionResponse
             {
                 Task = new TaskModuleContinueResponse
@@ -190,8 +185,6 @@ public class TeamsMessageExtension(IConfiguration configuration) : TeamsActivity
                             {
                                 Body = [new AdaptiveTextBlock() { Text = "You have been signed out." }]
                             }
-                            },
-                            ContentType = AdaptiveCard.ContentType,
                         },
                         Height = 200,
                         Width = 400,
@@ -202,7 +195,7 @@ public class TeamsMessageExtension(IConfiguration configuration) : TeamsActivity
         }
         return null;
     }
-    
+
     protected override Task<MessagingExtensionActionResponse> OnTeamsMessagingExtensionSubmitActionAsync(ITurnContext<IInvokeActivity> turnContext, MessagingExtensionAction action, CancellationToken cancellationToken)
     {
         return Task.FromResult(new MessagingExtensionActionResponse());
@@ -215,19 +208,23 @@ public class TeamsMessageExtension(IConfiguration configuration) : TeamsActivity
     private async Task<AdaptiveCardInvokeResponse> HandleCancelAction(GraphServiceClient graphClient, Product product, string driveId, CancellationToken cancellationToken)
     {
         // get the thumbnails for the Product
-        ThumbnailSet thumbnails = await GetThumbnails(graphClient, driveId, product.PhotoSubmission, cancellationToken);
-
-        return new AdaptiveCardInvokeResponse
-        {
-            StatusCode = StatusCodes.Status200OK,
-            Type = AdaptiveCard.ContentType,
-            Value = CreateAdaptiveCard(@"AdaptiveCards\Product.json", new
+        var thumbnails = await GetThumbnails(graphClient, driveId, product.PhotoSubmission, cancellationToken);
+        var adaptiveCard = CreateAdaptiveCard(
+            @"AdaptiveCards\Product.json",
+            new
             {
                 Product = product,
                 ProductImage = thumbnails.Large.Url,
                 SPOHostname = spoHostname,
                 SPOSiteUrl = spoSiteUrl
-            })
+            }
+        );
+
+        return new AdaptiveCardInvokeResponse
+        {
+            StatusCode = StatusCodes.Status200OK,
+            Type = AdaptiveCard.ContentType,
+            Value = adaptiveCard
         };
     }
 
@@ -235,19 +232,23 @@ public class TeamsMessageExtension(IConfiguration configuration) : TeamsActivity
     {
         // update the Product item and get the thumbnails
         var updatedProduct = await UpdateProduct(itemId, graphClient, siteId, data, cancellationToken);
-        ThumbnailSet thumbnails = await GetThumbnails(graphClient, driveId, product.PhotoSubmission, cancellationToken);
-
-        return new AdaptiveCardInvokeResponse
-        {
-            StatusCode = StatusCodes.Status200OK,
-            Type = AdaptiveCard.ContentType,
-            Value = CreateAdaptiveCard(@"AdaptiveCards\Product.json", new
+        var thumbnails = await GetThumbnails(graphClient, driveId, product.PhotoSubmission, cancellationToken);
+        var adaptiveCard = CreateAdaptiveCard(
+            @"AdaptiveCards\Product.json",
+            new
             {
                 Product = updatedProduct,
                 ProductImage = thumbnails.Large.Url,
                 SPOHostname = spoHostname,
                 SPOSiteUrl = spoSiteUrl
-            })
+            }
+        );
+
+        return new AdaptiveCardInvokeResponse
+        {
+            StatusCode = StatusCodes.Status200OK,
+            Type = AdaptiveCard.ContentType,
+            Value = adaptiveCard
         };
     }
 
@@ -255,18 +256,21 @@ public class TeamsMessageExtension(IConfiguration configuration) : TeamsActivity
     {
         // get the retail categories
         var retailCategories = await GetRetailCategories(graphClient, site.SharepointIds.SiteId, cancellationToken);
+        var adaptiveCard = CreateAdaptiveCard(
+            @"AdaptiveCards\EditForm.json",
+            new
+            {
+                Product = product,
+                RetailCategories = retailCategories
+            }
+        );
+
 
         return new AdaptiveCardInvokeResponse
         {
             StatusCode = StatusCodes.Status200OK,
             Type = AdaptiveCard.ContentType,
-            Value = CreateAdaptiveCard(
-                @"AdaptiveCards\EditForm.json",
-                new
-                {
-                    Product = product,
-                    RetailCategories = retailCategories
-                })
+            Value = adaptiveCard
         };
     }
 
@@ -284,7 +288,7 @@ public class TeamsMessageExtension(IConfiguration configuration) : TeamsActivity
 
     private static async Task<Site> GetSharePointSite(GraphServiceClient graphClient, string hostName, string siteUrl, CancellationToken cancellationToken)
     {
-        return await graphClient.Sites[$"{hostName}:/{siteUrl}"].GetAsync(r => r.QueryParameters.Select = new string[] { "sharePointIds" }, cancellationToken);
+        return await graphClient.Sites[$"{hostName}:/{siteUrl}"].GetAsync(r => r.QueryParameters.Select = ["sharePointIds"], cancellationToken);
     }
 
     private static async Task<SiteCollectionResponse> GetProducts(GraphServiceClient graphClient, string siteId, string filterQuery, CancellationToken cancellationToken)
@@ -310,7 +314,7 @@ public class TeamsMessageExtension(IConfiguration configuration) : TeamsActivity
 
     private static async Task<Product> GetProduct(string itemId, GraphServiceClient graphClient, string siteId, CancellationToken cancellationToken)
     {
-        var item = await graphClient.Sites[siteId].Lists["Products"].Items[itemId].GetAsync(r => r.QueryParameters.Expand = new string[] { "fields" }, cancellationToken);
+        var item = await graphClient.Sites[siteId].Lists["Products"].Items[itemId].GetAsync(r => r.QueryParameters.Expand = ["fields"], cancellationToken);
         item.Fields.AdditionalData["Id"] = itemId;
         var json = JsonConvert.SerializeObject(item.Fields.AdditionalData);
         return JsonConvert.DeserializeObject<Product>(json);
@@ -320,13 +324,13 @@ public class TeamsMessageExtension(IConfiguration configuration) : TeamsActivity
     {
         var fileName = photoUrl.Split('/').Last();
         var driveItem = await graphClient.Drives[driveId].Root.ItemWithPath(fileName).GetAsync(null, cancellationToken);
-        var thumbnails = await graphClient.Drives[driveId].Items[driveItem.Id].Thumbnails["0"].GetAsync(r => r.QueryParameters.Select = new string[] { "small", "large" }, cancellationToken);
+        var thumbnails = await graphClient.Drives[driveId].Items[driveItem.Id].Thumbnails["0"].GetAsync(r => r.QueryParameters.Select = ["small", "large"], cancellationToken);
         return thumbnails;
     }
 
     private static async Task<Drive> GetSharePointDrive(GraphServiceClient graphClient, string siteId, string name, CancellationToken cancellationToken)
     {
-        var drives = await graphClient.Sites[siteId].Drives.GetAsync(r => r.QueryParameters.Select = new string[] { "id", "name" }, cancellationToken);
+        var drives = await graphClient.Sites[siteId].Drives.GetAsync(r => r.QueryParameters.Select = ["id", "name"], cancellationToken);
         var drive = drives.Value.Find(d => d.Name == name);
         return drive;
     }
@@ -393,16 +397,16 @@ public class TeamsMessageExtension(IConfiguration configuration) : TeamsActivity
                 Type = "auth",
                 SuggestedActions = new MessagingExtensionSuggestedAction
                 {
-                    Actions = new List<CardAction>
-                    {
+                    Actions =
+                    [
                         new() {
                             Type = ActionTypes.OpenUrl,
                             Value = resource.SignInLink,
                             Title = "Sign In",
                         },
-                    },
-                },
-            },
+                    ]
+                }
+            }
         };
     }
 
@@ -415,19 +419,20 @@ public class TeamsMessageExtension(IConfiguration configuration) : TeamsActivity
         {
             StatusCode = 401,
             Type = $"{Activity.ContentType}.loginRequest",
-            Value = JObject.FromObject(new OAuthCard
-            {
-                Buttons = new List<CardAction>
+            Value = JObject.FromObject(
+                new OAuthCard
                 {
-                    new() {
-                        Title = "Sign In",
-                        Type = ActionTypes.Signin,
-                        Value = resource.SignInLink
-                    }
-                },
-                Text = "Please sign in to continue.",
-                ConnectionName = connectionName,
-            })
+                    Buttons = [
+                        new() {
+                            Title = "Sign In",
+                            Type = ActionTypes.Signin,
+                            Value = resource.SignInLink
+                        }
+                    ],
+                    Text = "Please sign in to continue.",
+                    ConnectionName = connectionName
+                }
+            )
         };
     }
 
