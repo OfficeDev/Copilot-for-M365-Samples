@@ -185,18 +185,19 @@ public class TeamsMessageExtension(IConfiguration configuration) : TeamsActivity
                     {
                         Card = new Attachment
                         {
+                            ContentType = AdaptiveCard.ContentType,
                             Content = new AdaptiveCard(new AdaptiveSchemaVersion("1.0"))
                             {
-                                Body = new List<AdaptiveElement>() { new AdaptiveTextBlock() { Text = "You have been signed out." } },
-                                Actions = new List<AdaptiveAction>() { new AdaptiveSubmitAction() { Title = "Close" } },
+                                Body = [new AdaptiveTextBlock() { Text = "You have been signed out." }]
+                            }
                             },
                             ContentType = AdaptiveCard.ContentType,
                         },
                         Height = 200,
                         Width = 400,
-                        Title = "Signed out",
-                    },
-                },
+                        Title = "Signed out"
+                    }
+                }
             };
         }
         return null;
