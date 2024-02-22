@@ -17,11 +17,11 @@ using Attachment = Microsoft.Bot.Schema.Attachment;
 
 namespace MsgExtProductSupportSSOCSharp.Bot;
 
-public class TeamsMessageExtension : TeamsActivityHandler
+public class TeamsMessageExtension(IConfiguration configuration) : TeamsActivityHandler
 {
-    private readonly string connectionName;
-    private readonly string spoHostname;
-    private readonly string spoSiteUrl;
+    private readonly string connectionName = configuration["CONNECTION_NAME"];
+    private readonly string spoHostname = configuration["SPO_HOSTNAME"];
+    private readonly string spoSiteUrl = configuration["SPO_SITE_URL"];
 
     public TeamsMessageExtension(IConfiguration configuration)
     {
