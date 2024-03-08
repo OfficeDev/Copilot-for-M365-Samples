@@ -5,10 +5,12 @@ import {
   AdaptiveCardInvokeValue,
   AdaptiveCardInvokeResponse,
   MessagingExtensionResponse,
+  MessagingExtensionAction,
 } from 'botbuilder';
-import {HandleMessagingExtensionQuery} from './activityHandler.ts/HandleMessagingExtensionQuery';
-
-import {HandleAdaptiveCardInvoke} from './activityHandler.ts/HandleAdaptiveCardInvoke';
+import {HandleMessagingExtensionQuery} from './activityHandler/HandleMessagingExtensionQuery';
+import {HandleTeamsMessagingExtensionFetchTaskAsync} from './activityHandler/HandleMessageExtensionFetchTaskAsync';
+import {HandleAdaptiveCardInvoke} from './activityHandler/HandleAdaptiveCardInvoke';
+import { UserTokenClient } from 'botframework-connector';
 export class SearchApp extends TeamsActivityHandler {
   constructor() {
     super();
@@ -24,5 +26,8 @@ export class SearchApp extends TeamsActivityHandler {
     invokeValue: AdaptiveCardInvokeValue
   ): Promise<AdaptiveCardInvokeResponse> {
     return HandleAdaptiveCardInvoke(context, invokeValue);
+  } 
+  protected async handleTeamsMessagingExtensionFetchTask(context: TurnContext, action: MessagingExtensionAction): Promise<any> {
+    return HandleTeamsMessagingExtensionFetchTaskAsync(context, action);  
   }
 }
