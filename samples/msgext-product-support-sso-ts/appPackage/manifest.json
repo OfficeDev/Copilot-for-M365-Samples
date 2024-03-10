@@ -75,13 +75,6 @@
                     "context": [
                       "commandBox",
                       "compose"
-                    ],
-                    "parameters": [
-                      {
-                        "name": "param",
-                        "title": "param",
-                        "description": ""
-                      }
                     ]
                   }
             ]
