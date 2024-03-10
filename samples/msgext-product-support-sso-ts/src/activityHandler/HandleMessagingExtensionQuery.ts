@@ -5,7 +5,7 @@ import {
   MessagingExtensionResponse,
 } from 'botbuilder';
 import * as AdaptiveCards from 'adaptivecards-templating';
-import viewProduct from '../adaptiveCards/viewProduct.json';
+import viewProduct from '../adaptiveCards/product-card.json';
 import {AuthService} from '../services/AuthService';
 import {GraphService} from '../services/GraphService';
 import {cleanupParam} from '../util';

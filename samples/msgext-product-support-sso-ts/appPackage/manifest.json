@@ -11,7 +11,7 @@
         "termsOfUseUrl": "https://www.example.com/privacy"
     },
     "icons": {
-        "color": "color-local.png",
+        "color": "color-${{TEAMSFX_ENV}}.png",
         "outline": "outline.png"
     },
     "name": {

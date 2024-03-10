@@ -10,8 +10,8 @@ import {
 import {AuthService} from '../services/AuthService';
 import {GraphService} from '../services/GraphService';
 import * as AdaptiveCards from 'adaptivecards-templating';
-import viewProduct from '../adaptiveCards/viewProduct.json';
-import editProduct from '../adaptiveCards/editForm.json';
+import viewProduct from '../adaptiveCards/product-card.json';
+import editProduct from '../adaptiveCards/edit-card.json';
 import { ThumbnailSet } from '@microsoft/microsoft-graph-types';
 import config from '../config';
 export const HandleAdaptiveCardInvoke = async (
