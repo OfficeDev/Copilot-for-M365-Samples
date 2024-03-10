@@ -1,4 +1,4 @@
-import {AdaptiveCardInvokeResponse, InvokeResponse} from 'botbuilder';
+import {AdaptiveCardInvokeResponse, InvokeResponse, MessagingExtensionActionResponse} from 'botbuilder';
 
 export const CreateInvokeResponse = (
   status: number,
@@ -50,6 +50,40 @@ export const setTaskInfo = taskInfo => {
   taskInfo.width = 800;
   taskInfo.title = '';
 };
+export const CreateErrorResponseActionResponse = (
+  error: string
+): MessagingExtensionActionResponse => {
+  const cardAttachment = {
+    contentType: `application/vnd.microsoft.card.adaptive`,
+    card: JSON.parse(`{ 
+    "type": "AdaptiveCard",
+    "version": "1.6",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "Error",
+            "weight": "Bolder",
+            "size": "Medium"
+        },
+        {
+            "type": "TextBlock",
+            "text": "An error has occurred. ${error}.",
+            "wrap": true
+        }
+    ]
+  }`)
+  }
+
+  const response: MessagingExtensionActionResponse = {
+    task: {
+      type: "continue",
+      value: cardAttachment
+    }
+  };
+
+  return response;
+}
+
 export const cleanupParam = (value: string): string => {
   if (!value) {
     return '';

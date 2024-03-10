@@ -1,0 +1,11 @@
+{
+    "type": "AdaptiveCard",
+    "version": "1.6",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "You have been signed out!",
+            "wrap": true
+        }
+    ]
+}
