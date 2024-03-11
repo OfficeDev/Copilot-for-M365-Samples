@@ -4,7 +4,7 @@ env/.env.dev
 env/.env.local
 .localConfigs
 appPackage/build
-
+.DS_Store
 # dependencies
 node_modules/
 
