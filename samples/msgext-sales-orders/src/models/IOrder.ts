@@ -1,0 +1,50 @@
+
+
+export   interface IOrder  {
+  ORD_NBR: string;
+  ORD_DATE: string;
+  ORD_NBR_OF_ITEMS: string;
+  ORD_NBR_OF_PRODS: string;
+  ORD_STOT_COST: string;
+  ORD_SHIP_COST: string;
+  ORD_TAX_COST: string;
+  ORD_TOT_COST: string;
+  ORD_PYMT_METH: string;
+  ORD_STAT: string;
+  ORD_METH_CODE: string;
+  CUST_CRDTCRD_ID: string;
+  CUST_CODE: string;
+  CUST_FRST_NAME: string;
+  CUST_LAST_NAME: string;
+  CUST_ADDR1: string;
+  CUST_CITY: string;
+  CUST_POST_ZONE: string;
+  CUST_CTRY_CODE: string;
+  CUST_PHN_NBR: string;
+  CUST_INFO: string;
+  CUST_EMAIL: string;
+  CUST_GNDR_CODE: string;
+  CUST_PROV_STATE: string;
+  ORD_DETL_CODE: string;
+  ORD_SHIP_DATE: string;
+  PROD_NBR: string;
+  PROD_PROM_CODE: string;
+  PROD_QTY: string;
+  PROD_UNIT_COST: string;
+  PROD_UNIT_PRC: string;
+  PROD_UNIT_SALE_PRC: string;
+  PRODUCT_NUMBER: string;
+  BASE_PRODUCT_NUMBER: string;
+  INTRODUCTION_DATE: string;
+  DISCONTINUED_DATE: string;
+  PRODUCT_TYPE_CODE: string;
+  PRODUCT_COLOR_CODE: string;
+  PRODUCT_SIZE_CODE: string;
+  PRODUCT_BRAND_CODE: string;
+  PRODUCTION_COST: string;
+  GROSS_MARGIN: string;
+  PRODUCT_IMAGE: string;
+  PRODUCT_LANGUAGE: string;
+  PRODUCT_NAME: string;
+  PRODUCT_DESCRIPTION: string;
+}

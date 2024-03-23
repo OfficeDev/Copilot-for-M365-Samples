@@ -1,0 +1,97 @@
+{
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.16/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.16",
+    "version": "1.0.0",
+    "id": "${{TEAMS_APP_ID}}",
+    "packageName": "com.microsoft.teams.extension",
+    "developer": {
+        "name": "Teams App, Inc.",
+        "websiteUrl": "https://www.example.com",
+        "privacyUrl": "https://www.example.com/privacy",
+        "termsOfUseUrl": "https://www.example.com/termofuse"
+    },
+    "icons": {
+        "color": "color.png",
+        "outline": "outline.png"
+    },
+    "name": {
+        "short": "SalesOrders${{APP_NAME_SUFFIX}}",
+        "full": "Sales Orders"
+    },
+    "description": {
+        "short": "Sales Orders",
+        "full": "Sales Orders app"
+    },
+    "accentColor": "#FFFFFF",
+    "bots": [
+        {
+          "botId": "${{BOT_ID}}",
+          "scopes": [ "personal", "team", "groupchat" ],
+          "isNotificationOnly": false,
+          "supportsFiles": false
+        }
+      ],
+
+    "composeExtensions": [
+        {
+            "botId": "${{BOT_ID}}",
+            "commands": [
+                {
+                    "id": "searchOrders",
+                    "context": [
+                        "compose",
+                        "commandBox",
+                        "message"
+                    ],
+                    "description": "Search Sales Orders by order number, client, Order Status, Order Date, Order amount",
+                    "title": "Search Orders",
+                    "type": "query",
+                    "initialRun": true,
+
+                    "parameters": [
+
+                        {
+                            "name": "searchOrdersQuery",
+                            "title": "Order number ",
+                            "description": "Enter here order number to search",
+                            "inputType": "text"
+
+
+                        },
+                        {
+                            "name": "clientQuery",
+                            "title": "Client",
+                            "description": "Enter here client name to search",
+                            "inputType": "text"
+                        },
+                        {
+                            "name": "orderStatusQuery",
+                            "title": "Order Status",
+                            "description": "Enter here order status to search. Possible values are 'Shipped', 'In-Process','Delayed', 'Canceled', or 'New' ",
+                            "inputType": "text"
+                        },
+                        {
+                            "name": "orderDateQuery",
+                            "title": "Order Date",
+                            "description": "Enter here order date to search",
+                            "inputType": "date"
+                        },
+                        {
+                            "name": "orderAmountQuery",
+                            "title": "Order Amount",
+                            "description": "Enter here order amount to search, Values are currency values",
+                            "inputType": "number"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "configurableTabs": [],
+    "staticTabs": [],
+    "permissions": [
+        "identity",
+        "messageTeamMembers"
+    ],
+    "validDomains": []
+}

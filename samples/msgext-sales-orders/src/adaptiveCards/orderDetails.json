@@ -1,0 +1,327 @@
+{
+    "type": "AdaptiveCard",
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.5",
+    "body": [
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "auto",
+                            "items": [
+                                {
+                                    "type": "Image",
+                                    "url": "${image}",
+                                    "width": "100px",
+                                    "height": "100px",
+                                    "size": "Medium"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Order Status",
+                                    "wrap": true,
+                                    "maxLines": 1,
+                                    "style": "default",
+                                    "color": "Accent",
+                                    "size": "ExtraLarge",
+                                    "weight": "Bolder",
+                                    "spacing": "None",
+                                    "horizontalAlignment": "Center"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "${orderStatus}",
+                                    "wrap": true,
+                                    "weight": "Bolder",
+                                    "size": "Large",
+                                    "color": "Good",
+                                    "horizontalAlignment": "Center"
+                                }
+                            ],
+                            "style": "emphasis",
+                            "height": "stretch",
+                            "spacing": "None",
+                            "verticalContentAlignment": "Top",
+                            "bleed": true,
+                            "horizontalAlignment": "Left"
+                        }
+                    ]
+                }
+            ],
+            "style": "emphasis",
+            "verticalContentAlignment": "Top"
+        },
+        {
+            "type": "Container",
+            "style": "emphasis",
+            "items": [
+                {
+                    "type": "Container",
+                    "$when": "${orderUpdatedStaus == 'true'}",
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "text": "Order Status Updated!",
+                            "wrap": true,
+                            "horizontalAlignment": "Center",
+                            "color": "Attention",
+                            "size": "Large"
+                        }
+                    ]
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "Client Info",
+                    "wrap": true,
+                    "size": "Medium",
+                    "color": "Accent",
+                    "weight": "Bolder"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "Client",
+                    "wrap": true,
+                    "color": "Accent",
+                    "separator": true,
+                    "spacing": "Medium",
+                    "weight": "Lighter"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "${customerCode} ${customerFirstName} ${customerLastName}",
+                    "wrap": true,
+                    "spacing": "None",
+                    "size": "Medium",
+                    "isSubtle": false
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "Address",
+                    "wrap": true,
+                    "color": "Accent"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "${customerAddress}",
+                    "wrap": true,
+                    "spacing": "None",
+                    "size": "Medium"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "${customerCity}",
+                    "wrap": true,
+                    "spacing": "None",
+                    "size": "Medium"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "${customerPostalZone}, ${customerProvinceState} ,${customerCountryCode}",
+                    "wrap": true,
+                    "spacing": "None",
+                    "size": "Medium"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "Phone Number:",
+                    "wrap": true,
+                    "color": "Accent"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "${customerPhone}",
+                    "wrap": true,
+                    "spacing": "None",
+                    "size": "Medium"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "Email",
+                    "wrap": true,
+                    "color": "Accent"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "${customerEmail}",
+                    "wrap": true,
+                    "spacing": "None",
+                    "size": "Medium"
+                }
+            ],
+            "spacing": "Medium"
+        },
+        
+        {
+            "type": "Container",         
+            "spacing": "extraLarge",
+            "items": [
+                {
+                    "type": "TextBlock",
+                    "text": "Order Info",
+                    "wrap": true,
+                    "size": "Medium",
+                    "color": "Accent",
+                    "weight": "Bolder"
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Number",
+                                    "wrap": true,
+                                    "color": "Accent"
+                                },
+                                {
+                                    "id": "orderId",
+                                    "type": "TextBlock",
+                                    "text": "${orderId}",
+                                    "wrap": true,
+                                    "spacing": "None",
+                                    "weight": "Bolder",
+                                    "color": "Good"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Order Total ",
+                                    "wrap": true,
+                                    "color": "Accent"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "$${orderTotal}",
+                                    "wrap": true,
+                                    "weight": "Bolder",
+                                    "color": "Good",
+                                    "spacing": "None"
+                                }
+                            ],
+                            "height": "stretch"
+                        },
+                        {
+                            "type": "Column",
+                            "width": "stretch",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Date",
+                                    "wrap": true,
+                                    "color": "Accent"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "${orderDate}",
+                                    "wrap": true,
+                                    "spacing": "None",
+                                    "color": "Good",
+                                    "weight": "Bolder"
+                                   
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Number Items",
+                                    "wrap": true,
+                                    "color": "Accent"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "${orderNumberOfItems}",
+                                    "wrap": true,
+                                    "color": "Good",
+                                    "weight": "Bolder",
+                                    "spacing": "None"
+                                }
+                            ]
+                        }
+                    ],
+                    "horizontalAlignment": "Left",
+                    "height": "stretch",
+                    "separator": true,
+                    "spacing": "Medium"
+                }
+            ],
+            "style": "emphasis"
+        },
+        {
+            "type": "ColumnSet",
+            "columns": [
+                {
+                    "type": "Column",
+                    "width": "stretch",
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "text": "Update status",
+                            "wrap": true,
+                            "color": "Accent",                         
+                            "spacing": "extraLarge",
+                            "weight": "bolder"
+                        },
+                        {
+                            "type": "Input.ChoiceSet",
+                            "id": "orderStatus",
+                            "placeholder": "Select Order Status",
+                            "value": "Shipped",
+                            "choices": [
+                                {
+                                    "title": "Shipped",
+                                    "value": "Shipped"
+                                },
+                                {
+                                    "title": "Delayed",
+                                    "value": "Delayed"
+                                },
+                                {
+                                    "title": "Canceled",
+                                    "value": "Canceled"
+                                },
+                                {
+                                    "title": "New",
+                                    "value": "New"
+                                },
+                                {
+                                    "title": "In-Process",
+                                    "value": "In-Process"
+                                }
+                            ],
+                            "spacing": "Medium"
+                        },
+                        {
+                            "type": "ActionSet",
+                            "actions": [
+                                {
+                                    "type": "Action.Execute",
+                                    "title": "Update",
+                                    "associatedInputs": "auto",
+                                    "verb": "update",
+                                    "style": "positive",
+                                    "data": {
+                                        "orderId": "${orderId}"
+                                         
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "style": "emphasis",
+            "spacing": "extraLarge",
+            "$when": "${orderStatus != 'Shipped'}"
+        }
+    ]
+}
