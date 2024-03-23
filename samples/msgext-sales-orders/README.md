@@ -22,7 +22,7 @@ This sample implements a Teams message extension that can be used as a plugin fo
 
 Version|Manifest version|Date|Author|Comments
 -------|--|--|----|--------
-1.0|1.0|March 23, 2024 |João Mendes|Initial release for Ignite 2023 labs
+1.0|1.0|March 23, 2024 |João Mendes|Initial release
 
 ## Prerequisites
 
