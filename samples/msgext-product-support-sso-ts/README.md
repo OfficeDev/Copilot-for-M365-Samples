@@ -26,27 +26,16 @@ This sample implements a Teams message extension that can be used as a plugin fo
 > - Azure subscription
 > - You will need a Microsoft work or school account with [permissions to upload custom Teams applications](https://learn.microsoft.com/microsoftteams/platform/concepts/build-and-test/prepare-your-o365-tenant#enable-custom-teams-apps-and-turn-on-custom-app-uploading). The account will also need a Microsoft Copilot for Microsoft 365 license to use the extension in Copilot.
 
-
 ## Minimal path to awesome
 
-###  Prepare Teams toolkit for VS Code
-- First, select the Teams Toolkit icon on the left in the VS Code toolbar.
-- In the Account section, sign in with your [Microsoft 365 account](https://docs.microsoft.com/microsoftteams/platform/toolkit/accounts) if you haven't already.
-
-###  Prepare SharePoint Online
+### Prepare SharePoint Online
 
 - Using [SharePoint look book](https://lookbook.microsoft.com) service, provision a new SharePoint Online team site using the [Product support](https://lookbook.microsoft.com/details/81e2fee3-02a0-427b-af8b-8c7f42010fde) template
 - In the Products list, [create indexes](https://support.microsoft.com/en-us/office/add-an-index-to-a-list-or-library-column-f3f00554-b7dc-44d1-a2ed-d477eac463b0) on the `Title` and `RetailCategory` columns
 
 > NOTE: If you can't use the SharePoint look book service, you can find the source files to create it manually in the [SharePoint look book repository](https://github.com/SharePoint/sp-dev-provisioning-templates/tree/master/tenant/productsupport)
 
-###  Prepare Azure
-
-- Open [Azure portal](https://portal.azure.com) in a web browser
-- Create a new resource group with the name `rg-msgext-product-support-local`
-- Find the subscription id keep it ready for configuration in the project.   AZURE_SUBSCRIPTION_ID=
-
-###  Prepare and run project
+### Prepare and run project
 
 - Clone this repo and open the root folder in VSCode
 - In `env` folder copy the contents of `.env.sample` file and create a file with name `.env.local` and paste the contents to it. 
@@ -59,7 +48,7 @@ This sample implements a Teams message extension that can be used as a plugin fo
 
 ### Test 
 
-- In Microsoft Teams, open the M365 Chat app
+- In Microsoft Teams, open the Copilot app
 - Open the prompts flyout and enable `Contoso products` plugin
 - Enter `Find Contoso products aimed at individuals` in the message box and press <kbd>Enter</kbd>
 - Copilot will respond with a message saying that it cannot find any information about a Contoso products aimed at individuals in the enterprise search results
