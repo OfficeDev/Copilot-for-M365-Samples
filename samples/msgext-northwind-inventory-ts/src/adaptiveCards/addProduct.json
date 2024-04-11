@@ -1,0 +1,43 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.5",
+    "body": [
+      {
+        "type": "TextBlock",
+        "text": "Enter Product Details",
+        "weight": "bolder",
+        "size": "medium"
+      },
+      {
+        "type": "Input.Text",
+        "id": "productName",
+        "placeholder": "Product Name",
+        "value": ""
+      },
+      {
+        "type": "Input.Number",
+        "id": "unitPrice",
+        "placeholder": "Unit Price",
+        "min": 0,
+        "value": ""
+      }
+    ],
+    "actions": [
+      {
+        "type": "Action.Submit",
+        "title": "Submit",
+        "data": {
+          "action": "submit"
+        }
+      },
+      {
+        "type": "Action.Submit",
+        "title": "Cancel",
+        "data": {
+          "action": "cancel"
+        }
+      }
+    ]
+  }
+  

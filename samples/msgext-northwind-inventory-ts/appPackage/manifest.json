@@ -112,6 +112,25 @@
                             "inputType": "text"
                         }
                     ]
+                },
+                {
+                    "id": "addProduct",
+                    "context": [
+                        "compose",
+                        "commandBox"
+                    ],
+                    "description": "Add a product",
+                    "title": "Add a product",
+                    "type": "action",
+                    "fetchTask": true,
+                    "parameters": [
+                        {
+                            "name": "name",
+                            "title": "Product name",
+                            "description": "Name of the product to be added.",
+                            "inputType": "text"
+                        }
+                    ]
                 }
             ]
         }

@@ -5,6 +5,7 @@ import {
 import { TableClient, TableEntityResult } from "@azure/data-tables";
 import config from "../config";
 import { getInventoryStatus } from '../adaptiveCards/utils';
+import DbService, { DbProject } from './DbService';
 
 // NOTE: We're force fitting a relational database into a non-relational database so please
 // forgive the inefficiencies. This is just for demonstration purposes.
@@ -263,15 +264,31 @@ export async function updateProduct(updatedProduct: Product): Promise<void> {
 
 // #region -- NOT USED, NOT TESTED ---------------------------------------------------------
 
-// export async function createProduct (product: Product): Promise<void> {
-//     const newProduct: Product = {
-//         partitionKey: TABLE_NAME.PRODUCT,
-//         rowKey: product.ProductID,
-//         ...product,
-//     }
-//     const tableClient = TableClient.fromConnectionString(config.storageAccountConnectionString, TABLE_NAME.PRODUCT);
-//     await tableClient.createEntity(newProduct);
-// };
+    export async function createProduct (product: DbProject): Promise<void> {
+       // NOTE: Assignments are READ-WRITE so disable local caching
+    const dbService = new DbService<DbProject>(false);
+    const nextId= await dbService.getNextId(TABLE_NAME.PRODUCT)+1
+    const newProduct: DbProject = {
+        etag: "",
+        partitionKey: TABLE_NAME.PRODUCT,
+        ProductID:nextId.toString(),
+        rowKey: nextId.toString(),
+        timestamp: new Date(),
+        ProductName: "NEW",
+        SupplierID: "1",
+        CategoryID: "1",
+        QuantityPerUnit: "10 boxes x 20 bags",
+        UnitPrice: 34,
+        UnitsInStock: 10,
+        UnitsOnOrder: 5,
+        ReorderLevel: 5,
+        Discontinued: false,
+        ImageUrl: "https://picsum.photos/seed/1/200/300"
+    };
+
+    await dbService.createEntity(TABLE_NAME.PRODUCT, newProduct.ProductID, newProduct)
+  
+};
 
 // export async function deleteProduct (productId: number): Promise<void> {
 //     const tableClient = TableClient.fromConnectionString(config.storageAccountConnectionString, TABLE_NAME.PRODUCT);

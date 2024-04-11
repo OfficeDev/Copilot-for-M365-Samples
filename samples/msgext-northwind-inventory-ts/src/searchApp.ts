@@ -3,7 +3,6 @@ import {
   TurnContext,
   MessagingExtensionQuery,
   MessagingExtensionResponse,
-  InvokeResponse,
   AdaptiveCardInvokeResponse
 } from "botbuilder";
 import productSearchCommand from "./messageExtensions/productSearchCommand";
@@ -11,7 +10,7 @@ import discountedSearchCommand from "./messageExtensions/discountSearchCommand";
 import revenueSearchCommand from "./messageExtensions/revenueSearchCommand";
 import actionHandler from "./adaptiveCards/cardHandler";
 import { CreateActionErrorResponse } from "./adaptiveCards/utils";
-
+import addProductCommand from "./messageExtensions/addProductCommand";
 export class SearchApp extends TeamsActivityHandler {
   constructor() {
     super();
@@ -38,27 +37,55 @@ export class SearchApp extends TeamsActivityHandler {
   }
 
   // Handle adaptive card actions
-  public async onAdaptiveCardInvoke(context: TurnContext): Promise<AdaptiveCardInvokeResponse>  {
-    try {     
-   
-        switch (context.activity.value.action.verb) {
-          case 'ok': {
-            return actionHandler.handleTeamsCardActionUpdateStock(context);
-          }
-          case 'restock': {
-            return actionHandler.handleTeamsCardActionRestock(context);
-          }
-          case 'cancel': {
-            return actionHandler.handleTeamsCardActionCancelRestock(context);
-          }
-          default:
-            return CreateActionErrorResponse(400, 0, `ActionVerbNotSupported: ${context.activity.value.action.verb} is not a supported action verb.`);
-         
+  public async onAdaptiveCardInvoke(context: TurnContext): Promise<AdaptiveCardInvokeResponse> {
+    try {
+
+      switch (context.activity.value.action.verb) {
+        case 'ok': {
+          return actionHandler.handleTeamsCardActionUpdateStock(context);
         }
-     
+        case 'restock': {
+          return actionHandler.handleTeamsCardActionRestock(context);
+        }
+        case 'cancel': {
+          return actionHandler.handleTeamsCardActionCancelRestock(context);
+        }
+        default:
+          return CreateActionErrorResponse(400, 0, `ActionVerbNotSupported: ${context.activity.value.action.verb} is not a supported action verb.`);
+
+      }
+
     } catch (err) {
       return CreateActionErrorResponse(500, 0, err.message);
-    } 
+    }
   }
+
+  public async handleTeamsMessagingExtensionFetchTask(context, action): Promise<MessagingExtensionResponse> {
+    try {
+
+      switch (action.commandId) {
+        case "addProduct": {
+          return await addProductCommand.handleTeamsMessagingExtensionFetchTask(context, action);
+        }
+        default: {
+          return null;
+        }
+      }
+    }
+
+    catch (e) {
+      console.log(e);
+    }
+  }
+  public async handleTeamsMessagingExtensionSubmitAction(context, action): Promise<MessagingExtensionResponse> {
+    try {
+      return await addProductCommand.handleTeamsMessagingExtensionSubmitAction(context, action);
+    }
+    catch (e) {
+      console.log(e);
+    }
+  }
+
 }
+
 
