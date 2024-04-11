@@ -201,7 +201,6 @@ async function getAllProductsEx(): Promise<ProductEx[]> {
 }
 
 function getProductExForEntity(entity: TableEntityResult<Record<string, unknown>>): ProductEx {
-
     let result: ProductEx = {
         etag: entity.etag as string,
         partitionKey: entity.partitionKey as string,
@@ -232,16 +231,18 @@ function getProductExForEntity(entity: TableEntityResult<Record<string, unknown>
     result.CategoryName = categories[result.CategoryID].CategoryName;
     result.SupplierName = suppliers[result.SupplierID].CompanyName;
     result.SupplierCity = suppliers[result.SupplierID].City;
-    result.UnitSales =  orderTotals[result.ProductID].totalQuantity;
+    result.UnitSales = orderTotals && orderTotals[result.ProductID] ? orderTotals[result.ProductID].totalQuantity : 0;
     result.InventoryValue = Math.round(result.UnitsInStock * result.UnitPrice);
-    result.Revenue = Math.round(orderTotals[result.ProductID].totalRevenue);
-    result.AverageDiscount = +(result.Revenue / orderTotals[result.ProductID].totalDiscount).toFixed(1);
+    result.Revenue = orderTotals && orderTotals[result.ProductID] ? Math.round(orderTotals[result.ProductID].totalRevenue) : 0;
+    result.AverageDiscount = orderTotals && orderTotals[result.ProductID] ? +(result.Revenue / orderTotals[result.ProductID].totalDiscount).toFixed(1) : 0;
+
 
     // 'in stock', 'low stock', 'on order', or 'out of stock'
     result.InventoryStatus = getInventoryStatus(result);          
 
     return result;
 }
+
 
 export async function getProductEx(productId: number): Promise<ProductEx> {
     const tableClient = TableClient.fromConnectionString(config.storageAccountConnectionString, TABLE_NAME.PRODUCT);
@@ -262,34 +263,32 @@ export async function updateProduct(updatedProduct: Product): Promise<void> {
 
 // #endregion
 
-// #region -- NOT USED, NOT TESTED ---------------------------------------------------------
-
-    export async function createProduct (product: DbProject): Promise<void> {
-       // NOTE: Assignments are READ-WRITE so disable local caching
+export async function createProduct (product: Product): Promise<string> {
+    // NOTE: Assignments are READ-WRITE so disable local caching
     const dbService = new DbService<DbProject>(false);
-    const nextId= await dbService.getNextId(TABLE_NAME.PRODUCT)+1
+    const nextId= await dbService.getNextId(TABLE_NAME.PRODUCT);
     const newProduct: DbProject = {
         etag: "",
         partitionKey: TABLE_NAME.PRODUCT,
-        ProductID:nextId.toString(),
         rowKey: nextId.toString(),
         timestamp: new Date(),
-        ProductName: "NEW",
+        ProductID:nextId.toString(), 
+        ProductName: product.ProductName,
         SupplierID: "1",
         CategoryID: "1",
         QuantityPerUnit: "10 boxes x 20 bags",
-        UnitPrice: 34,
+        UnitPrice: product.UnitPrice,
         UnitsInStock: 10,
         UnitsOnOrder: 5,
         ReorderLevel: 5,
         Discontinued: false,
         ImageUrl: "https://picsum.photos/seed/1/200/300"
     };
-
-    await dbService.createEntity(TABLE_NAME.PRODUCT, newProduct.ProductID, newProduct)
-  
+    await dbService.createEntity(TABLE_NAME.PRODUCT, newProduct.ProductID, newProduct);
+    return newProduct.ProductID;
 };
 
+// #region -- NOT USED, NOT TESTED ---------------------------------------------------------
 // export async function deleteProduct (productId: number): Promise<void> {
 //     const tableClient = TableClient.fromConnectionString(config.storageAccountConnectionString, TABLE_NAME.PRODUCT);
 //     await tableClient.deleteEntity(TABLE_NAME.PRODUCT, productId.toString());
