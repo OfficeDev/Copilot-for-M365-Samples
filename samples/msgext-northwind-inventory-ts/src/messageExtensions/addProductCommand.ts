@@ -35,10 +35,9 @@ async function handleTeamsMessagingExtensionFetchTask(
                 task: {
                     type: 'continue',
                     value: {
-                        card: resultCard,
-                        height: 400,
+                        card: resultCard,                        
                         title: `Add a product`,
-                        width: 400
+                        
                     }
                 }
             };
@@ -66,12 +65,12 @@ async function handleTeamsMessagingExtensionSubmitAction(
                         ProductName: data.productName,
                         SupplierID: data.supplierID,
                         CategoryID: data.categoryID,
-                        QuantityPerUnit: "10 boxes x 20 bags", //default
+                        QuantityPerUnit: data.qtyPerUnit,
                         UnitPrice: data.unitPrice,
-                        UnitsInStock: 10,
-                        UnitsOnOrder: 5,
-                        ReorderLevel: 5,
-                        Discontinued: false,
+                        UnitsInStock: data.unitsInStock,
+                        UnitsOnOrder: data.unitsOnOrder,
+                        ReorderLevel:data.reorderLevel,
+                        Discontinued: data.discontinued,
                         ImageUrl: "https://picsum.photos/seed/1/200/300"
                     }
                     await createProduct(product);                    

@@ -5,7 +5,7 @@ import {
 import { TableClient, TableEntityResult } from "@azure/data-tables";
 import config from "../config";
 import { getInventoryStatus } from '../adaptiveCards/utils';
-import DbService, { DbProject } from './DbService';
+import DbService, { DbProject } from './dbService';
 
 // NOTE: We're force fitting a relational database into a non-relational database so please
 // forgive the inefficiencies. This is just for demonstration purposes.
@@ -280,14 +280,14 @@ export async function createProduct (product: Product): Promise<string> {
         timestamp: new Date(),
         ProductID:nextId.toString(), 
         ProductName: product.ProductName,
-        SupplierID: "1",
-        CategoryID: "1",
-        QuantityPerUnit: "10 boxes x 20 bags",
+        SupplierID: product.SupplierID,
+        CategoryID: product.CategoryID,
+        QuantityPerUnit: product.QuantityPerUnit,
         UnitPrice: product.UnitPrice,
-        UnitsInStock: 10,
-        UnitsOnOrder: 5,
-        ReorderLevel: 5,
-        Discontinued: false,
+        UnitsInStock: product.UnitsInStock,
+        UnitsOnOrder: product.UnitsOnOrder,
+        ReorderLevel: product.ReorderLevel,
+        Discontinued: product.Discontinued,
         ImageUrl: "https://picsum.photos/seed/1/200/300"
     };
     await dbService.createEntity(TABLE_NAME.PRODUCT, newProduct.ProductID, newProduct);
