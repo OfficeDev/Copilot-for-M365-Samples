@@ -22,13 +22,7 @@
         "value": "",
         "isRequired": true,
         "errorMessage": "Category is required",
-        "choices": [
-          {
-            "$data": "${Categories}",
-            "title": "CategoryName",
-            "value": "CategoryID"
-          }
-        ]
+        "choices": "${Categories}"
       },
       {
         "type": "Input.ChoiceSet",
@@ -37,13 +31,7 @@
         "value": "",
         "isRequired": true,
         "errorMessage": "Supplier is required",
-        "choices": [
-          {
-            "$data": "${Suppliers}",
-            "title": "${SupplierName}",
-            "value": "${SupplierID}"
-          }
-        ]
+        "choices": "${Suppliers}"
       },
       {
         "type": "Input.Number",

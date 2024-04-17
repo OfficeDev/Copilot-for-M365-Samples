@@ -10,13 +10,23 @@ async function handleTeamsMessagingExtensionFetchTask(
 ): Promise<MessagingExtensionActionResponse> {
     try {
         if (action.commandId === COMMAND_ID) {
-            const categories=await getCategories();
+            const categories=await getCategories(); 
+            const catArray = Object.values(categories);     
+            const categoryChoices = catArray.map(category => ({
+                title: category.CategoryName,
+                value: category.CategoryID.toString()
+            }));
             const suppliers=await getSuppliers();   
+            const suppArray = Object.values(suppliers);     
+            const supplierChoices = suppArray.map(supplier => ({
+                title: supplier.CompanyName,
+                value: supplier.SupplierID.toString()
+            }));
             const template = new ACData.Template(addProduct);
             const card = template.expand({
               $root: {
-                Categories: categories,
-                Suppliers: suppliers,
+                Categories: categoryChoices,
+                Suppliers: supplierChoices,
             }
             });
             const resultCard = CardFactory.adaptiveCard(card);           
@@ -28,7 +38,7 @@ async function handleTeamsMessagingExtensionFetchTask(
                         card: resultCard,
                         height: 400,
                         title: `Add a product`,
-                        width: 300
+                        width: 400
                     }
                 }
             };
