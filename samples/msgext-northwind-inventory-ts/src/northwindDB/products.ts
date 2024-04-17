@@ -199,6 +199,12 @@ async function getAllProductsEx(): Promise<ProductEx[]> {
     }
     return result;
 }
+export async function getCategories(): Promise<ReferenceData<Category>>{
+    return  await loadReferenceData<Category>(TABLE_NAME.CATEGORY);
+}
+export async function getSuppliers(): Promise<ReferenceData<Supplier>>{
+    return  await loadReferenceData<Supplier>(TABLE_NAME.SUPPLIER);
+}
 
 function getProductExForEntity(entity: TableEntityResult<Record<string, unknown>>): ProductEx {
     let result: ProductEx = {

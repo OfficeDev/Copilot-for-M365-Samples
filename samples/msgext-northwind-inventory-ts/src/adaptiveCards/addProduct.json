@@ -16,6 +16,36 @@
         "value": ""
       },
       {
+        "type": "Input.ChoiceSet",
+        "label": "Category",
+        "id": "categoryID",
+        "value": "",
+        "isRequired": true,
+        "errorMessage": "Category is required",
+        "choices": [
+          {
+            "$data": "${Categories}",
+            "title": "CategoryName",
+            "value": "CategoryID"
+          }
+        ]
+      },
+      {
+        "type": "Input.ChoiceSet",
+        "label": "Supplier",
+        "id": "supplierID",
+        "value": "",
+        "isRequired": true,
+        "errorMessage": "Supplier is required",
+        "choices": [
+          {
+            "$data": "${Suppliers}",
+            "title": "${SupplierName}",
+            "value": "${SupplierID}"
+          }
+        ]
+      },
+      {
         "type": "Input.Number",
         "id": "unitPrice",
         "placeholder": "Unit Price",

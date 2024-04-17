@@ -1,21 +1,31 @@
 import { CardFactory, MessagingExtensionAction, MessagingExtensionActionResponse, TurnContext } from "botbuilder";
-import { createProduct, getProductEx } from "../northwindDB/products";
+import { createProduct, getCategories, getSuppliers } from "../northwindDB/products";
 import { Product } from "../northwindDB/model";
 const COMMAND_ID = "addProduct";
-
+import * as ACData from "adaptivecards-templating";
+import addProduct from '../adaptiveCards/addProduct.json';
 async function handleTeamsMessagingExtensionFetchTask(
     context: TurnContext,
     action: MessagingExtensionAction
 ): Promise<MessagingExtensionActionResponse> {
     try {
         if (action.commandId === COMMAND_ID) {
-            const templateJson = require('../adaptiveCards/addProduct.json');
-            const card = CardFactory.adaptiveCard(templateJson);
+            const categories=await getCategories();
+            const suppliers=await getSuppliers();   
+            const template = new ACData.Template(addProduct);
+            const card = template.expand({
+              $root: {
+                Categories: categories,
+                Suppliers: suppliers,
+            }
+            });
+            const resultCard = CardFactory.adaptiveCard(card);           
+           
             return {
                 task: {
                     type: 'continue',
                     value: {
-                        card: card,
+                        card: resultCard,
                         height: 400,
                         title: `Add a product`,
                         width: 300
