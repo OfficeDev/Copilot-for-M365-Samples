@@ -64,9 +64,9 @@ async function handleTeamsMessagingExtensionSubmitAction(
                         timestamp: new Date(),
                         ProductID: "",
                         ProductName: data.productName,
-                        SupplierID: "1",
-                        CategoryID: "1",
-                        QuantityPerUnit: "10 boxes x 20 bags",
+                        SupplierID: data.supplierID,
+                        CategoryID: data.categoryID,
+                        QuantityPerUnit: "10 boxes x 20 bags", //default
                         UnitPrice: data.unitPrice,
                         UnitsInStock: 10,
                         UnitsOnOrder: 5,
