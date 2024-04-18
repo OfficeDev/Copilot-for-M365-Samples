@@ -50,6 +50,13 @@ export class SearchApp extends TeamsActivityHandler {
         case 'cancel': {
           return actionHandler.handleTeamsCardActionCancelRestock(context);
         }
+        case 'edit': {
+          return actionHandler.handleTeamsCardActionEditProduct(context);
+        }
+        case 'edit-save': {
+          return actionHandler.handleTeamsCardActionSaveProduct(context);
+        }
+          
         default:
           return CreateActionErrorResponse(400, 0, `ActionVerbNotSupported: ${context.activity.value.action.verb} is not a supported action verb.`);
 

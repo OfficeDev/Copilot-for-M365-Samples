@@ -195,7 +195,7 @@ async function getAllProductsEx(): Promise<ProductEx[]> {
 
     for await (const entity of entities) {
         const p = getProductExForEntity(entity);
-        result.push(p);
+        result.push(await p);
     }
     return result;
 }
@@ -206,7 +206,7 @@ export async function getSuppliers(): Promise<ReferenceData<Supplier>>{
     return  await loadReferenceData<Supplier>(TABLE_NAME.SUPPLIER);
 }
 
-function getProductExForEntity(entity: TableEntityResult<Record<string, unknown>>): ProductEx {
+async function getProductExForEntity(entity: TableEntityResult<Record<string, unknown>>): Promise<ProductEx> {
     let result: ProductEx = {
         etag: entity.etag as string,
         partitionKey: entity.partitionKey as string,
@@ -232,7 +232,10 @@ function getProductExForEntity(entity: TableEntityResult<Record<string, unknown>
         Revenue: 0,
         AverageDiscount: 0
     };
-
+    // Ensure reference data are loaded
+    categories = categories ?? await loadReferenceData<Category>(TABLE_NAME.CATEGORY);
+    suppliers = suppliers ?? await loadReferenceData<Supplier>(TABLE_NAME.SUPPLIER);
+    orderTotals = orderTotals ?? await loadOrderTotals();
     // Fill in extended properties
     result.CategoryName = categories[result.CategoryID].CategoryName;
     result.SupplierName = suppliers[result.SupplierID].CompanyName;

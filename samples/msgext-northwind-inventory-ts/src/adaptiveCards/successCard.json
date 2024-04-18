@@ -25,7 +25,8 @@
           "weight": "Bolder",
           "size": "Medium",
           "color": "Good"
-        }]
+        }
+      ]
     },
     {
       "type": "Container",
@@ -64,7 +65,6 @@
             }
           ]
         }
-
       ],
       "bleed": true
     },
@@ -77,7 +77,6 @@
           "weight": "Bolder",
           "text": "**📍Supplier information**",
           "wrap": true,
-
           "size": "Medium",
           "isSubtle": false
         },
@@ -88,7 +87,6 @@
             {
               "type": "Column",
               "width": "stretch",
-
               "items": [
                 {
                   "type": "FactSet",
@@ -102,13 +100,11 @@
                       "title": "City",
                       "value": "${supplierCity}"
                     }
-
                   ],
                   "separator": true
                 }
               ]
             }
-
           ]
         },
         {
@@ -116,7 +112,6 @@
           "weight": "Bolder",
           "text": "**🛒 Stock information**",
           "wrap": true,
-
           "size": "Medium",
           "isSubtle": false
         },
@@ -127,69 +122,64 @@
             {
               "type": "Column",
               "width": "stretch",
-
-                            "items": [
-                                {
-                                    "type": "FactSet",
-                                    "spacing": "Large",
-                                    "facts": [
-                                        {
-                                            "title": "Category",
-                                            "value": "${categoryName}"
-                                        },
-                                       
-                                        {
-                                            "title": "Unit price",
-                                            "value": "${unitPrice} USD"
-                                        },
-                                        {
-                                            "title": "Avg discount",
-                                            "value": "${string(averageDiscount)} %"
-                                        },
-                                        {
-                                            "title": "Inventory valuation",
-                                            "value": "${string(inventoryValue)} USD"
-                                        }                                        
-                                    ],
-                                    "separator": true
-                                }
-                            ]
-                        },
-                        {
-                            "type": "Column",
-                            "width": "stretch",
-
-                            "items": [
-                                {
-                                    "type": "FactSet",
-                                    "spacing": "Large",
-                                    "facts": [
-                                       
-                                        {
-                                            "title": "Units in stock",
-                                            "value": "${string(unitsInStock)}"
-                                        },                                      
-                                        {
-                                            "title": "Units on order",
-                                            "value": "${string(unitsOnOrder)}"
-                                        },
-                                        {
-                                            "title": "Reorder Level",
-                                            "value": "${string(reorderLevel)}"
-                                        },
-                                        {
-                                            "title": "Revenue this period",
-                                            "value": "${string(revenue)} USD"
-                                        }
-                                    ],
-                                    "separator": true
-                                }
-                            ]
-                        }
-                     
-
+              "items": [
+                {
+                  "type": "FactSet",
+                  "spacing": "Large",
+                  "facts": [
+                    {
+                      "title": "Category",
+                      "value": "${categoryName}"
+                    },
+                    {
+                      "title": "Unit price",
+                      "value": "${unitPrice} USD"
+                    },
+                    {
+                      "title": "Avg discount",
+                      "value": "${string(averageDiscount)} %"
+                    },
+                    {
+                      "title": "Inventory valuation",
+                      "value": "${string(inventoryValue)} USD"
+                    }
+                  ],
+                  "separator": true
+                }
+              ]
+            },
+            {
+              "type": "Column",
+              "width": "stretch",
+              "items": [
+                {
+                  "type": "FactSet",
+                  "spacing": "Large",
+                  "facts": [
+                    {
+                      "title": "Units in stock",
+                      "value": "${string(unitsInStock)}"
+                    },
+                    {
+                      "title": "Units on order",
+                      "value": "${string(unitsOnOrder)}"
+                    },
+                    {
+                      "title": "Reorder Level",
+                      "value": "${string(reorderLevel)}"
+                    },
+                    {
+                      "title": "Revenue this period",
+                      "value": "${string(revenue)} USD"
+                    }
+                  ],
+                  "separator": true
+                }
+              ]
+            }
           ]
-        }]
+        }
+      ]
     },
     {
       "type": "Container",
@@ -239,6 +229,14 @@
                     }
                   }
                 ]
+              }
+            },
+            {
+              "type": "Action.Execute",
+              "title": "Edit product",
+              "verb": "edit",
+              "data": {
+                "productId": "${productId}"
               }
             }
           ]

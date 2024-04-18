@@ -226,6 +226,14 @@
                                     }
                                 ]
                             }
+                        },
+                        {
+                            "type": "Action.Execute",
+                            "title": "Edit product",
+                            "verb": "edit",
+                            "data": {
+                                "productId": "${productId}"
+                            }
                         }
                     ]
                 }
