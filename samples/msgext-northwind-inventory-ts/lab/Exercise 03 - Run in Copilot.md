@@ -28,7 +28,7 @@ Check the lower left of the chat user interface, below the compose box. You shou
 
 ![Small panel with a toggle for each plugin](./images/03-02-Plugin-Panel.png)
 
-For best results, start a new chat by typing "New chat" before each prompt or set of related prompts.
+For best results, start a new chat by typing "New chat" or by clicking on the **New chat** icon at the top right before each prompt or set of related prompts.
 
 ![Copilot showing its new chat screen](./images/03-01-New-Chat.png)
 
@@ -40,7 +40,7 @@ Here are some prompts to try that use only a single parameter of the message ext
 
 See if this last one also locates any of the documents you uploaded to your OneDrive.
 
-As you're testing, watch the log messages within your application. You should be able to see when Copilot calls your plugin. For example, after requesting "discounted seafood items", Copilot issued this query using the "discountSearch" command.
+As you're testing, watch the log messages within your application. You should be able to see when Copilot calls your plugin. For example, after requesting "discounted seafood items", Copilot issued this query using the `discountSearch` command.
 
 ![Log file shows a discount search for seafood](./images/03-02a-Query-Log1.png)
 

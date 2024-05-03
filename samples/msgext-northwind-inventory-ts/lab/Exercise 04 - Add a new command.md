@@ -11,7 +11,7 @@ TABLE OF CONTENTS
 
 ## Exercise 4 - Add a new command 
 
-In this exercise, you will enhance the Teams Message Extension (ME) / Copilot plugin  by adding a new command. While the current message extension effectively provides information about products within the Northwind inventory database, it does not provide information related to Northwind’s customers. Your task is to introduce a new command associated with an API call that retrieves products ordered by a customer name specified by the user. This exercise assumes you have completed at least exercises 1 and 2. It's fine to skip Exercise 3 in case you don't have a Copilot for Microsoft 365 license.
+In this exercise, you will enhance the Teams Message Extension (ME) / Copilot plugin by adding a new command. While the current message extension effectively provides information about products within the Northwind inventory database, it does not provide information related to Northwind’s customers. Your task is to introduce a new command associated with an API call that retrieves products ordered by a customer name specified by the user. This exercise assumes you have completed at least exercises 1 and 2. It's fine to skip Exercise 3 in case you don't have a Copilot for Microsoft 365 license.
 
 To do this you'll complete five tasks.
 1. **Extend the Message Extension / plugin User Interface** by modifying the Teams app manifest. This includes introducing a new command: **"companySearch"**. Note the UI for the Message Extension is an adaptive card where for Copilot it is text input and output in Copilot chat.
@@ -20,12 +20,13 @@ To do this you'll complete five tasks.
 4. **Implement Product Search by Company** that returns a list of products ordered by that company.
 5. **Run the app** and search of products that were purchased by a specified company.
 
-Note: The completed exercise with all of the code changes can be downloaded from here (add link to tag or archive). This can be useful for troubleshooting purposes.
-If you ever need to reset your edits, you can clone again the repository and start over.
+> [!NOTE]
+> The completed exercise with all of the code changes can be downloaded [from here](../src/completed.zip). This can be useful for troubleshooting purposes.
+> If you ever need to reset your edits, you can clone again the repository and start over.
 
 # Step 1 - Extend the Message Extension / plugin User Interface 
 
-1. Open **manifest.json** and add the following json immediately after the **discountSearch** command. Here you're adding to the **"commands"** array which defines the list of commands supported by the ME / plugin.
+1. Open **manifest.json** and add the following json immediately after the `discountSearch` command. Here you're adding to the `commands` array which defines the list of commands supported by the ME / plugin.
 
 ```json
 {
@@ -200,6 +201,8 @@ export async function searchProductsByCustomer(companyName: string): Promise<Pro
 ```
 # Step 5 - Run the App! Search for product by company name
 
+Now you're ready to test the sample as a plugin for Copilot for Microsoft 365.
+
 1. Delete the 'Northwest Inventory' app in Teams. This step is necessary since you are updating the manifest. Manifest updates require the app to be reinstalled. The cleanest way to do this is to first delete it in Teams.
 
     a. In the Teams sidebar, click on the three dots (...) 1️⃣. You should see Northwind Inventory 2️⃣ in the list of applications.
@@ -227,16 +230,16 @@ Here are other prompts to try:
 What are the products ordered by 'Consolidated Holdings' in Northwind Inventory? Please list the product name, price and supplier in a table.
 ```
 
-Of course, you can test this new command also by using the sample as a Message Extension. 
+Of course, you can test this new command also by using the sample as a Message Extension, like we did in [Exercise 2](./Exercise%2002%20-%20Run%20sample%20app.md). 
 
-1. In the Teams sidebar, move to the Chats section and pick any chat or start a new chat with a colleague.
-2. 
+1. In the Teams sidebar, move to the **Chats** section and pick any chat or start a new chat with a colleague.
+2. Click on the + sign to access to the Apps section.
+3. Pick the Northwind Inventory app.
+4. Notice how now you can see a new tab called **Customer**.
+5. Search for **Consolidated Holdings** and see the products ordered by this company. They will match the ones that Copilot returned you in the previous step.
+
+![The new command used as a message extension](./images/03-08-customer-message-extension.png)
 
 ## Congratulations
-You've completed the lab! If you still have time and you want to dig deeper into the project, you can follow the optional exercises.
-
-- [Optional - Code Tour](./Optional%20-%20Code%20tour.md) to learn more about the codebase and the key components of the application.
-- [Optional - Run sample app as a message extension](./Optional%20-%20Run%20sample%20app.md) to test the application as a Message Extension in Microsoft Teams and Outlook.
-
-
+You've completed the exercise! Please proceed to [Exercise 5](./Exercise%2005%20-%20Code%20tour.md), in which you will explore the plugin source code and adaptive cards.
 

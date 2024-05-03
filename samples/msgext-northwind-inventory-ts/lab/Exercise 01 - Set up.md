@@ -13,7 +13,9 @@ TABLE OF CONTENTS
 
 ## Step 1 - Install prerequisites
 
-**To complete these exercises, you will need a login to a Microsoft 365 subscription with permission to upload applications. To complete Exercise 3 this account must also be licensed for Microsoft Copilot for Microsoft 365.**
+**To complete these exercises, you will need a login to a Microsoft 365 subscription with permission to upload applications. The following instructions will explain how to get one.**
+
+**To complete Exercise 3, the account must also be licensed for Microsoft Copilot for Microsoft 365.**
 
 If this is a new tenant, it's a good idea to log into the [Microsoft 365 page](https://office.com) at [https://office.com](https://office.com) before beginning. Depending on how the tenant is configured, you may be asked to set up multi-factor authentication. Ensure you can access Microsoft Teams and Microsoft Outlook before proceeding.
 
@@ -82,7 +84,10 @@ In the left sidebar, select the Extensions icon1️⃣. Enter the word "teams" i
 
 Now select the Teams Toolkit icon in the left 1️⃣ . If it offers options to create a new project, you're probably in the wrong folder. In the Visual Studio Code file menu select "Open Folder" and directly open the **msgext-northwind-inventory-ts** folder. You should see sections for Accounts, Environment, etc. as shown below.
 
-Under "Accounts" click "Sign in to Microsoft 365"2️⃣ and log in with the Microsoft 365 account provided by the lab instructors, or with your own Microsoft 365 developer account. You can get a free Microsoft 365 subscription for development purposes by joining the [Microsoft 365 Developer Program](https://developer.microsoft.com/microsoft-365/dev-program).
+Under "Accounts" click "Sign in to Microsoft 365"2️⃣ and log in with your own Microsoft 365 account. You can get a free Microsoft 365 subscription for development purposes by joining the [Microsoft 365 Developer Program](https://developer.microsoft.com/microsoft-365/dev-program).
+
+> [!NOTE]
+> The Microsoft 365 Developer Program doesn't include Copilot for Microsoft 365 licenses. As such, if you decide to use a developer tenant, you will be able to test the sample only as a Message Extension.
 
 ![Logging into Microsoft 365 from within Teams Toolkit](./images/01-04-Setup-TTK-01.png)
 

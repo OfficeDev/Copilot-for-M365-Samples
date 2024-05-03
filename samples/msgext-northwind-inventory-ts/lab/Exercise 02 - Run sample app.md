@@ -88,7 +88,7 @@ You can cancel the order or modify the stock levels using the other two buttons.
 
 Back in Visual Studio Code, have a look at the app manifest, which is in a file called **manifest.json** in the **appPackage** directory. You'll notice that the app information that was displayed when you installed the app is all here.
 
-Scroll down a bit to `"composeExtensions:`.
+Scroll down a bit to `composeExtensions:`.
 Compose extensions is the historical name for a message extension; the Northwind Inventory message extension is defined here.
 
 Here's an abbreviated version of that JSON for easy reference.
