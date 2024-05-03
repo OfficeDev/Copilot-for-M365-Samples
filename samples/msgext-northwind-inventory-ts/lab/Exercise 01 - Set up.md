@@ -2,23 +2,22 @@
 
 TABLE OF CONTENTS
 
-* [Welcome](./Exercise%2000%20-%20Welcome.md)
-* [Exercise 1](./Exercise%2001%20-%20Set%20up.md) - Set up your development Environment  (THIS PAGE)
-* [Exercise 2](./Exercise%2002%20-%20Run%20sample%20app.md) - Run the sample Message Extension
+* [Welcome](./Exercise%2000%20-%20Welcome.md) 
+* Exercise 1 - Set up your development Environment **(THIS PAGE)**
+* [Exercise 2](./Exercise%2002%20-%20Run%20sample%20app.md) - Run the sample as a Message Extension
 * [Exercise 3](./Exercise%2003%20-%20Run%20in%20Copilot.md) - Run the sample as a Copilot plugin
-* [Exercise 4](./Exercise%2004%20-%20Code%20tour.md) - Code tour
+* [Exercise 4](./Exercise%2003%20-%20Add%20a%20new%20command.md) - Add a new command
+* [Exercise 5](./Exercise%2005%20-%20Code%20tour.md) - Code tour
 
 ## Exercise 1 - Set up your development environment
 
 ## Step 1 - Install prerequisites
 
-**To complete these labs, you will need a login to a Microsoft 365 subscription with permission to upload applications. To complete Lab 3, this account must also be licensed for Microsoft Copilot for Microsoft 365.**
+**To complete these exercises, you will need a login to a Microsoft 365 subscription with permission to upload applications. To complete Exercise 3 this account must also be licensed for Microsoft Copilot for Microsoft 365.**
 
 If this is a new tenant, it's a good idea to log into the [Microsoft 365 page](https://office.com) at [https://office.com](https://office.com) before beginning. Depending on how the tenant is configured, you may be asked to set up multi-factor authentication. Ensure you can access Microsoft Teams and Microsoft Outlook before proceeding.
 
 Please install the following on your computer:
-
-> NOTE: If you are attending an Ignite lab, these prerequisites have already been installed on your workstation; please skip to Step 2.
 
 1. [Visual Studio Code](https://code.visualstudio.com/) (latest version)
 
@@ -33,9 +32,7 @@ Please install the following on your computer:
 
 ## Step 2 - Download the sample code
 
-If you're in a lab at Microsoft Ignite 2023, please download the sample code from [here](https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/archive/refs/heads/main.zip). Unzip the files to a location on your computer.
-
-Otherwise please [clone](https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples.git) or [download](https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples.git) the sample repository:  [https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/](https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/).
+Please [clone](https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples.git) or [download](https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples.git) the sample repository: [https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/](https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/).
 
 Within the cloned or downloaded repository, navigate to the **samples/msgext-northwind-inventory-ts** folder. These labs will refer to this as your "working folder" since this is where you'll be working.
 
@@ -44,16 +41,6 @@ Within the cloned or downloaded repository, navigate to the **samples/msgext-nor
 The sample application includes some documents for Copilot to reference during the labs. In this step you will copy these files to your user's OneDrive so Copilot can find them. Depending on how the tenant is set up, you may be asked to set up multi-factor authentication as part of this process.
 
 Open your browser and browse to Microsoft 365 ([https://www.office.com/](https://www.office.com/)). Log in using the Microsoft 365 account you will be using throughout the lab. You may be asked to set up multi-factor authentication.
-
-### For the Ignite labs
-
-If you're taking a lab at Ignite, then several sample documents have already been uploaded for you. Verify that you can find them by entering the word "agreement" in the search box. You should see several contracts that have been placed in SharePoint.
-
-![Search box with the word agreement](./images/01-02-CheckSampleFiles.png)
-
-### In your own tenant
-
-If you're not using one of the Ignite lab tenants, you'll need to upload the documents yourself to demonstrate how Copilot can use them in answering prompts.
 
 Using the "waffle" menu in the upper left corner of the page 1️⃣ , navigate to the OneDrive application within Microsoft 365 2️⃣ .
 
@@ -108,4 +95,4 @@ Now verify that the "Sideloading enabled" checker has a green checkmark. If it d
 ## Congratulations
 
 You have completed Exercise 1.
-Please proceed to [Exercise 2](./Exercise%2002%20-%20Run%20sample%20app.md) in which you will run the sample application.
+Please proceed to [Exercise 2](./Exercise%2002%20-%20Run%20sample%20app.md) in which you will run the sample application as a message extension.

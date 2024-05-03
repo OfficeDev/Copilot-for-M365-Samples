@@ -2,14 +2,17 @@
 
 TABLE OF CONTENTS
 
-* [Welcome](./Exercise%2000%20-%20Welcome.md)
-* [Exercise 1](./Exercise%2001%20-%20Set%20up.md) - Set up your development Environment
-* [Exercise 2](./Exercise%2002%20-%20Run%20sample%20app.md) - Run the sample Message Extension
-* [Exercise 3](./Exercise%2003%20-%20Run%20in%20Copilot.md) - Run the sample as a Copilot plugin  (THIS PAGE)
-* [Exercise 4](./Exercise%2004%20-%20Code%20tour.md) - Code tour
+* [Welcome](./Exercise%2000%20-%20Welcome.md) 
+* [Exercise 1](./Exercise%2001%20-%20Set%20up.md) - Set up your development Environment 
+* [Exercise 2](./Exercise%2002%20-%20Run%20sample%20app.md) - Run the sample as a Message Extension
+* Exercise 3 - Run the sample as a Copilot plugin **(THIS PAGE)**
+* [Exercise 4](./Exercise%2003%20-%20Add%20a%20new%20command.md) - Add a new command
+* [Exercise 5](./Exercise%2005%20-%20Code%20tour.md) - Code tour
 
-## Exercise 3 -
+## Exercise 2 - Run the sample as a Copilot plugin
 
+> [!NOTE]  
+> To perform the following exercise, your account must have a valid license for Copilot for Microsoft 365.
 
 ## Step 1 - Test in Microsoft Copilot for Microsoft 365 (single parameter)
 
@@ -19,13 +22,11 @@ Begin by clicking the "Try the new Teams" switch to move to the new Teams client
 
 > If you restart your debugger after switching to "New" teams, you may get an error message after the debugger starts. This is a known problem; please just close the error dialog and continue testing.
 
-In the left navigation, click on "M365 Chat" to open Copilot.
+In the left navigation, click on "Copilot" to open Copilot.
 
 Check the lower left of the chat user interface, below the compose box. You should see a plugin icon 1️⃣ . Click this and enable the Northwind Inventory plugin 2️⃣ .
 
 ![Small panel with a toggle for each plugin](./images/03-02-Plugin-Panel.png)
-
-> NOTE: In the Ingite labs you may see a second "Northwind Inventory" app, with an icon that has a yellow background. We've hosted a copy of Northwind Inventory in Microsoft Azure and installed this app into the lab tenants. While it's there as a fallback, if you want to see the queries in your log window you need to use the copy with the blue background, which is the local running copy of the app.
 
 For best results, start a new chat by typing "New chat" before each prompt or set of related prompts.
 
@@ -37,8 +38,6 @@ Here are some prompts to try that use only a single parameter of the message ext
 
 * "Find discounted seafood in Northwind. Show a table with the products, supplier names, average discount rate, and revenue per period."
 
-* "Find high revenue Northwind products. Did we run any ad campaigns for them?"
-
 See if this last one also locates any of the documents you uploaded to your OneDrive.
 
 As you're testing, watch the log messages within your application. You should be able to see when Copilot calls your plugin. For example, after requesting "discounted seafood items", Copilot issued this query using the "discountSearch" command.
@@ -49,7 +48,7 @@ You may see citations of the Northwind data in 3 forms. If there's a single refe
 
 ![Adaptive card for Chai embedded in a Copilot response](./images/03-03a-response-on-chai.png)
 
-If there are multiple references, Copilot may show a small number next to each. You can hover over these numbers to display the adaptive card. Also, it may show a pull-down below the "Copy" button.
+If there are multiple references, Copilot may show a small number next to each. You can hover over these numbers to display the adaptive card. References will also be listed below the response.
 
 ![Reference numbers embedded in a Copilot response - hovering over the number shows the adaptive card](./images/03-03-Response-on-Chai.png)
 
@@ -75,11 +74,7 @@ The plugin code applies all three filters, providing a result set of just 4 prod
 
 ![Copilot produced a bulleted list of products with references](./images/03-06b-Find-Northwind-Beverages-with-more-than-100.png)
 
-Now try a follow-up prompt (without starting a new chat):
-
-"What are the payment terms for these suppliers?"
-
-This prompt won't use your plug-in but if it looks in your OneDrive files it should be able to find the payment terms with each supplier's contract.
+By using this prompt, Copilot might look also in your OneDrive files to find the payment terms with each supplier's contract. In this case, you will notice that some of the references won't have the Northwind Inventory icon, but the Word one.
 
 ![Copilot extracted payment terms from contracts in SharePoint](./images/03-06c-PaymentTerms.png)
 
@@ -102,4 +97,4 @@ Which prompts work best for you? Try making up your own prompts and observe your
 ## Congratulations
 
 You have completed Exercise 3.
-Please proceed to [Exercise 4](Exercise%2004%20-%20Code%20tour.md) in which you will explore the plugin source code and adaptive cards.
+Please proceed to [Exercise 4](./Exercise%2004%20-%20Add%20a%20new%20command.md), in which you will add a new command to the messaging extension.
