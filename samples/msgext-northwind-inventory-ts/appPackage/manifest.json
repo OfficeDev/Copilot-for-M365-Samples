@@ -94,24 +94,6 @@
                             "inputType": "text"
                         }
                     ]
-                },
-                {
-                    "id": "revenueSearch",
-                    "context": [
-                        "compose",
-                        "commandBox"
-                    ],
-                    "description": "Find products based on their revenue/period",
-                    "title": "Revenue",
-                    "type": "query",
-                    "parameters": [
-                        {
-                            "name": "revenueRange",
-                            "title": "Revenue range",
-                            "description": "Enter 'high' or 'low' or enter a range of integers such as 0-10000 or 5000- using this exact format",
-                            "inputType": "text"
-                        }
-                    ]
                 }
             ]
         }

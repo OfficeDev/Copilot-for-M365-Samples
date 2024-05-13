@@ -2,13 +2,14 @@
 
 TABLE OF CONTENTS
 
-* [Welcome](./Exercise%2000%20-%20Welcome.md)
-* [Exercise 1](./Exercise%2001%20-%20Set%20up.md) - Set up your development Environment
-* [Exercise 2](./Exercise%2002%20-%20Run%20sample%20app.md) - Run the sample Message Extension  (THIS PAGE)
+* [Welcome](./Exercise%2000%20-%20Welcome.md) 
+* [Exercise 1](./Exercise%2001%20-%20Set%20up.md) - Set up your development Environment 
+* Exercise 2 - Run the sample as a Message Extension **(THIS PAGE)**
 * [Exercise 3](./Exercise%2003%20-%20Run%20in%20Copilot.md) - Run the sample as a Copilot plugin
-* [Exercise 4](./Exercise%2004%20-%20Code%20tour.md) - Code tour
+* [Exercise 4](./Exercise%2003%20-%20Add%20a%20new%20command.md) - Add a new command
+* [Exercise 5](./Exercise%2005%20-%20Code%20tour.md) - Code tour
 
-## Exercise 2 - Run sample app
+## Exercise 2 - Run the sample as a Message Extension
 
 ## Step 1 - Set up the project for first use
 
@@ -87,7 +88,7 @@ You can cancel the order or modify the stock levels using the other two buttons.
 
 Back in Visual Studio Code, have a look at the app manifest, which is in a file called **manifest.json** in the **appPackage** directory. You'll notice that the app information that was displayed when you installed the app is all here.
 
-Scroll down a bit to `"composeExtensions:`.
+Scroll down a bit to `composeExtensions:`.
 Compose extensions is the historical name for a message extension; the Northwind Inventory message extension is defined here.
 
 Here's an abbreviated version of that JSON for easy reference.
@@ -112,15 +113,6 @@ Here's an abbreviated version of that JSON for easy reference.
                 "title": "Discounts",
                 "type": "query",
                 "parameters": [ ...]
-            },
-            {
-                "id": "revenueSearch",
-                ...
-                "id": "revenueSearch",
-                "description": "Find products based on their revenue/period",
-                "title": "Revenue",
-                "type": "query",
-                "parameters": [ ... ]
             }
         ]
     }
@@ -131,38 +123,11 @@ Notice first that there's a bot ID. That's because Microsoft Teams uses the Azur
 
 Then there's a collection of commands. These correspond to the tabs in the search dialog in Teams. In this application, the commands are really intended for Copilot more than regular users!
 
-You already ran the first command when you searched for a product by name. You can try the other two now.
+You already ran the first command when you searched for a product by name. You can try the other one now.
 
 Enter "Beverages", "Dairy", or "Produce" into the "Discounts" tab, and you'll see the products within those categories that are discounted. Copilot will use this to answer questions about discounted products.
 
 ![Searching for beverages under the discount tab](./images/02-03-Test-Multi-02.png)
-
-Enter "high", "low", "0-10000", or "100000-" in the Revenue tab. It works, but it's not very user friendly. We're counting on Copilot to look at the manifest and figure out how to use it:
-
-~~~json
-{
-    "id": "revenueSearch",
-    "context": [
-        "compose",
-        "commandBox"
-    ],
-    "description": "Find products based on their revenue/period",
-    "title": "Revenue",
-    "type": "query",
-    "parameters": [
-        {
-            "name": "revenueRange",
-            "title": "Revenue range",
-            "description": "Enter 'high' or 'low' or enter a range of integers such as 0-10000 or 5000- using this exact format",
-            "inputType": "text"
-        }
-    ]
-}
-~~~
-
-![Searching for high on the revenue tab](./images/02-03-Test-Multi-03.png)
-
-The parameter description succinctly explains how the queries should be written, and Copilot will read this to answer prompts calling for high revenue products, or products with less than 10,000 items.
 
 Now examine the first command again. You'll notice it has 5 parameters!
 
