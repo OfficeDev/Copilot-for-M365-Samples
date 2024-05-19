@@ -10,7 +10,8 @@
       "Region": null,
       "PostalCode": "EC1 4SD",
       "Country": "UK",
-      "Phone": "(171) 555-2222",
+      "Phone": "+14256145909",
+      "Email": "acsdemotest@outlook.com",
       "Fax": null,
       "HomePage": null
     },
@@ -24,7 +25,8 @@
       "Region": "LA",
       "PostalCode": "70117",
       "Country": "USA",
-      "Phone": "(100) 555-4822",
+      "Phone": "4256145909",
+      "Email": "acsdemotest@outlook.com",
       "Fax": null,
       "HomePage": "#CAJUN.HTM#"
     },
@@ -38,7 +40,8 @@
       "Region": null,
       "PostalCode": "EC1 4SD",
       "Country": "UK",
-      "Phone": "(171) 555-3333",
+      "Phone": "4256145909",
+      "Email": "acsdemotest@outlook.com",
       "Fax": null,
       "HomePage": null
     },
@@ -53,6 +56,7 @@
       "PostalCode": "100",
       "Country": "Japan",
       "Phone": "(03) 3555-5011",
+      "Email": "Update db",
       "Fax": null,
       "HomePage": null
     },
@@ -67,6 +71,7 @@
       "PostalCode": "33007",
       "Country": "Spain",
       "Phone": "(98) 598 76 54",
+      "Email": "Update db",
       "Fax": null,
       "HomePage": null
     },
@@ -81,6 +86,7 @@
       "PostalCode": "545",
       "Country": "Japan",
       "Phone": "(06) 431-7877",
+      "Email": "Update db",
       "Fax": null,
       "HomePage": "Mayumi's (on the World Wide Web)#http://www.microsoft.com/accessdev/sampleapps/mayumi.htm#"
     },
@@ -95,6 +101,7 @@
       "PostalCode": "3058",
       "Country": "Australia",
       "Phone": "(03) 444-2343",
+      "Email": "Update db",
       "Fax": "(03) 444-6588",
       "HomePage": null
     },
@@ -109,6 +116,7 @@
       "PostalCode": "M14 GSD",
       "Country": "UK",
       "Phone": "(161) 555-4448",
+      "Email": "Update db",
       "Fax": null,
       "HomePage": null
     },
@@ -123,6 +131,7 @@
       "PostalCode": "S-345 67",
       "Country": "Sweden",
       "Phone": "031-987 65 43",
+      "Email": "Update db",
       "Fax": "031-987 65 91",
       "HomePage": null
     },
@@ -137,6 +146,7 @@
       "PostalCode": "5442",
       "Country": "Brazil",
       "Phone": "(11) 555 4640",
+      "Email": "Update db",
       "Fax": null,
       "HomePage": null
     },
@@ -151,6 +161,7 @@
       "PostalCode": "10785",
       "Country": "Germany",
       "Phone": "(010) 9984510",
+      "Email": "Update db",
       "Fax": null,
       "HomePage": null
     },
@@ -165,6 +176,7 @@
       "PostalCode": "60439",
       "Country": "Germany",
       "Phone": "(069) 992755",
+      "Email": "Update db",
       "Fax": null,
       "HomePage": "Plutzer (on the World Wide Web)#http://www.microsoft.com/accessdev/sampleapps/plutzer.htm#"
     },
@@ -179,6 +191,7 @@
       "PostalCode": "27478",
       "Country": "Germany",
       "Phone": "(04721) 8713",
+      "Email": "Update db",
       "Fax": "(04721) 8714",
       "HomePage": null
     },
@@ -193,6 +206,7 @@
       "PostalCode": "48100",
       "Country": "Italy",
       "Phone": "(0544) 60323",
+      "Email": "Update db",
       "Fax": "(0544) 60603",
       "HomePage": "#FORMAGGI.HTM#"
     },
@@ -207,6 +221,7 @@
       "PostalCode": "1320",
       "Country": "Norway",
       "Phone": "(0)2-953010",
+      "Email": "Update db",
       "Fax": null,
       "HomePage": null
     },
@@ -221,6 +236,7 @@
       "PostalCode": "97101",
       "Country": "USA",
       "Phone": "(503) 555-9931",
+      "Email": "Update db",
       "Fax": null,
       "HomePage": null
     },
@@ -235,6 +251,7 @@
       "PostalCode": "S-123 45",
       "Country": "Sweden",
       "Phone": "08-123 45 67",
+      "Email": "Update db",
       "Fax": null,
       "HomePage": null
     },
@@ -249,6 +266,7 @@
       "PostalCode": "75004",
       "Country": "France",
       "Phone": "(1) 03.83.00.68",
+      "Email": "Update db",
       "Fax": "(1) 03.83.00.62",
       "HomePage": null
     },
@@ -263,6 +281,7 @@
       "PostalCode": "02134",
       "Country": "USA",
       "Phone": "(617) 555-3267",
+      "Email": "Update db",
       "Fax": "(617) 555-3389",
       "HomePage": null
     },
@@ -277,6 +296,7 @@
       "PostalCode": "0512",
       "Country": "Singapore",
       "Phone": "555-8787",
+      "Email": "Update db",
       "Fax": null,
       "HomePage": null
     },
@@ -291,6 +311,7 @@
       "PostalCode": "2800",
       "Country": "Denmark",
       "Phone": "43844108",
+      "Email": "Update db",
       "Fax": "43844115",
       "HomePage": null
     },
@@ -305,6 +326,7 @@
       "PostalCode": "9999 ZZ",
       "Country": "Netherlands",
       "Phone": "(12345) 1212",
+      "Email": "Update db",
       "Fax": "(12345) 1210",
       "HomePage": null
     },
@@ -319,6 +341,7 @@
       "PostalCode": "53120",
       "Country": "Finland",
       "Phone": "(953) 10956",
+      "Email": "Update db",
       "Fax": null,
       "HomePage": null
     },
@@ -333,6 +356,7 @@
       "PostalCode": "2042",
       "Country": "Australia",
       "Phone": "(02) 555-5914",
+      "Email": "Update db",
       "Fax": "(02) 555-4873",
       "HomePage": "G'day Mate (on the World Wide Web)#http://www.microsoft.com/accessdev/sampleapps/gdaymate.htm#"
     },
@@ -347,6 +371,7 @@
       "PostalCode": "H1J 1C3",
       "Country": "Canada",
       "Phone": "(514) 555-9022",
+      "Email": "Update db",
       "Fax": null,
       "HomePage": null
     },
@@ -361,6 +386,7 @@
       "PostalCode": "84100",
       "Country": "Italy",
       "Phone": "(089) 6547665",
+      "Email": "Update db",
       "Fax": "(089) 6547667",
       "HomePage": null
     },
@@ -375,6 +401,7 @@
       "PostalCode": "71300",
       "Country": "France",
       "Phone": "85.57.00.07",
+      "Email": "Update db",
       "Fax": null,
       "HomePage": null
     },
@@ -389,6 +416,7 @@
       "PostalCode": "74000",
       "Country": "France",
       "Phone": "38.76.98.06",
+      "Email": "Update db",
       "Fax": "38.76.98.58",
       "HomePage": null
     },
@@ -403,6 +431,7 @@
       "PostalCode": "J2S 7S8",
       "Country": "Canada",
       "Phone": "(514) 555-2955",
+      "Email": "Update db",
       "Fax": "(514) 555-2921",
       "HomePage": null
     }

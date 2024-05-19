@@ -106,6 +106,8 @@ export interface ProductEx extends Product {
     CategoryName: string,
     SupplierName: string,
     SupplierCity: string,
+    SupplierEmail: string,
+    SupplierPhone: string,
     InventoryStatus: string,
     InventoryValue: number,
     UnitSales: number,
@@ -123,6 +125,7 @@ export interface Supplier extends Row {
     PostalCode: string;
     Country: string;
     Phone: string;
+    Email: string;
     Fax: string;
     HomePage: string;
 }

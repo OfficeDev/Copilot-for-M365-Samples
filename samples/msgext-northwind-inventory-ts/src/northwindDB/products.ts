@@ -220,6 +220,8 @@ function getProductExForEntity(entity: TableEntityResult<Record<string, unknown>
         CategoryName: "",
         SupplierName: "",
         SupplierCity: "",
+        SupplierEmail: "",
+        SupplierPhone: "",
         InventoryStatus: "",
         InventoryValue: 0,
         UnitSales: 0,
@@ -231,6 +233,8 @@ function getProductExForEntity(entity: TableEntityResult<Record<string, unknown>
     result.CategoryName = categories[result.CategoryID].CategoryName;
     result.SupplierName = suppliers[result.SupplierID].CompanyName;
     result.SupplierCity = suppliers[result.SupplierID].City;
+    result.SupplierPhone = suppliers[result.SupplierID].Phone;
+    result.SupplierEmail = suppliers[result.SupplierID].Email;
     result.UnitSales =  orderTotals[result.ProductID].totalQuantity;
     result.InventoryValue = Math.round(result.UnitsInStock * result.UnitPrice);
     result.Revenue = Math.round(orderTotals[result.ProductID].totalRevenue);

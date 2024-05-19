@@ -26,14 +26,14 @@
                             "items": [
                                 {
                                     "type": "TextBlock",
-                                    "size": "large",
-                                    "weight": "bolder",
+                                    "size": "Large",
+                                    "weight": "Bolder",
                                     "text": "📦 ${productName}",
                                     "wrap": true,
                                     "style": "heading"
                                 }
                             ],
-                            "width": "60"
+                            "width": 60
                         },
                         {
                             "type": "Column",
@@ -47,11 +47,10 @@
                                     "color": "${if(inventoryStatus == 'In stock', 'good', if(inventoryStatus == 'low stock', 'warning', 'attention'))}"
                                 }
                             ],
-                            "width": "40"
+                            "width": 40
                         }
                     ]
                 }
-
             ],
             "bleed": true
         },
@@ -64,7 +63,6 @@
                     "weight": "Bolder",
                     "text": "**📍Supplier information**",
                     "wrap": true,
-
                     "size": "Medium",
                     "isSubtle": false
                 },
@@ -75,7 +73,6 @@
                         {
                             "type": "Column",
                             "width": "stretch",
-
                             "items": [
                                 {
                                     "type": "FactSet",
@@ -88,14 +85,20 @@
                                         {
                                             "title": "City",
                                             "value": "${supplierCity}"
+                                        },
+                                        {
+                                            "title": "Email",
+                                            "value": "${supplierEmail}"
+                                        },
+                                        {
+                                            "title": "Phone",
+                                            "value": "${supplierPhone}"
                                         }
-
                                     ],
                                     "separator": true
                                 }
                             ]
                         }
-
                     ]
                 },
                 {
@@ -113,7 +116,6 @@
                         {
                             "type": "Column",
                             "width": "stretch",
-
                             "items": [
                                 {
                                     "type": "FactSet",
@@ -134,7 +136,7 @@
                                         {
                                             "title": "Inventory valuation",
                                             "value": "${string(inventoryValue)} USD"
-                                        }                                        
+                                        }
                                     ],
                                     "separator": true
                                 }
@@ -143,17 +145,15 @@
                         {
                             "type": "Column",
                             "width": "stretch",
-
                             "items": [
                                 {
                                     "type": "FactSet",
                                     "spacing": "Large",
                                     "facts": [
-                                       
                                         {
                                             "title": "Units in stock",
                                             "value": "${string(unitsInStock)}"
-                                        },                                      
+                                        },
                                         {
                                             "title": "Units on order",
                                             "value": "${string(unitsOnOrder)}"
@@ -171,10 +171,9 @@
                                 }
                             ]
                         }
-                     
-
                     ]
-                }]
+                }
+            ]
         },
         {
             "type": "Container",
@@ -184,7 +183,7 @@
                     "actions": [
                         {
                             "type": "Action.ShowCard",
-                            "title": "Take action",
+                            "title": "Update Inventory",
                             "card": {
                                 "type": "AdaptiveCard",
                                 "body": [
@@ -214,12 +213,81 @@
                                         "data": {
                                             "productId": "${productId}"
                                         }
-                                        
                                     },
                                     {
                                         "type": "Action.Execute",
                                         "title": "Cancel restock ❌",
                                         "verb": "cancel",
+                                        "data": {
+                                            "productId": "${productId}"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "Action.ShowCard",
+                            "title": "Contact Supplier",
+                            "card": {
+                                "type": "AdaptiveCard",
+                                "body": [
+                                    {
+                                        "type": "Input.Text",
+                                        "id": "txtQuantity",
+                                        "label": "Quantity to order",
+                                        "min": 0,
+                                        "max": 9999,
+                                        "errorMessage": "Invalid input, use whole positive number",
+                                        "style": "Tel",
+                                        "spacing": "None"
+                                    },
+                                    {
+                                        "type": "ColumnSet",
+                                        "columns": [
+                                            {
+                                                "type": "Column",
+                                                "width": 5,
+                                                "items": [
+                                                    {
+                                                        "type": "Input.Toggle",
+                                                        "id": "checkBoxSMS",
+                                                        "spacing": "Small",
+                                                        "title": "SMS 📝" 
+                                                    }
+                                                ],
+                                                "rtl": false
+                                            },
+                                            {
+                                                "type": "Column",
+                                                "width": 5,
+                                                "items": [
+                                                    {
+                                                        "type": "Input.Toggle",
+                                                        "id": "checkBoxEmail",
+                                                        "title": "Email 📧"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "Column",
+                                                "width": 10,
+                                                "items": [
+                                                    {
+                                                        "type": "Input.Toggle",
+                                                        "id": "checkBoxWhatsApp",
+                                                        "title": "WhatsApp 📲", 
+                                                        "spacing": "Small"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "actions": [
+                                    {
+                                        "type": "Action.Execute",
+                                        "title": "Place an Order 📦",
+                                        "verb": "placeOrder",
                                         "data": {
                                             "productId": "${productId}"
                                         }
@@ -233,4 +301,3 @@
         }
     ]
 }
-
