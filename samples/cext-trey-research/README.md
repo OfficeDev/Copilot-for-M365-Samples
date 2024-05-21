@@ -1,9 +1,8 @@
-# Trey Research Plugin
-
-> This is now a proper API Plugin (not Type A)!
+# Trey Research Copilot extension
 
 Trey Research is a fictitious consulting company that supplies talent in the software and pharmaceuticals industries.
-The vision for this demo is to show the full potential of Copilot plugins in a relatable business environment.
+
+The vision for this demo is to show the full potential of Copilot extensions in a relatable business environment.
 
 ### Prompts that work
 
