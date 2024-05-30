@@ -467,8 +467,8 @@
             "subtitle": "$.description"
           },
           "static_template": {
-            "type": "AdaptiveCard",
             "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+            "type": "AdaptiveCard",
             "version": "1.5",
             "body": [
               {
@@ -476,81 +476,174 @@
                 "$data": "${$root}",
                 "items": [
                   {
-                    "type": "TextBlock",
-                    "text": "projectName: ${if(name, name, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "projectDescription: ${if(description, description, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "projectLocation.street: ${if(location.street, location.street, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "projectLocation.city: ${if(location.city, location.city, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "projectLocation.state: ${if(location.state, location.state, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "projectLocation.country: ${if(location.country, location.country, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "projectLocation.postalCode: ${if(location.postalCode, location.postalCode, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "projectLocation.latitude: ${if(location.latitude, location.latitude, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "projectLocation.longitude: ${if(location.longitude, location.longitude, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "projectLocation.mapUrl: ${if(location.mapUrl, location.mapUrl, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "role: ${if(role, role, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "forecastThisMonth: ${if(forecastThisMonth, forecastThisMonth, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "forecastNextMonth: ${if(forecastNextMonth, forecastNextMonth, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "deliveredLastMonth: ${if(deliveredLastMonth, deliveredLastMonth, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "deliveredThisMonth: ${if(deliveredThisMonth, deliveredThisMonth, 'N/A')}",
-                    "wrap": true
+                    "speak": "${description}",
+                    "type": "ColumnSet",
+                    "columns": [
+                      {
+                        "type": "Column",
+                        "items": [
+                          {
+                            "type": "TextBlock",
+                            "text": "${name}",
+                            "weight": "bolder",
+                            "size": "extraLarge",
+                            "spacing": "none",
+                            "wrap": true,
+                            "style": "heading"
+                          },
+                          {
+                            "type": "TextBlock",
+                            "text": "${description}",
+                            "wrap": true,
+                            "spacing": "none"
+                          },
+                          {
+                            "type": "TextBlock",
+                            "text": "${location.city}, ${location.country}",
+                            "wrap": true
+                          },
+                          {
+                            "type": "TextBlock",
+                            "text": "${clientName}",
+                            "weight": "Bolder",
+                            "size": "Large",
+                            "spacing": "Medium",
+                            "wrap": true,
+                            "maxLines": 3
+                          },
+                          {
+                            "type": "TextBlock",
+                            "text": "${clientContact}",
+                            "size": "small",
+                            "wrap": true
+                          },
+                          {
+                            "type": "TextBlock",
+                            "text": "${clientEmail}",
+                            "size": "small",
+                            "wrap": true
+                          }
+                        ]
+                      },
+                      {
+                        "type": "Column",
+                        "items": [
+                          {
+                            "type": "Image",
+                            "url": "${location.mapUrl}",
+                            "altText": "${location.street}"
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
+              },
+              {
+                "type": "TextBlock",
+                "text": "Project Metrics",
+                "weight": "Bolder",
+                "size": "Large",
+                "spacing": "Medium",
+                "horizontalAlignment": "Center",
+                "separator": true
+              },
+              {
+                "type": "ColumnSet",
+                "columns": [
+                  {
+                    "type": "Column",
+                    "width": "stretch",
+                    "items": [
+                      {
+                        "type": "TextBlock",
+                        "text": "Forecast This Month",
+                        "weight": "Bolder",
+                        "spacing": "Small",
+                        "horizontalAlignment": "Center"
+                      },
+                      {
+                        "type": "TextBlock",
+                        "text": "${forecastThisMonth} ",
+                        "size": "ExtraLarge",
+                        "weight": "Bolder",
+                        "horizontalAlignment": "Center"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Column",
+                    "width": "stretch",
+                    "items": [
+                      {
+                        "type": "TextBlock",
+                        "text": "Forecast Next Month",
+                        "weight": "Bolder",
+                        "spacing": "Small",
+                        "horizontalAlignment": "Center"
+                      },
+                      {
+                        "type": "TextBlock",
+                        "text":  "${forecastNextMonth} ",
+                        "size": "ExtraLarge",
+                        "weight": "Bolder",
+                        "horizontalAlignment": "Center"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "ColumnSet",
+                "columns": [
+                  {
+                    "type": "Column",
+                    "width": "stretch",
+                    "items": [
+                      {
+                        "type": "TextBlock",
+                        "text": "Delivered Last Month",
+                        "weight": "Bolder",
+                        "spacing": "Small",
+                        "horizontalAlignment": "Center"
+                      },
+                      {
+                        "type": "TextBlock",
+                        "text": "${deliveredLastMonth} ",
+                        "size": "ExtraLarge",
+                        "weight": "Bolder",
+                        "horizontalAlignment": "Center"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Column",
+                    "width": "stretch",
+                    "items": [
+                      {
+                        "type": "TextBlock",
+                        "text": "Delivered This Month",
+                        "weight": "Bolder",
+                        "spacing": "Small",
+                        "horizontalAlignment": "Center"
+                      },
+                      {
+                        "type": "TextBlock",
+                        "text": "${deliveredThisMonth} ",
+                        "size": "ExtraLarge",
+                        "weight": "Bolder",
+                        "horizontalAlignment": "Center"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.OpenUrl",
+                "title": "View map",
+                "url": "${location.mapUrl}"
               }
             ]
           }
