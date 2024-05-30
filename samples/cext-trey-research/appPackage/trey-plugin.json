@@ -7,36 +7,6 @@
     {
       "name": "getConsultants",
       "description": "Returns detailed information about consultants identified from filters like name of the consultant, name of project, certifications, skills, roles and hours available. Multiple filters can be used in combination to refine the list of consultants returned",
-      "parameters": {
-        "type": "object",
-        "properties": {
-          "consultantName": {
-            "type": "string",
-            "description": "Name of the consultant to retrieve"
-          },
-          "projectName": {
-            "type": "string",
-            "description": "The name of the project"
-          },
-          "skill": {
-            "type": "string",
-            "description": "Skills for a consultant. Retrieve consultants with this skill"
-          },
-          "certification": {
-            "type": "string",
-            "description": "Certification for a consultant. Retrieve consultants with this certification"
-          },
-          "role": {
-            "type": "string",
-            "description": "Role of a consultant. Retrieve consultants with this role"
-          },
-          "hoursAvailable": {
-            "type": "string",
-            "description": "Hours a consultant is available for new work over this and next month. Please provide an integer value; for example 0 if no hours are available, 1 if any hours are available, or 20 if 20 or more hours are available."
-          }
-        },
-        "required": []
-      },
       "capabilities": {
         "response_semantics": {
           "data_path": "$.results",
@@ -489,26 +459,12 @@
     {
       "name": "getProjects",
       "description": "Returns detailed information about projects matching the specified project name and/or consultant name",
-      "parameters": {
-        "type": "object",
-        "properties": {
-          "consultantName": {
-            "type": "string",
-            "description": "The name of the consultant assigned to the project"
-          },
-          "projectName": {
-            "type": "string",
-            "description": "The name of the project or name of the client"
-          }
-        },
-        "required": []
-      },
       "capabilities": {
         "response_semantics": {
           "data_path": "$.results",
           "properties": {
-            "title": "$.projectName",
-            "subtitle": "$.projectDescription"
+            "title": "$.name",
+            "subtitle": "$.description"
           },
           "static_template": {
             "type": "AdaptiveCard",
@@ -521,52 +477,52 @@
                 "items": [
                   {
                     "type": "TextBlock",
-                    "text": "projectName: ${if(projectName, projectName, 'N/A')}",
+                    "text": "projectName: ${if(name, name, 'N/A')}",
                     "wrap": true
                   },
                   {
                     "type": "TextBlock",
-                    "text": "projectDescription: ${if(projectDescription, projectDescription, 'N/A')}",
+                    "text": "projectDescription: ${if(description, description, 'N/A')}",
                     "wrap": true
                   },
                   {
                     "type": "TextBlock",
-                    "text": "projectLocation.street: ${if(projectLocation.street, projectLocation.street, 'N/A')}",
+                    "text": "projectLocation.street: ${if(location.street, location.street, 'N/A')}",
                     "wrap": true
                   },
                   {
                     "type": "TextBlock",
-                    "text": "projectLocation.city: ${if(projectLocation.city, projectLocation.city, 'N/A')}",
+                    "text": "projectLocation.city: ${if(location.city, location.city, 'N/A')}",
                     "wrap": true
                   },
                   {
                     "type": "TextBlock",
-                    "text": "projectLocation.state: ${if(projectLocation.state, projectLocation.state, 'N/A')}",
+                    "text": "projectLocation.state: ${if(location.state, location.state, 'N/A')}",
                     "wrap": true
                   },
                   {
                     "type": "TextBlock",
-                    "text": "projectLocation.country: ${if(projectLocation.country, projectLocation.country, 'N/A')}",
+                    "text": "projectLocation.country: ${if(location.country, location.country, 'N/A')}",
                     "wrap": true
                   },
                   {
                     "type": "TextBlock",
-                    "text": "projectLocation.postalCode: ${if(projectLocation.postalCode, projectLocation.postalCode, 'N/A')}",
+                    "text": "projectLocation.postalCode: ${if(location.postalCode, location.postalCode, 'N/A')}",
                     "wrap": true
                   },
                   {
                     "type": "TextBlock",
-                    "text": "projectLocation.latitude: ${if(projectLocation.latitude, projectLocation.latitude, 'N/A')}",
+                    "text": "projectLocation.latitude: ${if(location.latitude, location.latitude, 'N/A')}",
                     "wrap": true
                   },
                   {
                     "type": "TextBlock",
-                    "text": "projectLocation.longitude: ${if(projectLocation.longitude, projectLocation.longitude, 'N/A')}",
+                    "text": "projectLocation.longitude: ${if(location.longitude, location.longitude, 'N/A')}",
                     "wrap": true
                   },
                   {
                     "type": "TextBlock",
-                    "text": "projectLocation.mapUrl: ${if(projectLocation.mapUrl, projectLocation.mapUrl, 'N/A')}",
+                    "text": "projectLocation.mapUrl: ${if(location.mapUrl, location.mapUrl, 'N/A')}",
                     "wrap": true
                   },
                   {
@@ -604,21 +560,6 @@
     {
       "name": "postBillhours",
       "description": "Charge time to a specific project on behalf of the logged in user, and return the number of hours remaining in their forecast.",
-      "parameters": {
-        "type": "object",
-        "properties": {
-          "projectName": {
-            "type": "string"
-          },
-          "hours": {
-            "type": "integer"
-          }
-        },
-        "required": [
-          "projectName",
-          "hours"
-        ]
-      },
       "capabilities": {
         "response_semantics": {
           "data_path": "$",
@@ -669,29 +610,6 @@
     {
       "name": "postAssignConsultant",
       "description": "Assign (add) consultant to a project when name, role and project name is specified.",
-      "parameters": {
-        "type": "object",
-        "properties": {
-          "projectName": {
-            "type": "string"
-          },
-          "consultantName": {
-            "type": "string"
-          },
-          "role": {
-            "type": "string"
-          },
-          "forecast": {
-            "type": "integer"
-          }
-        },
-        "required": [
-          "projectName",
-          "consultantName",
-          "role",
-          "forecast"
-        ]
-      },
       "capabilities": {
         "response_semantics": {
           "data_path": "$",
