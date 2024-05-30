@@ -90,9 +90,9 @@
             "subtitle": "$.id",
             "url": "$.consultantPhotoUrl"
           },
-          "static_template": {
-            "type": "AdaptiveCard",
+          "static_template":{
             "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+            "type": "AdaptiveCard",
             "version": "1.5",
             "body": [
               {
@@ -100,206 +100,55 @@
                 "$data": "${$root}",
                 "items": [
                   {
-                    "type": "TextBlock",
-                    "text": "id: ${if(id, id, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "name: ${if(name, name, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "email: ${if(email, email, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "phone: ${if(phone, phone, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "location.street: ${if(location.street, location.street, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "location.city: ${if(location.city, location.city, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "location.state: ${if(location.state, location.state, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "location.country: ${if(location.country, location.country, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "location.postalCode: ${if(location.postalCode, location.postalCode, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "location.latitude: ${if(location.latitude, location.latitude, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "location.longitude: ${if(location.longitude, location.longitude, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "location.mapUrl: ${if(location.mapUrl, location.mapUrl, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "Container",
-                    "$data": "${skills}",
-                    "items": [
+                    "speak": "${name}",
+                    "type": "ColumnSet",
+                    "columns": [
                       {
-                        "type": "TextBlock",
-                        "text": "skills: ${$data}",
-                        "wrap": true
+                        "type": "Column",
+                        "items": [
+                          {
+                            "type": "TextBlock",
+                            "text": "${name}",
+                            "weight": "bolder",
+                            "size": "extraLarge",
+                            "spacing": "none",
+                            "wrap": true,
+                            "style": "heading"
+                          },
+                          {
+                            "type": "TextBlock",
+                            "text": "${email}",
+                            "wrap": true,
+                            "spacing": "none"
+                          },
+                          {
+                            "type": "TextBlock",
+                            "text": "${phone}",
+                            "wrap": true,
+                            "spacing": "none"
+                          },
+                          {
+                            "type": "TextBlock",
+                            "text": "${location.city}, ${location.country}",
+                            "wrap": true
+                          }
+                        ]
+                      },
+                      {
+                        "type": "Column",
+                        "items": [
+                          {
+                            "type": "Image",
+                            "url": "${consultantPhotoUrl}",
+                            "altText": "${name}"
+                          }
+                        ]
                       }
                     ]
-                  },
-                  {
-                    "type": "Container",
-                    "$data": "${certifications}",
-                    "items": [
-                      {
-                        "type": "TextBlock",
-                        "text": "certifications: ${$data}",
-                        "wrap": true
-                      }
-                    ]
-                  },
-                  {
-                    "type": "Container",
-                    "$data": "${roles}",
-                    "items": [
-                      {
-                        "type": "TextBlock",
-                        "text": "roles: ${$data}",
-                        "wrap": true
-                      }
-                    ]
-                  },
-                  {
-                    "type": "Image",
-                    "url": "${consultantPhotoUrl}",
-                    "$when": "${consultantPhotoUrl != null}"
-                  },
-                  {
-                    "type": "Container",
-                    "$data": "${projects}",
-                    "items": [
-                      {
-                        "type": "TextBlock",
-                        "text": "projects.projectName: ${if(projectName, projectName, 'N/A')}",
-                        "wrap": true
-                      },
-                      {
-                        "type": "TextBlock",
-                        "text": "projects.projectDescription: ${if(projectDescription, projectDescription, 'N/A')}",
-                        "wrap": true
-                      },
-                      {
-                        "type": "TextBlock",
-                        "text": "projects.projectLocation.street: ${if(projectLocation.street, projectLocation.street, 'N/A')}",
-                        "wrap": true
-                      },
-                      {
-                        "type": "TextBlock",
-                        "text": "projects.projectLocation.city: ${if(projectLocation.city, projectLocation.city, 'N/A')}",
-                        "wrap": true
-                      },
-                      {
-                        "type": "TextBlock",
-                        "text": "projects.projectLocation.state: ${if(projectLocation.state, projectLocation.state, 'N/A')}",
-                        "wrap": true
-                      },
-                      {
-                        "type": "TextBlock",
-                        "text": "projects.projectLocation.country: ${if(projectLocation.country, projectLocation.country, 'N/A')}",
-                        "wrap": true
-                      },
-                      {
-                        "type": "TextBlock",
-                        "text": "projects.projectLocation.postalCode: ${if(projectLocation.postalCode, projectLocation.postalCode, 'N/A')}",
-                        "wrap": true
-                      },
-                      {
-                        "type": "TextBlock",
-                        "text": "projects.projectLocation.latitude: ${if(projectLocation.latitude, projectLocation.latitude, 'N/A')}",
-                        "wrap": true
-                      },
-                      {
-                        "type": "TextBlock",
-                        "text": "projects.projectLocation.longitude: ${if(projectLocation.longitude, projectLocation.longitude, 'N/A')}",
-                        "wrap": true
-                      },
-                      {
-                        "type": "TextBlock",
-                        "text": "projects.projectLocation.mapUrl: ${if(projectLocation.mapUrl, projectLocation.mapUrl, 'N/A')}",
-                        "wrap": true
-                      },
-                      {
-                        "type": "TextBlock",
-                        "text": "projects.role: ${if(role, role, 'N/A')}",
-                        "wrap": true
-                      },
-                      {
-                        "type": "TextBlock",
-                        "text": "projects.forecastThisMonth: ${if(forecastThisMonth, forecastThisMonth, 'N/A')}",
-                        "wrap": true
-                      },
-                      {
-                        "type": "TextBlock",
-                        "text": "projects.forecastNextMonth: ${if(forecastNextMonth, forecastNextMonth, 'N/A')}",
-                        "wrap": true
-                      },
-                      {
-                        "type": "TextBlock",
-                        "text": "projects.deliveredLastMonth: ${if(deliveredLastMonth, deliveredLastMonth, 'N/A')}",
-                        "wrap": true
-                      },
-                      {
-                        "type": "TextBlock",
-                        "text": "projects.deliveredThisMonth: ${if(deliveredThisMonth, deliveredThisMonth, 'N/A')}",
-                        "wrap": true
-                      }
-                    ]
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "forecastThisMonth: ${if(forecastThisMonth, forecastThisMonth, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "forecastNextMonth: ${if(forecastNextMonth, forecastNextMonth, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "deliveredLastMonth: ${if(deliveredLastMonth, deliveredLastMonth, 'N/A')}",
-                    "wrap": true
-                  },
-                  {
-                    "type": "TextBlock",
-                    "text": "deliveredThisMonth: ${if(deliveredThisMonth, deliveredThisMonth, 'N/A')}",
-                    "wrap": true
                   }
                 ]
-              }
+              }   
+             
             ]
           }
         }
