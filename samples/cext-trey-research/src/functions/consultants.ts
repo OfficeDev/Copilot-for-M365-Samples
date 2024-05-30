@@ -10,11 +10,11 @@ import { cleanUpParameter } from "../services/Utilities";
 import Identity from "../services/IdentityService";
 
 /**
- * This function handles the HTTP request and returns the repair information.
+ * This function handles the HTTP request and returns the consultant information.
  *
  * @param {HttpRequest} req - The HTTP request.
  * @param {InvocationContext} context - The Azure Functions context object.
- * @returns {Promise<Response>} - A promise that resolves with the HTTP response containing the repair information.
+ * @returns {Promise<Response>} - A promise that resolves with the HTTP response containing the consultant information.
  */
 
 // Define a Response interface.

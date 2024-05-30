@@ -9,11 +9,11 @@ import { ApiConsultant, ApiChargeTimeResponse, ErrorResult } from "../model/apiM
 import { HttpError, cleanUpParameter } from "../services/Utilities";
 import Identity from "../services/IdentityService";
 /**
- * This function handles the HTTP request and returns the repair information.
+ * This function handles the HTTP request and returns my information.
  *
  * @param {HttpRequest} req - The HTTP request.
  * @param {InvocationContext} context - The Azure Functions context object.
- * @returns {Promise<HttpResponse>} - A promise that resolves with the HTTP response containing the repair information.
+ * @returns {Promise<HttpResponse>} - A promise that resolves with the HTTP response containing my information.
  */
 
 // Define a Response interface.
