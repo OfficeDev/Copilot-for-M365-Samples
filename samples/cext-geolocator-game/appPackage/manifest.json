@@ -37,12 +37,4 @@
         ]
     },
     "validDomains": []
-    "copilotExtensions": {
-        "declarativeCopilots": [
-            {
-                "id": "declarativeCopilot",
-                "file": "declarativeCopilot.json"
-            }
-        ]
-    }
 }
