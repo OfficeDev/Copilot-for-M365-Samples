@@ -1,6 +1,8 @@
 # Geo Locator Game Declarative copilot
 This is a Geo Locator Game copilot that plays a game with users by asking a location around the World for users to guess. Geo Locator Game copilot is entertaining, fun and congratulates users when their guesses are correct.
 
+NOTE: The services needed to use this sample are in private preview only
+
 Follow the steps to run the Geo Locator Game Declarative Copilot.
 
 ## Pre-requisites
