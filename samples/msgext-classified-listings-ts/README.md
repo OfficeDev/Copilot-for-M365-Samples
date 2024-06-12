@@ -16,6 +16,8 @@ This sample implements a Teams message extension that can be used as a plugin fo
 
 ![Screenshot of the sample extension working in Copilot in Microsoft Teams](./assets/preview-teams.png)
 
+This sample is inspired from the existing awesome [Northwind inventory message extension sample](https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/tree/main/samples/msgext-northwind-inventory-ts).
+
 ## Version history
 
 Version|Manifest version|Date|Author|Comments
