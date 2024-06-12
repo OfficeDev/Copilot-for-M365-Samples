@@ -175,16 +175,19 @@ let categories: ReferenceData<Category> = null;
 let suppliers: ReferenceData<Supplier> = null;
 let orderTotals: OrderTotals = null;
 
+async function ensureReferenceDataLoaded() {
+    categories = categories ?? await loadReferenceData<Category>(TABLE_NAME.CATEGORY);
+    suppliers = suppliers ?? await loadReferenceData<Supplier>(TABLE_NAME.SUPPLIER);
+    orderTotals = orderTotals ?? await loadOrderTotals();
+}
+
 // #endregion
 
 // #region Data Access functions
 
 async function getAllProductsEx(): Promise<ProductEx[]> {
 
-    // Ensure reference data are loaded
-    categories = categories ?? await loadReferenceData<Category>(TABLE_NAME.CATEGORY);
-    suppliers = suppliers ?? await loadReferenceData<Supplier>(TABLE_NAME.SUPPLIER);
-    orderTotals = orderTotals ?? await loadOrderTotals();
+    await ensureReferenceDataLoaded();
 
     // We always read the products fresh in case somebody made a change
     const result: ProductEx[] = [];
@@ -243,6 +246,9 @@ function getProductExForEntity(entity: TableEntityResult<Record<string, unknown>
 }
 
 export async function getProductEx(productId: number): Promise<ProductEx> {
+
+    await ensureReferenceDataLoaded();
+
     const tableClient = TableClient.fromConnectionString(config.storageAccountConnectionString, TABLE_NAME.PRODUCT);
     const entity = await tableClient.getEntity(TABLE_NAME.PRODUCT, productId.toString());
     const p = getProductExForEntity(entity);
