@@ -61,7 +61,12 @@ server.use(restify.plugins.bodyParser());
 server.listen(process.env.port || process.env.PORT || 3978, () => {
   console.log(`\nBot Started, ${server.name} listening to ${server.url}`);
 });
-
+server.use(restify.plugins.bodyParser());
+// Use the serveStatic plugin to serve static files from the 'public' directory
+// Serve static files from the "public" directory
+server.get('/*', restify.plugins.serveStatic({
+  directory: __dirname
+}));
 // Listen for incoming requests.
 server.post("/api/messages", async (req, res) => {
   await adapter.process(req, res, async (context) => {

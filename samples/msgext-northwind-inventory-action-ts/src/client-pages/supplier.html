@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Dialog: Add supplier</title>   
+    <link rel="icon" href="data:;base64,="> <!-- Suppress favicon error -->
+</head>
+    <body>
+
+        <form id="supplierForm">
+            <div>                
+                <label for="companyName">Company Name:</label>
+                <input type="text" id="companyName" name="companyName" required tabindex="1">   
+                <label for="contactName">Contact Name:</label>
+                <input type="text" id="contactName" name="contactName" required tabindex="1">   
+
+            </div>
+            <div>
+                <button type="submit" tabindex="2">Save</button>
+            </div>
+        </form>
+        <script type="module" src="supplierForm.js"></script>
+    </body>
+
+</html>

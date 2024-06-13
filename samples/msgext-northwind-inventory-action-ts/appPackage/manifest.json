@@ -131,6 +131,31 @@
                             "inputType": "text"
                         }
                     ]
+                },
+                {                  
+                    "id": "addSupplier",
+                    "context": [
+                        "compose",
+                        "commandBox"
+                    ],
+                    "description": "Add a supplier",
+                    "title": "Add a supplier",
+                    "type": "action",
+                    "fetchTask": true,
+                    "parameters": [
+                        {
+                            "name": "companyName",
+                            "title": "Company Name",
+                            "description": "Name of the company to be added.",
+                            "inputType": "text"
+                        },
+                        {
+                            "name": "contactName",
+                            "title": "Contact Name",
+                            "description": "Name of the contact in the company to be added.",
+                            "inputType": "text"
+                        }
+                    ]
                 }
             ]
         }
@@ -142,5 +167,5 @@
         "identity",
         "messageTeamMembers"
     ],
-    "validDomains": []
+    "validDomains": ["${{BOT_DOMAIN}}"]
 }
