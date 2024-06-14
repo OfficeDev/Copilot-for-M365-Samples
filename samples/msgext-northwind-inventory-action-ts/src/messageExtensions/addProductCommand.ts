@@ -65,11 +65,11 @@ async function handleTeamsMessagingExtensionSubmitAction(
                         ProductName: data.productName,
                         SupplierID: data.supplierID,
                         CategoryID: data.categoryID,
-                        QuantityPerUnit: data.qtyPerUnit,
-                        UnitPrice: data.unitPrice,
-                        UnitsInStock: data.unitsInStock,
-                        UnitsOnOrder: data.unitsOnOrder,
-                        ReorderLevel:data.reorderLevel,
+                        QuantityPerUnit: data.qtyPerUnit ?? "0",
+                        UnitPrice: data.unitPrice ?? "0",
+                        UnitsInStock: data.unitsInStock ?? "0",
+                        UnitsOnOrder: data.unitsOnOrder ?? "0",
+                        ReorderLevel:data.reorderLevel ?? "0",
                         Discontinued: data.discontinued,
                         ImageUrl: "https://picsum.photos/seed/1/200/300"
                     }
