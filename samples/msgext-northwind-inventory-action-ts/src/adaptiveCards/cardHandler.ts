@@ -228,11 +228,11 @@ async function handleTeamsCardActionSaveProduct(context: TurnContext) {
         product.ProductName = data.productName;
         product.CategoryID = data.categoryID.value;
         product.SupplierID = data.supplierID.value;
-        product.QuantityPerUnit = data.qtyPerUnit;
-        product.UnitPrice = data.UnitPrice;
-        product.UnitsInStock = data.unitsInStock;
-        product.UnitsOnOrder = data.unitsOnOrder;
-        product.ReorderLevel = data.reorderLevel;
+        product.QuantityPerUnit = data.qtyPerUnit ?? "0";
+        product.UnitPrice = data.UnitPrice ?? "0";
+        product.UnitsInStock = data.unitsInStock ?? "0";
+        product.UnitsOnOrder = data.unitsOnOrder ?? "0";
+        product.ReorderLevel = data.reorderLevel ?? "0";
         product.Discontinued = data.discontinued;
         await updateProduct(product);
 
