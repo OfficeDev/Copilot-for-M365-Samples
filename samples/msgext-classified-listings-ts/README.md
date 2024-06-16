@@ -55,6 +55,70 @@ SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=xxxxxxxxxxxxxxxxxxxxxxx
 AZURE_TABLE_PREFIX=Contoso
 ~~~
 
+3. Create below 3 tables in your Blob storage (Replace `AZURE_TABLE_PREFIX` with your prefix):
+    1. `AZURE_TABLE_PREFIX`Listing
+    2. `AZURE_TABLE_PREFIX`ListingCity
+    3. `AZURE_TABLE_PREFIX`ListingType
+
+### Azure Table Schema 
+
+The solution uses below 3 tables:
+
+1. `AZURE_TABLE_PREFIX`Listing
+
+    This table stores the classified listings information posted by users with below schema:
+
+    | # | Name | Description |
+    |---|------|-------------|
+    | 1 | PartitionKey | Set as `Listing` |
+    | 2 | RowKey | Set as the conversation id |
+    | 3 | Title |  |
+    | 4 | Description |  |
+    | 5 | Price |  |
+    | 6 | CityID | Referenced from `AZURE_TABLE_PREFIX`ListingCity |
+    | 7 | TypeID | Referenced from `AZURE_TABLE_PREFIX`ListingType |
+    | 8 | OwnerID | AAD ID of user |
+    | 9 | OwnerName | Display name of user |
+
+2. `AZURE_TABLE_PREFIX`ListingCity
+
+    This table stores the city information with below schema:
+
+    | # | Name | Description |
+    |---|------|-------------|
+    | 1 | PartitionKey | Set as `City` |
+    | 2 | RowKey | ID of city (e.g. 1, 2, 3) |
+    | 3 | Name | Name of city |
+
+    Below is a sample data:
+
+    | PartitionKey | RowKey | Name |
+    |--------------|--------|------|
+    | City | 1 | Pune |
+    | City | 2 | Mumbai |
+    | City | 3 | New York |
+    | City | 4 | Sydney |
+    | City | 5 | Chicago |
+    | City | 6 | London |
+
+3. `AZURE_TABLE_PREFIX`ListingType
+
+    This table stores the information about type of classified listing with below schema:
+
+    | # | Name | Description |
+    |---|------|-------------|
+    | 1 | PartitionKey | Set as `Type` |
+    | 2 | RowKey | ID of listing type (e.g. 1, 2, 3) |
+    | 3 | Name | Name of listing type |
+
+    Below is a sample data:
+
+    | PartitionKey | RowKey | Name |
+    |--------------|--------|------|
+    | Type | 1 | Buy |
+    | Type | 2 | Rent |
+    | Type | 3 | Sell |
+
 ## Test in Copilot
 
 - Enable the plugin
