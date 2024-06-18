@@ -2,7 +2,6 @@
 
 This repository contains samples that show how to [extend Copilot for Microsoft 365](https://learn.microsoft.com/microsoft-365-copilot/extensibility/).
 
-
 <p style="align:center"><img src="https://learn.microsoft.com/en-gb/microsoft-365-copilot/extensibility/assets/images/m365-extensibility-types.png" alt="This illustration shows types of extensibility options, Graph connector, plugins, and declarative copilots" /></p>
 
 > [!IMPORTANT]  
