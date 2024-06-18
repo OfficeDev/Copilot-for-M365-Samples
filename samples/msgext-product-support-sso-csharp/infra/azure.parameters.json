@@ -27,10 +27,10 @@
       "value": "${{CONNECTION_NAME}}"
     },
     "spoHostName": {
-      "value": "${SPO_HOSTNAME}"
+      "value": "${{SPO_HOSTNAME}}"
     },
     "spoSiteUrl": {
-      "value": "${SPO_SITE_URL}"
+      "value": "${{SPO_SITE_URL}}"
     }
   }
 }

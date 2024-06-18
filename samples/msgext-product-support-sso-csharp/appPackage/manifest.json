@@ -86,7 +86,7 @@
   ],
   "webApplicationInfo": {
     "id": "${{BOT_ID}}",
-    "resource": "api://${BOT_DOMAIN}/botid-${BOT_ID}"
+    "resource": "api://${{BOT_DOMAIN}}/botid-${{BOT_ID}}"
   },
   "permissions": [
     "identity",
