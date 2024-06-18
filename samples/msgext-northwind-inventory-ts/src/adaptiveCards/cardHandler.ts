@@ -214,7 +214,7 @@ async function handleTeamsCardActionPlaceOrder(context: TurnContext) {
                 revenue: product.Revenue,
                 averageDiscount: product.AverageDiscount,
                 // Card message
-                message: `Units on order updated for ${product.ProductName} to ${product.UnitsOnOrder}!\n${successMsg} sent to the supplier.`
+                message: `Units on order updated for ${product.ProductName} to ${product.UnitsOnOrder}! \n ${successMsg} sent to the supplier.`
             }
         });
 

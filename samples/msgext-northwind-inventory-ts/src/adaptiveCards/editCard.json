@@ -259,7 +259,7 @@
                                             },
                                             {
                                                 "type": "Column",
-                                                "width": 5,
+                                                "width": 7,
                                                 "items": [
                                                     {
                                                         "type": "Input.Toggle",
@@ -270,7 +270,7 @@
                                             },
                                             {
                                                 "type": "Column",
-                                                "width": 10,
+                                                "width": 8,
                                                 "items": [
                                                     {
                                                         "type": "Input.Toggle",
