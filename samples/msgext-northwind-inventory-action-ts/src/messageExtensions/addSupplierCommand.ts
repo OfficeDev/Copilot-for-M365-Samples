@@ -1,5 +1,7 @@
 import { CardFactory, MessagingExtensionAction, MessagingExtensionActionResponse, TurnContext } from "botbuilder";
 import config from '../config';
+import { createSupplier } from "../northwindDB/suppliers";
+import { Supplier } from "../northwindDB/model";
 const COMMAND_ID = "addSupplier";
 async function handleTeamsMessagingExtensionFetchTask(
     context: TurnContext,
@@ -40,7 +42,7 @@ async function handleTeamsMessagingExtensionSubmitAction(
     action: MessagingExtensionAction
 ): Promise<MessagingExtensionActionResponse> {
     try {
-        const data = action.data;
+       
         if (action.commandId === COMMAND_ID) {
             let initialParameters = {};
             if (action.data && action.data.taskParameters) {
@@ -48,7 +50,25 @@ async function handleTeamsMessagingExtensionSubmitAction(
             } else {
                 initialParameters = action.data
             }
-            //todo: add supplier to database                
+            const supplier:Supplier={
+                etag: "",
+                partitionKey: "",
+                rowKey: "",
+                timestamp: new Date(),
+                SupplierID: "",
+                CompanyName:initialParameters["companyName"],
+                ContactName:initialParameters["contactName"],
+                ContactTitle:"",
+                Address:"",
+                City:"",
+                Region:"",
+                PostalCode:"",
+                Country:"",
+                Phone:"",
+                Fax:"",
+                HomePage:""
+            }
+            await createSupplier(supplier);            
 
             const heroCard = CardFactory.heroCard('Supplier added successfully', initialParameters["companyName"]);
             const attachment = {
