@@ -13,6 +13,8 @@ body:
       label: Sample
       description: Which sample are you having an issue with?
       options:
+        - cext-geolocator-game
+        - cext-trey-research
         - msgext-doc-search-csharp
         - msgext-doc-search-js
         - msgext-multiparam-csharp
