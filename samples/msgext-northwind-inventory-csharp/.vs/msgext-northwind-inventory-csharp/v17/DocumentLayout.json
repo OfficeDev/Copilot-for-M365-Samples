@@ -1,0 +1,431 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|c:\\users\\v-jegadeeshv\\source\\new folder\\msgext-northwind-inventory-ts\\dbsetup\\azuretablesetup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|solutionrelative:dbsetup\\azuretablesetup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|c:\\users\\v-jegadeeshv\\source\\new folder\\msgext-northwind-inventory-ts\\controllers\\botcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|solutionrelative:controllers\\botcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-csharp.csproj|c:\\users\\v-jegadeeshv\\source\\new folder\\msgext-northwind-inventory-ts\\msgext-northwind-inventory-csharp.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-csharp.csproj|solutionrelative:msgext-northwind-inventory-csharp.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|c:\\users\\v-jegadeeshv\\source\\new folder\\msgext-northwind-inventory-ts\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|c:\\users\\v-jegadeeshv\\source\\new folder\\msgext-northwind-inventory-ts\\dbsetup\\db\\orderdetails.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|solutionrelative:dbsetup\\db\\orderdetails.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|c:\\users\\v-jegadeeshv\\source\\new folder\\msgext-northwind-inventory-ts\\dbsetup\\db\\orders.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|solutionrelative:dbsetup\\db\\orders.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|c:\\users\\v-jegadeeshv\\source\\new folder\\msgext-northwind-inventory-ts\\dbsetup\\db\\employees.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|solutionrelative:dbsetup\\db\\employees.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|c:\\users\\v-jegadeeshv\\source\\new folder\\msgext-northwind-inventory-ts\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|c:\\users\\v-jegadeeshv\\source\\new folder\\msgext-northwind-inventory-ts\\northwinddb\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|solutionrelative:northwinddb\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|c:\\users\\v-jegadeeshv\\source\\new folder\\msgext-northwind-inventory-ts\\handlers\\cardhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|solutionrelative:handlers\\cardhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|c:\\users\\v-jegadeeshv\\source\\new folder\\msgext-northwind-inventory-ts\\bot\\searchbot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|solutionrelative:bot\\searchbot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|c:\\users\\v-jegadeeshv\\source\\new folder\\msgext-northwind-inventory-ts\\messageextensions\\productsearchcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|solutionrelative:messageextensions\\productsearchcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|c:\\users\\v-jegadeeshv\\source\\new folder\\msgext-northwind-inventory-ts\\messageextensions\\discountsearchcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|solutionrelative:messageextensions\\discountsearchcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|c:\\users\\v-jegadeeshv\\source\\new folder\\msgext-northwind-inventory-ts\\models\\model.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|solutionrelative:models\\model.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|c:\\users\\v-jegadeeshv\\source\\new folder\\msgext-northwind-inventory-ts\\apppackage\\manifest.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|solutionrelative:apppackage\\manifest.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|c:\\users\\v-jegadeeshv\\source\\new folder\\msgext-northwind-inventory-ts\\dbsetup\\db\\customers.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|solutionrelative:dbsetup\\db\\customers.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|c:\\users\\v-jegadeeshv\\source\\new folder\\msgext-northwind-inventory-ts\\dbsetup\\db\\categories.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|solutionrelative:dbsetup\\db\\categories.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|c:\\users\\v-jegadeeshv\\source\\new folder\\msgext-northwind-inventory-ts\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|c:\\users\\v-jegadeeshv\\source\\new folder\\msgext-northwind-inventory-ts\\adaptivecards\\editcard.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|solutionrelative:adaptivecards\\editcard.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|c:\\users\\v-jegadeeshv\\source\\new folder\\msgext-northwind-inventory-ts\\handlers\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|solutionrelative:handlers\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|c:\\users\\v-jegadeeshv\\source\\new folder\\msgext-northwind-inventory-ts\\dbsetup\\db\\suppliers.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|solutionrelative:dbsetup\\db\\suppliers.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|c:\\users\\v-jegadeeshv\\source\\new folder\\msgext-northwind-inventory-ts\\dbsetup\\db\\products.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|solutionrelative:dbsetup\\db\\products.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|c:\\users\\v-jegadeeshv\\source\\new folder\\msgext-northwind-inventory-ts\\adaptivecards\\errorcard.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B1EE0F9F-63C1-4F54-9A7F-CFFA6C03B139}|msgext-northwind-inventory-ts.csproj|solutionrelative:adaptivecards\\errorcard.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Orders.json",
+              "DocumentMoniker": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\DbSetup\\db\\Orders.json",
+              "RelativeDocumentMoniker": "DbSetup\\db\\Orders.json",
+              "ToolTip": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\DbSetup\\db\\Orders.json",
+              "RelativeToolTip": "DbSetup\\db\\Orders.json",
+              "ViewState": "AQIAAB83AAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-06-26T04:36:23.102Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AzureTableSetup.cs",
+              "DocumentMoniker": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\DbSetup\\AzureTableSetup.cs",
+              "RelativeDocumentMoniker": "DbSetup\\AzureTableSetup.cs",
+              "ToolTip": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\DbSetup\\AzureTableSetup.cs",
+              "RelativeToolTip": "DbSetup\\AzureTableSetup.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-18T09:47:43.286Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CardHandler.cs",
+              "DocumentMoniker": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\Handlers\\CardHandler.cs",
+              "RelativeDocumentMoniker": "Handlers\\CardHandler.cs",
+              "ToolTip": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\Handlers\\CardHandler.cs",
+              "RelativeToolTip": "Handlers\\CardHandler.cs",
+              "ViewState": "AQIAADkAAAAAAAAAAADwvzsAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T07:20:52.296Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAoAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-13T09:58:19.74Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "OrderDetails.json",
+              "DocumentMoniker": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\DbSetup\\db\\OrderDetails.json",
+              "RelativeDocumentMoniker": "DbSetup\\db\\OrderDetails.json",
+              "ToolTip": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\DbSetup\\db\\OrderDetails.json",
+              "RelativeToolTip": "DbSetup\\db\\OrderDetails.json",
+              "ViewState": "AQIAANA6AAAAAAAAAAAAAGs2AAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-06-18T19:48:17.701Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "msgext-northwind-inventory-ts.csproj",
+              "DocumentMoniker": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\msgext-northwind-inventory-csharp.csproj",
+              "RelativeDocumentMoniker": "msgext-northwind-inventory-csharp.csproj",
+              "ToolTip": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\msgext-northwind-inventory-csharp.csproj",
+              "RelativeToolTip": "msgext-northwind-inventory-csharp.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-06-17T07:02:16.834Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BotController.cs",
+              "DocumentMoniker": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\Controllers\\BotController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BotController.cs",
+              "ToolTip": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\Controllers\\BotController.cs",
+              "RelativeToolTip": "Controllers\\BotController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T06:00:11.734Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "SearchBot.cs",
+              "DocumentMoniker": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\Bot\\SearchBot.cs",
+              "RelativeDocumentMoniker": "Bot\\SearchBot.cs",
+              "ToolTip": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\Bot\\SearchBot.cs",
+              "RelativeToolTip": "Bot\\SearchBot.cs",
+              "ViewState": "AQIAAFIAAAAAAAAAAAAUwF8AAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-13T09:54:10.963Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-06-13T09:53:46.193Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Employees.json",
+              "DocumentMoniker": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\DbSetup\\db\\Employees.json",
+              "RelativeDocumentMoniker": "DbSetup\\db\\Employees.json",
+              "ToolTip": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\DbSetup\\db\\Employees.json",
+              "RelativeToolTip": "DbSetup\\db\\Employees.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-06-18T19:47:47.507Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "productSearchCommand.cs",
+              "DocumentMoniker": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\MessageExtensions\\productSearchCommand.cs",
+              "RelativeDocumentMoniker": "MessageExtensions\\productSearchCommand.cs",
+              "ToolTip": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\MessageExtensions\\productSearchCommand.cs",
+              "RelativeToolTip": "MessageExtensions\\productSearchCommand.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAQwB4AAABKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T13:36:19.34Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Products.cs",
+              "DocumentMoniker": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\NorthwindDB\\Products.cs",
+              "RelativeDocumentMoniker": "NorthwindDB\\Products.cs",
+              "ToolTip": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\NorthwindDB\\Products.cs",
+              "RelativeToolTip": "NorthwindDB\\Products.cs",
+              "ViewState": "AQIAADEBAAAAAAAAAADwvz0BAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-14T11:11:51.502Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "discountSearchCommand.cs",
+              "DocumentMoniker": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\MessageExtensions\\discountSearchCommand.cs",
+              "RelativeDocumentMoniker": "MessageExtensions\\discountSearchCommand.cs",
+              "ToolTip": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\MessageExtensions\\discountSearchCommand.cs",
+              "RelativeToolTip": "MessageExtensions\\discountSearchCommand.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-14T09:51:17.888Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Model.cs",
+              "DocumentMoniker": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\Models\\Model.cs",
+              "RelativeDocumentMoniker": "Models\\Model.cs",
+              "ToolTip": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\Models\\Model.cs",
+              "RelativeToolTip": "Models\\Model.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGUAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-14T10:41:11.036Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "manifest.json",
+              "DocumentMoniker": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\appPackage\\manifest.json",
+              "RelativeDocumentMoniker": "appPackage\\manifest.json",
+              "ToolTip": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\appPackage\\manifest.json",
+              "RelativeToolTip": "appPackage\\manifest.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-06-24T09:43:58.738Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Customers.json",
+              "DocumentMoniker": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\DbSetup\\db\\Customers.json",
+              "RelativeDocumentMoniker": "DbSetup\\db\\Customers.json",
+              "ToolTip": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\DbSetup\\db\\Customers.json",
+              "RelativeToolTip": "DbSetup\\db\\Customers.json",
+              "ViewState": "AQIAAIACAAAAAAAAAAAqwJMEAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-06-18T18:19:08Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Categories.json",
+              "DocumentMoniker": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\DbSetup\\db\\Categories.json",
+              "RelativeDocumentMoniker": "DbSetup\\db\\Categories.json",
+              "ToolTip": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\DbSetup\\db\\Categories.json",
+              "RelativeToolTip": "DbSetup\\db\\Categories.json",
+              "ViewState": "AQIAADIAAAAAAAAAAAAAAAgAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-06-18T18:09:32.474Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\Properties\\launchSettings.json",
+              "RelativeToolTip": "Properties\\launchSettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-06-13T09:54:30.41Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "utils.cs",
+              "DocumentMoniker": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\Handlers\\utils.cs",
+              "RelativeDocumentMoniker": "Handlers\\utils.cs",
+              "ToolTip": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\Handlers\\utils.cs",
+              "RelativeToolTip": "Handlers\\utils.cs",
+              "ViewState": "AQIAAC8AAAAAAAAAAAAwwDUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-14T10:45:54.881Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "editCard.json",
+              "DocumentMoniker": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\AdaptiveCards\\editCard.json",
+              "RelativeDocumentMoniker": "AdaptiveCards\\editCard.json",
+              "ToolTip": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\AdaptiveCards\\editCard.json",
+              "RelativeToolTip": "AdaptiveCards\\editCard.json",
+              "ViewState": "AQIAANUAAAAAAAAAAAAowPEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-06-21T06:11:51.501Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Suppliers.json",
+              "DocumentMoniker": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\DbSetup\\db\\Suppliers.json",
+              "RelativeDocumentMoniker": "DbSetup\\db\\Suppliers.json",
+              "ToolTip": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\DbSetup\\db\\Suppliers.json",
+              "RelativeToolTip": "DbSetup\\db\\Suppliers.json",
+              "ViewState": "AQIAAFIBAAAAAAAAAAAuwG4AAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-06-18T19:49:53.309Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Products.json",
+              "DocumentMoniker": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\DbSetup\\db\\Products.json",
+              "RelativeDocumentMoniker": "DbSetup\\db\\Products.json",
+              "ToolTip": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\DbSetup\\db\\Products.json",
+              "RelativeToolTip": "DbSetup\\db\\Products.json",
+              "ViewState": "AQIAAOACAAAAAAAAAABRwAEAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-06-18T20:43:19.305Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "errorCard.json",
+              "DocumentMoniker": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\AdaptiveCards\\errorCard.json",
+              "RelativeDocumentMoniker": "AdaptiveCards\\errorCard.json",
+              "ToolTip": "C:\\Users\\v-jegadeeshv\\source\\New folder\\msgext-northwind-inventory-ts\\AdaptiveCards\\errorCard.json",
+              "RelativeToolTip": "AdaptiveCards\\errorCard.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-06-17T08:57:54.713Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
