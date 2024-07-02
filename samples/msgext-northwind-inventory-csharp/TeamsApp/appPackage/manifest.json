@@ -25,7 +25,7 @@
   "accentColor": "#3690E9",
   "bots": [
     {
-      "botId": "${{BOT_ID}}",
+      "botId": "${{AAD_APP_CLIENT_ID}}",
       "scopes": [ "personal", "team", "groupchat" ],
       "isNotificationOnly": false,
       "supportsFiles": false
@@ -33,7 +33,7 @@
   ],
   "composeExtensions": [
     {
-      "botId": "${{BOT_ID}}",
+      "botId": "${{AAD_APP_CLIENT_ID}}",
       "commands": [
         {
           "id": "inventorySearch",

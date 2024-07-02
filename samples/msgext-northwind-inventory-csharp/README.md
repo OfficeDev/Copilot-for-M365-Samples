@@ -26,9 +26,9 @@ Version|Manifest version|Date|Author|Comments
 
 ## Prerequisites
 
-- [Visual Studio 2022 17.7+](https://visualstudio.microsoft.com)
+- [Visual Studio 2022 17.10+](https://visualstudio.microsoft.com)
 - [Azure subscription](https://portal.azure.com)
-- [Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension)
+- [Teams Toolkit for Visual Studio](https://learn.microsoft.com/en-us/microsoftteams/platform/toolkit/toolkit-v4/install-teams-toolkit-vs?pivots=visual-studio-v17-7)
 - You will need a Microsoft work or school account with [permissions to upload custom Teams applications](https://learn.microsoft.com/microsoftteams/platform/concepts/build-and-test/prepare-your-o365-tenant#enable-custom-teams-apps-and-turn-on-custom-app-uploading). The account will also need a Microsoft Copilot for Microsoft 365 license to use the extension in Copilot.
 - You will need to create [local Azure Storage](https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azurite?tabs=visual-studio%2Cblob-storage).
 

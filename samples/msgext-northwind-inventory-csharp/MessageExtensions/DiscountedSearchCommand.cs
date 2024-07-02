@@ -18,8 +18,8 @@ namespace msgext_northwind_inventory_csharp.MessageExtensions
         public const string CommandId = "discountSearch";
         private static int queryCount = 0;
 
-        public static async Task<MessagingExtensionResponse> HandleTeamsMessagingExtensionQueryAsync(ITurnContext<IInvokeActivity> turnContext, MessagingExtensionQuery query,IConfiguration configuration, CancellationToken cancellationToken)
-            {
+        public static async Task<MessagingExtensionResponse> HandleTeamsMessagingExtensionQueryAsync(ITurnContext<IInvokeActivity> turnContext, MessagingExtensionQuery query, IConfiguration configuration, CancellationToken cancellationToken)
+        {
             var categoryName = CleanupParam(query.Parameters?.FirstOrDefault(p => p.Name == "categoryName")?.Value as string);
             ProductService productService = new ProductService(configuration);
             var products = await productService.GetDiscountedProductsByCategory(categoryName);
@@ -34,6 +34,7 @@ namespace msgext_northwind_inventory_csharp.MessageExtensions
                     {
                         Title = product.ProductName,
                         Subtitle = $"Supplied by {product.SupplierName} of {product.SupplierCity}<br />{product.UnitsInStock} in stock",
+                        Images = new List<CardImage> { new CardImage(product.ImageUrl) }
                     }.ToAttachment();
 
                     var resultCard = CardHandler.GetEditCard(product);

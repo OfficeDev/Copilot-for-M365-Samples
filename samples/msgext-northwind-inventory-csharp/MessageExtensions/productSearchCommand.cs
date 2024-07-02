@@ -18,7 +18,7 @@ namespace msgext_northwind_inventory_csharp.MessageExtensions
         public const string CommandId = "inventorySearch";
         private static int queryCount = 0;
 
-        public static async Task<MessagingExtensionResponse> HandleTeamsMessagingExtensionQueryAsync(ITurnContext<IInvokeActivity> turnContext, MessagingExtensionQuery query,IConfiguration configuration, CancellationToken cancellationToken)
+        public static async Task<MessagingExtensionResponse> HandleTeamsMessagingExtensionQueryAsync(ITurnContext<IInvokeActivity> turnContext, MessagingExtensionQuery query, IConfiguration configuration, CancellationToken cancellationToken)
         {
             string productName, categoryName, inventoryStatus, supplierCity, stockLevel;
 
@@ -53,7 +53,8 @@ namespace msgext_northwind_inventory_csharp.MessageExtensions
                 var preview = new HeroCard
                 {
                     Title = product.ProductName,
-                    Subtitle = $"Supplied by {product.SupplierName} of {product.SupplierCity}<br />{product.UnitsInStock} in stock"
+                    Subtitle = $"Supplied by {product.SupplierName} of {product.SupplierCity}<br />{product.UnitsInStock} in stock",
+                    Images = new List<CardImage> { new CardImage(product.ImageUrl) }
                 }.ToAttachment();
 
                 var resultCard = CardHandler.GetEditCard(product);

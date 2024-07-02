@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Azure;
@@ -18,10 +19,8 @@ namespace msgext_northwind_inventory_csharp.DbSetup
             _connectionString = connectionString;
         }
 
-        public async Task SetupTablesAndDataAsync()
+        public async Task SetupTablesAndDataAsync(bool reset = true) // Adjust as needed based on your requirements
         {
-            var reset = true; // Adjust as needed based on your requirements
-
             var tableServiceClient = new TableServiceClient(_connectionString);
 
             if (reset)
@@ -45,14 +44,24 @@ namespace msgext_northwind_inventory_csharp.DbSetup
                 }
                 catch (RequestFailedException ex) when (ex.Status == 404)
                 {
-                    // Table not found, already deleted
                     Console.WriteLine($"Table {table} not found, already deleted.");
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Error deleting table {table}: {ex.Message}");
-                    // Handle or log the exception
                 }
+            }
+
+            while (true)
+            {
+                tables = await GetAllTablesAsync(tableServiceClient);
+                if (tables.Count == 0)
+                {
+                    Console.WriteLine("All tables deleted.");
+                    break;
+                }
+                Console.WriteLine("Waiting for tables to be deleted...");
+                await Task.Delay(1000);
             }
         }
 
@@ -70,17 +79,27 @@ namespace msgext_northwind_inventory_csharp.DbSetup
         {
             var tables = new List<string>
             {
-                TableNameConstants.CATEGORY,
-                TableNameConstants.CUSTOMER,
-                TableNameConstants.EMPLOYEE,
-                TableNameConstants.ORDER,
-                TableNameConstants.ORDER_DETAIL,
-                TableNameConstants.PRODUCT,
-                TableNameConstants.SUPPLIER
+                "Categories", "Customers", "Employees", "Orders", "OrderDetails", "Products", "Suppliers"
             };
 
-            foreach (var table in tables)
+            var rowKeyColumnNames = new List<string>
             {
+                "CategoryID", "CustomerID", "EmployeeID", "OrderID", null, "ProductID", "SupplierID"
+            };
+
+            var generateImage = new List<bool>
+            {
+                false, true, false, false, false, true, true
+            };
+
+            var generateFlag = new List<bool>
+            {
+                false, true, false, false, false, false, true
+            };
+
+            for (int index = 0; index < tables.Count; index++)
+            {
+                var table = tables[index];
                 var tableClient = tableServiceClient.GetTableClient(table);
 
                 if (await TableExistsAsync(tableClient))
@@ -98,33 +117,33 @@ namespace msgext_northwind_inventory_csharp.DbSetup
 
                     switch (table)
                     {
-                        case TableNameConstants.CATEGORY:
+                        case "Categories":
                             var categories = JsonSerializer.Deserialize<List<Category>>(jsonString);
-                            await AddEntitiesAsync(tableClient, categories, table);
+                            await AddEntitiesAsync(tableClient, categories, table, rowKeyColumnNames[index], generateImage[index], generateFlag[index]);
                             break;
-                        case TableNameConstants.CUSTOMER:
+                        case "Customers":
                             var customers = JsonSerializer.Deserialize<List<Customer>>(jsonString);
-                            await AddEntitiesAsync(tableClient, customers, table);
+                            await AddEntitiesAsync(tableClient, customers, table, rowKeyColumnNames[index], generateImage[index], generateFlag[index]);
                             break;
-                        case TableNameConstants.EMPLOYEE:
+                        case "Employees":
                             var employees = JsonSerializer.Deserialize<List<Employee>>(jsonString);
-                            await AddEntitiesAsync(tableClient, employees, table);
+                            await AddEntitiesAsync(tableClient, employees, table, rowKeyColumnNames[index], generateImage[index], generateFlag[index]);
                             break;
-                        case TableNameConstants.ORDER:
+                        case "Orders":
                             var orders = JsonSerializer.Deserialize<List<Order>>(jsonString);
-                            await AddEntitiesAsync(tableClient, orders, table);
+                            await AddEntitiesAsync(tableClient, orders, table, rowKeyColumnNames[index], generateImage[index], generateFlag[index]);
                             break;
-                        case TableNameConstants.ORDER_DETAIL:
+                        case "OrderDetails":
                             var orderDetails = JsonSerializer.Deserialize<List<OrderDetail>>(jsonString);
-                            await AddEntitiesAsync(tableClient, orderDetails, table);
+                            await AddEntitiesAsync(tableClient, orderDetails, table, rowKeyColumnNames[index], generateImage[index], generateFlag[index]);
                             break;
-                        case TableNameConstants.PRODUCT:
+                        case "Products":
                             var products = JsonSerializer.Deserialize<List<Product>>(jsonString);
-                            await AddEntitiesAsync(tableClient, products, table);
+                            await AddEntitiesAsync(tableClient, products, table, rowKeyColumnNames[index], generateImage[index], generateFlag[index]);
                             break;
-                        case TableNameConstants.SUPPLIER:
+                        case "Suppliers":
                             var suppliers = JsonSerializer.Deserialize<List<Supplier>>(jsonString);
-                            await AddEntitiesAsync(tableClient, suppliers, table);
+                            await AddEntitiesAsync(tableClient, suppliers, table, rowKeyColumnNames[index], generateImage[index], generateFlag[index]);
                             break;
                         default:
                             throw new InvalidOperationException($"Unknown table name: {table}");
@@ -133,27 +152,41 @@ namespace msgext_northwind_inventory_csharp.DbSetup
                 catch (RequestFailedException ex)
                 {
                     Console.WriteLine($"Failed to create table {table}: {ex.Message}");
-                    // Handle or log the exception
                 }
                 catch (IOException ex)
                 {
                     Console.WriteLine($"Error reading JSON file for {table}: {ex.Message}");
-                    // Handle or log the exception
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Error creating table {table}: {ex.Message}");
-                    // Handle or log the exception
                 }
             }
         }
 
-        private async Task AddEntitiesAsync<T>(TableClient tableClient, List<T> entities, string tableName) where T : class, IRow
+        private async Task AddEntitiesAsync<T>(TableClient tableClient, List<T> entities, string tableName, string rowKeyColumnName, bool generateImage, bool generateFlag) where T : class, IRow
         {
             foreach (var entity in entities)
             {
                 entity.PartitionKey = tableName;
-                entity.RowKey = GetRowKey(entity);
+                entity.RowKey = rowKeyColumnName != null ? GetRowKey(entity, rowKeyColumnName) : Guid.NewGuid().ToString();
+
+                var imageUrlProperty = typeof(T).GetProperty("ImageUrl");
+                if (generateImage && (imageUrlProperty == null || string.IsNullOrEmpty(imageUrlProperty.GetValue(entity, null)?.ToString())))
+                {
+                    imageUrlProperty?.SetValue(entity, $"https://picsum.photos/seed/{entity.RowKey}/200/300");
+                }
+
+                var countryProperty = typeof(T).GetProperty("Country");
+                var flagUrlProperty = typeof(T).GetProperty("FlagUrl");
+                if (generateFlag && countryProperty != null)
+                {
+                    var country = countryProperty.GetValue(entity, null)?.ToString();
+                    if (flagUrlProperty != null && !string.IsNullOrEmpty(country))
+                    {
+                        flagUrlProperty.SetValue(entity, GetFlagUrl(country));
+                    }
+                }
 
                 var tableEntity = new TableEntity(entity.PartitionKey, entity.RowKey);
 
@@ -171,19 +204,46 @@ namespace msgext_northwind_inventory_csharp.DbSetup
             }
         }
 
-        private string GetRowKey(IRow entity)
+        private string GetRowKey<T>(T entity, string rowKeyColumnName) where T : class
         {
-            return entity switch
+            var property = typeof(T).GetProperty(rowKeyColumnName);
+            if (property == null)
             {
-                ICategory category => category.CategoryID.ToString(),
-                ICustomer customer => customer.CustomerID,
-                IEmployee employee => employee.EmployeeID.ToString(),
-                IOrder order => order.OrderID.ToString(),
-                IOrderDetail orderDetail => $"{orderDetail.OrderID}_{orderDetail.ProductID}",
-                IProduct product => product.ProductID.ToString(),
-                ISupplier supplier => supplier.SupplierID.ToString(),
-                _ => throw new InvalidOperationException("Unknown entity type")
+                throw new InvalidOperationException($"Row key property {rowKeyColumnName} not found on type {typeof(T).Name}");
+            }
+
+            var value = property.GetValue(entity);
+            if (value == null)
+            {
+                throw new InvalidOperationException($"Row key value for property {rowKeyColumnName} is null on type {typeof(T).Name}");
+            }
+
+            return value.ToString();
+        }
+
+        private string GetFlagUrl(string country)
+        {
+            var countryCodes = new Dictionary<string, string>
+            {
+                { "australia", "au" },
+                { "brazil", "br" },
+                { "canada", "ca" },
+                { "denmark", "dk" },
+                { "france", "fr" },
+                { "germany", "de" },
+                { "finland", "fi" },
+                { "italy", "it" },
+                { "japan", "jp" },
+                { "netherlands", "nl" },
+                { "norway", "no" },
+                { "singapore", "sg" },
+                { "spain", "es" },
+                { "sweden", "se" },
+                { "uk", "gb" },
+                { "usa", "us" }
             };
+
+            return countryCodes.TryGetValue(country.ToLower(), out var code) ? $"https://flagcdn.com/32x24/{code}.png" : null;
         }
 
         private async Task<bool> TableExistsAsync(TableClient tableClient)
