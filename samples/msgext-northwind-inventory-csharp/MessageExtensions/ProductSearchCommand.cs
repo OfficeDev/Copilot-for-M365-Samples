@@ -25,19 +25,19 @@ namespace msgext_northwind_inventory_csharp.MessageExtensions
             if (query.Parameters.Count == 1 && query.Parameters[0]?.Name == "productName")
             {
                 var values = query.Parameters[0]?.Value.ToString().Split(',');
-                productName = CleanupParam(values.ElementAtOrDefault(0));
-                categoryName = CleanupParam(values.ElementAtOrDefault(1));
-                inventoryStatus = CleanupParam(values.ElementAtOrDefault(2));
-                supplierCity = CleanupParam(values.ElementAtOrDefault(3));
-                stockLevel = CleanupParam(values.ElementAtOrDefault(4));
+                productName = Utils.CleanupParam(values.ElementAtOrDefault(0));
+                categoryName = Utils.CleanupParam(values.ElementAtOrDefault(1));
+                inventoryStatus = Utils.CleanupParam(values.ElementAtOrDefault(2));
+                supplierCity = Utils.CleanupParam(values.ElementAtOrDefault(3));
+                stockLevel = Utils.CleanupParam(values.ElementAtOrDefault(4));
             }
             else
             {
-                productName = CleanupParam(query.Parameters?.FirstOrDefault(p => p.Name == "productName")?.Value as string);
-                categoryName = CleanupParam(query.Parameters?.FirstOrDefault(p => p.Name == "categoryName")?.Value as string);
-                inventoryStatus = CleanupParam(query.Parameters?.FirstOrDefault(p => p.Name == "inventoryStatus")?.Value as string);
-                supplierCity = CleanupParam(query.Parameters?.FirstOrDefault(p => p.Name == "supplierCity")?.Value as string);
-                stockLevel = CleanupParam(query.Parameters?.FirstOrDefault(p => p.Name == "stockQuery")?.Value as string);
+                productName = Utils.CleanupParam(query.Parameters?.FirstOrDefault(p => p.Name == "productName")?.Value as string);
+                categoryName = Utils.CleanupParam(query.Parameters?.FirstOrDefault(p => p.Name == "categoryName")?.Value as string);
+                inventoryStatus = Utils.CleanupParam(query.Parameters?.FirstOrDefault(p => p.Name == "inventoryStatus")?.Value as string);
+                supplierCity = Utils.CleanupParam(query.Parameters?.FirstOrDefault(p => p.Name == "supplierCity")?.Value as string);
+                stockLevel = Utils.CleanupParam(query.Parameters?.FirstOrDefault(p => p.Name == "stockQuery")?.Value as string);
             }
 
             Console.WriteLine($"🔎 Query #{++queryCount}:\nproductName={productName}, categoryName={categoryName}, inventoryStatus={inventoryStatus}, supplierCity={supplierCity}, stockLevel={stockLevel}");
@@ -78,18 +78,6 @@ namespace msgext_northwind_inventory_csharp.MessageExtensions
                     Attachments = attachments
                 }
             };
-        }
-
-        private static string CleanupParam(string value)
-        {
-            if (string.IsNullOrEmpty(value))
-            {
-                return string.Empty;
-            }
-            var result = value.Trim();
-            result = result.Split(',')[0];
-            result = result.Replace("*", string.Empty);
-            return result;
         }
     }
 }

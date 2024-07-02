@@ -26,12 +26,6 @@ if (string.IsNullOrEmpty(storageConnectionString))
     throw new ArgumentNullException(nameof(storageConnectionString), "Storage connection string cannot be null or empty.");
 }
 
-// Create the Bot Framework Authentication to be used with the Bot Adapter.
-var microsoftAppType = builder.Configuration["MicrosoftAppType"];
-var microsoftAppId = builder.Configuration["MicrosoftAppId"];
-var microsoftAppPassword = builder.Configuration["MicrosoftAppPassword"];
-var microsoftAppTenantId = builder.Configuration["MicrosoftAppTenantId"];
-
 // Set up services
 builder.Services.AddControllers();
 builder.Services.AddHttpClient("WebClient", client => client.Timeout = TimeSpan.FromSeconds(600));
@@ -50,7 +44,6 @@ builder.Services.AddTransient<IBot, SearchBot>();
 
 // Register the AzureTableSetup service
 builder.Services.AddSingleton<AzureTableSetup>(sp => new AzureTableSetup(storageConnectionString));
-
 
 // Build the application
 var app = builder.Build();

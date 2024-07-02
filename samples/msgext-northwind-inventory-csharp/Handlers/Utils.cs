@@ -75,5 +75,14 @@ namespace msgext_northwind_inventory_csharp.Handlers
                 return "Unknown"; // fallback
             }
         }
+
+        public static string CleanupParam(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return string.Empty;
+            }
+            return value.Trim().Split(',')[0].Replace("*", string.Empty);
+        }
     }
 }

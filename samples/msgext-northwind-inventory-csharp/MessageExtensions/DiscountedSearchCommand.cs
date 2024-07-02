@@ -20,7 +20,7 @@ namespace msgext_northwind_inventory_csharp.MessageExtensions
 
         public static async Task<MessagingExtensionResponse> HandleTeamsMessagingExtensionQueryAsync(ITurnContext<IInvokeActivity> turnContext, MessagingExtensionQuery query, IConfiguration configuration, CancellationToken cancellationToken)
         {
-            var categoryName = CleanupParam(query.Parameters?.FirstOrDefault(p => p.Name == "categoryName")?.Value as string);
+            var categoryName = Utils.CleanupParam(query.Parameters?.FirstOrDefault(p => p.Name == "categoryName")?.Value as string);
             ProductService productService = new ProductService(configuration);
             var products = await productService.GetDiscountedProductsByCategory(categoryName);
 
@@ -75,15 +75,6 @@ namespace msgext_northwind_inventory_csharp.MessageExtensions
                 return null;
             }
 
-        }
-
-        private static string CleanupParam(string value)
-        {
-            if (string.IsNullOrEmpty(value))
-            {
-                return string.Empty;
-            }
-            return value.Trim().Split(',')[0].Replace("*", string.Empty);
         }
     }
 }

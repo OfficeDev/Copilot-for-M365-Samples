@@ -57,7 +57,6 @@
         public string PartitionKey { get; set; }
         public string RowKey { get; set; }
         public DateTime Timestamp { get; set; }
-
         public string CustomerID { get; set; }
         public string CompanyName { get; set; }
         public string ContactName { get; set; }
@@ -79,7 +78,6 @@
         public string PartitionKey { get; set; }
         public string RowKey { get; set; }
         public DateTime Timestamp { get; set; }
-
         public int EmployeeID { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
@@ -108,7 +106,6 @@
         public string PartitionKey { get; set; }
         public string RowKey { get; set; }
         public DateTime Timestamp { get; set; }
-
         public int OrderID { get; set; }
         public int ProductID { get; set; }
         public decimal UnitPrice { get; set; }
@@ -122,7 +119,6 @@
         public string PartitionKey { get; set; }
         public string RowKey { get; set; }
         public DateTime Timestamp { get; set; }
-
         public int OrderID { get; set; }
         public string CustomerID { get; set; }
         public int EmployeeID { get; set; }
@@ -146,7 +142,6 @@
         public string PartitionKey { get; set; }
         public string RowKey { get; set; }
         public DateTime Timestamp { get; set; }
-
         public int ProductID { get; set; }
         public string ProductName { get; set; }
         public int SupplierID { get; set; }
@@ -166,7 +161,6 @@
         public string PartitionKey { get; set; }
         public string RowKey { get; set; }
         public DateTime Timestamp { get; set; }
-
         public int ProductID { get; set; }
         public string ProductName { get; set; }
         public int SupplierID { get; set; }
@@ -178,7 +172,6 @@
         public int ReorderLevel { get; set; }
         public bool Discontinued { get; set; }
         public string ImageUrl { get; set; }
-
         public string CategoryName { get; set; }
         public string SupplierName { get; set; }
         public string SupplierCity { get; set; }
