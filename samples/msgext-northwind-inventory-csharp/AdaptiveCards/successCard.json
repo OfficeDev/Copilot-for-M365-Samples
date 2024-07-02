@@ -237,11 +237,6 @@
                     "data": {
                       "productId": "${productId}"
                     }
-                  },
-                  {
-                      "type": "Action.OpenUrl",
-                      "title": "Handoff to bot",
-                      "url": "https://teams.microsoft.com/l/chat/0/0?users=28:758dcadb-01d6-4b75-a8af-3c19d8e84687&continuation=test-continuation-token"
                   }
                 ]
               }
