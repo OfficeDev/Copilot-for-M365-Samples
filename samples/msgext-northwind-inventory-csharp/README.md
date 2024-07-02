@@ -21,8 +21,7 @@ This sample implements a Teams message extension that can be used as a plugin fo
 
 Version|Manifest version|Date|Author|Comments
 -------|--|--|----|--------
-1.0|1.16|November 15, 2023 |Bob German <br/> Garry Trinder <br/> Rabia Williams|Initial release for Ignite 2023 labs
-1.1|1.16|December 7, 2023 |Bob German|Parameters are now passed by name not value
+1.0|1.16|November 15, 2023 |Jegadeesh V <br/> Wajeed Shaikh|Initial release for Csharp labs
 
 ## Prerequisites
 
