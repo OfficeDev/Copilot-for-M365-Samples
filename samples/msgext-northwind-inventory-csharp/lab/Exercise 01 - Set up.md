@@ -85,11 +85,9 @@ In Visual Studio, right-click your **TeamsApp** project and **Select Teams Toolk
 
 Using the extension, sign in with your Microsoft 365 account where you have permissions to upload custom apps.
 
-Select **Debug > Start Debugging** or **F5** to run the menu in Visual Studio.In the browser that launches, select the **Add** button to install the app to Teams.
-
 > If you do not have permission to upload custom apps (sideloading), Teams Toolkit will recommend creating and using a Microsoft 365 Developer Program account - a free program to get your own dev environment sandbox that includes Teams.
 
 ## Congratulations
 
 You have completed Exercise 1.
-Please proceed to [Exercise 2](./Exercise%2002%20-%20Run%20sample%20app.md) in which you will run the sample application as a message extension.
+Please proceed to [Exercise 2](./Exercise%2002%20-%20Run%20sample%20app.md) in which you will run the sample application locally.

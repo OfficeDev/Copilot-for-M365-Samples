@@ -37,6 +37,15 @@ The **appsettings.json** file should contain below value:
 StorageConnectionString=UseDevelopmentStorage=true
 ~~~
 
+- Enable Multi-Project Launch Profiles
+
+Click the "Debug" menu in Visual Studio and then select "Options".
+
+![Enable Multi-Project](./images/02-01-Enable-multiprojects-01.png)
+
+Navigate to Environment > Preview Features and check the checkbox labeled "Enable Multi-Project Launch Profiles".
+
+![Enable Multi-Project](./images/02-01-Enable-multiprojects-02.png)
 
 ## Step 2 - Run the application locally
 
