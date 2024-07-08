@@ -21,15 +21,15 @@ This sample implements a Teams message extension that can be used as a plugin fo
 
 Version|Manifest version|Date|Author|Comments
 -------|--|--|----|--------
-1.0|1.16|November 15, 2023 |Jegadeesh V <br/> Wajeed Shaikh|Initial release for Csharp labs
+1.0.0|1.16|July 08, 2024 |Jegadeesh V <br/> Wajeed Shaikh|Initial release for Csharp labs
 
 ## Prerequisites
 
 - [Visual Studio 2022 17.10+](https://visualstudio.microsoft.com)
 - [Azure subscription](https://portal.azure.com)
-- [Teams Toolkit for Visual Studio](https://learn.microsoft.com/en-us/microsoftteams/platform/toolkit/toolkit-v4/install-teams-toolkit-vs?pivots=visual-studio-v17-7)
+- [Teams Toolkit for Visual Studio](https://learn.microsoft.com/microsoftteams/platform/toolkit/toolkit-v4/install-teams-toolkit-vs?pivots=visual-studio-v17-7)
 - You will need a Microsoft work or school account with [permissions to upload custom Teams applications](https://learn.microsoft.com/microsoftteams/platform/concepts/build-and-test/prepare-your-o365-tenant#enable-custom-teams-apps-and-turn-on-custom-app-uploading). The account will also need a Microsoft Copilot for Microsoft 365 license to use the extension in Copilot.
-- You will need to create [local Azure Storage](https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azurite?tabs=visual-studio%2Cblob-storage).
+- You will need to create [local Azure Storage](https://learn.microsoft.com/azure/storage/common/storage-use-azurite?tabs=visual-studio%2Cblob-storage#running-azurite-from-an-aspnet-project).
 
 ## Setup local Azure Storage
 

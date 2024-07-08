@@ -63,9 +63,9 @@ Now browse to the **sampleDocs** folder within your working folder. Highlight al
 
 By doing this step early, there's a good chance that the Microsoft 365 search engine will have discovered them by the time you're ready for them.
 
-## Step 4 - Install and set up Teams Toolkit for Visual Studio Code
+## Step 4 - Install and set up Teams Toolkit for Visual Studio
 
-Install Teams Toolkit for Visual Studio [Teams Toolkit extension](https://learn.microsoft.com/en-us/microsoftteams/platform/toolkit/toolkit-v4/install-teams-toolkit-vs?pivots=visual-studio-v17-7)
+Install Teams Toolkit for Visual Studio [Teams Toolkit](https://learn.microsoft.com/en-us/microsoftteams/platform/toolkit/toolkit-v4/install-teams-toolkit-vs?pivots=visual-studio-v17-7)
 
 ![Installing Teams Toolkit in Visual Studio](./images/01-04-visual-studio-install.png)
 
