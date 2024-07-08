@@ -27,10 +27,13 @@ This sample implements a Microsoft Teams message extension that can be used as a
 
 ### 1. Prepare SharePoint Online
 
-- Using [SharePoint look book](https://lookbook.microsoft.com) service, provision a new SharePoint Online team site using the [Product support](https://lookbook.microsoft.com/details/81e2fee3-02a0-427b-af8b-8c7f42010fde) template
+- Create a new SharePoint Team site
+  - Site type: Team site
+  - Site name: Product support
+  - Site address: productmarketing
+- Download the [Product Support provisioning template](https://download-directory.github.io/?url=https%3A%2F%2Fgithub.com%2FSharePoint%2Fsp-dev-provisioning-templates%2Ftree%2Fmaster%2Ftenant%2Fproductsupport%2Fsource) source files
+- Apply the template (template.xml) to the Product support SharePoint site using [PnP PowerShell](https://pnp.github.io/powershell/), see [Apply a provisioning template](https://learn.microsoft.com/sharepoint/dev/solution-guidance/introducing-the-pnp-provisioning-engine#apply-a-provisioning-template)
 - In the Products list, [create indexes](https://support.microsoft.com/en-us/office/add-an-index-to-a-list-or-library-column-f3f00554-b7dc-44d1-a2ed-d477eac463b0) on the `Title` and `RetailCategory` columns
-
-> NOTE: If you can't use the SharePoint look book service, you can find the source files to create it manually in the [SharePoint look book repository](https://github.com/SharePoint/sp-dev-provisioning-templates/tree/master/tenant/productsupport)
 
 ### 2. Prepare and run project
 
