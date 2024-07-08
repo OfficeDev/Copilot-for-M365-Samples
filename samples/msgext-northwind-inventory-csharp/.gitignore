@@ -5,6 +5,11 @@ env/.env.*.user
 env/.env.local
 appsettings.Development.json
 .deployment
+appsettings.json
+.vs
+__azurite*
+__blobstorage__
+__queuestorage__
 
 # User-specific files
 *.user
