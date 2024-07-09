@@ -27,23 +27,23 @@ The resulting **.env.local** file should contain this line:
 STORAGE_CONNECTION_STRING=UseDevelopmentStorage=true
 ~~~
 
-- Install Azurite globally using npm
+- Running Azurite from an ASP.NET project
 
-```bash
-  npm install -g azurite
-```
+Right-click on "Connected Services" in Solution Explorer and select **Add** from the dropdown menu. Choose **Azure Storage**.
 
-- start Azurite with debug logging
+![Running Azurite](./images/02-01-Running-Azurite-01.png)
 
-```bash
-  azurite --silent --debug /path/to/debug/log/file
-```
+Select service dependency **Storage Azurite emulator(local)** and click **Next**.
 
-The **appsettings.json** file should contain below value:
+![Running Azurite](./images/02-01-Running-Azurite-02.png)
 
-~~~text
-StorageConnectionString=UseDevelopmentStorage=true
-~~~
+Provide connection string name as **StorageConnectionString** and click **Finish**.
+
+![Running Azurite](./images/02-01-Running-Azurite-03.png)
+
+When the configuration completes, select Close, and the Azurite emulator starts automatically. The output looks similar to the following screenshot.
+
+![Running Azurite](./images/02-01-Running-Azurite-04.png)
 
 - Enable Multi-Project Launch Profiles
 

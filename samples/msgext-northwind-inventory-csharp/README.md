@@ -31,20 +31,6 @@ Version|Manifest version|Date|Author|Comments
 - You will need a Microsoft work or school account with [permissions to upload custom Teams applications](https://learn.microsoft.com/microsoftteams/platform/concepts/build-and-test/prepare-your-o365-tenant#enable-custom-teams-apps-and-turn-on-custom-app-uploading). The account will also need a Microsoft Copilot for Microsoft 365 license to use the extension in Copilot.
 - You will need to create [local Azure Storage](https://learn.microsoft.com/azure/storage/common/storage-use-azurite?tabs=visual-studio%2Cblob-storage#running-azurite-from-an-aspnet-project).
 
-## Setup local Azure Storage
-
-- Install Azurite globally using npm
-
-```bash
-  npm install -g azurite
-```
-
-- start Azurite with debug logging
-
-```bash
-  azurite --silent --debug /path/to/debug/log/file
-```
-
 ## Setup and use the sample
 
 For instructions on setting up and running the sample, see the [lab exercises](./lab/Exercise%2000%20-%20Welcome.md).
