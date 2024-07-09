@@ -83,7 +83,17 @@ In Visual Studio, right-click your **TeamsApp** project and **Select Teams Toolk
 
 ![Prepare Teams App Dependencies](./images/01-04-prepare-dependencies-01.png)
 
-Using the extension, sign in with your Microsoft 365 account where you have permissions to upload custom apps.
+Sign in with your Microsoft 365 account where you have permissions to upload custom apps.
+
+![Prepare Teams App Dependencies](./images/01-04-prepare-dependencies-02.png)
+
+Select existing or create a new resource group and subscription. Click **Provision** button.
+
+![Prepare Teams App Dependencies](./images/01-04-prepare-dependencies-03.png)
+
+Once the provisioning is completed, you will receive a message box as shown below.
+
+![Prepare Teams App Dependencies](./images/01-04-prepare-dependencies-04.png)
 
 > If you do not have permission to upload custom apps (sideloading), Teams Toolkit will recommend creating and using a Microsoft 365 Developer Program account - a free program to get your own dev environment sandbox that includes Teams.
 
