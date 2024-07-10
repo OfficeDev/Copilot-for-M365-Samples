@@ -32,15 +32,10 @@ namespace msgext_northwind_inventory_csharp.Handlers
         {
             var errorResponse = new
             {
-                statusCode = statusCode,
-                type = "application/vnd.microsoft.error",
-                value = new
+                error = new
                 {
-                    error = new
-                    {
-                        code = errorCode,
-                        message = errorMessage
-                    }
+                    code = errorCode,
+                    message = errorMessage
                 }
             };
 
@@ -48,7 +43,7 @@ namespace msgext_northwind_inventory_csharp.Handlers
             {
                 StatusCode = statusCode,
                 Type = "application/vnd.microsoft.error",
-                Value = JObject.FromObject(errorResponse)
+                Value = errorResponse
             };
         }
 

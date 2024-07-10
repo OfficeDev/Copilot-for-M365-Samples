@@ -80,13 +80,13 @@ namespace msgext_northwind_inventory_csharp.Bots
                         return await CardHandler.HandleTeamsCardActionCancelRestockAsync(turnContext, _configuration, cancellationToken);
 
                     default:
-                        return CreateActionErrorResponse(HttpStatusCode.BadRequest, 0, $"ActionVerbNotSupported: {verb} is not a supported action verb.");
+                        return Utils.CreateActionErrorResponse((int)HttpStatusCode.OK, 0, $"ActionVerbNotSupported: {verb} is not a supported action verb.");
                 }
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error handling adaptive card invoke");
-                return CreateActionErrorResponse(HttpStatusCode.InternalServerError, 0, ex.Message);
+                return Utils.CreateActionErrorResponse((int)HttpStatusCode.InternalServerError, 0, ex.Message);
             }
         }
 
@@ -132,43 +132,6 @@ namespace msgext_northwind_inventory_csharp.Bots
                     Body = $"Invoke activity received - {turnContext.Activity.Name}"
                 };
             }
-        }
-
-        private AdaptiveCardInvokeResponse CreateActionErrorResponse(HttpStatusCode statusCode, int errorCode, string message)
-        {
-            return new AdaptiveCardInvokeResponse
-            {
-                StatusCode = (int)statusCode,
-                Type = "application/vnd.microsoft.error",
-                Value = new { Code = errorCode, Message = message }
-            };
-        }
-    }
-
-    public static class ActionHandler
-    {
-        public static async Task<AdaptiveCardInvokeResponse> HandleTeamsCardActionUpdateStockAsync(
-            ITurnContext<IInvokeActivity> turnContext,
-            CancellationToken cancellationToken)
-        {
-            // Implement your logic here
-            return await Task.FromResult(new AdaptiveCardInvokeResponse());
-        }
-
-        public static async Task<AdaptiveCardInvokeResponse> HandleTeamsCardActionRestockAsync(
-            ITurnContext<IInvokeActivity> turnContext,
-            CancellationToken cancellationToken)
-        {
-            // Implement your logic here
-            return await Task.FromResult(new AdaptiveCardInvokeResponse());
-        }
-
-        public static async Task<AdaptiveCardInvokeResponse> HandleTeamsCardActionCancelRestockAsync(
-            ITurnContext<IInvokeActivity> turnContext,
-            CancellationToken cancellationToken)
-        {
-            // Implement your logic here
-            return await Task.FromResult(new AdaptiveCardInvokeResponse());
         }
     }
 }

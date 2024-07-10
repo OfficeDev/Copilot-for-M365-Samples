@@ -55,6 +55,10 @@ Navigate to Environment > Preview Features and check the checkbox labeled "Enabl
 
 ![Enable Multi-Project](./images/02-01-Enable-multiprojects-02.png)
 
+> Note : Running this sample for the first time may prompt you to trust the ASP.NET Core SSL Certificate. In that case, click "Yes".
+
+![SSL Certificate](./images/02-01-SSL-Certificate-01.png)
+
 ## Step 2 - Run the application locally
 
 Click F5 to start debugging, or click the start button 1️⃣. Make sure that the debug profile is **Microsoft Teams (browser)** 2️⃣.
