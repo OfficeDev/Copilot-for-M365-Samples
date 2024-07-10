@@ -1,8 +1,8 @@
-import {Client} from '@microsoft/microsoft-graph-client';
-import {ProductItem} from '../types/ProductItems';
+import { Client } from '@microsoft/microsoft-graph-client';
+import { ProductItem } from '../types/ProductItems';
 import config from '../config';
-import {getFileNameFromUrl} from '../util';
-import { ThumbnailSet } from '@microsoft/microsoft-graph-types';
+import { getFileNameFromUrl } from '../util';
+import { ColumnDefinition, ThumbnailSet } from '@microsoft/microsoft-graph-types';
 
 const listFields = [
   'id',
@@ -15,29 +15,32 @@ const listFields = [
 
 export class GraphService {
   private _token: string;
-  graphClient: Client;
-  constructor(token) {
+  private graphClient: Client;
+
+  constructor(token: string) {
     if (!token || !token.trim()) {
       throw new Error('SimpleGraphClient: Invalid token received.');
     }
     this._token = token;
-    // Get an Authenticated Microsoft Graph client using the token issued to the user.
+
     this.graphClient = Client.init({
       authProvider: done => {
-        done(null, this._token); // First parameter takes an error if you can't get an access token.
+        done(null, this._token);
       },
     });
   }
-  async getSharePointStieId(): Promise<string> {
-    const {sharepointIds} = await this.graphClient
+  async getSharePointSiteId(): Promise<string> {
+    const { sharepointIds } = await this.graphClient
       .api(`/sites/${config.sharepointHost}:/${config.sharepointSite}`)
       .select('sharepointIds')
       .get();
+
     return sharepointIds.siteId;
   }
 
-  async getProducts(productName, retailCategory): Promise<ProductItem[]> {
-    const siteId = await this.getSharePointStieId();
+  async getProducts(productName: string, retailCategory: string): Promise<ProductItem[]> {
+    const siteId = await this.getSharePointSiteId();
+
     let filterText = `&$filter=startswith(fields/Title,'${productName}')`;
     if (productName && retailCategory) {
       filterText = `&$filter=startswith(fields/Title,'${productName}') and fields/RetailCategory eq '${retailCategory}'`;
@@ -46,6 +49,7 @@ export class GraphService {
     } else if (retailCategory) {
       filterText = `&$filter=fields/RetailCategory eq '${retailCategory}'`;
     }
+
     const products = await this.graphClient
       .api(
         `/sites/${siteId}/lists/Products/items?expand=fields&select=${listFields.join(
@@ -53,7 +57,8 @@ export class GraphService {
         )}${filterText}`
       )
       .get();
-    const productItems: ProductItem[] = products.value.map(item => {
+
+    const productItems: ProductItem[] = products.value.map((item: any) => {
       return {
         Id: item.id,
         Title: item.fields.Title,
@@ -63,20 +68,23 @@ export class GraphService {
         ReleaseDate: item.fields.ReleaseDate,
       };
     });
+
     return productItems;
   }
 
-  async getretailCategories() {
-    const siteId = await this.getSharePointStieId();
-    const column = await this.graphClient
+  async getRetailCategories(): Promise<string[]> {
+    const siteId = await this.getSharePointSiteId();
+
+    const column: ColumnDefinition = await this.graphClient
       .api(`/sites/${siteId}/lists/Products/columns/RetailCategory`)
       .get();
+
     return column.choice.choices;
   }
 
-  //update product details in the SharePoint list using productId and siteId with product infor
   async updateProduct(product): Promise<ProductItem> {
-    const siteId = await this.getSharePointStieId();
+    const siteId = await this.getSharePointSiteId();
+
     const item = {
       fields: {
         Title: product.Title,
@@ -84,9 +92,11 @@ export class GraphService {
         ReleaseDate: product.ReleaseDate,
       },
     };
+
     const updatedData = await this.graphClient
       .api(`/sites/${siteId}/lists/Products/items/${product.Id}`)
       .update(item);
+
     return {
       Id: updatedData.id,
       Title: updatedData.fields.Title,
@@ -96,12 +106,14 @@ export class GraphService {
       ReleaseDate: updatedData.fields.ReleaseDate,
     };
   }
-  //get product details from the SharePoint list using productId and siteId
-  async getProduct(productId): Promise<ProductItem> {
-    const siteId = await this.getSharePointStieId();
+
+  async getProduct(productId: string): Promise<ProductItem> {
+    const siteId = await this.getSharePointSiteId();
+
     const product = await this.graphClient
       .api(`/sites/${siteId}/lists/Products/items/${productId}`)
       .get();
+
     return {
       Id: product.id,
       Title: product.fields.Title,
@@ -111,14 +123,19 @@ export class GraphService {
       ReleaseDate: product.fields.ReleaseDate,
     };
   }
-  async getPhotoFromSharePoint(nameOfDrive, photoUrl): Promise<ThumbnailSet> {
-    const siteId = await this.getSharePointStieId();
+
+  async getPhotoFromSharePoint(nameOfDrive: string, photoUrl: string): Promise<ThumbnailSet> {
+    const siteId = await this.getSharePointSiteId();
+
     const drive = await this.graphClient.api(`/sites/${siteId}/drives`).get();
     const driveId = drive.value.find(drive => drive.name === nameOfDrive).id;
+
     const fileName = getFileNameFromUrl(photoUrl);
+
     const photo = await this.graphClient
       .api(`/sites/${siteId}/drives/${driveId}/root:/${fileName}:/thumbnails/0`)
       .get();
+
     return photo;
   }
 }

@@ -1,5 +1,5 @@
 {
-    "id": "${{BOT_ENTRA_APP_OBJECT_ID}}",
+    "id": "${{BOT_AAD_APP_OBJECT_ID}}",
     "appId": "${{BOT_ID}}",
     "name": "${{APP_INTERNAL_NAME}}-bot-${{TEAMSFX_ENV}}",
     "accessTokenAcceptedVersion": 2,

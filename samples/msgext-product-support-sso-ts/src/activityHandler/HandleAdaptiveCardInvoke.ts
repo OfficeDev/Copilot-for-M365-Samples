@@ -7,11 +7,11 @@ import {
   CreateActionErrorResponse,
   CreateAdaptiveCardInvokeResponse,
 } from '../util';
-import {AuthService} from '../services/AuthService';
-import {GraphService} from '../services/GraphService';
+import { AuthService } from '../services/AuthService';
+import { GraphService } from '../services/GraphService';
 import * as AdaptiveCards from 'adaptivecards-templating';
-import viewProduct from '../adaptiveCards/product-card.json';
-import editProduct from '../adaptiveCards/edit-card.json';
+import viewProduct from '../adaptiveCards/product.json';
+import editProduct from '../adaptiveCards/edit-form.json';
 import { ThumbnailSet } from '@microsoft/microsoft-graph-types';
 import config from '../config';
 export const HandleAdaptiveCardInvoke = async (
@@ -33,9 +33,10 @@ export const HandleAdaptiveCardInvoke = async (
     return credentials.getSignInAdaptiveCardInvokeResponse();
   }
   const graphService = new GraphService(token);
-  const categories = await graphService.getretailCategories();
+  const categories = await graphService.getRetailCategories();
   const verb = invokeValue.action.verb;
   const data: Record<string, unknown> = invokeValue.action.data;
+
   try {
     switch (verb) {
       case 'edit-save':
@@ -55,17 +56,17 @@ export const HandleAdaptiveCardInvoke = async (
           $root: {
             Product: product,
             Imageurl: photo.medium.url,
-            SPOHostname:config.sharepointHost,
-            SPOSiteUrl:config.sharepointSite
+            SPOHostname: config.sharepointHost,
+            SPOSiteUrl: config.sharepointSite
           },
         });
         return CreateAdaptiveCardInvokeResponse(200, cardS);
       case 'edit':
-          return await createEditForm(data.Id);
+        return await createEditForm(data.Id as string);
       case 'cancel':
-        return await refreshCard(data.Id);
+        return await refreshCard(data.Id as string);
       case 'refresh':
-        return await refreshCard(data.Id);
+        return await refreshCard(data.Id as string);
       default:
         return CreateActionErrorResponse(
           400,
@@ -76,10 +77,11 @@ export const HandleAdaptiveCardInvoke = async (
   } catch (error) {
     return CreateActionErrorResponse(500, 0, error.message);
   }
-  //create editform
-  async function createEditForm(id) {
+
+  async function createEditForm(id: string) {
     const product = await graphService.getProduct(id);
-    const categories = await graphService.getretailCategories();
+    const categories = await graphService.getRetailCategories();
+
     const editTemplate = new AdaptiveCards.Template(editProduct);
     const cardP = editTemplate.expand({
       $root: {
@@ -87,11 +89,13 @@ export const HandleAdaptiveCardInvoke = async (
         RetailCategories: categories,
       },
     });
+
     return CreateAdaptiveCardInvokeResponse(200, cardP);
   }
-  //refresh to initial card
-  async function refreshCard(id) {
+
+  async function refreshCard(id: string) {
     const response = await graphService.getProduct(id);
+
     const viewTemplate = new AdaptiveCards.Template(viewProduct);
     const cardP = viewTemplate.expand({
       $root: {
@@ -99,6 +103,7 @@ export const HandleAdaptiveCardInvoke = async (
         RetailCategories: categories,
       },
     });
+
     return CreateAdaptiveCardInvokeResponse(200, cardP);
   }
 };

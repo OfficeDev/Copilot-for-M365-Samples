@@ -9,9 +9,9 @@ languages:
 ---
 # Overview Contoso Products message extension sample - TS
 
-This sample implements a Teams message extension that can be used as a plugin for Copilot for Microsoft 365. The message extension allows users to query items in the Products list in the Product support SharePoint Online team site via Microsoft Graph. 
+This sample implements a Teams message extension that can be used as a plugin for Copilot for Microsoft 365. The message extension allows users to query items in the Products list in the Product support SharePoint Online team site via Microsoft Graph.
 
-> 💡 This is the TypeScript version of the OG .NET [Product support message extension sample](https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/tree/main/samples/msgext-product-support-sso-csharp)
+> 💡 This is the TypeScript version of the [Product support message extension sample](https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/tree/main/samples/msgext-product-support-sso-csharp) written in .NET and C#
 
 ## Get started with the template
 
@@ -22,7 +22,7 @@ This sample implements a Teams message extension that can be used as a plugin fo
 > - [Node.js](https://nodejs.org/), supported versions: 18
 > - A [Microsoft 365 account for development](https://docs.microsoft.com/microsoftteams/platform/toolkit/accounts)
 > - [Set up your dev environment for extending Teams apps across Microsoft 365](https://aka.ms/teamsfx-m365-apps-prerequisites)
-> - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher 
+> - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher
 > - Azure subscription
 > - You will need a Microsoft work or school account with [permissions to upload custom Teams applications](https://learn.microsoft.com/microsoftteams/platform/concepts/build-and-test/prepare-your-o365-tenant#enable-custom-teams-apps-and-turn-on-custom-app-uploading). The account will also need a Microsoft Copilot for Microsoft 365 license to use the extension in Copilot.
 
@@ -38,8 +38,8 @@ This sample implements a Teams message extension that can be used as a plugin fo
 ### Prepare and run project
 
 - Clone this repo and open the root folder in VSCode
-- In `env` folder copy the contents of `.env.sample` file and create a file with name `.env.local` and paste the contents to it. 
-- In `env` folder copy the contents of `.env.sampleuser` file and create a file with name `.env.local.user` and paste the contents to it. 
+- In `env` folder copy the contents of `.env.local.sample` file and create a file with name `.env.local` and paste the contents to it.
+- In `env` folder copy the contents of `.env.local.user.sample` file and create a file with name `.env.local.user` and paste the contents to it.
 - Update `AZURE_SUBSCRIPTION_ID` in file `.env.local` with the ID of the Azure subscription you created the resource group in.
 - Update `SPO_HOSTNAME` in file `.env.local`, replacing `<tenantname>` with the hostname of your SharePoint Online tenant.
 - Press <kbd>F5</kbd> and follow the prompts.

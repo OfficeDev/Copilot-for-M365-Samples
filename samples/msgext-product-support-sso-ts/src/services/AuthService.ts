@@ -5,13 +5,14 @@ import {
   MessagingExtensionResponse,
   TurnContext,
 } from 'botbuilder';
-import {UserTokenClient} from 'botframework-connector';
-import {Activity} from 'botframework-schema';
+import { UserTokenClient } from 'botframework-connector';
+import { Activity } from 'botframework-schema';
+import config from '../config';
 
 export class AuthService {
   private client: UserTokenClient;
   private activity: Activity;
-  private connectionName = 'MicrosoftGraph';
+  private connectionName: string;
 
   constructor(context: TurnContext) {
     const adapter = context.adapter as CloudAdapter;
@@ -19,6 +20,7 @@ export class AuthService {
       adapter.UserTokenClientKey
     );
     this.activity = context.activity;
+    this.connectionName = config.connectionName;
   }
 
   async getUserToken(
@@ -26,16 +28,20 @@ export class AuthService {
   ): Promise<string | undefined> {
     const magicCode =
       query?.state && Number.isInteger(Number(query.state)) ? query.state : '';
+
     const tokenResponse = await this.client.getUserToken(
       this.activity.from.id,
       this.connectionName,
       this.activity.channelId,
       magicCode
     );
+
     return tokenResponse?.token;
   }
+
   async getSignInComposeExtension(): Promise<MessagingExtensionResponse> {
     const signInLink = await this.getSignInLink();
+
     return {
       composeExtension: {
         type: 'auth',
@@ -51,11 +57,14 @@ export class AuthService {
       },
     };
   }
+
   async getSignInAdaptiveCardInvokeResponse(): Promise<AdaptiveCardInvokeResponse> {
     const signInLink = await this.getSignInLink();
+
     return {
       statusCode: 401,
       type: 'application/vnd.microsoft.card.signin',
+
       value: {
         signinurl: signInLink,
       },
@@ -63,11 +72,12 @@ export class AuthService {
   }
 
   async getSignInLink(): Promise<string> {
-    const {signInLink} = await this.client.getSignInResource(
+    const { signInLink } = await this.client.getSignInResource(
       this.connectionName,
       this.activity,
       ''
     );
+    
     return signInLink;
   }
 }

@@ -1,17 +1,22 @@
 import {
-  CardFactory,
   TurnContext,
   MessagingExtensionQuery,
   MessagingExtensionResponse,
+  ThumbnailCard,
+  Attachment,
 } from 'botbuilder';
 import * as AdaptiveCards from 'adaptivecards-templating';
-import viewProduct from '../adaptiveCards/product-card.json';
-import {AuthService} from '../services/AuthService';
-import {GraphService} from '../services/GraphService';
-import {cleanupParam} from '../util';
+import productCard from '../adaptiveCards/product.json';
+import { AuthService } from '../services/AuthService';
+import { GraphService } from '../services/GraphService';
+import { cleanupParam } from '../util';
 import { ThumbnailSet } from '@microsoft/microsoft-graph-types';
 import config from '../config';
+
+import { MessagingExtensionAttachment, MessagingExtensionResult } from 'botframework-schema'
+
 let queryCount = 0;
+
 export const HandleMessagingExtensionQuery = async (
   context: TurnContext,
   query: MessagingExtensionQuery
@@ -34,6 +39,7 @@ export const HandleMessagingExtensionQuery = async (
       query.parameters.find(element => element.name === 'targetAudience')?.value
     );
   }
+
   console.log(
     `🔎 Query #${++queryCount}:\nproductName=${productName}, retailCategory=${retailCategory}`
   );
@@ -41,36 +47,47 @@ export const HandleMessagingExtensionQuery = async (
   const credentials = new AuthService(context);
   const token = await credentials.getUserToken(query);
   if (!token) {
-    // There is no token, so the user has not signed in yet.
     return credentials.getSignInComposeExtension();
   }
+
   const graphService = new GraphService(token);
   const products = await graphService.getProducts(productName, retailCategory);
-  const categories = await graphService.getretailCategories();
-  const attachments = [];
-  for (const obj of products) {
-    const template = new AdaptiveCards.Template(viewProduct);
+  const attachments = [] as MessagingExtensionAttachment[];
+
+  for (const product of products) {
+    const template = new AdaptiveCards.Template(productCard);
+
     const photo: ThumbnailSet = await graphService.getPhotoFromSharePoint(
       'Product Imagery',
-      obj.PhotoSubmission
+      product.PhotoSubmission
     );
-    const card = template.expand({
+
+    const resultCard = template.expand({
       $root: {
-        Product: obj,           
+        Product: product,
         Imageurl: photo.medium.url,
-        SPOHostname:config.sharepointHost,
-        SPOSiteUrl:config.sharepointSite
+        SPOHostname: config.sharepointHost,
+        SPOSiteUrl: config.sharepointSite
       },
     });
 
-    const preview = CardFactory.heroCard(
-      `<b>${obj.Title}</b>,
-      of catgegory <br/> ${obj.RetailCategory}<br/> `,
-      [photo.small.url],
-      null,
-      null
-    );
-    const attachment = {...CardFactory.adaptiveCard(card), preview};
+    const preview = {
+      title: product.Title,
+      subtitle: product.RetailCategory,
+      images: [{ url: photo.small.url }],
+    } as ThumbnailCard;
+
+    const previewAttachment = {
+      contentType: 'application/vnd.microsoft.card.thumbnail',
+      content: preview,
+    } as Attachment;
+
+    const attachment = {
+      contentType: 'application/vnd.microsoft.card.adaptive',
+      content: resultCard,
+      preview: previewAttachment
+    } as MessagingExtensionAttachment;
+
     attachments.push(attachment);
   }
 
@@ -79,6 +96,6 @@ export const HandleMessagingExtensionQuery = async (
       type: 'result',
       attachmentLayout: 'list',
       attachments: attachments,
-    },
-  };
+    } as MessagingExtensionResult,
+  } as MessagingExtensionResponse;
 };

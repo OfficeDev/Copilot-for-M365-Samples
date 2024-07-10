@@ -19,6 +19,14 @@ param serverfarmsName string = resourceBaseName
 param webAppName string = resourceBaseName
 param location string = resourceGroup().location
 
+param graphAadAppClientId string
+@secure()
+param graphAadAppClientSecret string
+
+param connectionName string
+param spoHostName string
+param spoSiteUrl string
+
 // Compute resources for your Web App
 resource serverfarm 'Microsoft.Web/serverfarms@2021-02-01' = {
   kind: 'app'
@@ -38,18 +46,9 @@ resource webApp 'Microsoft.Web/sites@2021-02-01' = {
     serverFarmId: serverfarm.id
     httpsOnly: true
     siteConfig: {
-      alwaysOn: true
       appSettings: [
         {
           name: 'WEBSITE_RUN_FROM_PACKAGE'
-          value: '1' // Run Azure APP Service from a package file
-        }
-        {
-          name: 'WEBSITE_NODE_DEFAULT_VERSION'
-          value: '~18' // Set NodeJS version to 18.x for your site
-        }
-        {
-          name: 'RUNNING_ON_AZURE'
           value: '1'
         }
         {
@@ -59,6 +58,18 @@ resource webApp 'Microsoft.Web/sites@2021-02-01' = {
         {
           name: 'BOT_PASSWORD'
           value: botAadAppClientSecret
+        }
+        {
+          name: 'CONNECTION_NAME'
+          value: connectionName
+        }
+        {
+          name: 'SPO_HOSTNAME'
+          value: spoHostName
+        }
+        {
+          name: 'SPO_SITE_URL'
+          value: spoSiteUrl
         }
       ]
       ftpsState: 'FtpsOnly'
@@ -74,6 +85,9 @@ module azureBotRegistration './botRegistration/azurebot.bicep' = {
     botAadAppClientId: botAadAppClientId
     botAppDomain: webApp.properties.defaultHostName
     botDisplayName: botDisplayName
+    graphAadAppClientId: graphAadAppClientId
+    graphAadAppClientSecret: graphAadAppClientSecret
+    connectionName: connectionName
   }
 }
 

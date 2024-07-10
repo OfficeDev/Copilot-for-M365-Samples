@@ -1,11 +1,16 @@
-import {AdaptiveCardInvokeResponse, InvokeResponse, MessagingExtensionActionResponse} from 'botbuilder';
+import {
+  AdaptiveCardInvokeResponse,
+  InvokeResponse,
+  MessagingExtensionActionResponse
+} from 'botbuilder';
 
 export const CreateInvokeResponse = (
   status: number,
   body?: unknown
 ): InvokeResponse => {
-  return {status, body};
+  return { status, body };
 };
+
 export const CreateAdaptiveCardInvokeResponse = (
   statusCode: number,
   body?: Record<string, unknown>
@@ -16,6 +21,7 @@ export const CreateAdaptiveCardInvokeResponse = (
     value: body,
   };
 };
+
 export const CreateActionErrorResponse = (
   statusCode: number,
   errorCode = -1,
@@ -45,11 +51,13 @@ export const CreateInvokeErrorResponse = (
     },
   });
 };
+
 export const setTaskInfo = taskInfo => {
   taskInfo.height = 350;
   taskInfo.width = 800;
   taskInfo.title = '';
 };
+
 export const CreateErrorResponseActionResponse = (
   error: string
 ): MessagingExtensionActionResponse => {
@@ -94,6 +102,7 @@ export const cleanupParam = (value: string): string => {
     return result;
   }
 };
+
 export const getFileNameFromUrl = (url: string): string => {
   const urlParts = url.split('/');
   return urlParts[urlParts.length - 1];

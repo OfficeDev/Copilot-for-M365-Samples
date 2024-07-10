@@ -14,11 +14,11 @@
     "botAppDomain": {
       "value": "${{BOT_DOMAIN}}"
     },
-    "graphEntraAppClientId": {
-      "value": "${{GRAPH_ENTRA_APP_ID}}"
+    "graphAadAppClientId": {
+      "value": "${{GRAPH_AAD_APP_ID}}"
     },
-    "graphEntraAppClientSecret": {
-      "value": "${{SECRET_GRAPH_ENTRA_APP_CLIENT_SECRET}}"
+    "graphAadAppClientSecret": {
+      "value": "${{SECRET_GRAPH_AAD_APP_CLIENT_SECRET}}"
     },
     "connectionName": {
       "value": "${{CONNECTION_NAME}}"

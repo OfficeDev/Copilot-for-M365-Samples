@@ -6,7 +6,6 @@ version: 1.1.0
 environmentFolderPath: ./env
 
 provision:
-
   - uses: teamsApp/create
     with:
       name: ${{APP_INTERNAL_NAME}}-${{TEAMSFX_ENV}}
@@ -32,8 +31,8 @@ provision:
       generateClientSecret: true
       signInAudience: AzureADMultipleOrgs
     writeToEnvironmentFile:
-      clientId: GRAPH_ENTRA_APP_ID
-      clientSecret: SECRET_GRAPH_ENTRA_APP_CLIENT_SECRET
+      clientId: GRAPH_AAD_APP_ID
+      clientSecret: SECRET_GRAPH_AAD_APP_CLIENT_SECRET
       objectId: GRAPH_AAD_APP_OBJECT_ID
       tenantId: GRAPH_AAD_APP_TENANT_ID
       authority: GRAPH_AAD_APP_OAUTH_AUTHORITY
@@ -44,7 +43,7 @@ provision:
       subscriptionId: ${{AZURE_SUBSCRIPTION_ID}}
       resourceGroupName: ${{AZURE_RESOURCE_GROUP_NAME}}
       templates:
-        - path: ./infra/azure.bicep 
+        - path: ./infra/azure.bicep
           parameters: ./infra/azure.parameters.json
           deploymentName: Create-resources-for-${{APP_INTERNAL_NAME}}-${{TEAMSFX_ENV}}
       bicepCliVersion: v0.9.1
@@ -52,12 +51,12 @@ provision:
   - uses: aadApp/update
     with:
       manifestPath: "./infra/entra/entra.bot.manifest.json"
-      outputFilePath : "./build/entra.bot.manifest.${{TEAMSFX_ENV}}.json"
+      outputFilePath: "./build/entra.bot.manifest.${{TEAMSFX_ENV}}.json"
 
   - uses: aadApp/update
     with:
       manifestPath: "./infra/entra/entra.graph.manifest.json"
-      outputFilePath : "./build/entra.graph.manifest.${{TEAMSFX_ENV}}.json"
+      outputFilePath: "./build/entra.graph.manifest.${{TEAMSFX_ENV}}.json"
 
   - uses: teamsApp/validateManifest
     with:
@@ -82,51 +81,40 @@ deploy:
     name: install dependencies
     with:
       args: install
+
   - uses: cli/runNpmCommand
     name: build app
     with:
       args: run build --if-present
+
   - uses: azureAppService/zipDeploy
     with:
-      # Deploy base folder
       artifactFolder: .
-      # Ignore file location, leave blank will ignore nothing
       ignoreFile: .webappignore
       resourceId: ${{BOT_AZURE_APP_SERVICE_RESOURCE_ID}}
-# Triggered when 'teamsfx publish' is executed
+
 publish:
-  # Validate using manifest schema
   - uses: teamsApp/validateManifest
     with:
-      # Path to manifest template
       manifestPath: ./appPackage/manifest.json
-  # Build Teams app package with latest env value
+
   - uses: teamsApp/zipAppPackage
     with:
-      # Path to manifest template
       manifestPath: ./appPackage/manifest.json
       outputZipPath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
       outputJsonPath: ./appPackage/build/manifest.${{TEAMSFX_ENV}}.json
-  # Validate app package using validation rules
+
   - uses: teamsApp/validateAppPackage
     with:
-      # Relative path to this file. This is the path for built zip file.
       appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
-  # Apply the Teams app manifest to an existing Teams app in
-  # Teams Developer Portal.
-  # Will use the app id in manifest file to determine which Teams app to update.
+
   - uses: teamsApp/update
     with:
-      # Relative path to this file. This is the path for built zip file.
       appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
-  # Publish the app to
-  # Teams Admin Center (https://admin.teams.microsoft.com/policies/manage-apps)
-  # for review and approval
+
   - uses: teamsApp/publishAppPackage
     with:
       appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
-    # Write the information of created resources into environment file for
-    # the specified environment variable(s).
     writeToEnvironmentFile:
       publishedAppId: TEAMS_APP_PUBLISHED_APP_ID
-projectId: e7547934-0d44-4923-857f-b1baa41c919d
+projectId: 2db8adec-4e63-4eec-997e-f3d6a4d60ee4

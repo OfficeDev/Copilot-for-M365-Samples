@@ -1,51 +1,30 @@
-@maxLength(20) 
+@maxLength(20)
+@minLength(4)
+@description('Used to generate names for all resources in this file')
+param resourceBaseName string
 
-@minLength(4) 
+@description('Required when create Azure Bot service')
+param botAadAppClientId string
+@maxLength(42)
+param botDisplayName string
+param botAppDomain string
 
-@description('Used to generate names for all resources in this file') 
+param graphAadAppClientId string
+@secure()
+param graphAadAppClientSecret string
 
-param resourceBaseName string 
+param connectionName string
 
- 
-
-@description('Required when create Azure Bot service') 
-
-param botAadAppClientId string 
-
-@maxLength(42) 
-
-param botDisplayName string 
-
-param botAppDomain string 
-param graphEntraAppClientId string 
-
-@secure() 
-
-param graphEntraAppClientSecret string 
-
-param connectionName string 
-
- 
-
-module azureBotRegistration './botRegistration/azurebot.bicep' = { 
-
-  name: 'Azure-Bot-registration' 
-
-  params: { 
-
-    resourceBaseName: resourceBaseName 
-
-    botAadAppClientId: botAadAppClientId 
-
-    botAppDomain: botAppDomain 
-
-    botDisplayName: botDisplayName 
-    graphEntraAppClientId: graphEntraAppClientId 
-
-    graphEntraAppClientSecret: graphEntraAppClientSecret 
-
-    connectionName: connectionName 
-
-  } 
-
-} 
+// Register your web service as a bot with the Bot Framework
+module azureBotRegistration './botRegistration/azurebot.bicep' = {
+  name: 'Azure-Bot-registration'
+  params: {
+    resourceBaseName: resourceBaseName
+    botAadAppClientId: botAadAppClientId
+    botAppDomain: botAppDomain
+    botDisplayName: botDisplayName
+    graphAadAppClientId: graphAadAppClientId
+    graphAadAppClientSecret: graphAadAppClientSecret
+    connectionName: connectionName
+  }
+}

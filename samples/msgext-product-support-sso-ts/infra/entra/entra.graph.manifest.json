@@ -1,6 +1,6 @@
 {
-    "id": "${{GRAPH_ENTRA_APP_OBJECT_ID}}",
-    "appId": "${{GRAPH_ENTRA_APP_ID}}",
+    "id": "${{GRAPH_AAD_APP_OBJECT_ID}}",
+    "appId": "${{GRAPH_AAD_APP_ID}}",
     "name": "${{APP_INTERNAL_NAME}}-graph-${{TEAMSFX_ENV}}",
     "accessTokenAcceptedVersion": 2,
     "signInAudience": "AzureADMultipleOrgs",
