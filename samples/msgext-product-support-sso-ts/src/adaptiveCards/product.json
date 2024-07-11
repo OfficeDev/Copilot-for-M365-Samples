@@ -1,0 +1,60 @@
+{
+  "type": "AdaptiveCard",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.6",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "${Product.Title}",
+      "wrap": true,
+      "style": "heading"
+    },
+    {
+      "type": "Container",
+      "items": [
+        {
+          "type": "Image",
+          "url": "${Imageurl}",
+          "altText": "${Product.Title}"
+        }
+      ],
+      "verticalContentAlignment": "Center"
+    },
+    {
+      "type": "TextBlock",
+      "text": "${Product.RetailCategory}",
+      "wrap": true
+    },
+    {
+      "type": "FactSet",
+      "facts": [
+        {
+          "title": "Call Volume",
+          "value": "${formatNumber(Product.CustomerRating,0)}"
+        },
+        {
+          "title": "Release Date",
+          "value": "${formatDateTime(Product.ReleaseDate,'dd/MM/yyyy')}"
+        }
+      ]
+    },
+    {
+      "type": "ActionSet",
+      "actions": [
+        {
+          "type": "Action.OpenUrl",
+          "title": "View",
+          "url": "https://${SPOHostname}/${SPOSiteUrl}/Lists/Products/DispForm.aspx?ID=${Product.Id}"
+        },
+        {
+          "type": "Action.Execute",
+          "verb": "edit",
+          "title": "Edit",
+          "data": {
+            "Id": "${Product.Id}"
+          }
+        }
+      ]
+    }
+  ]
+}
