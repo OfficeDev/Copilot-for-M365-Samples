@@ -50,7 +50,9 @@ This sample implements a Teams message extension that can be used as a plugin fo
 - In `env` folder copy the contents of `.env.local.sample` file and create a file with name `.env.local` and paste the contents to it.
 - In `env` folder copy the contents of `.env.local.user.sample` file and create a file with name `.env.local.user` and paste the contents to it.
 - Update `SPO_HOSTNAME` in file `.env.local`, replacing `<tenantname>` with the hostname of your SharePoint Online tenant.
-- Press <kbd>F5</kbd> and follow the prompts.
+- Press <kbd>F5</kbd> and follow the prompts to sign in to your Microsoft 365 tenant and Azure subscription
+- Select the Azure subscription you want to provision the Azure AI Bot Service to
+- Select an existing resource group or create a new one. If you create a new resource group, select a region closest to your location
 
 > NOTE: When Teams Toolkit prepares the app it will provision a new Azure AI Bot Service into the resource group which uses the F0 SKU which grants unlimited messages to be sent to standard channels, this includes Microsoft Teams and Microsoft 365 channel (Outlook and Copilot) and does not incur a cost.
 
