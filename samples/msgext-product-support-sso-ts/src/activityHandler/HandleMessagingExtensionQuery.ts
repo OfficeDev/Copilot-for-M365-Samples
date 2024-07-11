@@ -4,16 +4,19 @@ import {
   MessagingExtensionResponse,
   ThumbnailCard,
   Attachment,
-} from 'botbuilder';
-import * as AdaptiveCards from 'adaptivecards-templating';
-import productCard from '../adaptiveCards/product.json';
-import { AuthService } from '../services/AuthService';
-import { GraphService } from '../services/GraphService';
-import { cleanupParam } from '../util';
-import { ThumbnailSet } from '@microsoft/microsoft-graph-types';
-import config from '../config';
+} from "botbuilder";
+import * as AdaptiveCards from "adaptivecards-templating";
+import productCard from "../adaptiveCards/product.json";
+import { AuthService } from "../services/AuthService";
+import { GraphService } from "../services/GraphService";
+import { cleanupParam } from "../util";
+import { ThumbnailSet } from "@microsoft/microsoft-graph-types";
+import config from "../config";
 
-import { MessagingExtensionAttachment, MessagingExtensionResult } from 'botframework-schema'
+import {
+  MessagingExtensionAttachment,
+  MessagingExtensionResult,
+} from "botframework-schema";
 
 let queryCount = 0;
 
@@ -26,17 +29,18 @@ export const HandleMessagingExtensionQuery = async (
 
   if (
     query.parameters.length === 1 &&
-    query.parameters[0]?.name === 'productName'
+    query.parameters[0]?.name === "productName"
   ) {
-    [productName, retailCategory] = (query.parameters[0]?.value ?? '').split(
-      ','
+    [productName, retailCategory] = (query.parameters[0]?.value ?? "").split(
+      ","
     );
   } else {
     productName = cleanupParam(
-      query.parameters.find(element => element.name === 'productName')?.value
+      query.parameters.find((element) => element.name === "productName")?.value
     );
     retailCategory = cleanupParam(
-      query.parameters.find(element => element.name === 'targetAudience')?.value
+      query.parameters.find((element) => element.name === "targetAudience")
+        ?.value
     );
   }
 
@@ -52,13 +56,14 @@ export const HandleMessagingExtensionQuery = async (
 
   const graphService = new GraphService(token);
   const products = await graphService.getProducts(productName, retailCategory);
+  
   const attachments = [] as MessagingExtensionAttachment[];
 
   for (const product of products) {
     const template = new AdaptiveCards.Template(productCard);
 
     const photo: ThumbnailSet = await graphService.getPhotoFromSharePoint(
-      'Product Imagery',
+      "Product Imagery",
       product.PhotoSubmission
     );
 
@@ -67,7 +72,7 @@ export const HandleMessagingExtensionQuery = async (
         Product: product,
         Imageurl: photo.medium.url,
         SPOHostname: config.sharepointHost,
-        SPOSiteUrl: config.sharepointSite
+        SPOSiteUrl: config.sharepointSite,
       },
     });
 
@@ -78,14 +83,14 @@ export const HandleMessagingExtensionQuery = async (
     } as ThumbnailCard;
 
     const previewAttachment = {
-      contentType: 'application/vnd.microsoft.card.thumbnail',
+      contentType: "application/vnd.microsoft.card.thumbnail",
       content: preview,
     } as Attachment;
 
     const attachment = {
-      contentType: 'application/vnd.microsoft.card.adaptive',
+      contentType: "application/vnd.microsoft.card.adaptive",
       content: resultCard,
-      preview: previewAttachment
+      preview: previewAttachment,
     } as MessagingExtensionAttachment;
 
     attachments.push(attachment);
@@ -93,8 +98,8 @@ export const HandleMessagingExtensionQuery = async (
 
   return {
     composeExtension: {
-      type: 'result',
-      attachmentLayout: 'list',
+      type: "result",
+      attachmentLayout: "list",
       attachments: attachments,
     } as MessagingExtensionResult,
   } as MessagingExtensionResponse;

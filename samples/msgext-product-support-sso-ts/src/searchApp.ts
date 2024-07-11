@@ -6,13 +6,12 @@ import {
   AdaptiveCardInvokeResponse,
   MessagingExtensionResponse,
   MessagingExtensionAction,
-} from 'botbuilder';
-import {HandleMessagingExtensionQuery} from './activityHandler/HandleMessagingExtensionQuery';
-import {HandleTeamsMessagingExtensionFetchTaskAsync} from './activityHandler/HandleMessageExtensionFetchTaskAsync';
-import {HandleAdaptiveCardInvoke} from './activityHandler/HandleAdaptiveCardInvoke';
+} from "botbuilder";
+import { HandleMessagingExtensionQuery } from "./activityHandler/HandleMessagingExtensionQuery";
+import { HandleTeamsMessagingExtensionFetchTaskAsync } from "./activityHandler/HandleMessageExtensionFetchTaskAsync";
+import { HandleAdaptiveCardInvoke } from "./activityHandler/HandleAdaptiveCardInvoke";
 
 export class SearchApp extends TeamsActivityHandler {
-
   constructor() {
     super();
   }
@@ -29,9 +28,12 @@ export class SearchApp extends TeamsActivityHandler {
     invokeValue: AdaptiveCardInvokeValue
   ): Promise<AdaptiveCardInvokeResponse> {
     return HandleAdaptiveCardInvoke(context, invokeValue);
-  } 
-  
-  protected async handleTeamsMessagingExtensionFetchTask(context: TurnContext, action: MessagingExtensionAction): Promise<any> {
-    return HandleTeamsMessagingExtensionFetchTaskAsync(context, action);  
+  }
+
+  protected async handleTeamsMessagingExtensionFetchTask(
+    context: TurnContext,
+    action: MessagingExtensionAction
+  ): Promise<any> {
+    return HandleTeamsMessagingExtensionFetchTaskAsync(context, action);
   }
 }

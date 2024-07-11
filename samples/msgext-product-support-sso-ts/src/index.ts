@@ -1,5 +1,5 @@
 // Import required packages
-import * as restify from 'restify';
+import * as restify from "restify";
 
 // Import required bot services.
 // See https://aka.ms/bot-services to learn more about the different parts of a bot.
@@ -8,18 +8,18 @@ import {
   ConfigurationServiceClientCredentialFactory,
   ConfigurationBotFrameworkAuthentication,
   TurnContext,
-} from 'botbuilder';
+} from "botbuilder";
 
 // This bot's main dialog.
-import {SearchApp} from './searchApp';
-import config from './config';
+import { SearchApp } from "./searchApp";
+import config from "./config";
 
 // Create adapter.
 // See https://aka.ms/about-bot-adapter to learn more about adapters.
 const credentialsFactory = new ConfigurationServiceClientCredentialFactory({
   MicrosoftAppId: config.botId,
   MicrosoftAppPassword: config.botPassword,
-  MicrosoftAppType: 'MultiTenant',
+  MicrosoftAppType: "MultiTenant",
 });
 
 const botFrameworkAuthentication = new ConfigurationBotFrameworkAuthentication(
@@ -38,10 +38,10 @@ const onTurnErrorHandler = async (context: TurnContext, error: Error) => {
 
   // Send a trace activity, which will be displayed in Bot Framework Emulator
   await context.sendTraceActivity(
-    'OnTurnError Trace',
+    "OnTurnError Trace",
     `${error}`,
-    'https://www.botframework.com/schemas/error',
-    'TurnError'
+    "https://www.botframework.com/schemas/error",
+    "TurnError"
   );
 
   // Send a message to the user
@@ -49,7 +49,7 @@ const onTurnErrorHandler = async (context: TurnContext, error: Error) => {
     `The bot encountered unhandled error:\n ${error.message}`
   );
   await context.sendActivity(
-    'To continue to run this bot, please fix the bot source code.'
+    "To continue to run this bot, please fix the bot source code."
   );
 };
 
@@ -67,8 +67,8 @@ server.listen(process.env.port || process.env.PORT || 3978, () => {
 });
 
 // Listen for incoming requests.
-server.post('/api/messages', async (req, res) => {
-  await adapter.process(req, res, async context => {
+server.post("/api/messages", async (req, res) => {
+  await adapter.process(req, res, async (context) => {
     await searchApp.run(context);
   });
 });

@@ -1,8 +1,8 @@
 import {
   AdaptiveCardInvokeResponse,
   InvokeResponse,
-  MessagingExtensionActionResponse
-} from 'botbuilder';
+  MessagingExtensionActionResponse,
+} from "botbuilder";
 
 export const CreateInvokeResponse = (
   status: number,
@@ -17,7 +17,7 @@ export const CreateAdaptiveCardInvokeResponse = (
 ): AdaptiveCardInvokeResponse => {
   return {
     statusCode: statusCode,
-    type: 'application/vnd.microsoft.card.adaptive',
+    type: "application/vnd.microsoft.card.adaptive",
     value: body,
   };
 };
@@ -25,11 +25,11 @@ export const CreateAdaptiveCardInvokeResponse = (
 export const CreateActionErrorResponse = (
   statusCode: number,
   errorCode = -1,
-  errorMessage = 'Unknown error'
+  errorMessage = "Unknown error"
 ): AdaptiveCardInvokeResponse => {
   return {
     statusCode: statusCode,
-    type: 'application/vnd.microsoft.error',
+    type: "application/vnd.microsoft.error",
     value: {
       error: {
         code: errorCode,
@@ -42,7 +42,7 @@ export const CreateActionErrorResponse = (
 export const CreateInvokeErrorResponse = (
   statusCode: number,
   errorCode = -1,
-  errorMessage = 'Unknown error'
+  errorMessage = "Unknown error"
 ): InvokeResponse => {
   return CreateInvokeResponse(statusCode, {
     error: {
@@ -52,10 +52,10 @@ export const CreateInvokeErrorResponse = (
   });
 };
 
-export const setTaskInfo = taskInfo => {
+export const setTaskInfo = (taskInfo) => {
   taskInfo.height = 350;
   taskInfo.width = 800;
-  taskInfo.title = '';
+  taskInfo.title = "";
 };
 
 export const CreateErrorResponseActionResponse = (
@@ -79,31 +79,31 @@ export const CreateErrorResponseActionResponse = (
             "wrap": true
         }
     ]
-  }`)
-  }
+  }`),
+  };
 
   const response: MessagingExtensionActionResponse = {
     task: {
       type: "continue",
-      value: cardAttachment
-    }
+      value: cardAttachment,
+    },
   };
 
   return response;
-}
+};
 
 export const cleanupParam = (value: string): string => {
   if (!value) {
-    return '';
+    return "";
   } else {
     let result = value.trim();
-    result = result.split(',')[0];
-    result = result.replace('*', '');
+    result = result.split(",")[0];
+    result = result.replace("*", "");
     return result;
   }
 };
 
 export const getFileNameFromUrl = (url: string): string => {
-  const urlParts = url.split('/');
+  const urlParts = url.split("/");
   return urlParts[urlParts.length - 1];
 };

@@ -2,44 +2,45 @@ import {
   AdaptiveCardInvokeResponse,
   AdaptiveCardInvokeValue,
   TurnContext,
-} from 'botbuilder';
+} from "botbuilder";
 import {
   CreateActionErrorResponse,
   CreateAdaptiveCardInvokeResponse,
-} from '../util';
-import { AuthService } from '../services/AuthService';
-import { GraphService } from '../services/GraphService';
-import * as AdaptiveCards from 'adaptivecards-templating';
-import viewProduct from '../adaptiveCards/product.json';
-import editProduct from '../adaptiveCards/edit-form.json';
-import { ThumbnailSet } from '@microsoft/microsoft-graph-types';
-import config from '../config';
+} from "../util";
+import { AuthService } from "../services/AuthService";
+import { GraphService } from "../services/GraphService";
+import * as AdaptiveCards from "adaptivecards-templating";
+import viewProduct from "../adaptiveCards/product.json";
+import editProduct from "../adaptiveCards/edit-form.json";
+import { ThumbnailSet } from "@microsoft/microsoft-graph-types";
+import config from "../config";
+
 export const HandleAdaptiveCardInvoke = async (
   context: TurnContext,
   invokeValue: AdaptiveCardInvokeValue
 ): Promise<AdaptiveCardInvokeResponse> => {
-  if (invokeValue.action.type !== 'Action.Execute') {
+  if (invokeValue.action.type !== "Action.Execute") {
     return CreateActionErrorResponse(
       400,
       0,
       `ActionTypeNotSupported: ${invokeValue.action.type} is not a supported action.`
     );
   }
+  const { verb, data }: { verb: string; data: Record<string, unknown> } =
+    invokeValue.action;
 
   const credentials = new AuthService(context);
   const token = await credentials.getUserToken();
   if (!token) {
-    // There is no token, so the user has not signed in yet.
     return credentials.getSignInAdaptiveCardInvokeResponse();
   }
+
   const graphService = new GraphService(token);
   const categories = await graphService.getRetailCategories();
-  const verb = invokeValue.action.verb;
-  const data: Record<string, unknown> = invokeValue.action.data;
 
   try {
     switch (verb) {
-      case 'edit-save':
+      case "edit-save":
         const updatedProduct = {
           Id: data.Id,
           Title: data.Title,
@@ -49,7 +50,7 @@ export const HandleAdaptiveCardInvoke = async (
         const product = await graphService.updateProduct(updatedProduct);
         const viewTemplate = new AdaptiveCards.Template(viewProduct);
         const photo: ThumbnailSet = await graphService.getPhotoFromSharePoint(
-          'Product Imagery',
+          "Product Imagery",
           product.PhotoSubmission
         );
         const cardS = viewTemplate.expand({
@@ -57,15 +58,15 @@ export const HandleAdaptiveCardInvoke = async (
             Product: product,
             Imageurl: photo.medium.url,
             SPOHostname: config.sharepointHost,
-            SPOSiteUrl: config.sharepointSite
+            SPOSiteUrl: config.sharepointSite,
           },
         });
         return CreateAdaptiveCardInvokeResponse(200, cardS);
-      case 'edit':
+      case "edit":
         return await createEditForm(data.Id as string);
-      case 'cancel':
+      case "cancel":
         return await refreshCard(data.Id as string);
-      case 'refresh':
+      case "refresh":
         return await refreshCard(data.Id as string);
       default:
         return CreateActionErrorResponse(
@@ -78,7 +79,9 @@ export const HandleAdaptiveCardInvoke = async (
     return CreateActionErrorResponse(500, 0, error.message);
   }
 
-  async function createEditForm(id: string) {
+  async function createEditForm(
+    id: string
+  ): Promise<AdaptiveCardInvokeResponse> {
     const product = await graphService.getProduct(id);
     const categories = await graphService.getRetailCategories();
 
@@ -93,7 +96,7 @@ export const HandleAdaptiveCardInvoke = async (
     return CreateAdaptiveCardInvokeResponse(200, cardP);
   }
 
-  async function refreshCard(id: string) {
+  async function refreshCard(id: string): Promise<AdaptiveCardInvokeResponse> {
     const response = await graphService.getProduct(id);
 
     const viewTemplate = new AdaptiveCards.Template(viewProduct);

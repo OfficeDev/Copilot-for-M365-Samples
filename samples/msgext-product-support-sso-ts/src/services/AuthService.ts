@@ -77,7 +77,7 @@ export class AuthService {
       this.activity,
       ''
     );
-    
+
     return signInLink;
   }
 }
