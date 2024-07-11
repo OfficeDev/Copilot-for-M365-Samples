@@ -55,18 +55,18 @@ Navigate to Environment > Preview Features and check the checkbox labeled "Enabl
 
 ![Enable Multi-Project](./images/02-01-Enable-multiprojects-02.png)
 
-> Note : Running this sample for the first time may prompt you to trust the ASP.NET Core SSL Certificate. In that case, click "Yes".
-
-![SSL Certificate](./images/02-01-SSL-Certificate-01.png)
-
 ## Step 2 - Run the application locally
 
 Click F5 to start debugging, or click the start button 1️⃣. Make sure that the debug profile is **Microsoft Teams (browser)** 2️⃣.
 
 ![Run application locally](./images/01-04-debug-dropdown.png)
 
+> Note : Running this sample for the first time may prompt you to trust the ASP.NET Core SSL Certificate. In that case, click "Yes".
+
+![SSL Certificate](./images/02-01-SSL-Certificate-01.png)
+
 Once you're in, Microsoft Teams should open up and display a dialog offering to install your application.
-Take note of the information displayed; which is from the [app manifest](../appPackage/manifest.json).
+Take note of the information displayed; which is from the [app manifest](../TeamsApp/appPackage/manifest.json).
 
 Click "Add" to add Northwind Inventory as a personal application.
 
