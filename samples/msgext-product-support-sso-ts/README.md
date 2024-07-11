@@ -32,13 +32,13 @@ This sample implements a Teams message extension that can be used as a plugin fo
 ### Prepare SharePoint Online
 
 - Create a new SharePoint Team site
-  - Site type: Team site
-  - Site name: Product support
-  - Site address: productmarketing
+  - Site type: `Team site`
+  - Site name: `Product support`
+  - Site address: `productmarketing`
 - Download the [Product Support provisioning template](https://download-directory.github.io/?url=https%3A%2F%2Fgithub.com%2FSharePoint%2Fsp-dev-provisioning-templates%2Ftree%2Fmaster%2Ftenant%2Fproductsupport) source files and extract the contents of the ZIP to a folder
 - Open a PowerShell terminal session
 - Install PnP PowerShell, execute `Install-Module PnP.PowerShell -Scope CurrentUser`
-- Connect to the SharePoint Online Admin Center site and follow the authentication steps, execute `Connect-PnPOnline -Url https://<tenant>-admin.sharepoint.com -DeviceLogin`, replacing `<tenant>` with your tenant name
+- Connect to the SharePoint Online Admin Center site and follow the authentication steps, execute `Connect-PnPOnline -Url https://<tenant>-admin.sharepoint.com -DeviceLogin`, replacing `<tenant>` with the hostname of your SharePoint Online tenant
 - Change to the folder where you extracted the source files to
 - Apply the template to the Product support SharePoint site, execute `Invoke-PnPTenantTemplate -Path .\productsupport.pnp`
 - Open a browser window and navigate to the Product support site
@@ -49,13 +49,12 @@ This sample implements a Teams message extension that can be used as a plugin fo
 - Clone this repo and open the root folder in VSCode
 - In `env` folder copy the contents of `.env.local.sample` file and create a file with name `.env.local` and paste the contents to it.
 - In `env` folder copy the contents of `.env.local.user.sample` file and create a file with name `.env.local.user` and paste the contents to it.
-- Update `AZURE_SUBSCRIPTION_ID` in file `.env.local` with the ID of the Azure subscription you created the resource group in.
 - Update `SPO_HOSTNAME` in file `.env.local`, replacing `<tenantname>` with the hostname of your SharePoint Online tenant.
 - Press <kbd>F5</kbd> and follow the prompts.
 
 > NOTE: When Teams Toolkit prepares the app it will provision a new Azure AI Bot Service into the resource group which uses the F0 SKU which grants unlimited messages to be sent to standard channels, this includes Microsoft Teams and Microsoft 365 channel (Outlook and Copilot) and does not incur a cost.
 
-### Test 
+### Test
 
 - In Microsoft Teams, open the Copilot app
 - Open the prompts flyout and enable `Contoso products` plugin

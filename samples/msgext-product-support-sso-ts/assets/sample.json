@@ -9,8 +9,8 @@
       "longDescription": [
         "This sample implements a Teams message extension that can be used as a plugin for Microsoft Copilot for Microsoft 365. The message extension enables users to query the Products list in the Product support SharePoint Online team site via Microsoft Graph."
       ],
-      "creationDateTime": "2024-07-09",
-      "updateDateTime": "2024-07-09",
+      "creationDateTime": "2024-07-11",
+      "updateDateTime": "2024-07-11",
       "products": [
         "SharePoint Online",
         "Microsoft Teams",
@@ -52,7 +52,7 @@
         },
         {
           "gitHubAccount": "garrytrinder",
-          "pictureUrl": "https://avatars.githubusercontent.com/u/20379311?v=4",
+          "pictureUrl": "https://avatars.githubusercontent.com/u/11563347?v=4",
           "name": "Garry Trinder"
         }
       ],
