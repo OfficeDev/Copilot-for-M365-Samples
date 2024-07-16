@@ -34,13 +34,13 @@
       {
         "type": "image",
         "order": 50,
-        "url": "https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/raw/main/samples/msgext-product-support-ts-csharp/assets/product-card.png",
+        "url": "https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/raw/main/samples/msgext-product-support-sso-ts/assets/product-card.png",
         "alt": "Plugin response from Copilot with reference preview Adaptive Card displayed"
       },
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/raw/main/samples/msgext-product-support-ts-csharp/assets/edit-card.png",
+        "url": "https://github.com/OfficeDev/Copilot-for-M365-Plugins-Samples/raw/main/samples/msgext-product-support-sso-ts/assets/edit-card.png",
         "alt": "Plugin response from Copilot with an Adaptive Card displayed that can be used to update a product"
       }
     ],
