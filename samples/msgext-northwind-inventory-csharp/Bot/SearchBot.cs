@@ -2,28 +2,17 @@
 using Microsoft.Bot.Builder.Teams;
 using Microsoft.Bot.Schema.Teams;
 using Microsoft.Bot.Schema;
-using Newtonsoft.Json.Linq;
 using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
-using System;
-using msgext_northwind_inventory_csharp.MessageExtensions;
+using NorthwindInventory.MessageExtensions;
 using Newtonsoft.Json;
-using msgext_northwind_inventory_csharp.Handlers;
+using NorthwindInventory.Handlers;
 
-namespace msgext_northwind_inventory_csharp.Bots
+namespace NorthwindInventory.Bots
 {
-    public class SearchBot : TeamsActivityHandler
+    public class SearchBot(ILogger<SearchBot> logger, IConfiguration configuration) : TeamsActivityHandler
     {
-        private readonly ILogger<SearchBot> _logger;
-        private readonly IConfiguration _configuration;
-
-        public SearchBot(ILogger<SearchBot> logger, IConfiguration configuration)
-        {
-            _logger = logger;
-            _configuration = configuration;
-        }
+        private readonly ILogger<SearchBot> _logger = logger;
+        private readonly IConfiguration _configuration = configuration;
 
         protected override async Task<MessagingExtensionResponse> OnTeamsMessagingExtensionQueryAsync(
             ITurnContext<IInvokeActivity> turnContext,
@@ -40,17 +29,12 @@ namespace msgext_northwind_inventory_csharp.Bots
                 throw new InvalidOperationException("Query is null after deserialization");
             }
 
-            switch (query.CommandId)
+            return query.CommandId switch
             {
-                case ProductSearchCommand.CommandId:
-                    return await ProductSearchCommand.HandleTeamsMessagingExtensionQueryAsync(turnContext, query, _configuration, cancellationToken);
-
-                case DiscountedSearchCommand.CommandId:
-                    return await DiscountedSearchCommand.HandleTeamsMessagingExtensionQueryAsync(turnContext, query, _configuration, cancellationToken);
-
-                default:
-                    throw new InvalidOperationException("Unsupported command");
-            }
+                ProductSearchCommand.CommandId => await ProductSearchCommand.HandleTeamsMessagingExtensionQueryAsync(turnContext, query, _configuration, cancellationToken),
+                DiscountedSearchCommand.CommandId => await DiscountedSearchCommand.HandleTeamsMessagingExtensionQueryAsync(turnContext, query, _configuration, cancellationToken),
+                _ => throw new InvalidOperationException("Unsupported command"),
+            };
         }
 
         protected override async Task<AdaptiveCardInvokeResponse> OnAdaptiveCardInvokeAsync(
@@ -68,20 +52,13 @@ namespace msgext_northwind_inventory_csharp.Bots
 
                 var verb = action.Verb?.ToString();
 
-                switch (verb)
+                return verb switch
                 {
-                    case "ok":
-                        return await CardHandler.HandleTeamsCardActionUpdateStockAsync(turnContext, _configuration ,cancellationToken);
-
-                    case "restock":
-                        return await CardHandler.HandleTeamsCardActionRestockAsync(turnContext, _configuration, cancellationToken);
-
-                    case "cancel":
-                        return await CardHandler.HandleTeamsCardActionCancelRestockAsync(turnContext, _configuration, cancellationToken);
-
-                    default:
-                        return Utils.CreateActionErrorResponse((int)HttpStatusCode.OK, 0, $"ActionVerbNotSupported: {verb} is not a supported action verb.");
-                }
+                    "ok" => await CardHandler.HandleTeamsCardActionUpdateStockAsync(turnContext, _configuration, cancellationToken),
+                    "restock" => await CardHandler.HandleTeamsCardActionRestockAsync(turnContext, _configuration, cancellationToken),
+                    "cancel" => await CardHandler.HandleTeamsCardActionCancelRestockAsync(turnContext, _configuration, cancellationToken),
+                    _ => Utils.CreateActionErrorResponse((int)HttpStatusCode.OK, 0, $"ActionVerbNotSupported: {verb} is not a supported action verb.")
+                };
             }
             catch (Exception ex)
             {

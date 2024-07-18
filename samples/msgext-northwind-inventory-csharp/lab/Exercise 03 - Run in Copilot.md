@@ -18,7 +18,8 @@ TABLE OF CONTENTS
 
 Begin by clicking the "Try the new Teams" switch to move to the new Teams client application.
 
-> IMPORTANT - Microsoft Copilot for Microsoft 365 only works in the "New" Teams. Please don't miss this step! 
+> [!IMPORTANT]
+> Microsoft Copilot for Microsoft 365 only works in the "New" Teams. Please don't miss this step! 
 
 > If you restart your debugger after switching to "New" teams, you may get an error message after the debugger starts. This is a known problem; please just close the error dialog and continue testing.
 

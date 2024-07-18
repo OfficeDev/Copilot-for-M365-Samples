@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Azure.Data.Tables;
-using Microsoft.Extensions.Configuration;
-using msgext_northwind_inventory_csharp.Models;
-using msgext_northwind_inventory_csharp.Handlers;
+﻿using Azure.Data.Tables;
+using NorthwindInventory.Models;
+using NorthwindInventory.Handlers;
 using Azure.Core;
 
-namespace msgext_northwind_inventory_csharp.NorthwindDB
+namespace NorthwindInventory.NorthwindDB
 {
     public class ProductService
     {

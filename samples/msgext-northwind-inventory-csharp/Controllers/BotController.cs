@@ -2,23 +2,17 @@
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
 
-namespace msgext_northwind_inventory_csharp.Controllers;
+namespace NorthwindInventory.Controllers;
 
 // This ASP Controller is created to handle a request. Dependency Injection will provide the Adapter and IBot
 // implementation at runtime. Multiple different IBot implementations running at different endpoints can be
 // achieved by specifying a more specific type for the bot constructor argument.
 [Route("api/messages")]
 [ApiController]
-public class BotController : ControllerBase
+public class BotController(IBotFrameworkHttpAdapter adapter, IBot bot) : ControllerBase
 {
-    private readonly IBotFrameworkHttpAdapter Adapter;
-    private readonly IBot Bot;
-
-    public BotController(IBotFrameworkHttpAdapter adapter, IBot bot)
-    {
-        Adapter = adapter;
-        Bot = bot;
-    }
+    private readonly IBotFrameworkHttpAdapter Adapter = adapter;
+    private readonly IBot Bot = bot;
 
     [HttpPost, HttpGet]
     public async Task PostAsync()

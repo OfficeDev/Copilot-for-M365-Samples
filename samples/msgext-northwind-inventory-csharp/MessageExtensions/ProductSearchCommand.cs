@@ -1,17 +1,10 @@
 ﻿using Microsoft.Bot.Builder;
 using Microsoft.Bot.Schema;
-using Microsoft.Bot.Builder.Teams;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
 using Microsoft.Bot.Schema.Teams;
-using msgext_northwind_inventory_csharp.Models;
-using msgext_northwind_inventory_csharp.NorthwindDB;
-using msgext_northwind_inventory_csharp.Handlers;
+using NorthwindInventory.NorthwindDB;
+using NorthwindInventory.Handlers;
 
-namespace msgext_northwind_inventory_csharp.MessageExtensions
+namespace NorthwindInventory.MessageExtensions
 {
     public static class ProductSearchCommand
     {
@@ -42,7 +35,7 @@ namespace msgext_northwind_inventory_csharp.MessageExtensions
 
             Console.WriteLine($"🔎 Query #{++queryCount}:\nproductName={productName}, categoryName={categoryName}, inventoryStatus={inventoryStatus}, supplierCity={supplierCity}, stockLevel={stockLevel}");
 
-            ProductService productService = new ProductService(configuration);
+            var productService = new ProductService(configuration);
             var products = await productService.SearchProducts(productName, categoryName, inventoryStatus, supplierCity, stockLevel);
 
             Console.WriteLine($"Found {products.Count} products in the Northwind database");
@@ -54,7 +47,7 @@ namespace msgext_northwind_inventory_csharp.MessageExtensions
                 {
                     Title = product.ProductName,
                     Subtitle = $"Supplied by {product.SupplierName} of {product.SupplierCity}<br />{product.UnitsInStock} in stock",
-                    Images = new List<CardImage> { new CardImage(product.ImageUrl) }
+                    Images = [new(product.ImageUrl)]
                 }.ToAttachment();
 
                 var resultCard = CardHandler.GetEditCard(product);

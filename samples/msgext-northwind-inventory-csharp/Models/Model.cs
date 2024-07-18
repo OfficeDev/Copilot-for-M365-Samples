@@ -1,4 +1,4 @@
-﻿namespace msgext_northwind_inventory_csharp.Models
+﻿namespace NorthwindInventory.Models
 {
     public static class TableNameConstants
     {

@@ -1,16 +1,13 @@
-﻿using System;
-using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Net;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Schema;
 using Newtonsoft.Json.Linq;
 using AdaptiveCards;
 using AdaptiveCards.Templating;
-using msgext_northwind_inventory_csharp.NorthwindDB;
-using msgext_northwind_inventory_csharp.Models;
+using NorthwindInventory.NorthwindDB;
+using NorthwindInventory.Models;
 
-namespace msgext_northwind_inventory_csharp.Handlers
+namespace NorthwindInventory.Handlers
 {
     public static class CardHandler
     {

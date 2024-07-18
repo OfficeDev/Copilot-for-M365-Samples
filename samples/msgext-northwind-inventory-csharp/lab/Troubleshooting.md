@@ -32,6 +32,3 @@ The first time, it's normal for this to take several minutes as the data entries
 Please make sure you see the project terminal ending with the output shown below before testing testing the sample.
 
 ![Error is displayed because of a missing environment variable](./images/02-01-Setup-Project-09.png)
-
-
-

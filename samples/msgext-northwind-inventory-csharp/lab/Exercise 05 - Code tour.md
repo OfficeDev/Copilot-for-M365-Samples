@@ -201,11 +201,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using System;
-using msgext_northwind_inventory_csharp.MessageExtensions;
+using NorthwindInventory.MessageExtensions;
 using Newtonsoft.Json;
-using msgext_northwind_inventory_csharp.Handlers;
+using NorthwindInventory.Handlers;
 
-namespace msgext_northwind_inventory_csharp.Bots
+namespace NorthwindInventory.Bots
 {
     public class SearchBot : TeamsActivityHandler
     {

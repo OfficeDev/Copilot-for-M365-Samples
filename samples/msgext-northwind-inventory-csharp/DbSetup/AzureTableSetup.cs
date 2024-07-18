@@ -1,23 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
 using Azure;
 using Azure.Data.Tables;
-using msgext_northwind_inventory_csharp.Models;
+using NorthwindInventory.Models;
 
-namespace msgext_northwind_inventory_csharp.DbSetup
+namespace NorthwindInventory.DbSetup
 {
-    public class AzureTableSetup
+    public class AzureTableSetup(string connectionString)
     {
-        private readonly string _connectionString;
-
-        public AzureTableSetup(string connectionString)
-        {
-            _connectionString = connectionString;
-        }
+        private readonly string _connectionString = connectionString;
 
         public async Task SetupTablesAndDataAsync(bool reset = true) // Adjust as needed based on your requirements
         {

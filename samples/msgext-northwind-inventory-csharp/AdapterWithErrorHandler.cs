@@ -3,7 +3,7 @@ using Microsoft.Bot.Builder.TraceExtensions;
 using Microsoft.Bot.Connector.Authentication;
 using Microsoft.Bot.Schema;
 
-namespace msgext_northwind_inventory_csharp;
+namespace NorthwindInventory;
 
 public class AdapterWithErrorHandler : CloudAdapter
 {

@@ -1,14 +1,9 @@
-using msgext_northwind_inventory_csharp;
-using msgext_northwind_inventory_csharp.Bots;
-using msgext_northwind_inventory_csharp.DbSetup;
+using NorthwindInventory;
+using NorthwindInventory.Bots;
+using NorthwindInventory.DbSetup;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
 using Microsoft.Bot.Connector.Authentication;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Bot.Builder.BotFramework;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using msgext_northwind_inventory_csharp.NorthwindDB;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,8 +27,7 @@ builder.Services.AddHttpClient("WebClient", client => client.Timeout = TimeSpan.
 builder.Services.AddHttpContextAccessor();
 
 // Configure Bot Framework Authentication
-var configOptions = new ConfigurationCredentialProvider(builder.Configuration);
-builder.Services.AddSingleton<ICredentialProvider>(configOptions);
+builder.Services.AddSingleton(new ConfigurationBotFrameworkAuthentication(builder.Configuration));
 builder.Services.AddSingleton<BotFrameworkAuthentication, ConfigurationBotFrameworkAuthentication>();
 
 // Create the Bot Framework Adapter with error handling enabled.
@@ -43,7 +37,7 @@ builder.Services.AddSingleton<IBotFrameworkHttpAdapter, AdapterWithErrorHandler>
 builder.Services.AddTransient<IBot, SearchBot>();
 
 // Register the AzureTableSetup service
-builder.Services.AddSingleton<AzureTableSetup>(sp => new AzureTableSetup(storageConnectionString));
+builder.Services.AddSingleton(sp => new AzureTableSetup(storageConnectionString));
 
 // Build the application
 var app = builder.Build();

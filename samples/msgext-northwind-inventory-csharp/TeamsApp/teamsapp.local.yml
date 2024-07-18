@@ -46,7 +46,7 @@ provision:
         MicrosoftAppPassword: ${{SECRET_AAD_APP_CLIENT_SECRET}}
         MicrosoftAppType: ${{MICROSOFT_APP_TYPE}}
         MicrosoftAppTenantId: ${{MICROSOFT_APP_TENANT_ID}}
-        StorageConnectionString: ${{STORAGE_CONNECTION_STRING}}
+        StorageConnectionString: ${{SECRET_STORAGE_CONNECTION_STRING}}
 
   - uses: arm/deploy # Deploy given ARM templates parallelly.
     with:

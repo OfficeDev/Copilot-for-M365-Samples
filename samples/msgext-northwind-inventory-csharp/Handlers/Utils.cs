@@ -1,11 +1,8 @@
 ﻿using Microsoft.Bot.Builder;
 using Microsoft.Bot.Schema;
-using System.Collections.Generic;
-using msgext_northwind_inventory_csharp.Models;
-using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json.Linq;
+using NorthwindInventory.Models;
 
-namespace msgext_northwind_inventory_csharp.Handlers
+namespace NorthwindInventory.Handlers
 {
     public static class Utils
     {
