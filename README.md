@@ -4,6 +4,9 @@ This repository contains samples that show how to [extend Copilot for Microsoft 
 
 <p style="align:center"><img src="https://learn.microsoft.com/en-gb/microsoft-365-copilot/extensibility/assets/images/m365-extensibility-types.png" alt="This illustration shows types of extensibility options, Graph connector, plugins, and declarative copilots" /></p>
 
+> [!IMPORTANT]
+> These samples are intended for instructive and demonstration purposes and are intended for use in production. Do not put them into production without without upgrading them to production quality.
+
 > [!IMPORTANT]  
 > To extend Copilot for Microsoft 365, you must ensure that your development environment meets the [requirements](https://learn.microsoft.com/microsoft-365-copilot/extensibility/prerequisites).
 
