@@ -15,16 +15,22 @@ TABLE OF CONTENTS
 
 Open your working folder in Visual Studio.
 
-Teams Toolkit stores environment variables in the **env** folder, and it will fill in all the values automatically when you start your project the first time. However there's one value that's specific to the sample application, and that's the connection string for accessing the Northwind database.
+Teams Toolkit stores environment variables in the **env** folder, and it will fill in all the values automatically to **appsettings.json** when you start your project the first time. However there's one value that's specific to the sample application, and that's the connection string for accessing the Northwind database.
 
 In this project, the Northwind database is stored in Azure Table Storage; when you're debugging locally, it uses the [Azurite](https://learn.microsoft.com/azure/storage/common/storage-use-azurite?tabs=visual-studio%2Cblob-storage#running-azurite-from-an-aspnet-project) storage emulator. That's mostly built into the project, but the project won't build unless you provide the connection string.
 
-The necessary setting is provided in a file **env/.env.local.user.sample** under TeamsApp project. Make a copy of this file in the **env** folder, and call it **.env.local.user**. This is where secret or sensitive settings are stored.
+The necessary setting is provided in a file **appsettings.sample.json** under msgext-northwind-inventory-csharp project. Copy the **"StorageConnectionString": "UseDevelopmentStorage=true"** value from this file, and add it to **appsettings.json**. This is where secret or sensitive settings are stored.
 
-The resulting **.env.local.user** file should contain this line:
+The resulting **appsettings.json** file should be similar to the one below:
 
 ~~~text
-SECRET_STORAGE_CONNECTION_STRING=UseDevelopmentStorage=true
+{
+    "MicrosoftAppType": "{Some value}",
+    "MicrosoftAppId": "{Some value}",
+    "MicrosoftAppPassword": "{Some value}",
+    "MicrosoftAppTenantId": "{Some value}",
+    "StorageConnectionString": "UseDevelopmentStorage=true"
+}
 ~~~
 
 - Running Azurite from an ASP.NET project
