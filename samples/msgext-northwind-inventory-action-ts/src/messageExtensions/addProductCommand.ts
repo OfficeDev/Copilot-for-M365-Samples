@@ -22,15 +22,23 @@ async function handleTeamsMessagingExtensionFetchTask(
                 title: supplier.CompanyName,
                 value: supplier.SupplierID.toString()
             }));
+
+            //pass initial values for copilot action   
+            let initialParameters = {};
+            if (action.data && action.data.taskParameters) {
+                initialParameters = action.data.taskParameters;
+            }
             const template = new ACData.Template(addProduct);
+            
             const card = template.expand({
               $root: {
                 Categories: categoryChoices,
                 Suppliers: supplierChoices,
+                productName: initialParameters["name"] || ""
             }
             });
-            const resultCard = CardFactory.adaptiveCard(card);           
-           
+            const resultCard = CardFactory.adaptiveCard(card);     
+          
             return {
                 task: {
                     type: 'continue',

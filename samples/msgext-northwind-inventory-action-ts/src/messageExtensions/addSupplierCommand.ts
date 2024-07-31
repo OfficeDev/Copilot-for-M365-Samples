@@ -11,17 +11,16 @@ async function handleTeamsMessagingExtensionFetchTask(
         if (action.commandId === COMMAND_ID) {
             let initialParameters = {};
             if (action.data && action.data.taskParameters) {
-                initialParameters = action.data.dialogParameters;
+                initialParameters = action.data.taskParameters;
             }
-            const url = config.botEndPoint + "/client-pages/supplier.html";
-
+            const url = config.botEndPoint + "/client-pages/supplier.html?p=" + encodeURIComponent(JSON.stringify(initialParameters));
             try {
                 return {
                     task: {
                         type: 'continue',
                         value: {
-                            width: 800,
-                            height: 800,
+                            width: 400,
+                            height: 400,
                             title: "Add supplier",
                             url: url,
                             fallbackUrl: url
@@ -46,7 +45,7 @@ async function handleTeamsMessagingExtensionSubmitAction(
         if (action.commandId === COMMAND_ID) {
             let initialParameters = {};
             if (action.data && action.data.taskParameters) {
-                initialParameters = action.data.dialogParameters;
+                initialParameters = action.data.taskParameters;
             } else {
                 initialParameters = action.data
             }
