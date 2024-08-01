@@ -20,6 +20,7 @@ body:
         - msgext-multiparam-csharp
         - msgext-multiparam-js
         - msgext-multiparam-ts
+        - msgext-northwind-inventory-csharp
         - msgext-northwind-inventory-ts
         - msgext-product-support-sso-csharp
       default: 0
