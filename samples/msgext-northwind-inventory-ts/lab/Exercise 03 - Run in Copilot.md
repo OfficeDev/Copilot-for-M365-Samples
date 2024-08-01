@@ -36,7 +36,7 @@ Here are some prompts to try that use only a single parameter of the message ext
 
 * "Find information about Chai in Northwind Inventory"
 
-* "Find discounted seafood in Northwind. Show a table with the products, supplier names, average discount rate, and revenue per period."
+* "Find discounted seafood in Northwind Inventory. Show a table with the products, supplier names, average discount rate, and revenue per period."
 
 See if this last one also locates any of the documents you uploaded to your OneDrive.
 
@@ -60,7 +60,7 @@ Feel free to try making up your own prompts. You'll find that they only work if 
 
 In this exercise, you'll try some prompts that exercise the multi-parameter feature in the sample plugin. These prompts will request data that can be retrieved by name, category, inventory status, supplier city, and stock level, as defined in [the manifest](../appPackage/manifest.json).
 
-For example, try prompting "Find Northwind beverages with more than 100 items in stock". To respond, Copilot must identify products:
+For example, try prompting "Find Northwind Inventory beverages with more than 100 items in stock". To respond, Copilot must identify products:
 
 * where the category is "beverages"
 * where inventory status is "in stock"
@@ -80,17 +80,17 @@ By using this prompt, Copilot might look also in your OneDrive files to find the
 
 Here are some more prompts to try:
 
-* "Find Northwind dairy products that are low on stock. Show me a table with the product, supplier, units in stock and on order."
+* "Find Northwind Inventory dairy products that are low on stock. Show me a table with the product, supplier, units in stock and on order."
 
-* "We’ve been receiving partial orders for Tofu. Find the supplier in Northwind and draft an email summarizing our inventory and reminding them they should stop sending partial orders per our MOQ policy."
+* "We’ve been receiving partial orders for Tofu. Find the supplier in Northwind Inventory and draft an email summarizing our inventory and reminding them they should stop sending partial orders per our MOQ policy."
 
-* "Northwind will have a booth at Microsoft Community Days  in London. Find products with local suppliers and write a LinkedIn post to promote the booth and products."
+* "Northwind Inventory will have a booth at Microsoft Community Days  in London. Find products with local suppliers and write a LinkedIn post to promote the booth and products."
 
     Request an enhancement by prompting,
 
     "Emphasize how delicious the products are and encourage people to attend our booth"
 
-* "What beverage is high in demand due to social media that is low stock in Northwind in London. Reference the product details to update stock."
+* "What beverage is high in demand due to social media that is low stock in Northwind Inventory in London. Reference the product details to update stock."
 
 Which prompts work best for you? Try making up your own prompts and observe your log messages to see how Copilot accesses your plugin.
 
