@@ -1,6 +1,7 @@
 import sys
 import traceback
 from datetime import datetime
+from db_setup import azure_table_setup
 from http import HTTPStatus
 
 from aiohttp import web
@@ -55,6 +56,13 @@ ADAPTER.on_turn_error = on_error
 
 # Create the Bot
 BOT = SearchBot()
+
+# Setup Azure Tables
+def setup_tables():
+    connection_string = CONFIG.STORAGE_ACCOUNT_CONNECTION_STRING
+    azure_table_setup.main(connection_string, reset=False)  # Adjust `reset` as needed
+
+setup_tables()
 
 # Listen for incoming requests on /api/messages
 async def messages(req: Request) -> Response:

@@ -1,9 +1,9 @@
 import os
 
 class Settings:
-    APP_ID = os.getenv("APP_ID", "")
-    APP_PASSWORD = os.getenv("APP_PASSWORD", "")
-    STORAGE_ACCOUNT_CONNECTION_STRING = os.getenv("STORAGE_ACCOUNT_CONNECTION_STRING", "")
+    APP_ID = os.environ.get("MicrosoftAppId", "<<MICROSOFT-APP-ID>>")
+    APP_PASSWORD = os.environ.get("MicrosoftAppPassword", "<<MICROSOFT-APP-PASSWORD>>")
+    STORAGE_ACCOUNT_CONNECTION_STRING = os.environ.get("STORAGE_ACCOUNT_CONNECTION_STRING", "<<STORAGE_ACCOUNT_CONNECTION_STRING>>")
 
     TABLE_NAME = {
     'PRODUCT': 'Products',
