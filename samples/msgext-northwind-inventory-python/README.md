@@ -80,4 +80,4 @@ Here are some ideas for prompts to try. If you don't get the result you expect, 
   > [!NOTE]
   > There is a document that discusses a social media campaign for one of the products in the [sample documents](./sampleDocs/).
 
-![](https://m365-visitor-stats.azurewebsites.net/SamplesGallery/officedev-copilot-for-m365-plugins-samples-msgext-northwind-inventory-ts)
+![](https://m365-visitor-stats.azurewebsites.net/SamplesGallery/officedev-copilot-for-m365-plugins-samples-msgext-northwind-inventory-python)
