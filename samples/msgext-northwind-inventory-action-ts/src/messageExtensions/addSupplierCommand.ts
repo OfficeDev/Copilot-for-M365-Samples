@@ -13,7 +13,7 @@ async function handleTeamsMessagingExtensionFetchTask(
             if (action.data && action.data.taskParameters) {
                 initialParameters = action.data.taskParameters;
             }
-            const url = config.botEndPoint + "/client-pages/supplier.html?p=" + encodeURIComponent(JSON.stringify(initialParameters));
+            const url = `${config.botEndPoint}/client-pages/supplier.html?p=${encodeURIComponent(JSON.stringify(initialParameters))}&appId=${config.teamsAppId}`;
             try {
                 return {
                     task: {
@@ -57,9 +57,9 @@ async function handleTeamsMessagingExtensionSubmitAction(
                 SupplierID: "",
                 CompanyName:initialParameters["companyName"],
                 ContactName:initialParameters["contactName"],
-                ContactTitle:"",
-                Address:"",
-                City:"",
+                ContactTitle:initialParameters["contactTitle"]?initialParameters["contactTitle"]:"",
+                Address:initialParameters["address"]?initialParameters["address"]:"",
+                City:initialParameters["city"]?initialParameters["city"]:"",
                 Region:"",
                 PostalCode:"",
                 Country:"",

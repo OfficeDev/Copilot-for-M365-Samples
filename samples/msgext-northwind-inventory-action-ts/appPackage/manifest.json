@@ -154,6 +154,24 @@
                             "title": "Contact Name",
                             "description": "Name of the contact in the company to be added.",
                             "inputType": "text"
+                        },
+                        {
+                            "name": "contactTitle",
+                            "title": "Contact Title",
+                            "description": "Title of the contact in the company to be added.",
+                            "inputType": "text"
+                        },
+                        {
+                            "name": "address",
+                            "title": "Address",
+                            "description": "Address of the company.",
+                            "inputType": "text"
+                        },
+                        {
+                            "name": "city",
+                            "title": "City",
+                            "description": "City of the company",
+                            "inputType": "text"
                         }
                     ]
                 }
