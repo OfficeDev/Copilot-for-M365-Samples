@@ -12,8 +12,10 @@ async function handleTeamsMessagingExtensionFetchTask(
             let initialParameters = {};
             if (action.data && action.data.taskParameters) {
                 initialParameters = action.data.taskParameters;
+            }else {
+                initialParameters = action.data
             }
-            const url = `${config.botEndPoint}/client-pages/supplier.html?p=${encodeURIComponent(JSON.stringify(initialParameters))}&appId=${config.teamsAppId}`;
+            const url = `${config.botEndPoint}/public/supplier.html?p=${encodeURIComponent(JSON.stringify(initialParameters))}&appId=${config.teamsAppId}`;
             try {
                 return {
                     task: {
@@ -43,6 +45,7 @@ async function handleTeamsMessagingExtensionSubmitAction(
     try {
        
         if (action.commandId === COMMAND_ID) {
+            //for Copilot action
             let initialParameters = {};
             if (action.data && action.data.taskParameters) {
                 initialParameters = action.data.taskParameters;

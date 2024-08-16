@@ -1,6 +1,6 @@
 // Import required packages
 import * as restify from "restify";
-
+import * as path from 'path';
 // Import required bot services.
 // See https://aka.ms/bot-services to learn more about the different parts of a bot.
 import {
@@ -54,19 +54,24 @@ adapter.onTurnError = onTurnErrorHandler;
 
 // Create the bot that will handle incoming messages.
 const searchApp = new SearchApp();
-
 // Create HTTP server.
 const server = restify.createServer();
 server.use(restify.plugins.bodyParser());
+
+// Serve static files from the "public" directory
+server.get('/public/*', restify.plugins.serveStatic({
+  directory: path.join(__dirname, 'public'),
+  appendRequestPath: false
+}));
+
+
 server.listen(process.env.port || process.env.PORT || 3978, () => {
   console.log(`\nBot Started, ${server.name} listening to ${server.url}`);
 });
-server.use(restify.plugins.bodyParser());
-// Use the serveStatic plugin to serve static files from the 'public' directory
-// Serve static files from the "public" directory
-server.get('/*', restify.plugins.serveStatic({
-  directory: __dirname
-}));
+
+
+
+
 // Listen for incoming requests.
 server.post("/api/messages", async (req, res) => {
   await adapter.process(req, res, async (context) => {

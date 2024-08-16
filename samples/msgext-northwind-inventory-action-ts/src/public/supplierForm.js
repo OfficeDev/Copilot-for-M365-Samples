@@ -1,6 +1,15 @@
 import 'https://res.cdn.office.net/teams-js/2.24.0/js/MicrosoftTeams.min.js'
 let teamsAppID='';
+let teamsInitPromise;
+async function ensureTeamsSdkInitialized() {
+    if (!teamsInitPromise) {
+        teamsInitPromise = microsoftTeams.app.initialize();
+    }
+    return teamsInitPromise;
+}
 async function displayUI() {
+
+    await ensureTeamsSdkInitialized();
     const urlParams = new URLSearchParams(window.location.search);   
     if (urlParams) {
         const paramObj = urlParams.get('p');  

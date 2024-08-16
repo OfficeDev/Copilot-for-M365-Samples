@@ -6,7 +6,16 @@
     <title>Dialog: Add supplier</title>   
     <link rel="icon" href="data:;base64,="> <!-- Suppress favicon error -->
     <link rel="stylesheet" href="supplierForm.css">
-  
+    <script src="https://res.cdn.office.net/teams-js/2.24.0/js/MicrosoftTeams.min.js" crossorigin="anonymous"></script>
+    </script>
+    <script>
+    // Initialize the library
+    // Start function
+    const load = async function () {
+        await microsoftTeams.app.initialize();
+    }
+    load();
+    </script>
 </head>
     <body>
 

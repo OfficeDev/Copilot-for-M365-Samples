@@ -27,16 +27,27 @@ async function handleTeamsMessagingExtensionFetchTask(
             let initialParameters = {};
             if (action.data && action.data.taskParameters) {
                 initialParameters = action.data.taskParameters;
+            } else {
+                initialParameters = action.data
             }
             const template = new ACData.Template(addProduct);
-            
-            const card = template.expand({
-              $root: {
-                Categories: categoryChoices,
-                Suppliers: supplierChoices,
-                productName: initialParameters["name"] || ""
-            }
+            let card = template.expand({
+                $root: {
+                    Categories: categoryChoices,
+                    Suppliers: supplierChoices,
+                    productName: "",
+                }
             });
+            if (initialParameters) {
+                 card = template.expand({
+                    $root: {
+                        Categories: categoryChoices,
+                        Suppliers: supplierChoices,
+                        productName: initialParameters["name"] ? initialParameters["name"] : "",
+                    }
+                });
+
+            }
             const resultCard = CardFactory.adaptiveCard(card);     
           
             return {
@@ -62,6 +73,13 @@ async function handleTeamsMessagingExtensionSubmitAction(
     try {       
         const data = action.data;
         if (action.commandId === COMMAND_ID) {
+            //for Copilot action
+            let initialParameters = {};
+            if (action.data && action.data.taskParameters) {
+                initialParameters = action.data.taskParameters;
+            } else {
+                initialParameters = action.data
+            }
             switch (data.action) {
                 case "submit": {
                     const product: Product = {
@@ -70,15 +88,15 @@ async function handleTeamsMessagingExtensionSubmitAction(
                         rowKey: "",
                         timestamp: new Date(),
                         ProductID: "",
-                        ProductName: data.productName,
-                        SupplierID: data.supplierID,
-                        CategoryID: data.categoryID,
-                        QuantityPerUnit: data.qtyPerUnit,
-                        UnitPrice: data.unitPrice,
-                        UnitsInStock: data.unitsInStock,
-                        UnitsOnOrder: data.unitsOnOrder,
-                        ReorderLevel:data.reorderLevel,
-                        Discontinued: data.discontinued,
+                        ProductName: initialParameters["productName"],
+                        SupplierID: initialParameters["supplierID"],
+                        CategoryID: initialParameters["categoryID"],
+                        QuantityPerUnit: initialParameters["qtyPerUnit"],
+                        UnitPrice: initialParameters["unitPrice"],
+                        UnitsInStock: initialParameters["unitsInStock"],
+                        UnitsOnOrder: initialParameters["unitsOnOrder"],
+                        ReorderLevel:initialParameters["reorderLevel"],
+                        Discontinued: initialParameters["discontinued"],
                         ImageUrl: "https://picsum.photos/seed/1/200/300"
                     }
                     await createProduct(product);                    
