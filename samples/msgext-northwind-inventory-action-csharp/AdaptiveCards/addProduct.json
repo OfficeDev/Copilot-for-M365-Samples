@@ -1,0 +1,95 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Enter Product Details",
+      "weight": "bolder",
+      "size": "medium"
+    },
+    {
+      "type": "Input.Text",
+      "id": "productName",
+      "placeholder": "Product Name",
+      "value": "${productName}"
+    },
+    {
+      "type": "Input.ChoiceSet",
+      "label": "Category",
+      "id": "categoryID",
+      "value": "",
+      "isRequired": true,
+      "errorMessage": "Category is required",
+      "choices": "${Categories}"
+    },
+    {
+      "type": "Input.ChoiceSet",
+      "label": "Supplier",
+      "id": "supplierID",
+      "value": "",
+      "isRequired": true,
+      "errorMessage": "Supplier is required",
+      "choices": "${Suppliers}"
+    },
+    {
+      "type": "Input.Number",
+      "id": "unitPrice",
+      "label": "Unit Price",
+      "min": 0,
+      "value": ""
+    },
+    {
+      "type": "Input.Text",
+      "id": "qtyPerUnit",
+      "label": "Quantity per unit",
+      "value": ""
+    },
+    {
+      "type": "Input.Number",
+      "id": "unitsInStock",
+      "label": "Units in stock",
+      "min": 0,
+      "value": ""
+    },
+    {
+      "type": "Input.Number",
+      "id": "unitsOnOrder",
+      "label": "Units on order",
+      "min": 0,
+      "value": ""
+    },
+    {
+      "type": "Input.Number",
+      "id": "reorderLevel",
+      "label": "Reorder level",
+      "min": 0,
+      "value": ""
+    },
+    {
+      "type": "Input.Toggle",
+      "valueOn": "true",
+      "valueOff": "false",
+      "id": "discontinued",
+      "title": "Discontinued",
+      "value": "false"
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "Submit",
+      "data": {
+        "action": "submit"
+      }
+    },
+    {
+      "type": "Action.Submit",
+      "title": "Cancel",
+      "data": {
+        "action": "cancel"
+      }
+    }
+  ]
+}
