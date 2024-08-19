@@ -49,8 +49,8 @@ using (var scope = app.Services.CreateScope())
     var services = scope.ServiceProvider;
     try
     {
-        //var azureTableSetup = services.GetRequiredService<AzureTableSetup>();
-        //await azureTableSetup.SetupTablesAndDataAsync();
+        var azureTableSetup = services.GetRequiredService<AzureTableSetup>();
+        await azureTableSetup.SetupTablesAndDataAsync();
     }
     catch (Exception ex)
     {

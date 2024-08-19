@@ -3,7 +3,7 @@
     "Name": "Microsoft Teams (browser)",
     "Projects": [
       {
-        "Path": "msgext-northwind-inventory-csharp-action.csproj",
+        "Path": "msgext-northwind-inventory-action-csharp.csproj",
         "Action": "Start",
         "DebugTarget": "Start Project"
       },
