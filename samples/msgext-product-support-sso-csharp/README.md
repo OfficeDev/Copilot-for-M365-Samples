@@ -21,16 +21,25 @@ This sample implements a Microsoft Teams message extension that can be used as a
 - [Visual Studio 2022 17.9+](https://visualstudio.microsoft.com)
 - [Teams Toolkit](https://learn.microsoft.com/microsoftteams/platform/toolkit/toolkit-v4/install-teams-toolkit-vs?pivots=visual-studio-v17-7)
 - Azure subscription
+- [PnP PowerShell](https://pnp.github.io/powershell)
 - You will need a Microsoft work or school account with [permissions to upload custom Teams applications](https://learn.microsoft.com/microsoftteams/platform/concepts/build-and-test/prepare-your-o365-tenant#enable-custom-teams-apps-and-turn-on-custom-app-uploading). The account will also need a Microsoft Copilot for Microsoft 365 license to use the extension in Copilot.
 
 ## Minimal path to awesome
 
 ### 1. Prepare SharePoint Online
 
-- Using [SharePoint look book](https://lookbook.microsoft.com) service, provision a new SharePoint Online team site using the [Product support](https://lookbook.microsoft.com/details/81e2fee3-02a0-427b-af8b-8c7f42010fde) template
+- Create a new SharePoint Team site
+  - Site type: Team site
+  - Site name: Product support
+  - Site address: productmarketing
+- Download the [Product Support provisioning template](https://download-directory.github.io/?url=https%3A%2F%2Fgithub.com%2FSharePoint%2Fsp-dev-provisioning-templates%2Ftree%2Fmaster%2Ftenant%2Fproductsupport) source files and extract the contents of the ZIP to a folder
+- Open a PowerShell terminal session
+- Install PnP PowerShell, execute `Install-Module PnP.PowerShell -Scope CurrentUser`
+- Connect to the SharePoint Online Admin Center site and follow the authentication steps, execute `Connect-PnPOnline -Url https://<tenant>-admin.sharepoint.com -DeviceLogin`, replacing `<tenant>` with your tenant name
+- Change to the folder where you extracted the source files to
+- Apply the template to the Product support SharePoint site, execute `Invoke-PnPTenantTemplate -Path .\productsupport.pnp`
+- Open a browser window and navigate to the Product support site
 - In the Products list, [create indexes](https://support.microsoft.com/en-us/office/add-an-index-to-a-list-or-library-column-f3f00554-b7dc-44d1-a2ed-d477eac463b0) on the `Title` and `RetailCategory` columns
-
-> NOTE: If you can't use the SharePoint look book service, you can find the source files to create it manually in the [SharePoint look book repository](https://github.com/SharePoint/sp-dev-provisioning-templates/tree/master/tenant/productsupport)
 
 ### 2. Prepare and run project
 

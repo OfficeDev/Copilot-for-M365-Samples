@@ -26,4 +26,4 @@ TABLE OF CONTENTS
 * [Exercise 2](./Exercise%2002%20-%20Run%20sample%20app.md) - Run the sample as Message Extension
 * [Exercise 3](./Exercise%2003%20-%20Run%20in%20Copilot.md) - Run the sample as a Copilot plugin
 * [Exercise 4](./Exercise%2004%20-%20Add%20a%20new%20command.md) - Add a new command
-* [Exercise 5](./Exercise%2004%20-%20Code%20tour.md) - Code tour
+* [Exercise 5](./Exercise%2005%20-%20Code%20tour.md) - Code tour

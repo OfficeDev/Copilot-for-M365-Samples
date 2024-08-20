@@ -11,6 +11,11 @@ import editProduct from '../adaptiveCards/editProduct.json';
 import { CreateActionErrorResponse, CreateAdaptiveCardInvokeResponse, getInventoryStatus } from './utils';
 
 function getEditCard(product: ProductEx): any {
+    var card = getEditCardExpandedTemplate(product);
+    return CardFactory.adaptiveCard(card);
+}
+
+function getEditCardExpandedTemplate(product: ProductEx): any {
 
     var template = new ACData.Template(editCard);
     var card = template.expand({
@@ -34,7 +39,7 @@ function getEditCard(product: ProductEx): any {
             averageDiscount: product.AverageDiscount
         }
     });
-    return CardFactory.adaptiveCard(card);
+    return card;
 }
 
 async function handleTeamsCardActionUpdateStock(context: TurnContext) {
@@ -44,11 +49,11 @@ async function handleTeamsCardActionUpdateStock(context: TurnContext) {
     console.log(`🎬 Handling update stock action, quantity=${data.txtStock}`);
 
     if (data.txtStock && data.productId) {
-        
+
         const product = await getProductEx(data.productId);
         product.UnitsInStock = Number(data.txtStock);
         await updateProduct(product);
-        
+
         var template = new ACData.Template(successCard);
         var card = template.expand({
             $root: {
@@ -73,12 +78,12 @@ async function handleTeamsCardActionUpdateStock(context: TurnContext) {
                 message: `Stock updated for ${product.ProductName} to ${product.UnitsInStock}!`
             }
         });
-       
-        return CreateAdaptiveCardInvokeResponse(200, card );
+
+        return CreateAdaptiveCardInvokeResponse(200, card);
 
     } else {
-       
-        return CreateActionErrorResponse(400,0, "Invalid request");
+
+        return CreateActionErrorResponse(400, 0, "Invalid request");
     }
 }
 async function handleTeamsCardActionCancelRestock(context: TurnContext) {
@@ -116,11 +121,11 @@ async function handleTeamsCardActionCancelRestock(context: TurnContext) {
                 // Card message                
                 message: `Restock cancelled for ${product.ProductName}.`
             }
-        });       
-        return CreateAdaptiveCardInvokeResponse(200,card);
+        });
+        return CreateAdaptiveCardInvokeResponse(200, card);
 
     } else {
-        return CreateActionErrorResponse(400,0, "Invalid request");
+        return CreateActionErrorResponse(400, 0, "Invalid request");
     }
 }
 async function handleTeamsCardActionRestock(context: TurnContext) {
@@ -160,42 +165,56 @@ async function handleTeamsCardActionRestock(context: TurnContext) {
         return CreateAdaptiveCardInvokeResponse(200, card);
 
     } else {
-        return CreateActionErrorResponse(400,0, "Invalid request");
+        return CreateActionErrorResponse(400, 0, "Invalid request");
     }
 }
+
+async function handleTeamsCardActionRefresh(context: TurnContext) {
+
+    const request = context.activity.value;
+    const data = request.action.data;
+    console.log(`🎬 Handling refresh action, product ${data.productId}`);
+    if (data.productId) {
+        const product = await getProductEx(data.productId);
+        const expandedTemplate = await getEditCardExpandedTemplate(product);
+        return CreateAdaptiveCardInvokeResponse(200, expandedTemplate);
+    }
+}
+
 async function handleTeamsCardActionEditProduct(context: TurnContext) {
     const request = context.activity.value;
     const data = request.action.data;
     console.log(`🎬 Handling product edit`)
     if (data.productId) {
 
-        const product = await getProductEx(data.productId);       
-        const categories=await getCategories(); 
-        const catArray = Object.values(categories);     
+        const product = await getProductEx(data.productId);
+        const categories = await getCategories();
+        const catArray = Object.values(categories);
         const categoryChoices = catArray.map(category => ({
             title: category.CategoryName,
             value: category.CategoryID.toString()
         }));
-        const suppliers=await getSuppliers();   
-        const suppArray = Object.values(suppliers);     
+        const suppliers = await getSuppliers();
+        const suppArray = Object.values(suppliers);
         const supplierChoices = suppArray.map(supplier => ({
             title: supplier.CompanyName,
             value: supplier.SupplierID.toString()
         }));
         const template = new ACData.Template(editProduct);
         const card = template.expand({
-          $root: {
-            Categories: categoryChoices,
-            Suppliers: supplierChoices,
-            Product:product
-        }
+            $root: {
+                Categories: categoryChoices,
+                Suppliers: supplierChoices,
+                Product: product
+            }
         });
         return CreateAdaptiveCardInvokeResponse(200, card);
 
     } else {
-        return CreateActionErrorResponse(400,0, "Invalid request");
+        return CreateActionErrorResponse(400, 0, "Invalid request");
     }
 }
+
 async function handleTeamsCardActionSaveProduct(context: TurnContext) {
 
     const request = context.activity.value;
@@ -203,20 +222,20 @@ async function handleTeamsCardActionSaveProduct(context: TurnContext) {
     console.log(`🎬 Handling update save product action, productId=${data.productId}`);
 
     if (data.productId) {
-        
+
         const product = await getProductEx(data.productId);
         product.ProductID = data.productId;
         product.ProductName = data.productName;
         product.CategoryID = data.categoryID.value;
         product.SupplierID = data.supplierID.value;
-        product.QuantityPerUnit = data.qtyPerUnit;
-        product.UnitPrice = data.UnitPrice;
-        product.UnitsInStock = data.unitsInStock;
-        product.UnitsOnOrder = data.unitsOnOrder;
-        product.ReorderLevel = data.reorderLevel;
+        product.QuantityPerUnit = data.qtyPerUnit ?? "0";
+        product.UnitPrice = data.UnitPrice ?? "0";
+        product.UnitsInStock = data.unitsInStock ?? "0";
+        product.UnitsOnOrder = data.unitsOnOrder ?? "0";
+        product.ReorderLevel = data.reorderLevel ?? "0";
         product.Discontinued = data.discontinued;
         await updateProduct(product);
-        
+
         var template = new ACData.Template(successCard);
         var card = template.expand({
             $root: {
@@ -241,12 +260,21 @@ async function handleTeamsCardActionSaveProduct(context: TurnContext) {
                 message: `Product updated for ${product.ProductName}!`
             }
         });
-       
-        return CreateAdaptiveCardInvokeResponse(200, card );
+
+        return CreateAdaptiveCardInvokeResponse(200, card);
 
     } else {
-       
-        return CreateActionErrorResponse(400,0, "Invalid request");
+
+        return CreateActionErrorResponse(400, 0, "Invalid request");
     }
 }
-export default { getEditCard, handleTeamsCardActionUpdateStock, handleTeamsCardActionRestock, handleTeamsCardActionCancelRestock,handleTeamsCardActionEditProduct,handleTeamsCardActionSaveProduct}
+
+export default {
+    getEditCard,
+    handleTeamsCardActionUpdateStock,
+    handleTeamsCardActionRestock,
+    handleTeamsCardActionCancelRestock,
+    handleTeamsCardActionRefresh,
+    handleTeamsCardActionEditProduct,
+    handleTeamsCardActionSaveProduct
+}

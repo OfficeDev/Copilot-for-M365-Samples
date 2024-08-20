@@ -11,6 +11,11 @@ import * as ACData from "adaptivecards-templating";
 import { CreateActionErrorResponse, CreateAdaptiveCardInvokeResponse, getInventoryStatus } from './utils';
 
 function getEditCard(product: ProductEx): any {
+    var card = getEditCardExpandedTemplate(product);
+    return CardFactory.adaptiveCard(card);
+}
+
+function getEditCardExpandedTemplate(product: ProductEx): any {
 
     var template = new ACData.Template(editCard);
     var card = template.expand({
@@ -34,7 +39,7 @@ function getEditCard(product: ProductEx): any {
             averageDiscount: product.AverageDiscount
         }
     });
-    return CardFactory.adaptiveCard(card);
+    return card;
 }
 
 async function handleTeamsCardActionUpdateStock(context: TurnContext) {
@@ -164,4 +169,24 @@ async function handleTeamsCardActionRestock(context: TurnContext) {
     }
 }
 
-export default { getEditCard, handleTeamsCardActionUpdateStock, handleTeamsCardActionRestock, handleTeamsCardActionCancelRestock }
+async function handleTeamsCardActionRefresh(context: TurnContext) {
+
+    const request = context.activity.value;
+    const data = request.action.data;
+    console.log(`🎬 Handling refresh action, product ${data.productId}`);
+    if (data.productId) {
+        const product = await getProductEx(data.productId);
+        const expandedTemplate = await getEditCardExpandedTemplate(product);
+        return CreateAdaptiveCardInvokeResponse(200, expandedTemplate);
+    }
+    return CreateActionErrorResponse(404, 0, `Product not found`);
+
+}
+
+export default {
+    getEditCard, 
+    handleTeamsCardActionUpdateStock, 
+    handleTeamsCardActionRestock, 
+    handleTeamsCardActionCancelRestock,
+    handleTeamsCardActionRefresh
+ }
