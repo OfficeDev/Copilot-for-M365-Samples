@@ -1,6 +1,6 @@
 ---
 page_type: sample
-description: This sample implements a Teams message extension that can be used as a plugin for Microsoft Copilot for Microsoft 365. The message extension allows users to query the Northwind Database.
+description: This sample implements a Teams message extension that can be used as a plugin for Microsoft Copilot for Microsoft 365. The message extension allows users to query and update the Northwind Database.
 products:
 - office-teams
 - copilot-m365
@@ -12,16 +12,17 @@ languages:
 
 ![License.](https://img.shields.io/badge/license-MIT-green.svg)
 
-This sample implements a Teams message extension that can be used as a plugin for Microsoft Copilot for Microsoft 365. The message extension allows users to query the [Northwind Database](https://learn.microsoft.com/dotnet/framework/data/adonet/sql/linq/downloading-sample-databases).
+This sample implements a Teams message extension that can be used as a plugin for Microsoft Copilot for Microsoft 365. The message extension allows users to query and update the [Northwind Database](https://learn.microsoft.com/dotnet/framework/data/adonet/sql/linq/downloading-sample-databases)using search and action commands.
 
 ![Screenshot of the sample extension working in Copilot in Microsoft Teams](./lab/images/03-03a-response-on-chai.png)
+
+![Screenshot of the sample extension with action to add a supplier in Copilot for Microsoft 365 in Teams](./assets/action-me-plugin.png)
 
 ## Version history
 
 Version|Manifest version|Date|Author|Comments
 -------|--|--|----|--------
-1.0|1.16|November 15, 2023 |Bob German <br/> Garry Trinder <br/> Rabia Williams|Initial release for Ignite 2023 labs
-1.1|1.16|December 7, 2023 |Bob German|Parameters are now passed by name not value
+1.0|1.16|July 31, 2024 |Bob German, <br/>Garry Trinder, <br>Rabia Williams<br/>|Northwind plugin with Action commands.
 
 ## Prerequisites
 
@@ -45,6 +46,10 @@ Here are some ideas for prompts to try. If you don't get the result you expect, 
 - *Who supplies discounted produce to Northwind?*
 
 - *Find high revenue products in Northwind. Have there been any ad campaigns for these products?*
+
+- *Add Supplier ContosoSupplies with contact name Adele V*
+
+- *Add product with name Kombucha*
 
   > [!NOTE]
   > The ad campaign details are in the [sample documents](./sampleDocs/).

@@ -13,7 +13,7 @@
       "type": "Input.Text",
       "id": "productName",
       "placeholder": "Product Name",
-      "value": ""
+      "value": "${productName}"
     },
     {
       "type": "Input.ChoiceSet",

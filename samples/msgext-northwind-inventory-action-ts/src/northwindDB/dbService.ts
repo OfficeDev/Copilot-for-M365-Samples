@@ -1,5 +1,5 @@
 import { TableClient, TableEntity } from "@azure/data-tables";
-import { Product } from "./model";
+import { Product,Supplier } from "./model";
 import config from "../config";
 export interface DbEntity extends TableEntity {
     etag: string;
@@ -9,7 +9,7 @@ export interface DbEntity extends TableEntity {
 }
 
 export interface DbProject extends DbEntity, Product { }
-
+export interface DbSupplier extends DbEntity, Supplier { }
 export default class DbService<DbEntityType> {
 
     private okToCacheLocally = false;

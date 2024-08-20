@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Dialog: Add supplier</title>   
+    <link rel="icon" href="data:;base64,="> <!-- Suppress favicon error -->
+    <link rel="stylesheet" href="supplierForm.css">
+    <script src="https://res.cdn.office.net/teams-js/2.24.0/js/MicrosoftTeams.min.js" crossorigin="anonymous"></script>
+    </script>
+    <script>
+    // Initialize the library
+    // Start function
+    const load = async function () {
+        await microsoftTeams.app.initialize();
+    }
+    load();
+    </script>
+</head>
+    <body>
+
+        <form id="supplierForm">
+            <div>                
+                <label for="companyName">Company Name:</label>
+                <input type="text" id="companyName" name="companyName" required tabindex="1">   
+                <label for="contactName">Contact Name:</label>
+                <input type="text" id="contactName" name="contactName" required tabindex="2">   
+                <label for="contactTitle">Contact Title:</label>
+                <input type="text" id="contactTitle" name="contactTitle"  tabindex="3">   
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address"  tabindex="4">   
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city"  tabindex="5">   
+               
+            </div>
+            <div>
+                <button type="submit" tabindex="2">Save</button>
+            </div>
+        </form>
+        <script type="module" src="supplierForm.js"></script>
+    </body>
+
+</html>
