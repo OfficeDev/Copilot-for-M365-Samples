@@ -4,7 +4,7 @@ namespace NorthwindInventory.NorthwindDB
 {
     public static class SupplierService
     {
-        private static readonly string TableNameSupplier = "Supplier";
+        private static readonly string TableNameSupplier = "Suppliers";
 
         public static async Task<string> CreateSupplierAsync(Supplier supplier, IConfiguration configuration)
         {

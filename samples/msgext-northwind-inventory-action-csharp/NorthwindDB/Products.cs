@@ -297,8 +297,8 @@ namespace NorthwindInventory.NorthwindDB
                 };
 
                 productEx.CategoryName = _categories[productEx.CategoryID.ToString()].CategoryName;
-                productEx.SupplierName = _suppliers[productEx.SupplierID.ToString()].CompanyName;
-                productEx.SupplierCity = _suppliers[productEx.SupplierID.ToString()].City;
+                productEx.SupplierName = _suppliers != null && _suppliers.ContainsKey(productEx.SupplierID.ToString()) ? _suppliers[productEx.SupplierID.ToString()].CompanyName : "";
+                productEx.SupplierCity = _suppliers != null && _suppliers.ContainsKey(productEx.SupplierID.ToString()) ? _suppliers[productEx.SupplierID.ToString()].City : "";
                 productEx.UnitSales = _orderTotals != null && _orderTotals.ContainsKey(productEx.ProductID.ToString())? _orderTotals[productEx.ProductID.ToString()].TotalQuantity: 0;
                 productEx.InventoryValue = productEx.UnitsInStock * productEx.UnitPrice;
                 productEx.Revenue = _orderTotals != null && _orderTotals.ContainsKey(productEx.ProductID.ToString())? Math.Round(_orderTotals[productEx.ProductID.ToString()].TotalRevenue): 0;

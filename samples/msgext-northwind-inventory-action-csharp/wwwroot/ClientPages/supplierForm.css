@@ -4,7 +4,6 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f3f2f1;
     padding: 0;
- 
 }
 
 form {
@@ -14,9 +13,9 @@ form {
     padding: 20px;
 }
 
-form div {
-    margin-bottom: 15px;
-}
+    form div {
+        margin-bottom: 15px;
+    }
 
 label {
     display: block;
@@ -42,6 +41,6 @@ button {
     font-size: 16px;
 }
 
-button:hover {
-    background-color: #4b4d8a;
-}
+    button:hover {
+        background-color: #4b4d8a;
+    }
