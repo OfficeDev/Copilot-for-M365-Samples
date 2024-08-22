@@ -5,7 +5,7 @@ namespace NorthwindInventory.AdaptiveCardMethods
 {
     public class AdaptiveCardMethods
     {
-        public static Attachment CreateAddProductCard(List<Choice> categoryChoices, List<Choice> supplierChoices)
+        public static Attachment CreateAddProductCard(List<Choice> categoryChoices, List<Choice> supplierChoices, string productName)
         {
             var card = new AdaptiveCard(new AdaptiveSchemaVersion(1, 5))
             {
@@ -20,7 +20,8 @@ namespace NorthwindInventory.AdaptiveCardMethods
             new AdaptiveTextInput
             {
                 Id = "productName",
-                Placeholder = "Product Name"
+                Placeholder = "Product Name",
+                Value = productName
             },
             new AdaptiveChoiceSetInput
             {
