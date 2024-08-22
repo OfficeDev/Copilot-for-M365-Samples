@@ -27,7 +27,7 @@ Version|Manifest version|Date|Author|Comments
 
 ## Prerequisites
 
-- [Visual Studio 2022 17.10+](https://visualstudio.microsoft.com)
+- [Visual Studio 2022 17.11+](https://visualstudio.microsoft.com)
 - [Azure subscription](https://portal.azure.com)
 - [Teams Toolkit for Visual Studio](https://learn.microsoft.com/microsoftteams/platform/toolkit/toolkit-v4/install-teams-toolkit-vs?pivots=visual-studio-v17-7)
 - You will need a Microsoft work or school account with [permissions to upload custom Teams applications](https://learn.microsoft.com/microsoftteams/platform/concepts/build-and-test/prepare-your-o365-tenant#enable-custom-teams-apps-and-turn-on-custom-app-uploading). The account will also need a Microsoft Copilot for Microsoft 365 license to use the extension in Copilot.
