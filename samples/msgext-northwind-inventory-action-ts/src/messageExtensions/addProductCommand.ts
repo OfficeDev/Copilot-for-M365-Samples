@@ -22,15 +22,34 @@ async function handleTeamsMessagingExtensionFetchTask(
                 title: supplier.CompanyName,
                 value: supplier.SupplierID.toString()
             }));
-            const template = new ACData.Template(addProduct);
-            const card = template.expand({
-              $root: {
-                Categories: categoryChoices,
-                Suppliers: supplierChoices,
+
+            //pass initial values for copilot action   
+            let initialParameters = {};
+            if (action.data && action.data.taskParameters) {
+                initialParameters = action.data.taskParameters;
+            } else {
+                initialParameters = action.data
             }
+            const template = new ACData.Template(addProduct);
+            let card = template.expand({
+                $root: {
+                    Categories: categoryChoices,
+                    Suppliers: supplierChoices,
+                    productName: "",
+                }
             });
-            const resultCard = CardFactory.adaptiveCard(card);           
-           
+            if (initialParameters) {
+                 card = template.expand({
+                    $root: {
+                        Categories: categoryChoices,
+                        Suppliers: supplierChoices,
+                        productName: initialParameters["name"] ? initialParameters["name"] : "",
+                    }
+                });
+
+            }
+            const resultCard = CardFactory.adaptiveCard(card);     
+          
             return {
                 task: {
                     type: 'continue',
@@ -54,6 +73,13 @@ async function handleTeamsMessagingExtensionSubmitAction(
     try {       
         const data = action.data;
         if (action.commandId === COMMAND_ID) {
+            //for Copilot action
+            let initialParameters = {};
+            if (action.data && action.data.taskParameters) {
+                initialParameters = action.data.taskParameters;
+            } else {
+                initialParameters = action.data
+            }
             switch (data.action) {
                 case "submit": {
                     const product: Product = {
@@ -62,15 +88,15 @@ async function handleTeamsMessagingExtensionSubmitAction(
                         rowKey: "",
                         timestamp: new Date(),
                         ProductID: "",
-                        ProductName: data.productName,
-                        SupplierID: data.supplierID,
-                        CategoryID: data.categoryID,
-                        QuantityPerUnit: data.qtyPerUnit ?? "0",
-                        UnitPrice: data.unitPrice ?? "0",
-                        UnitsInStock: data.unitsInStock ?? "0",
-                        UnitsOnOrder: data.unitsOnOrder ?? "0",
-                        ReorderLevel:data.reorderLevel ?? "0",
-                        Discontinued: data.discontinued,
+                        ProductName: initialParameters["productName"],
+                        SupplierID: initialParameters["supplierID"],
+                        CategoryID: initialParameters["categoryID"],
+                        QuantityPerUnit: initialParameters["qtyPerUnit"],
+                        UnitPrice: initialParameters["unitPrice"],
+                        UnitsInStock: initialParameters["unitsInStock"],
+                        UnitsOnOrder: initialParameters["unitsOnOrder"],
+                        ReorderLevel:initialParameters["reorderLevel"],
+                        Discontinued: initialParameters["discontinued"],
                         ImageUrl: "https://picsum.photos/seed/1/200/300"
                     }
                     await createProduct(product);                    

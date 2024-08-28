@@ -1,6 +1,6 @@
 {
-    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.16/MicrosoftTeams.schema.json",
-    "manifestVersion": "1.16",
+    "$schema": "https://raw.githubusercontent.com/OfficeDev/microsoft-teams-app-schema/preview/DevPreview/MicrosoftTeams.schema.json",
+    "manifestVersion": "devPreview",
     "version": "1.0.9",
     "id": "${{TEAMS_APP_ID}}",
     "packageName": "com.microsoft.teams.extension.northwindinv",
@@ -11,7 +11,7 @@
         "termsOfUseUrl": "https://www.example.com/privacy"
     },
     "icons": {
-        "color": "Northwind-Logo3-192-${{TEAMSFX_ENV}}.png",
+        "color": "Northwind-Logo3-192-orange.png",
         "outline": "Northwind-Logo3-32.png"
     },
     "name": {
@@ -130,7 +130,65 @@
                             "description": "Name of the product to be added.",
                             "inputType": "text"
                         }
-                    ]
+                    ],
+                    "samplePrompts": [
+                        {
+                          "text": "Add a product <name> to Northwind."
+                        }
+                      ],
+                      "context": ["compose"]
+                },
+                {                  
+                    "id": "addSupplier",
+                    "context": [
+                        "compose",
+                        "commandBox"
+                    ],
+                    "description": "Add a supplier",
+                    "title": "Add a supplier",
+                    "type": "action",
+                    "fetchTask": false,
+                    "parameters": [
+                        {
+                            "name": "companyName",
+                            "title": "Company Name",
+                            "description": "Name of the company to be added.",
+                            "inputType": "text"
+                        },
+                        {
+                            "name": "contactName",
+                            "title": "Contact Name",
+                            "description": "Name of the contact in the company to be added.",
+                            "inputType": "text"
+                        },
+                        {
+                            "name": "contactTitle",
+                            "title": "Contact Title",
+                            "description": "Title of the contact in the company to be added.",
+                            "inputType": "text"
+                        },
+                        {
+                            "name": "address",
+                            "title": "Address",
+                            "description": "Address of the company.",
+                            "inputType": "text"
+                        },
+                        {
+                            "name": "city",
+                            "title": "City",
+                            "description": "City of the company",
+                            "inputType": "text"
+                        }
+                    ],                   
+                      "samplePrompts": [
+                        {
+                          "text": "Add supplier <companyName> with contact <contactName> to Northwind."
+                        },
+                        {
+                            "text": "Add supplier <companyName> with contact <contactName> from <city> to Northwind."
+                        }
+                      ],
+                      "context": ["compose"]
                 }
             ]
         }
@@ -142,5 +200,5 @@
         "identity",
         "messageTeamMembers"
     ],
-    "validDomains": []
+    "validDomains": ["${{BOT_DOMAIN}}"]
 }

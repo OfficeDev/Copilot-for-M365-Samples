@@ -3,7 +3,8 @@ import {
   TurnContext,
   MessagingExtensionQuery,
   MessagingExtensionResponse,
-  AdaptiveCardInvokeResponse
+  AdaptiveCardInvokeResponse,
+  InvokeResponse
 } from "botbuilder";
 import productSearchCommand from "./messageExtensions/productSearchCommand";
 import discountedSearchCommand from "./messageExtensions/discountSearchCommand";
@@ -11,6 +12,7 @@ import revenueSearchCommand from "./messageExtensions/revenueSearchCommand";
 import actionHandler from "./adaptiveCards/cardHandler";
 import { CreateActionErrorResponse } from "./adaptiveCards/utils";
 import addProductCommand from "./messageExtensions/addProductCommand";
+import addSupplierCommand from "./messageExtensions/addSupplierCommand";
 export class SearchApp extends TeamsActivityHandler {
   constructor() {
     super();
@@ -73,8 +75,11 @@ export class SearchApp extends TeamsActivityHandler {
     try {
 
       switch (action.commandId) {
-        case "addProduct": {
+        case addProductCommand.COMMAND_ID: {
           return await addProductCommand.handleTeamsMessagingExtensionFetchTask(context, action);
+        }
+        case addSupplierCommand.COMMAND_ID: {
+          return await addSupplierCommand.handleTeamsMessagingExtensionFetchTask(context, action);
         }
         default: {
           return null;
@@ -88,12 +93,26 @@ export class SearchApp extends TeamsActivityHandler {
   }
   public async handleTeamsMessagingExtensionSubmitAction(context, action): Promise<MessagingExtensionResponse> {
     try {
-      return await addProductCommand.handleTeamsMessagingExtensionSubmitAction(context, action);
+      //commandId
+      switch (action.commandId) {
+        case addProductCommand.COMMAND_ID: {
+          return await addProductCommand.handleTeamsMessagingExtensionSubmitAction(context, action);
+        }
+        case addSupplierCommand.COMMAND_ID: {
+          return await addSupplierCommand.handleTeamsMessagingExtensionSubmitAction(context, context.activity.value);
+        } 
+        default:
+          return null;
+      }
+      //
     }
     catch (e) {
       console.log(e);
     }
   }
+
+  
+  
 
 }
 

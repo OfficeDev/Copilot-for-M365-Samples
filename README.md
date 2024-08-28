@@ -5,7 +5,7 @@ This repository contains samples that show how to [extend Copilot for Microsoft 
 <p style="align:center"><img src="https://learn.microsoft.com/en-gb/microsoft-365-copilot/extensibility/assets/images/m365-extensibility-types.png" alt="This illustration shows types of extensibility options, Graph connector, plugins, and declarative copilots" /></p>
 
 > [!IMPORTANT]
-> These samples are intended for instructive and demonstration purposes and are intended for use in production. Do not put them into production without without upgrading them to production quality.
+> These samples are intended for instructive and demonstration purposes and are not intended for use in production. Do not put them into production without upgrading them to production quality.
 
 > [!IMPORTANT]  
 > To extend Copilot for Microsoft 365, you must ensure that your development environment meets the [requirements](https://learn.microsoft.com/microsoft-365-copilot/extensibility/prerequisites).
@@ -14,14 +14,15 @@ This repository contains samples that show how to [extend Copilot for Microsoft 
 
 | Name    | Language | Description
 | -------- | :-------: | ------- |
-| [Northwind Inventory](./samples/msgext-northwind-inventory-ts) | TypeScript | Plugin that allows users to query the Northwind Database |
-| [Document Search](./samples/msgext-doc-search-js) | JavaScript | Plugin that enables Hybrid Search (Vector + Semantic) |
-| [Document Search](./samples/msgext-doc-search-csharp) | .NET | Plugin that enables Hybrid Search (Vector + Semantic) |
-| [Product support](./samples/msgext-product-support-sso-csharp) | .NET | Plugin that allows users to query the Products held in SharePoint Online team site via Microsoft Graph |
-| [Product support](./samples/msgext-product-support-sso-ts) | TypeScript | Plugin that allows users to query the Products held in SharePoint Online team site via Microsoft Graph |
-| [Multi Parameters](./samples/msgext-multiparam-csharp) | .NET | Plugin that demonstrates how to implement complex utterances and support deep retrieval |
-| [Multi Parameters](./samples/msgext-multiparam-ts) | TypeScript | Plugin that demonstrates how to implement complex utterances and support deep retrieval |
-| [Multi Parameters](./samples/msgext-multiparam-js) | JavaScript | Plugin that demonstrates how to implement complex utterances and support deep retrieval |
+| [Northwind Inventory](./samples/msgext-northwind-inventory-ts) | TypeScript | Plugin that allows users to query the Northwind Database
+| [Northwind Inventory](./samples/msgext-northwind-inventory-csharp) | .NET | Plugin that allows users to query the Northwind Database
+| [Document Search](./samples/msgext-doc-search-js) | JavaScript | Plugin that enables Hybrid Search (Vector + Semantic)
+| [Document Search](./samples/msgext-doc-search-csharp) | .NET | Plugin that enables Hybrid Search (Vector + Semantic)
+| [Product support](./samples/msgext-product-support-sso-csharp) | .NET | Plugin that allows users to query the Products held in SharePoint Online team site via Microsoft Graph
+| [Product support](./samples/msgext-product-support-sso-ts) | TypeScript | Plugin that allows users to query the Products held in SharePoint Online team site via Microsoft Graph
+| [Multi Parameters](./samples/msgext-multiparam-csharp) | .NET | Plugin that demonstrates how to implement complex utterances and support deep retrieval
+| [Multi Parameters](./samples/msgext-multiparam-ts) | TypeScript | Plugin that demonstrates how to implement complex utterances and support deep retrieval
+| [Multi Parameters](./samples/msgext-multiparam-js) | JavaScript | Plugin that demonstrates how to implement complex utterances and support deep retrieval
 
 ## Contributing
 
