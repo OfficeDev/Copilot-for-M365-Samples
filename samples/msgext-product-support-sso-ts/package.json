@@ -22,25 +22,25 @@
     "url": "https://github.com"
   },
   "dependencies": {
-    "@azure/identity": "^4.4.1",
-    "@microsoft/microsoft-graph-client": "^3.0.7",
-    "@microsoft/microsoft-graph-types": "^2.40.0",
-    "adaptive-expressions": "^4.23.0",
-    "adaptivecards": "^3.0.4",
-    "adaptivecards-templating": "^2.3.1",
-    "botbuilder": "^4.23.0",
-    "botframework-connector": "^4.23.0",
-    "botframework-schema": "^4.22.3",
-    "restify": "^11.1.0"
+    "@azure/identity": "4.4.1",
+    "@microsoft/microsoft-graph-client": "3.0.7",
+    "@microsoft/microsoft-graph-types": "2.40.0",
+    "adaptive-expressions": "4.23.0",
+    "adaptivecards": "3.0.4",
+    "adaptivecards-templating": "2.3.1",
+    "botbuilder": "4.23.0",
+    "botframework-connector": "4.23.0",
+    "botframework-schema": "4.22.3",
+    "restify": "11.1.0"
   },
   "devDependencies": {
-    "@types/node": "^20.14.10",
-    "@types/restify": "^8.5.5",
-    "env-cmd": "^10.1.0",
-    "gts": "^5.3.1",
-    "nodemon": "^3.1.4",
+    "@types/node": "20.14.10",
+    "@types/restify": "8.5.5",
+    "env-cmd": "10.1.0",
+    "gts": "5.3.1",
+    "nodemon": "3.1.4",
     "shx": "^0.3.3",
-    "ts-node": "^10.4.0",
-    "typescript": "^5.5.4"
+    "ts-node": "10.4.0",
+    "typescript": "5.5.4"
   }
 }
