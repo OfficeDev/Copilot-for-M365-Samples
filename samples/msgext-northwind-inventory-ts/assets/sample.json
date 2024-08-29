@@ -10,7 +10,7 @@
             "This sample implements a Teams message extension that can be used as a plugin for Microsoft Copilot for Microsoft 365. The message extension allows users to query the Northwind Database"
         ],
         "creationDateTime": "2023-11-15",
-        "updateDateTime": "2023-11-15",
+        "updateDateTime": "2024-08-29",
         "products": [
             "Microsoft Teams",
             "Microsoft 365 Copilot"
