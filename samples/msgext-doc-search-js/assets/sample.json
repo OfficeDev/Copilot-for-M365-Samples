@@ -10,7 +10,7 @@
       "This sample implements Azure AI Search with a Teams message extension that enables Hybrid Search (Vector + Semantic) and can be used as a plugin for Microsoft Copilot for Microsoft 365. It demonstrates how developers can use Copilot for Microsoft 365 in **Bring Your Own Data** scenarios instead of building a custom GPT powered bot."
     ],
     "creationDateTime": "2023-11-10",
-    "updateDateTime": "2024-01-10",
+    "updateDateTime": "2024-08-29",
     "products": [
       "Microsoft Teams",
       "Microsoft Azure",
