@@ -17,29 +17,10 @@ Open your working folder in Visual Studio Code.
 
 Teams Toolkit stores environment variables in the **env** folder, and it will fill in all the values automatically when you start your project the first time. However there's one value that's specific to the sample application, and that's the connection string for accessing the Northwind database.
 
-In this project, the Northwind database is stored in Azure Table Storage; when you're debugging locally, it uses the [Azurite](https://learn.microsoft.com/azure/storage/common/storage-use-azurite?tabs=visual-studio) storage emulator.
+In this project, the Northwind database is stored in Azure Table Storage; when you're debugging locally, it uses the [Azurite](https://learn.microsoft.com/azure/storage/common/storage-use-azurite?tabs=visual-studio) storage emulator. That's mostly built into the project, but the project won't build unless you provide the connection string.
 
-Install azurite using npm command:
-
-~~~
-npm install -g azurite
-~~~
-
-![npm install](./images/02-01-npm-install-azurite-01.png)
-
-Start azurite using below npm command:
-
-~~~
-azurite --silent --location c:\azurite --debug c:\azurite\debug.log
-~~~
-
-![npm start](./images/02-01-npm-start-azurite-01.png)
-
-The necessary setting is provided in a file **.env.sample**. Make a copy of this file, and call it **.env**. This is where secret or sensitive settings are stored.
-
-If you're not sure how to do this, here are the steps in Visual Studio Code. Copy the value `STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true`in **.env.sample** and paste it to the **.env** file
-
-The resulting **.env** file should contain this line:
+The necessary setting is provided in a file **.env.local.user**. This is where secret or sensitive settings are stored.
+This file should contain this line:
 
 ~~~text
 STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
@@ -61,21 +42,15 @@ Select the version of Python that is installed on the machine.
 
 ![Select Python version](./images/02-02-Select-Python-version-01.png)
 
-Remember to select `requirements.txt` as dependencies to install when creating the virtual environment.
+When creating the virtual environment, make sure to select `requirements.txt` as the source for installing dependencies. Please wait until all dependencies are fully installed before proceeding with any further steps.
 
 ![Select requirements](./images/02-02-Select-requirements.png)
 
-Click F5 to start debugging, or click the start button 1️⃣. You will have an opportunity to select a debugging profile; select Debug in Teams (Edge) 2️⃣ or choose another profile.
+Press F5 to start a debug session using Microsoft Edge. Alternatively, if you want to use a different browser, open the Run and Debug panel from the Primary Side Bar, select a different debug profile in the dropdown list and press F5 or select the Start Debugging button.
 
 ![Run application locally](./images/02-02-Run-Project-01.png)
 
-If you see this screen, you need to fix your **.env** file; this is explained in the previous step.
-
-![Error is displayed because of a missing environment variable](./images/02-01-Setup-Project-06.png)
-
-The first time your app runs, you may be prompted to allow NodeJS to go through your firewall; this is necessary to allow the application to communicate.
-
-It may take a while the first time as it's loading all the npm packages. Eventually, a browser window will open and invite you to log in.
+Eventually, a browser window will open and invite you to log in.
 
 ![Browser window opens with a login form](./images/02-02-Run-Project-03.png)
 

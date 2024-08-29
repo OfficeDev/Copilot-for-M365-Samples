@@ -13,7 +13,7 @@ TABLE OF CONTENTS
 
 ## Step 1 - Install prerequisites
 
-**To complete these exercises, you will need a login to a Microsoft 365 subscription with permission to upload applications. The following instructions will explain how to get one.**
+**To complete these exercises, you will need a login to a Microsoft 365 subscription with permission to upload applications. You also need access to an active Azure subscription, as the project uses ARM (Azure Resource Manager) templates to provision resources in Azure. The following instructions will explain how to obtain both.**
 
 **To complete Exercise 3, the account must also be licensed for Microsoft Copilot for Microsoft 365.**
 
@@ -22,9 +22,15 @@ If this is a new tenant, it's a good idea to log into the [Microsoft 365 page](h
 Please install the following on your computer:
 
 1. [Visual Studio Code](https://code.visualstudio.com/) (latest version)
-
 2. - [Python 3.12.x](https://www.python.org/downloads/)
-3. [Azure Storage Explorer](https://azure.microsoft.com/products/storage/storage-explorer/) (OPTIONAL) - Download this if you want to view and edit the Northwind database used in this sample
+3. [NodeJS version 18.x](https://nodejs.org/download/release/v18.18.2/) - You may want to first install [Node Version Manager](https://github.com/nvm-sh/nvm) or [Node Version Manager for Windows](https://github.com/coreybutler/nvm-windows) so you can change NodeJS versions in the future; if you do, use these commands to install NodeJS version 18.x.
+
+    ~~~sh
+    nvm install 18.18
+    nvm use 18.18
+    ~~~
+
+4. [Azure Storage Explorer](https://azure.microsoft.com/products/storage/storage-explorer/) (OPTIONAL) - Download this if you want to view and edit the Northwind database used in this sample
 
 ## Step 2 - Download the sample code
 
@@ -91,9 +97,20 @@ Under "Accounts" click "Sign in to Microsoft 365"2️⃣ and log in with your ow
 
 A browser window will pop up and offer to log into Microsoft 365. When it says "You are signed in now and close this page", please do so.
 
-Now verify that the "Sideloading enabled" checker has a green checkmark. If it doesn't, that means that your user account doesn't have permission to upload Teams applications. This permission is "off" by default; here are [instructions for enabling users to upload custom apps](https://learn.microsoft.com/microsoftteams/teams-custom-app-policies-and-settings#allow-users-to-upload-custom-apps)
+Now verify that the "Sideloading enabled" checker has a green checkmark. If it doesn't, that means your user account doesn't have permission to upload Teams applications. This permission is "off" by default; here are [instructions for enabling users to upload custom apps](https://learn.microsoft.com/microsoftteams/teams-custom-app-policies-and-settings#allow-users-to-upload-custom-apps)
 
 ![Checking that sideloading is enabled](./images/01-04-Setup-TTK-03.png)
+
+Additionally, ensure that you have installed the Azure Account extension in Visual Studio Code and have logged in with an account that has access to an active Azure subscription. If you have not already signed in, you may be prompted to do so.
+
+Next, set up a resource group to provision resources to the connected Azure subscription:
+
+1. Open the **Azure Portal** and sign in with your Azure account.
+2. Go to **Resource Groups** and click on **+ Create**.
+3. Fill in the required details such as **Subscription**, **Resource Group Name**, and **Region**.
+4. Click **Review + Create**, then **Create** to finalize the resource group creation.
+
+This resource group will be used to provision resources using Azure Resource Manager (ARM) templates.
 
 ## Congratulations
 
