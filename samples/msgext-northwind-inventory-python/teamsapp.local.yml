@@ -76,3 +76,4 @@ deploy:
       envs:
         MicrosoftAppId: ${{AAD_APP_CLIENT_ID}}
         MicrosoftAppPassword: ${{SECRET_AAD_APP_CLIENT_SECRET}}
+        STORAGE_ACCOUNT_CONNECTION_STRING: ${{SECRET_STORAGE_ACCOUNT_CONNECTION_STRING}}

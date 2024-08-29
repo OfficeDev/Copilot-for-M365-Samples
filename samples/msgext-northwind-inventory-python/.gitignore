@@ -10,3 +10,6 @@ appManifest/build/
 
 # tmp files
 __pycache__/
+
+#Azurite
+_storage_emulator/
