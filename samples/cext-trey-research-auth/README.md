@@ -43,6 +43,10 @@ The sample showcases the following plugin features:
   1. Display rich adaptive cards
   1. Authenticate the user using Entra ID and OAuth 2.0
 
+## Note on validating OAuth tokens
+
+Microsoft does not provide a supported library for validating Entra ID tokens in NodeJS, but instead provides this detailed documentation{target=_blank} on how to write your own. Another useful article{target=_blank} is also available from Microsoft MVP Andrew Connell{target=_blank}. This lab uses a community provided library{target=_blank} written by Waldek Mastykarz{target=_blank}, which is intended to follow this guidance. Note that this library is not supported by Microsoft and is under an MIT License, so use it at your own risk.
+
 ## Setup
 
 ### Prerequisites
