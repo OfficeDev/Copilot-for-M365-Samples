@@ -56,7 +56,7 @@ The sample showcases the following plugin features:
 
 ### Setup instructions (one-time setup)
 
-1. Log into Teams Toolkit using any tenant for now, as we will be uploading manually.
+1. Log into Teams Toolkit using the tenant where you will run the sample.
 
 1. If your project doesn't yet have a file **env/.env.local.user**, then create one by copying **env/.env.local.user.sample**. If you do have such a file, ensure it includes these lines.
 

@@ -41,6 +41,7 @@ The sample showcases the following plugin features:
   1. Multi-parameter queries to filter results
   1. Show a confirmation card before POSTing data; capture missing parameters
   1. Display rich adaptive cards
+  1. Authenticate the user using Entra ID and OAuth 2.0
 
 ## Setup
 
@@ -113,18 +114,12 @@ Since you will be using a persistent developer tunnel for your API, find this li
 
 3. To use the plugin, open the plugin panel 2️⃣ and enable your plugin 3️⃣. For best results, mention "trey" with each prompt.
 
-4. To use the declarative Copilot, open the flyout 4️⃣ and select the Trey Genie Local solution 5️⃣.
+4. You should be prompted to log in when you try to use the plugin the first time, or every so often.
+![Auth prompt in Copilot](./assets/images/oauth-run-02.png). When you click the Sign in button, a pop-up browser should launch briefly to log the user in. If the user is already logged into Teams and has consented to the API access, this may be a blank screen showing for just a second as Entra ID runs the OAuth flow.
+
+5. To use the declarative Copilot, open the flyout 4️⃣ and select the Trey Genie Local solution 5️⃣.
 
 ## API Summary
-
-![postman](https://voyager.postman.com/logo/postman-logo-icon-orange.svg) 
-
-We have a [Postman collection](https://documenter.getpostman.com/view/5938178/2sA3JJ8hfn) for you to try out the APIs. It's a great way to get to know the data that Copilot is accessing.
-
-All API operations are included in the collection, with parameters and body provided to make it easier for you to test our GET and POST calls. 
-
-> Make sure you have [Postman desktop](https://www.postman.com/downloads/) to be able to test urls with `localhost` domain. 
-Or simply replace part of the URL `http://localhost:7071` with your tunnel/host URL.
 
 #### GET Requests
 
