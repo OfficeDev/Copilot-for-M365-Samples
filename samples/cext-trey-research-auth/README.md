@@ -1,16 +1,16 @@
-# Trey Research Copilot extension (anonymous version)
+# Trey Research Copilot extension (OAuth version)
 
 Trey Research is a fictitious consulting company that supplies talent in the software and pharmaceuticals industries. The vision for this demo is to show the full potential of Copilot extensions in a relatable business environment.
 
 > NOTE: The services needed to use this sample are in private preview only
 
-> NOTE: This version of the Trey Research sample doesn't do authentication, but may be useful for demos
-and experimentation. We plan to release an authenticated version shortly.
+> NOTE: This version of the Trey Research sample uses OAuth authentication and has been tested using Entra ID as the identity service. See the Setup section below for details on configuring the necessary apps in Entra ID.
 
 ### Prompts that work
 
   * what trey projects am i assigned to?
-    (NOTE: In this "anonymous" version of the sample, the user is assumed to be consultant "Avery Howard". If Copilot decides to request information using your real name, the request will fail. Unless your name happens to be "Avery Howard".)
+    (NOTE: The first time a user accesses the service, it will create a Consultant record for that user ID. Naturally this consultant won't have any project assignments.)
+  * please add me to the contoso project in trey
   * what trey projects is domi working on?
   * do we have any trey consultants with azure certifications?
   * what trey projects are we doing for relecloud?
@@ -46,6 +46,7 @@ The sample showcases the following plugin features:
 
 ### Prerequisites
 
+* Administrator permission in a Microsoft 365 tenant with Copilot for Microsoft 365
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 * [NodeJS 18.x](https://nodejs.org/en/download)
 * [Teams Toolkit extension for VS Code](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension)
@@ -54,9 +55,28 @@ The sample showcases the following plugin features:
   (`npm install -g @microsoft/teamsapp-cli`)
 * (optional) [Postman](https://www.postman.com/downloads/)
 
+## Setup instructions
+
+### Register your Entra ID applications
+
+You will need to set up 2 applications in Entra ID:
+
+1. API Service app - is used to secure HTTP requests going to your API
+2. API Plugin app - is used to represent the plugin running in Microsoft 365 that will access your API
+
+[Detailed setup instructions are here](./README-Auth.md).
+After following those steps you will have saved a number of values for the app ID's and other details needed below.
+
 ### Setup instructions (one-time setup)
 
-1. Log into Teams Toolkit using any tenant for now, as we will be uploading manually.
+1. Log into Teams Toolkit using your target tenant.
+
+1. Add these lines to your **env/.env.local** file. Create a new file if there isn't already one present, and fill in the values you stored during app registration.
+
+~~~text
+API_APPLICATION_ID=<your-api-service-client-id>
+API_TENANT_ID=<your-tenant-id>
+~~~
 
 1. If your project doesn't yet have a file **env/.env.local.user**, then create one by copying **env/.env.local.user.sample**. If you do have such a file, ensure it includes these lines.
 
@@ -64,11 +84,27 @@ The sample showcases the following plugin features:
 SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
 ~~~
 
+1. Update the Plugin file: Open the **appPackage/trey-plugin.json** file and find the line:
+
+~~~json
+"reference_id":  "<your oauth plugin vault reference id>"
+~~~
+
+Fill in your OAuth plugin vault reference ID from when you registered the app in Teams Developer portal.
+
+1. Update the Open API Definition file
+
+Since you will be using a persistent developer tunnel for your API, find this line in the **appPackage/trey-definition.json** and put your tunnel URL in place of the token `${{OPENAPI_SERVER_URL}}`:
+
+~~~json
+    "url": "${{OPENAPI_SERVER_URL}}/api/",
+~~~
+
 1. OPTIONAL: Copy the files from the **/sampleDocs** folder to OneDrive or SharePoint. Add the location of these files in the `OneDriveAndSharePoint` capability in the declarative copilot (**/appPackage/trey-declarative-copilot.json**).
 
 ### Running the solution (after each build)
 
-> NOTE: This sample requires the private preview of Copilot for Microsoft 365 extensibility
+1. Ensure your persistent developer tunnel is running
 
 1. Press F5 to start the application. It will take a while on first run to download the dependencies. Eventually a browser window will open up and your package is installed.
 
