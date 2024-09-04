@@ -5,6 +5,7 @@ using NorthwindInventory.NorthwindDB;
 using NorthwindInventory.Models;
 using NorthwindInventory.AdaptiveCardMethods;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace NorthwindInventory.MessageExtensions
 {
@@ -38,7 +39,7 @@ namespace NorthwindInventory.MessageExtensions
                     }).ToList();
 
                     // Handle initial parameters from Copilot action
-                    var initialParameters = action.Data != null ? JsonConvert.DeserializeObject<Dictionary<string, string>>(action.Data.ToString()) : new Dictionary<string, string>();
+                    var initialParameters = action.Data != null? JsonConvert.DeserializeObject<Dictionary<string, string>>(((JObject)action.Data).SelectToken("taskParameters").ToString()): new Dictionary<string, string>();
 
                     var productName = initialParameters.ContainsKey("name") ? initialParameters["name"] : "";
 
