@@ -1,0 +1,204 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OfficeDev/microsoft-teams-app-schema/preview/DevPreview/MicrosoftTeams.schema.json",
+  "manifestVersion": "devPreview",
+  "version": "1.0.9",
+  "id": "${{TEAMS_APP_ID}}",
+  "packageName": "com.microsoft.teams.extension.northwindinv",
+  "developer": {
+    "name": "App Camp",
+    "websiteUrl": "https://www.example.com",
+    "privacyUrl": "https://www.example.com/termofuse",
+    "termsOfUseUrl": "https://www.example.com/privacy"
+  },
+  "icons": {
+    "color": "Northwind-Logo3-192-orange.png",
+    "outline": "Northwind-Logo3-32.png"
+  },
+  "name": {
+    "short": "Northwind Inventory",
+    "full": "Northwind Inventory App"
+  },
+  "description": {
+    "short": "App allows you to find and update product inventory information",
+    "full": "Northwind Inventory is the ultimate tool for managing your product inventory. With its intuitive interface and powerful features, you'll be able to easily find your products by name, category, inventory status, and supplier city. You can also update inventory information with the app. \n\n **Why Choose Northwind Inventory:** \n\n Northwind Inventory is the perfect solution for businesses of all sizes that need to keep track of their inventory. Whether you're a small business owner or a large corporation, Northwind Inventory can help you stay on top of your inventory management needs. \n\n **Features and Benefits:** \n\n - Easy Product Search through Microsoft Copilot. Simply start by saying, 'Find northwind dairy products that are low on stock' \r - Real-Time Inventory Updates: Keep track of inventory levels in real-time and update them as needed \r  - User-Friendly Interface: Northwind Inventory's intuitive interface makes it easy to navigate and use \n\n **Availability:** \n\n To use Northwind Inventory, you'll need an active Microsoft 365 account . Ensure that your administrator enables the app for your Microsoft 365 account."
+  },
+  "accentColor": "#3690E9",
+  "bots": [
+    {
+      "botId": "${{AAD_APP_CLIENT_ID}}",
+      "scopes": [ "personal", "team", "groupChat" ],
+      "isNotificationOnly": false,
+      "supportsFiles": false
+    }
+  ],
+  "composeExtensions": [
+    {
+      "botId": "${{AAD_APP_CLIENT_ID}}",
+      "commands": [
+        {
+          "id": "inventorySearch",
+          "context": [
+            "compose",
+            "commandBox"
+          ],
+          "description": "Search products by name, category, inventory status, supplier location, stock level",
+          "title": "Product inventory",
+          "type": "query",
+          "parameters": [
+            {
+              "name": "productName",
+              "title": "Product name",
+              "description": "Enter a product name here",
+              "inputType": "text"
+            },
+            {
+              "name": "categoryName",
+              "title": "Category name",
+              "description": "Enter the category of the product",
+              "inputType": "text"
+            },
+            {
+              "name": "inventoryStatus",
+              "title": "Inventory status",
+              "description": "Enter what status of the product inventory. Possible values are 'in stock', 'low stock', 'on order', or 'out of stock'",
+              "inputType": "text"
+            },
+            {
+              "name": "supplierCity",
+              "title": "Supplier city",
+              "description": "Enter the supplier city of product",
+              "inputType": "text"
+            },
+            {
+              "name": "stockQuery",
+              "title": "Stock level",
+              "description": "Enter a range of integers such as 0-42 or 100- (for >100 items). Only use if you need an exact numeric range.",
+              "inputType": "text"
+            }
+          ]
+        },
+        {
+          "id": "discountSearch",
+          "context": [
+            "compose",
+            "commandBox"
+          ],
+          "description": "Search for discounted products by category",
+          "title": "Discounts",
+          "type": "query",
+          "parameters": [
+            {
+              "name": "categoryName",
+              "title": "Category name",
+              "description": "Enter the category to find discounted products",
+              "inputType": "text"
+            }
+          ]
+        },
+        {
+          "id": "revenueSearch",
+          "context": [
+            "compose",
+            "commandBox"
+          ],
+          "description": "Find products based on their revenue/period",
+          "title": "Revenue",
+          "type": "query",
+          "parameters": [
+            {
+              "name": "revenueRange",
+              "title": "Revenue range",
+              "description": "Enter 'high' or 'low' or enter a range of integers such as 0-10000 or 5000- using this exact format",
+              "inputType": "text"
+            }
+          ]
+        },
+        {
+          "id": "addProduct",
+          "context": [
+            "compose",
+            "commandBox"
+          ],
+          "description": "Add a product",
+          "title": "Add a product",
+          "type": "action",
+          "fetchTask": true,
+          "parameters": [
+            {
+              "name": "name",
+              "title": "Product name",
+              "description": "Name of the product to be added.",
+              "inputType": "text"
+            }
+          ],
+          "samplePrompts": [
+            {
+              "text": "Add a product <name> to Northwind."
+            }
+          ],
+          "context": [ "compose" ]
+        },
+        {
+          "id": "addSupplier",
+          "context": [
+            "compose",
+            "commandBox"
+          ],
+          "description": "Add a supplier",
+          "title": "Add a supplier",
+          "type": "action",
+          "fetchTask": false,
+          "parameters": [
+            {
+              "name": "companyName",
+              "title": "Company Name",
+              "description": "Name of the company to be added.",
+              "inputType": "text"
+            },
+            {
+              "name": "contactName",
+              "title": "Contact Name",
+              "description": "Name of the contact in the company to be added.",
+              "inputType": "text"
+            },
+            {
+              "name": "contactTitle",
+              "title": "Contact Title",
+              "description": "Title of the contact in the company to be added.",
+              "inputType": "text"
+            },
+            {
+              "name": "address",
+              "title": "Address",
+              "description": "Address of the company.",
+              "inputType": "text"
+            },
+            {
+              "name": "city",
+              "title": "City",
+              "description": "City of the company",
+              "inputType": "text"
+            }
+          ],
+          "samplePrompts": [
+            {
+              "text": "Add supplier <companyName> with contact <contactName> to Northwind."
+            },
+            {
+              "text": "Add supplier <companyName> with contact <contactName> from <city> to Northwind."
+            }
+          ],
+          "context": [ "compose" ]
+        }
+      ]
+    }
+
+  ],
+  "configurableTabs": [],
+  "staticTabs": [],
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": [ "${{BOT_DOMAIN}}" ]
+}
