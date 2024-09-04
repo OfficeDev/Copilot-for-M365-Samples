@@ -21,9 +21,9 @@ public class AdapterWithErrorHandler : CloudAdapter
             // Only send error message for user messages, not for other message types so the bot doesn't spam a channel or chat.
             if (turnContext.Activity.Type == ActivityTypes.Message)
             {
-                // Send a message to the user
-                await turnContext.SendActivityAsync("The bot encountered an error or bug.");
-                await turnContext.SendActivityAsync("To continue to run this bot, please fix the bot source code.");
+                // Uncomment below commented line for local debugging.
+                // await turnContext.SendActivityAsync("The bot encountered an error or bug.");
+                // await turnContext.SendActivityAsync("To continue to run this bot, please fix the bot source code.");
 
                 // Send a trace activity, which will be displayed in the Bot Framework Emulator
                 await turnContext.TraceActivityAsync("OnTurnError Trace", exception.Message, "https://www.botframework.com/schemas/error", "TurnError");
