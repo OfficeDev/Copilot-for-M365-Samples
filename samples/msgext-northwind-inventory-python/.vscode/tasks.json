@@ -8,6 +8,7 @@
             "label": "Prepare Teams App Resources",
             "dependsOn": [
                 "Validate prerequisites",
+                "npm install",
                 "Start local tunnel",
                 "Start Azurite emulator",
                 "Provision",

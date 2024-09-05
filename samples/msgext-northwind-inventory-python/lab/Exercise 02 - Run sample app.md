@@ -11,24 +11,7 @@ TABLE OF CONTENTS
 
 ## Exercise 2 - Run the sample as a Message Extension
 
-## Step 1 - Set up the project for first use
-
-Open your working folder in Visual Studio Code.
-
-Teams Toolkit stores environment variables in the **env** folder, and it will fill in all the values automatically when you start your project the first time. However there's one value that's specific to the sample application, and that's the connection string for accessing the Northwind database.
-
-In this project, the Northwind database is stored in Azure Table Storage; when you're debugging locally, it uses the [Azurite](https://learn.microsoft.com/azure/storage/common/storage-use-azurite?tabs=visual-studio) storage emulator. That's mostly built into the project, but the project won't build unless you provide the connection string.
-
-The necessary setting is provided in a file **.env.local.user**. This is where secret or sensitive settings are stored.
-This file should contain this line:
-
-~~~text
-STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
-~~~
-
-![Copy .env.sample to .env](./images/02-01-Setup-Project-01.png)
-
-## Step 2 - Run the application locally
+## Step 1 - Run the application locally
 
 Press **CTRL+Shift+P** to open the command box and enter **Python: Create Environment** to create and activate your desired virtual environment. 
 
@@ -46,7 +29,17 @@ When creating the virtual environment, make sure to select `requirements.txt` as
 
 ![Select requirements](./images/02-02-Select-requirements.png)
 
-Press F5 to start a debug session using Microsoft Edge. Alternatively, if you want to use a different browser, open the Run and Debug panel from the Primary Side Bar, select a different debug profile in the dropdown list and press F5 or select the Start Debugging button.
+When running the app for the first time using F5, Teams Toolkit will prompt you to sign in to an account with access to an Azure subscription (if you are not already logged in)
+
+![Toolkit signin](./images/02-02-Toolkit-signin.png)
+
+After signing in, you will need to select a subscription and either create a new resource group or select an existing one within that subscription.
+
+![Select Subscription](./images/02-02-Select-Subscription.png)
+
+![Select resource](./images/02-02-Select-resource.png)
+
+if you want to use a different browser, open the Run and Debug panel from the Primary Side Bar, select a different debug profile in the dropdown list and press F5 or select the Start Debugging button.
 
 ![Run application locally](./images/02-02-Run-Project-01.png)
 
@@ -63,7 +56,7 @@ Click "Add" to add Northwind Inventory as a personal application.
 
 You should be directed to a chat within the application, however you could use the app in any chat.
 
-## Step 3 - Test in Microsoft Teams
+## Step 2 - Test in Microsoft Teams
 
 In any Teams chat - including the Northwind Inventory chat - begin typing a message 1️⃣ that refers to a product. Then, to insert an adaptive card for the product, click the + 2️⃣ . In the fly-up panel, select the Northwind Inventory application you just installed 3️⃣ .
 
@@ -89,7 +82,7 @@ Notice that there is no chai on order 1️⃣ . The authors of this lab are big 
 
 You can cancel the order or modify the stock levels using the other two buttons.
 
-## Step 4 - Advanced queries
+## Step 3 - Advanced queries
 
 Back in Visual Studio Code, have a look at the app manifest, which is in a file called **manifest.json** in the **appPackage** directory. You'll notice that the app information that was displayed when you installed the app is all here.
 
@@ -191,7 +184,7 @@ Read the descriptions in the JSON above carefully when entering a query. Try ent
 
 Each query term filters the list of products down. The format of each query term is arbitrary - just be sure to explain it to Copilot in the description of each parameter.
 
-## Step 5 - Test in Microsoft Outlook (Optional)
+## Step 4 - Test in Microsoft Outlook (Optional)
 
 Let's take a brief detour so you can see how message extensions work in Microsoft Outlook.
 
@@ -219,7 +212,7 @@ Note that the adaptive card won't work until you send the message. If the recipi
 
 ![Taking action on a message in Outlook](./images/02-04-Test-ME-Outlook-07a.png)
 
-## Step 6 (optional) - View Northwind database in Azure Storage Explorer
+## Step 5 (optional) - View Northwind database in Azure Storage Explorer
 
 The Northwind Database isn't fancy but it's real! If you want to peek at or even modify the data, open the Azure Storage Explorer while Azurite is running. (Running the app starts Azurite automatically).
 

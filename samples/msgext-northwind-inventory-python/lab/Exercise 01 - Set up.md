@@ -102,16 +102,6 @@ Now verify that the "Sideloading enabled" checker has a green checkmark. If it d
 ![Checking that sideloading is enabled](./images/01-04-Setup-TTK-03.png)
 
 Additionally, ensure that you have installed the Azure Account extension in Visual Studio Code and have logged in with an account that has access to an active Azure subscription. If you have not already signed in, you may be prompted to do so.
-
-Next, set up a resource group to provision resources to the connected Azure subscription:
-
-1. Open the **Azure Portal** and sign in with your Azure account.
-2. Go to **Resource Groups** and click on **+ Create**.
-3. Fill in the required details such as **Subscription**, **Resource Group Name**, and **Region**.
-4. Click **Review + Create**, then **Create** to finalize the resource group creation.
-
-This resource group will be used to provision resources using Azure Resource Manager (ARM) templates.
-
 ## Congratulations
 
 You have completed Exercise 1.
