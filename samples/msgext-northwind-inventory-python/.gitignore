@@ -13,3 +13,6 @@ __pycache__/
 
 #Azurite
 _storage_emulator/
+
+.env
+node_modules
