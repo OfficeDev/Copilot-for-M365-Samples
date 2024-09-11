@@ -16,6 +16,7 @@ This repository contains samples that show how to [extend Copilot for Microsoft 
 | -------- | :-------: | ------- |
 | [Northwind Inventory](./samples/msgext-northwind-inventory-ts) | TypeScript | Plugin that allows users to query the Northwind Database
 | [Northwind Inventory](./samples/msgext-northwind-inventory-csharp) | .NET | Plugin that allows users to query the Northwind Database
+| [Northwind Inventory](./samples/msgext-northwind-inventory-python) | Python | Plugin that allows users to query the Northwind Database
 | [Document Search](./samples/msgext-doc-search-js) | JavaScript | Plugin that enables Hybrid Search (Vector + Semantic)
 | [Document Search](./samples/msgext-doc-search-csharp) | .NET | Plugin that enables Hybrid Search (Vector + Semantic)
 | [Product support](./samples/msgext-product-support-sso-csharp) | .NET | Plugin that allows users to query the Products held in SharePoint Online team site via Microsoft Graph
