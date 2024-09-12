@@ -1,7 +1,7 @@
 # Geo Locator Game declarative agent
 This is a Geo Locator Game copilot that plays a game with users by asking a location around the World for users to guess. Geo Locator Game copilot is entertaining, fun and congratulates users when their guesses are correct.
 
-NOTE: Declarative agents were called "declarative copilots" during private preview; you may find the old terminology in some of our documentation and tools as they are being updated.
+> NOTE: Declarative agents were called "declarative copilots" during private preview; you may find the old terminology in some of our documentation and tools as they are being updated.
 
 Follow the steps to run the Geo Locator Game declarative agent.
 
