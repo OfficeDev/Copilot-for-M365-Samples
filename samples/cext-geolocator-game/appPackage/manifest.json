@@ -16,11 +16,11 @@
     },
     "name": {
         "short": "Geo Locator Game",
-        "full": "Geo Locator Game (Declarative copilot)"
+        "full": "Geo Locator Game"
     },
     "description": {
-        "short": "This a Geo Locator Game declarative copilot",
-        "full": "This a Geo Locator Game declarative copilot"
+        "short": "This a Geo Locator Game declarative agent",
+        "full": "This a Geo Locator Game declarative agent"
     },
     "accentColor": "#FFFFFF",
     "composeExtensions": [],
@@ -31,8 +31,8 @@
     "copilotExtensions": {
         "declarativeCopilots": [            
             {
-                "id": "declarativeCopilot",
-                "file": "declarativeCopilot.json"
+                "id": "declarativeAgent",
+                "file": "declarativeAgent.json"
             }
         ]
     },
