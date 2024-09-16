@@ -1,40 +1,41 @@
-# Trey Research Copilot extension (anonymous version)
+# Trey Research Copilot Declarative Agent (anonymous version)
 
 Trey Research is a fictitious consulting company that supplies talent in the software and pharmaceuticals industries. The vision for this demo is to show the full potential of Copilot extensions in a relatable business environment.
 
-> NOTE: The services needed to use this sample are in private preview only
+> NOTE: Declarative agents were called "declarative copilots" during private preview; you may find the old terminology in some of our documentation and tools as they are being updated.
 
 > NOTE: This version of the Trey Research sample doesn't do authentication, but may be useful for demos
-and experimentation. We plan to release an authenticated version shortly.
+and experimentation. See the [cext-trey-research-auth](../cext-trey-research-auth/) sample for a version that works with an authenticated API.
+
+The solution consists of an API plugin that calls a set of Azure functions, which store the consulting data in a Azure Table storage (it uses the Azurite storage emulator when running locally).
+A declarative agent is provided to converse with users and to call the API plugin, as well as to reference the correct SharePoint document library.
 
 ### Prompts that work
 
-  * what trey projects am i assigned to?
+  * what projects am i assigned to?
     (NOTE: In this "anonymous" version of the sample, the user is assumed to be consultant "Avery Howard". If Copilot decides to request information using your real name, the request will fail. Unless your name happens to be "Avery Howard".)
-  * what trey projects is domi working on?
-  * do we have any trey consultants with azure certifications?
-  * what trey projects are we doing for relecloud?
-  * which trey consultants are working with woodgrove bank?
-  * in trey research, how many hours has avery delivered this month?
-  * please find a trey consultant with python skills who is available immediately
-  * are any trey research consultants available who are AWS certified? (multi-parameter!)
+  * what projects is domi working on?
+  * do we have any consultants with azure certifications?
+  * what projects are we doing for relecloud?
+  * which consultants are working with woodgrove bank?
+  * how many hours has avery delivered this month?
+  * please find a consultant with python skills who is available immediately
+  * are any consultants available who are AWS certified? (multi-parameter!)
   * does trey research have any architects with javascript skills? (multi-parameter!)
-  * what trey research designers are working at woodgrove bank? (multi-parameter!)
-   * please charge 10 hours to woodgrove bank in trey research (POST request)
-   * please add sanjay to the contoso project for trey research (POST request with easy to forget entities, hoping to prompt the user; for now they are defaulted)
+  * what designers are working at woodgrove bank? (multi-parameter!)
+  * please charge 10 hours to woodgrove bank (POST request)
+  * please add sanjay to the contoso project (POST request with easy to forget entities, hoping to prompt the user; for now they are defaulted)
 
-Notice that each prompt mentions "trey"; this isn't necessary once you have mentioned Trey in a conversation, but it does help Copilot decide to call your plugin. This is an advantage of Declarative Copilots, where the plugin is explicitly declared and it's not necessary to establish intent to call it.
-
-If the sample files are installed and accessible to the logged-in user,
+If the sample files are uploaded, these will work as well:
 
    * find my hours spreadsheet and get the hours for woodgrove, then bill the client
    * make a list of my projects, then write a summary of each based on the statement of work.
 
 ## Plugin Features
 
-The sample showcases the following plugin features:
+The sample showcases the following features:
 
-  1. Declarative Copilot with branding and instructions, access to relevant SharePoint documents and the API plugin
+  1. Declarative agent with branding and instructions, access to relevant SharePoint documents and the API plugin
   1. API based plugin works with any platform that supports REST requests
   1. Copilot will construct queries for specific data using GET requests
   1. Copilot updates and adds data using POST requests
@@ -68,16 +69,12 @@ SECRET_STORAGE_ACCOUNT_CONNECTION_STRING=UseDevelopmentStorage=true
 
 ### Running the solution (after each build)
 
-> NOTE: This sample requires the private preview of Copilot for Microsoft 365 extensibility
-
 1. Press F5 to start the application. It will take a while on first run to download the dependencies. Eventually a browser window will open up and your package is installed.
 
 2. Navigate to Copilot as shown below 1️⃣
 ![Running in Copilot](./assets/images/startsample.png)
 
-3. To use the plugin, open the plugin panel 2️⃣ and enable your plugin 3️⃣. For best results, mention "trey" with each prompt.
-
-4. To use the declarative Copilot, open the flyout 4️⃣ and select the Trey Genie Local solution 5️⃣.
+3. Access the declarative agent by opening the flyout 4️⃣, then select the Trey Genie Local solution 5️⃣.
 
 ## API Summary
 
@@ -104,7 +101,6 @@ GET /api/consultants/?skill=Foo - get consultants with "Foo" in their skills lis
 GET /api/consultants/?certification=Foo - get consultants with "Foo" in their certifications list
 GET /api/consultants/?role=Foo - get consultants who can serve the "Foo" role on a project
 GET /api/consultants/?availability=x - get consultants with x hours availability this month or next month
-
 ~~~
 
 The above requests all return an array of consultant objects, which are defined in the ApiConsultant interface in /model/apiModel.ts.

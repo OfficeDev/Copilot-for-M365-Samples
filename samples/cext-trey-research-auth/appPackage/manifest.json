@@ -11,11 +11,11 @@
     "termsOfUseUrl": "https://www.example.com/termsofuse"
   },
   "icons": {
-    "color": "TreyResearch-orange-192.png",
-    "outline": "TreyResearch-orange-32.png"
+    "color": "TreyResearch-purple-192.png",
+    "outline": "TreyResearch-purple-32.png"
   },
   "name": {
-    "short": "Trey Research ${{APP_NAME_SUFFIX}}",
+    "short": "Trey Research (Auth) ${{APP_NAME_SUFFIX}}",
     "full": "Trey Research consulting management"
   },
   "description": {
@@ -27,7 +27,7 @@
     "declarativeCopilots": [
       {
         "id": "treygenie",
-      "file": "trey-declarative-copilot.json"
+        "file": "trey-declarative-agent.json"
       }
     ],
     "plugins": [
