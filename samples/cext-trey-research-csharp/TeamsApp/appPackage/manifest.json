@@ -27,7 +27,7 @@
     "declarativeCopilots": [
       {
         "id": "treygenie",
-      "file": "trey-declarative-copilot.json"
+      "file": "trey-declarative-agent.json"
       }
     ],
     "plugins": [
