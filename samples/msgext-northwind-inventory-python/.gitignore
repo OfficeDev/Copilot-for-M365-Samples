@@ -1,0 +1,18 @@
+# TeamsFx files
+env/.env.*.user
+appManifest/build/
+
+# python virtual environment
+.venv/
+
+# misc
+.deployment/
+
+# tmp files
+__pycache__/
+
+#Azurite
+_storage_emulator/
+
+.env
+node_modules
