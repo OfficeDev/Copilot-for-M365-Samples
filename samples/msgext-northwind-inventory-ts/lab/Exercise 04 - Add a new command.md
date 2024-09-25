@@ -62,7 +62,12 @@ We will use a lot of the code created for the other handlers.
 const COMMAND_ID = "companySearch";
 ```
 
-2. Replace the content of **handleTeamsMessagingExtensionQuery** with:
+3. Change line 7 to:
+```javascript
+import { searchProductsByCustomer } from "../northwindDB/products";
+```
+
+4. Replace the content of **handleTeamsMessagingExtensionQuery** with:
 ```javascript
  {
     let companyName;
