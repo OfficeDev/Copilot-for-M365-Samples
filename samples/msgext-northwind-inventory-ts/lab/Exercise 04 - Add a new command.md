@@ -57,12 +57,19 @@ We will use a lot of the code created for the other handlers.
 
 1. In VS Code copy '**productSearchCommand.ts**' and paste into the same folder to create a copy. Rename this file **customerSearchCommand.ts**.
 
-2. Change line 10 to:
+2. In **customerSearchCommand.ts**, after the line ``import cardHandler from "../adaptiveCards/cardHandler";``, replace the value of **COMMAND_ID** with "companySearch" as shown below:
 ```javascript
 const COMMAND_ID = "companySearch";
 ```
 
-2. Replace the content of **handleTeamsMessagingExtensionQuery** with:
+3. Replace the line `import { searchProducts } from "../northwindDB/products";` with the below line:
+
+```javascript
+import { searchProductsByCustomer } from "../northwindDB/products";
+```
+
+
+4. Replace the content of **handleTeamsMessagingExtensionQuery** with:
 ```javascript
  {
     let companyName;
@@ -102,16 +109,13 @@ Note that you will implement `searchProductsByCustomer` in Step 4.
 # Step 3 - Update the command routing
 In this step you will route the `companySearch` command to the handler you implemented in the previous step.
 
-2. Open **searchApp.ts** and add the following. Underneath this line:
-```javascript
-import discountedSearchCommand from "./messageExtensions/discountSearchCommand";
-```
-Add this line:
+1. Open **searchApp.ts** and add after the `import discountedSearchCommand from "./messageExtensions/discountSearchCommand";` line add the following:
+
 ```javascript
 import customerSearchCommand from "./messageExtensions/customerSearchCommand";
 ```
 
-3. Underneath this statement:
+2. Underneath this statement:
 ```javascript
       case discountedSearchCommand.COMMAND_ID: {
         return discountedSearchCommand.handleTeamsMessagingExtensionQuery(context, query);
