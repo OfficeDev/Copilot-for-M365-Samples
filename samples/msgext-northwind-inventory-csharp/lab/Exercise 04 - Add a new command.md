@@ -53,12 +53,12 @@ We will use a lot of the code created for the other handlers.
 
 1. In VS copy '**ProductSearchCommand.cs**' and paste into the same folder to create a copy. Rename this file **CustomerSearchCommand.cs**.
 
-2. Change line 18 to:
+2. In **CustomerSearchCommand.cs**, after the line `public static class ProductSearchCommand`, replace the value of **CommandId** with "companySearch" as shown below:
 ```csharp
 public const string CommandId = "companySearch";
 ```
 
-2. Replace the content of **HandleTeamsMessagingExtensionQueryAsync** with:
+3. Replace the content of **HandleTeamsMessagingExtensionQueryAsync** with:
 ```csharp
 {
  string companyName;
@@ -120,9 +120,9 @@ Note that you will implement `SearchProductsByCustomer` in Step 4.
 # Step 3 - Update the command routing
 In this step you will route the `companySearch` command to the handler you implemented in the previous step.
 
-2. Open **searchBot.cs** and add the following. 
+1. Open **searchBot.cs** and add the following. 
 
-3. Underneath this statement:
+2. Underneath this statement:
 ```csharp
     case ProductSearchCommand.CommandId:
         return await ProductSearchCommand.HandleTeamsMessagingExtensionQueryAsync(turnContext, query, _configuration, cancellationToken);

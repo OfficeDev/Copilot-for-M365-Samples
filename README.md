@@ -1,28 +1,23 @@
 # Copilot for Microsoft 365 samples
 
-This repository contains samples that show how to [extend Copilot for Microsoft 365](https://learn.microsoft.com/microsoft-365-copilot/extensibility/).
-
-<p style="align:center"><img src="https://learn.microsoft.com/en-gb/microsoft-365-copilot/extensibility/assets/images/m365-extensibility-types.png" alt="This illustration shows types of extensibility options, Graph connector, plugins, and declarative copilots" /></p>
+This repository contains samples that show how to write [agents and plugins for Microsoft 365 Copilot](https://learn.microsoft.com/microsoft-365-copilot/extensibility/).
 
 > [!IMPORTANT]
 > These samples are intended for instructive and demonstration purposes and are not intended for use in production. Do not put them into production without upgrading them to production quality.
 
 > [!IMPORTANT]  
-> To extend Copilot for Microsoft 365, you must ensure that your development environment meets the [requirements](https://learn.microsoft.com/microsoft-365-copilot/extensibility/prerequisites).
+> To run these samples , you must ensure that your development environment meets the [requirements](https://learn.microsoft.com/microsoft-365-copilot/extensibility/prerequisites).
 
 ## Samples
 
-| Name    | Language | Description
-| -------- | :-------: | ------- |
-| [Northwind Inventory](./samples/msgext-northwind-inventory-ts) | TypeScript | Plugin that allows users to query the Northwind Database
-| [Northwind Inventory](./samples/msgext-northwind-inventory-csharp) | .NET | Plugin that allows users to query the Northwind Database
-| [Document Search](./samples/msgext-doc-search-js) | JavaScript | Plugin that enables Hybrid Search (Vector + Semantic)
-| [Document Search](./samples/msgext-doc-search-csharp) | .NET | Plugin that enables Hybrid Search (Vector + Semantic)
-| [Product support](./samples/msgext-product-support-sso-csharp) | .NET | Plugin that allows users to query the Products held in SharePoint Online team site via Microsoft Graph
-| [Product support](./samples/msgext-product-support-sso-ts) | TypeScript | Plugin that allows users to query the Products held in SharePoint Online team site via Microsoft Graph
-| [Multi Parameters](./samples/msgext-multiparam-csharp) | .NET | Plugin that demonstrates how to implement complex utterances and support deep retrieval
-| [Multi Parameters](./samples/msgext-multiparam-ts) | TypeScript | Plugin that demonstrates how to implement complex utterances and support deep retrieval
-| [Multi Parameters](./samples/msgext-multiparam-js) | JavaScript | Plugin that demonstrates how to implement complex utterances and support deep retrieval
+| Name    | Type |Language | Description
+| -------- | --- | :-------: | ------- |
+| Geo-Locator Game | Declarative Agent | [JSON](./samples/cext-geolocator-game) | Copilot plays a guessing game about geography |
+| Trey Research | Declarative Agent with API Plugin | [TypeScript (no auth)](./samples//cext-trey-research/) [TypeScript (OAuth 2.0)](./samples/cext-trey-research-auth/) | Handles billing and project assignments for a hypothetical consulting company |
+| Northwind Inventory | Teams Message Exension | [.NET](./samples/msgext-northwind-inventory-csharp), [Python](./samples/msgext-northwind-inventory-python), [TypeScript](./samples/msgext-northwind-inventory-ts) | Plugin that allows users to query the Northwind Database
+| Document Search | Teams Message Exension | [.NET](./samples/msgext-doc-search-csharp), [JavaScript](./samples/msgext-doc-search-js) | Plugin that enables Hybrid Search (Vector + Semantic)
+| Product support | Teams Message Exension | [.NET](./samples/msgext-product-support-sso-csharp), [TypeScript](./samples/msgext-product-support-sso-ts) | Plugin that allows users to query the Products held in SharePoint Online team site via Microsoft Graph
+| Multi Parameters | Teams Message Exension | [.NET](./samples/msgext-multiparam-csharp), [JavaScript](./samples/msgext-multiparam-js), [TypeScript](./samples/msgext-multiparam-ts) | Plugin that demonstrates how to implement complex utterances and support deep retrieval
 
 ## Contributing
 

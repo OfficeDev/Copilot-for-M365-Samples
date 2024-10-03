@@ -1,9 +1,9 @@
-# Geo Locator Game Declarative copilot
+# Geo Locator Game declarative agent
 This is a Geo Locator Game copilot that plays a game with users by asking a location around the World for users to guess. Geo Locator Game copilot is entertaining, fun and congratulates users when their guesses are correct.
 
-NOTE: The services needed to use this sample are in private preview only
+> NOTE: Declarative agents were called "declarative copilots" during private preview; you may find the old terminology in some of our documentation and tools as they are being updated.
 
-Follow the steps to run the Geo Locator Game Declarative Copilot.
+Follow the steps to run the Geo Locator Game declarative agent.
 
 ## Pre-requisites
 - [Node.js](https://nodejs.org/), supported versions: 16, 18
@@ -18,7 +18,7 @@ Follow the steps to run the Geo Locator Game Declarative Copilot.
 3. Create Teams app by clicking `Provision` in "Lifecycle" section.
 4. Select `Preview in Copilot (Edge)` or `Preview in Copilot (Chrome)` from the launch configuration dropdown.
 5. Once the Copilot app is loaded in the browser, click on the "…" menu and select "Copilot chats".
-6. Select **Geo Locator Game (Declarative copilot)** on the right rail.
+6. Select **Geo Locator Game** on the right rail.
 7. Enjoy playing Geo Locator Game with copilot, you can start by asking "Hi".
 
 ![Geo Locator Game](geo-locator.gif)
