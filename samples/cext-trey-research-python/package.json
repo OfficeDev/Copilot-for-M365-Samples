@@ -1,0 +1,12 @@
+{
+  "name": "officedev-copilot-for-m365-plugins-samples-cext-trey-research-python",
+  "version": "1.0.0",
+  "description": "This sample implements a Teams message extension that can be used as a plugin for Microsoft Copilot for Microsoft 365.",
+  "scripts": {
+    "storage": "azurite --silent --location ./_storage_emulator --debug ./_storage_emulator/debug.log",
+    "postinstall": "echo 'Please ensure Azure Functions Core Tools are installed globally by running npm install -g azure-functions-core-tools@4'"
+  },
+  "devDependencies": {
+    "azurite": "^3.23.0"
+  }
+}

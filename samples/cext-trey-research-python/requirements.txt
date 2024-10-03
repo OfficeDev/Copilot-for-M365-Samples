@@ -1,0 +1,6 @@
+aiohttp
+azure-data-tables
+uuid
+azure-functions
+debugpy
+requests==2.31.0
