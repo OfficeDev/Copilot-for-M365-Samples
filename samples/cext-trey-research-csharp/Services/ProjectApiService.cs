@@ -20,17 +20,16 @@ namespace cext_trey_research_csharp.Services
             _configuration = configuration;
         }
 
-        public async Task<ApiProject> GetApiProjectById(IdentityService identity, string projectId)
+        public async Task<ApiProject> GetApiProjectById(string projectId)
         {
             var project = await new ProjectDbService(_configuration).GetProjectByIdAsync(projectId);
             var assignments = await new AssignmentDbService(_configuration).GetAssignmentsAsync();
 
-            var result = await GetApiProject(identity, project, assignments);
+            var result = await GetApiProject(project, assignments);
             return result;
         }
 
         public async Task<List<ApiProject>> GetApiProjects(
-            IdentityService identity,
             string projectOrClientName,
             string consultantName)
         {
@@ -51,7 +50,7 @@ namespace cext_trey_research_csharp.Services
                                .ToList();
 
             // Augment the base properties with assignment information
-            var result = (await Task.WhenAll(projects.Select(p => GetApiProject(identity, p, assignments)))).ToList();
+            var result = (await Task.WhenAll(projects.Select(p => GetApiProject(p, assignments)))).ToList();
 
             // Filter on augmented properties
             if (!string.IsNullOrEmpty(consultantName))
@@ -66,18 +65,17 @@ namespace cext_trey_research_csharp.Services
         }
 
         // Augment a project to get an ApiProject
-        private async Task<ApiProject> GetApiProject(IdentityService identity, Project project, List<Assignment> assignments)
+        private async Task<ApiProject> GetApiProject(Project project, List<Assignment> assignments)
         {
             var result = new ApiProject
             {
                 Id = project.Id,
                 Name = project.Name,
-                Location = Utility.GetLocationWithMap(project.Location),
+                Location = project.Location,
                 Description = project.Description,
                 ClientName = project.ClientName,
                 ClientEmail = project.ClientEmail,
                 ClientContact = project.ClientContact,
-                ClientLogoUrl = "http://via.placeholder.com/320x320",
                 Consultants = new List<ApiProjectAssignment>(),
                 ForecastThisMonth = 0,
                 ForecastNextMonth = 0,
@@ -89,14 +87,14 @@ namespace cext_trey_research_csharp.Services
 
             foreach (var assignment in assignments)
             {
-                var consultant = await new ConsultantDbService(_configuration).GetConsultantByIdAsync(identity, assignment.ConsultantId);
+                var consultant = await new ConsultantDbService(_configuration).GetConsultantByIdAsync(assignment.ConsultantId);
                 var forecastHours = FindHours(assignment.Forecast);
                 var deliveredHours = FindHours(assignment.Delivered);
 
                 result.Consultants.Add(new ApiProjectAssignment
                 {
                     ConsultantName = consultant.Name,
-                    ConsultantLocation = Utility.GetLocationWithMap(consultant.Location),
+                    ConsultantLocation = consultant.Location,
                     Role = assignment.Role,
                     ForecastThisMonth = forecastHours.ThisMonthHours,
                     ForecastNextMonth = forecastHours.NextMonthHours,
@@ -135,14 +133,13 @@ namespace cext_trey_research_csharp.Services
         }
 
         public async Task<ApiAddConsultantToProjectResponse> AddConsultantToProject(
-            IdentityService identity,
             string projectName,
             string consultantName,
             string role,
             int hours)
         {
-            var projects = await GetApiProjects(identity, projectName, string.Empty);
-            var consultants = await new ConsultantApiService(_configuration).GetApiConsultants(identity, consultantName, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty);
+            var projects = await GetApiProjects(projectName, string.Empty);
+            var consultants = await new ConsultantApiService(_configuration).GetApiConsultants(consultantName, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty);
 
             if (!projects.Any())
             {

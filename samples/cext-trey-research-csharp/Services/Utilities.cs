@@ -53,16 +53,5 @@ namespace cext_trey_research_csharp.Utilities
 
             return val;
         }
-
-        // Augment a location with a map URL
-        public static Location GetLocationWithMap(Location location)
-        {
-            var result = location;
-            var bingKey = _configuration["SECRET_BING_MAPS_KEY"];
-            var coord = $"{location.Latitude},{location.Longitude}";
-            result.MapUrl = $"https://dev.virtualearth.net/REST/v1/Imagery/Map/Road/?{coord}mapSize=450,600&pp={coord}&key={bingKey}";
-
-            return result;
-        }
     }
 }

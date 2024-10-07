@@ -85,11 +85,10 @@ The sample showcases the following features:
 
 > If you do not have permission to upload custom apps (sideloading), Teams Toolkit will recommend creating and using a Microsoft 365 Developer Program account - a free program to get your own dev environment sandbox that includes Teams.
 
-1. Copy the values from ./local.settings.json.sample into your ./local.settings.json file. Ensure that the final file includes these lines.
+1. Copy the values from ./local.settings.json.sample into your ./local.settings.json file. Ensure that the final file includes this line.
 
 ~~~text
-"AzureWebJobsStorage": "UseDevelopmentStorage=true",
-"SECRET_BING_MAPS_KEY": "xxxxxxxxxxxxxxxxxxxxxxx"
+"AzureWebJobsStorage": "UseDevelopmentStorage=true"
 ~~~
 
 1. OPTIONAL: Copy the files from the **/sampleDocs** folder to OneDrive or SharePoint. Add the location of these files in the `OneDriveAndSharePoint` capability in the declarative copilot (**/appPackage/trey-declarative-copilot.json**).

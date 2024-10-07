@@ -13,6 +13,7 @@ using cext_trey_research_csharp.Models;
 using cext_trey_research_csharp.Services;
 using cext_trey_research_csharp.Utilities;
 using Newtonsoft.Json;
+using Microsoft.Extensions.Configuration;
 
 namespace cext_trey_research_csharp
 {
@@ -20,11 +21,13 @@ namespace cext_trey_research_csharp
     {
         private readonly ProjectApiService _projectApiService;
         private readonly IdentityService _identityService;
+        private readonly IConfiguration _configuration;
 
-        public ProjectsFunction(ProjectApiService projectApiService, IdentityService identityService)
+        public ProjectsFunction(ProjectApiService projectApiService, IdentityService identityService, IConfiguration configuration)
         {
             _projectApiService = projectApiService;
             _identityService = identityService;
+            _configuration = configuration;
         }
 
         [FunctionName("Projects")]
@@ -39,8 +42,7 @@ namespace cext_trey_research_csharp
 
             try
             {
-                _identityService.InitializeFromRequest(req);
-                var identity = _identityService;
+                var userInfo = await new IdentityService(_configuration).ValidateRequest(req);
 
                 switch (req.Method.ToUpper())
                 {
@@ -55,21 +57,22 @@ namespace cext_trey_research_csharp
 
                         if (!string.IsNullOrEmpty(id))
                         {
-                            var result = await _projectApiService.GetApiProjectById(identity, id.ToLower());
+                            var result = await _projectApiService.GetApiProjectById(id.ToLower());
                             jsonResponse = new { results = new List<object> { result } };  // Correct type usage
                             log.LogInformation($"   ✅ GET /api/projects: response status 200; 1 project returned");
                             return new OkObjectResult(jsonResponse);
                         }
 
+                        // Use current user if the project name is user_profile
                         if (projectName.Contains("user_profile"))
                         {
-                            var result = await _projectApiService.GetApiProjects(identity, "", identity.Name);
+                            var result = await _projectApiService.GetApiProjects("", userInfo.Name);
                             jsonResponse = new { results = result.Cast<object>().ToList() };  // Cast to List<object>
                             log.LogInformation($"   ✅ GET /api/projects for current user response status 200; {result.Count} projects returned");
                             return new OkObjectResult(jsonResponse);
                         }
 
-                        var projectsResult = await _projectApiService.GetApiProjects(identity, projectName, consultantName);
+                        var projectsResult = await _projectApiService.GetApiProjects(projectName, consultantName);
                         jsonResponse = new { results = projectsResult.Cast<object>().ToList() };  // Cast to List<object>
                         log.LogInformation($"   ✅ GET /api/projects: response status 200; {projectsResult.Count} projects returned");
                         return new OkObjectResult(jsonResponse);
@@ -116,7 +119,7 @@ namespace cext_trey_research_csharp
                             var forecast = (int?)body.forecast ?? 0;
 
                             log.LogInformation($"➡️ POST /api/projects: assignconsultant request, projectName={projectNamePost}, consultantName={consultantNamePost}, role={role}, forecast={forecast}");
-                            var result = await _projectApiService.AddConsultantToProject(identity, projectNamePost, consultantNamePost, role, forecast);
+                            var result = await _projectApiService.AddConsultantToProject(projectNamePost, consultantNamePost, role, forecast);
 
                             jsonResponse = new
                             {

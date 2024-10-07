@@ -13,6 +13,7 @@ using cext_trey_research_csharp.Services;
 using cext_trey_research_csharp.Utilities;
 using Newtonsoft.Json;
 using System.IO;
+using Microsoft.Extensions.Configuration;
 
 namespace cext_trey_research_csharp
 {
@@ -20,11 +21,13 @@ namespace cext_trey_research_csharp
     {
         private readonly ConsultantApiService _consultantApiService;
         private readonly IdentityService _identityService;
+        private readonly IConfiguration _configuration;
 
-        public MeFunction(ConsultantApiService consultantApiService, IdentityService identityService)
+        public MeFunction(ConsultantApiService consultantApiService, IdentityService identityService, IConfiguration configuration)
         {
             _consultantApiService = consultantApiService;
             _identityService = identityService;
+            _configuration = configuration;
         }
 
         [FunctionName("Me")]
@@ -37,9 +40,8 @@ namespace cext_trey_research_csharp
 
             try
             {
-                _identityService.InitializeFromRequest(req);
-                var identity = _identityService;
-
+                var me = await new IdentityService(_configuration).ValidateRequest(req);
+                
                 switch (req.Method.ToUpper())
                 {
                     case "GET":
@@ -50,7 +52,7 @@ namespace cext_trey_research_csharp
 
                         log.LogInformation("➡️ GET /api/me request");
 
-                        var consultant = await _consultantApiService.GetApiConsultantById(identity, identity.Id);
+                        var consultant = await _consultantApiService.GetApiConsultantById(me.Id);
                         var jsonResponse = new { results = new List<object> { consultant } };
                         log.LogInformation($"   ✅ GET /me response status OK; 1 consultant returned");
 
@@ -87,7 +89,7 @@ namespace cext_trey_research_csharp
 
                                 log.LogInformation($"➡️ POST /api/me/chargetime request for project {projectName}, hours {hours}");
 
-                                var chargeTimeResult = await _consultantApiService.ChargeTimeToProject(identity, projectName, identity.Id, hours.Value);
+                                var chargeTimeResult = await _consultantApiService.ChargeTimeToProject(projectName, me.Id, hours.Value);
 
                                 var postResponse = new
                                 {

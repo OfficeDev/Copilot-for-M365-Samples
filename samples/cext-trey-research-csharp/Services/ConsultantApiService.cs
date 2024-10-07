@@ -20,18 +20,17 @@ namespace cext_trey_research_csharp.Services
             _configuration = configuration;
         }
 
-        public async Task<ApiConsultant> GetApiConsultantById(IdentityService identity, string consultantId)
+        public async Task<ApiConsultant> GetApiConsultantById(string consultantId)
         {
             // Pass the configuration object to the constructor
-            var consultant = await new ConsultantDbService(_configuration).GetConsultantByIdAsync(identity, consultantId);
+            var consultant = await new ConsultantDbService(_configuration).GetConsultantByIdAsync(consultantId);
             var assignments = await new AssignmentDbService(_configuration).GetAssignmentsAsync();
 
-            var result = await GetApiConsultant(consultant, assignments);
+            var result = await GetApiConsultantForBaseConsultant(consultant, assignments);
             return result;
         }
 
         public async Task<List<ApiConsultant>> GetApiConsultants(
-            IdentityService identity,
             string consultantName,
             string projectName,
             string skill,
@@ -39,7 +38,7 @@ namespace cext_trey_research_csharp.Services
             string role,
             string hoursAvailable)
         {
-            var consultants = await new ConsultantDbService(_configuration).GetConsultantsAsync(identity);
+            var consultants = await new ConsultantDbService(_configuration).GetConsultantsAsync();
             var assignments = await new AssignmentDbService(_configuration).GetAssignmentsAsync();
 
             // Filter on base properties
@@ -64,7 +63,7 @@ namespace cext_trey_research_csharp.Services
             var result = new List<ApiConsultant>();
             foreach (var consultant in consultants)
             {
-                result.Add(await GetApiConsultant(consultant, assignments));
+                result.Add(await GetApiConsultantForBaseConsultant(consultant, assignments));
             }
 
             // Filter on project name
@@ -89,7 +88,19 @@ namespace cext_trey_research_csharp.Services
             return result;
         }
 
-        private async Task<ApiConsultant> GetApiConsultant(Consultant consultant, List<Assignment> assignments)
+        public async Task<ApiConsultant> CreateApiConsultant(Consultant consultant)
+        {
+            // Create consultant in the database
+            await new ConsultantDbService(_configuration).CreateConsultantAsync(consultant);
+            var assignments = await new AssignmentDbService(_configuration).GetAssignmentsAsync();
+
+            // Map the base consultant and assignments to an ApiConsultant object
+            var newApiConsultant = await GetApiConsultantForBaseConsultant(consultant, assignments);
+
+            return newApiConsultant;
+        }
+
+        private async Task<ApiConsultant> GetApiConsultantForBaseConsultant(Consultant consultant, List<Assignment> assignments)
         {
             var result = new ApiConsultant
             {
@@ -98,7 +109,7 @@ namespace cext_trey_research_csharp.Services
                 Email = consultant.Email,
                 Phone = consultant.Phone,
                 ConsultantPhotoUrl = consultant.ConsultantPhotoUrl,                
-                Location = Utility.GetLocationWithMap(consultant.Location),
+                Location = consultant.Location,
                 Skills = consultant.Skills,
                 Certifications = consultant.Certifications,
                 Roles = consultant.Roles,
@@ -121,7 +132,8 @@ namespace cext_trey_research_csharp.Services
                 {
                     ProjectName = project.Name,
                     ProjectDescription = project.Description,
-                    ProjectLocation = Utility.GetLocationWithMap(project.Location),
+                    ProjectLocation = project.Location,
+                    MapUrl = project.MapUrl,
                     ClientName = project.ClientName,
                     ClientContact = project.ClientContact,
                     ClientEmail = project.ClientEmail,
@@ -161,9 +173,9 @@ namespace cext_trey_research_csharp.Services
             };
         }
 
-        public async Task<ApiChargeTimeResponse> ChargeTimeToProject(IdentityService identity, string projectName, string consultantId, double hours)
+        public async Task<ApiChargeTimeResponse> ChargeTimeToProject(string projectName, string consultantId, double hours)
         {
-            var projects = await new ProjectApiService(_configuration).GetApiProjects(identity, projectName, "");
+            var projects = await new ProjectApiService(_configuration).GetApiProjects(projectName, "");
             if (!projects.Any())
             {
                 throw new Utilities.HttpError(404, $"Project not found: {projectName}");

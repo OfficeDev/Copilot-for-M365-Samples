@@ -2,7 +2,6 @@
     "IsEncrypted": false,
   "Values": {
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
-    "SECRET_BING_MAPS_KEY": "xxxxxxxxxxxxxxxxxxxxxxx"
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet"
   }
 }

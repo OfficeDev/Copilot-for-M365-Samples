@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using cext_trey_research_csharp.Services;  
 using cext_trey_research_csharp.Models;
 using Microsoft.Extensions.Configuration;
+using System;
 
 namespace cext_trey_research_csharp.Services
 {
@@ -17,26 +18,54 @@ namespace cext_trey_research_csharp.Services
             _dbService = new DbService<DbConsultant>(configuration, true);
         }
 
-        public async Task<Consultant> GetConsultantByIdAsync(IdentityService identity, string id)
+        public async Task<Consultant> GetConsultantByIdAsync(string id)
         {
             var consultant = await _dbService.GetEntityByRowKeyAsync(TableName, id);
-            return ConvertDbConsultant(identity, consultant as DbConsultant);
+            return MapToConsultant(consultant as DbConsultant);
         }
 
-        public async Task<List<Consultant>> GetConsultantsAsync(IdentityService identity)
+        public async Task<List<Consultant>> GetConsultantsAsync()
         {
-            var consultants = await _dbService.GetEntitiesAsync(TableName);
-            var result = new List<Consultant>();
-            foreach (var c in consultants)
+            var dbConsultants = await _dbService.GetEntitiesAsync(TableName);
+            var consultants = new List<Consultant>();
+            foreach (var dbConsultant in dbConsultants)
             {
-                result.Add(ConvertDbConsultant(identity, c as DbConsultant));
+                consultants.Add(MapToConsultant(dbConsultant as DbConsultant));
             }
-            return result;
+            return consultants;
         }
 
-        private Consultant ConvertDbConsultant(IdentityService identity, DbConsultant dbConsultant)
+        public async Task<Consultant> CreateConsultantAsync(Consultant consultant)
         {
-            var result = new Consultant
+            // Create a new DbConsultant entity with the necessary fields
+            var newDbConsultant = new DbConsultant
+            {
+                Id = consultant.Id,
+                Name = consultant.Name,
+                Email = consultant.Email,
+                Phone = consultant.Phone,
+                ConsultantPhotoUrl = consultant.ConsultantPhotoUrl,
+                Location = consultant.Location,
+                Skills = consultant.Skills,
+                Certifications = consultant.Certifications,
+                Roles = consultant.Roles,
+                ETag = new Azure.ETag("*"),
+                PartitionKey = TableName,
+                RowKey = consultant.Id,
+                Timestamp = DateTime.UtcNow
+            };
+
+            // Add the new DbConsultant to the table
+            await _dbService.CreateEntityAsync(TableName, newDbConsultant.RowKey, newDbConsultant);
+
+            Console.WriteLine($"Added new consultant {newDbConsultant.Name} ({newDbConsultant.Id}) to the Consultant table");
+
+            return null; // You can change this to return the created consultant if needed
+        }
+
+        private Consultant MapToConsultant(DbConsultant dbConsultant)
+        {
+            return new Consultant
             {
                 Id = dbConsultant.Id,
                 Name = dbConsultant.Name,
@@ -48,15 +77,7 @@ namespace cext_trey_research_csharp.Services
                 Certifications = dbConsultant.Certifications,
                 Roles = dbConsultant.Roles
             };
-
-            if (dbConsultant.Id == identity.Id)
-            {
-                // If this is the current user, return the actual name and email
-                result.Name = identity.Name;
-                result.Email = identity.Email;
-            }
-
-            return result;
         }
+
     }
 }

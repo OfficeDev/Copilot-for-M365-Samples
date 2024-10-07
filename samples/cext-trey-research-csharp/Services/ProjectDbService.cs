@@ -53,8 +53,18 @@ namespace cext_trey_research_csharp.Services
                 ClientName = dbProject.ClientName,
                 ClientContact = dbProject.ClientContact,
                 ClientEmail = dbProject.ClientEmail,
-                Location = dbProject.Location
+                Location = dbProject.Location,
+                MapUrl = GetMapUrl(dbProject)
             };
+        }
+
+        private string GetMapUrl(DbProject project)
+        {
+            // Convert the client name to lower case and replace spaces with hyphens
+            string companyNameKabobCase = project.ClientName.ToLower().Replace(" ", "-");
+
+            // Return the formatted URL with the company name in kebab-case
+            return $"https://microsoft.github.io/copilot-camp/demo-assets/images/maps/{companyNameKabobCase}.jpg";
         }
     }
 }

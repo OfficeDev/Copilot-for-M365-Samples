@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using cext_trey_research_csharp.Services;
 using cext_trey_research_csharp.Utilities;
+using Microsoft.Extensions.Configuration;
 
 namespace cext_trey_research_csharp.Functions
 {
@@ -16,11 +17,13 @@ namespace cext_trey_research_csharp.Functions
     {
         private readonly ConsultantApiService _consultantApiService;
         private readonly IdentityService _identityService;
+        private readonly IConfiguration _configuration;
 
-        public ConsultantsFunction(ConsultantApiService consultantApiService, IdentityService identityService)
+        public ConsultantsFunction(ConsultantApiService consultantApiService, IdentityService identityService, IConfiguration configuration)
         {
             _consultantApiService = consultantApiService;
             _identityService = identityService;
+            _configuration = configuration;
         }
 
         [FunctionName("Consultants")]
@@ -36,8 +39,7 @@ namespace cext_trey_research_csharp.Functions
             try
             {
                 // Initialize identity
-                _identityService.InitializeFromRequest(req);
-                var identity = _identityService; 
+                var userInfo = await new IdentityService(_configuration).ValidateRequest(req);
 
                 // Get the input parameters
                 var consultantName = req.Query.ContainsKey("consultantName") ? req.Query["consultantName"].ToString().ToLower() : "";
@@ -50,7 +52,7 @@ namespace cext_trey_research_csharp.Functions
                 if (!string.IsNullOrEmpty(id))
                 {
                     log.LogInformation($"➡️ GET /api/consultants/{id}: request for consultant {id}");
-                    var result = await _consultantApiService.GetApiConsultantById(identity, id.ToLower());
+                    var result = await _consultantApiService.GetApiConsultantById(id.ToLower());
                     jsonResponse = new { results = new List<object> { result } };
                     log.LogInformation($"   ✅ GET /api/consultants/{id}: response status 1 consultant returned");
                     return new OkObjectResult(jsonResponse);
@@ -67,7 +69,7 @@ namespace cext_trey_research_csharp.Functions
                 hoursAvailable = Utility.CleanUpParameter("hoursAvailable", hoursAvailable);
 
                 
-                var results = await _consultantApiService.GetApiConsultants(identity, consultantName, projectName, skill, certification, role, hoursAvailable);
+                var results = await _consultantApiService.GetApiConsultants(consultantName, projectName, skill, certification, role, hoursAvailable);
                 jsonResponse = new { results = results.Cast<object>().ToList() };
                 log.LogInformation($"   ✅ GET /api/consultants: response status OK; {results.Count} consultants returned");
 

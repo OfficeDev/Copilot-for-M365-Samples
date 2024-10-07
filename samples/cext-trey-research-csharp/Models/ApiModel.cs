@@ -18,7 +18,6 @@ namespace cext_trey_research_csharp.Models
     public class ApiProject : Project
     {
         public List<ApiProjectAssignment> Consultants { get; set; }
-        public string ClientLogoUrl { get; set; }
         public double ForecastThisMonth { get; set; }
         public double ForecastNextMonth { get; set; }
         public double DeliveredLastMonth { get; set; }
@@ -31,6 +30,7 @@ namespace cext_trey_research_csharp.Models
         public string ProjectName { get; set; }
         public string ProjectDescription { get; set; }
         public Location ProjectLocation { get; set; }
+        public string MapUrl { get; set; }
         public string ClientName { get; set; }
         public string ClientContact { get; set; }
         public string ClientEmail { get; set; }

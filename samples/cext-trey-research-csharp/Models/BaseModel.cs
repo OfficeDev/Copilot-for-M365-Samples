@@ -11,7 +11,6 @@ namespace cext_trey_research_csharp.Models
         public string PostalCode { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
-        public string MapUrl { get; set; }
     }
 
     public class HoursEntry
@@ -30,6 +29,7 @@ namespace cext_trey_research_csharp.Models
         public string ClientContact { get; set; }
         public string ClientEmail { get; set; }
         public Location Location { get; set; }
+        public string MapUrl { get; set; }
     }
 
     public class Consultant

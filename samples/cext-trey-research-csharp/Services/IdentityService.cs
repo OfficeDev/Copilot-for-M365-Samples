@@ -1,84 +1,85 @@
 ﻿using System;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.Azure.Functions.Worker.Http;
+using Azure;
+using cext_trey_research_csharp.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 
 namespace cext_trey_research_csharp.Services
 {
     public class IdentityService
     {
-        private const string DEFAULT_CONSULTANT_ID = "1";
-        private const string DEFAULT_CONSULTANT_NAME = "Avery Howard";
-        private const string DEFAULT_CONSULTANT_EMAIL = "avery@treyresearch.com";
+        private int requestNumber = 1;  // Number the requests for logging purposes
+        private readonly IConfiguration _configuration;
 
-        private static int requestCounter = 0; // Singleton to identify each request
-
-        public int RequestNumber { get; }
-        public string Id { get; }
-        public string Name { get; private set; }
-        public string Email { get; private set; }
-
-        public IdentityService()
+        public IdentityService(IConfiguration configuration)
         {
-            RequestNumber = ++requestCounter;
-            Id = DEFAULT_CONSULTANT_ID;
-            SetDefaultConsultantValues();
+            _configuration = configuration;
         }
 
-        public void InitializeFromRequest(HttpRequest req)
+        public async Task<ApiConsultant> ValidateRequest(HttpRequest req)
         {
-            // Check for auth header from Easy Auth
-            var clientPrincipal = req.Headers["x-ms-client-principal"].FirstOrDefault();
+            // Default user used for unauthenticated testing
+            string userId = "1";
+            string userName = "Avery Howard";
+            string userEmail = "avery@treyresearch.com";
 
-            if (!string.IsNullOrEmpty(clientPrincipal))
+            // ** INSERT REQUEST VALIDATION HERE (see Lab E6) **
+
+            // Get the consultant record for this user; create one if necessary
+            ApiConsultant consultant = null;
+
+            try
             {
-                var clientPrincipalObj = JsonSerializer.Deserialize<ClientPrincipal>(DecodeBase64(clientPrincipal));
-                if (clientPrincipalObj != null)
-                {
-                    Name = clientPrincipalObj.Claims.FirstOrDefault(c => c.Type == "name")?.Value;
-                    Email = clientPrincipalObj.Claims.FirstOrDefault(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn")?.Value;
-                    Console.WriteLine($"🔐 Request {RequestNumber} authenticated as {Name} ({Email})");
-                }
-                else
-                {
-                    SetDefaultConsultantValues();
-                }
+                consultant = await new ConsultantApiService(_configuration).GetApiConsultantById(userId);
             }
-            else
+            catch (RequestFailedException ex)
             {
-                SetDefaultConsultantValues();
+                if (ex.Status != 404)
+                {
+                    throw ex;
+                }
+                // Consultant was not found, so we'll create one below
+                consultant = null;
             }
+
+            if (consultant == null)
+            {
+                consultant = await CreateConsultantForUser(userId, userName, userEmail);
+            }
+
+            return consultant;
         }
 
-        private void SetDefaultConsultantValues()
+        private async Task<ApiConsultant> CreateConsultantForUser(string userId, string userName, string userEmail)
         {
-            Name = DEFAULT_CONSULTANT_NAME;
-            Email = DEFAULT_CONSULTANT_EMAIL;
-            Console.WriteLine($"⭐ Request {RequestNumber}");
-        }
+            // Create a new consultant record for this user with default values
+            Consultant consultant = new Consultant
+            {
+                Id = userId,
+                Name = userName,
+                Email = userEmail,
+                Phone = "1-555-123-4567",
+                ConsultantPhotoUrl = "https://microsoft.github.io/copilot-camp/demo-assets/images/consultants/Unknown.jpg",
+                Location = new Location
+                {
+                    Street = "One Memorial Drive",
+                    City = "Cambridge",
+                    State = "MA",
+                    Country = "USA",
+                    PostalCode = "02142",
+                    Latitude = 42.361366,
+                    Longitude = -71.081257
+                },
+                Skills = new List<string> { "JavaScript", "TypeScript" },
+                Certifications = new List<string> { "Azure Development" },
+                Roles = new List<string> { "Architect", "Project Lead" }
+            };
 
-        private static string DecodeBase64(string base64EncodedData)
-        {
-            var base64EncodedBytes = Convert.FromBase64String(base64EncodedData);
-            return Encoding.UTF8.GetString(base64EncodedBytes);
-        }
-
-        public string GetDbConsultantName(string apiConsultantName)
-        {
-            return Name.IndexOf(apiConsultantName, StringComparison.OrdinalIgnoreCase) < 0 ? apiConsultantName : DEFAULT_CONSULTANT_NAME;
-        }
-
-        private class ClientPrincipal
-        {
-            public Claim[] Claims { get; set; }
-        }
-
-        private class Claim
-        {
-            public string Type { get; set; }
-            public string Value { get; set; }
+            ApiConsultant result = await new ConsultantApiService(_configuration).CreateApiConsultant(consultant);
+            return result;
         }
     }
 }
