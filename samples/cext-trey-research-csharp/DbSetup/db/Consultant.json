@@ -1,0 +1,99 @@
+{
+  "Rows": [
+    {
+      "Id": "1",
+      "Name": "Avery Howard",
+      "Email": "avery@treyresearch.com",
+      "Phone": "1-555-456-7890",
+      "ConsultantPhotoUrl": "https://bobgerman.github.io/fictitiousAiGenerated/Avery.jpg",
+      "Location": {
+        "Street": "5 Wayside Rd.",
+        "City": "Burlington",
+        "State": "MA",
+        "Country": "USA",
+        "PostalCode": "01803",
+        "Latitude": 42.5048,
+        "Longitude": -71.1956
+      },
+      "Skills": [ "C#", "JavaScript", "TypeScript", "React", "Node.js" ],
+      "Certifications": [ "MCSADA", "Azure Developer Associate", "MCAAF", "Azure AI Fundamentals" ],
+      "Roles": [ "Project lead", "Developer", "Architect", "DevOps" ]
+    },
+    {
+      "Id": "2",
+      "Name": "Dominique Dutertre",
+      "Email": "dominique@treyresearch.com",
+      "Phone": "1-555-567-7890",
+      "ConsultantPhotoUrl": "https://bobgerman.github.io/fictitiousAiGenerated/Dominique.jpg",
+      "Location": {
+        "Street": "39 Quai du Président Roosevelt, Issy-les-Moulineaux",
+        "City": "Paris",
+        "State": "Île-de-France",
+        "Country": "France",
+        "PostalCode": "IdF 92130",
+        "Latitude": 48.8264,
+        "Longitude": 2.2675
+      },
+      "Skills": [ "Figma", "Adobe Creative Swuite", "Visual design" ],
+      "Certifications": [],
+      "Roles": [ "Designer", "Project lead" ]
+    },
+    {
+      "Id": "3",
+      "Name": "Robin Zupanc",
+      "Email": "robin@treyresearch.com",
+      "Phone": "1-555-344-7890",
+      "ConsultantPhotoUrl": "https://bobgerman.github.io/fictitiousAiGenerated/Robin.jpg",
+      "Location": {
+        "Street": "11 Times Square",
+        "City": "New York",
+        "State": "NY",
+        "Country": "USA",
+        "PostalCode": "10036",
+        "Latitude": 40.7580,
+        "Longitude": -73.9855
+      },
+      "Skills": [ "Python", "Java" ],
+      "Certifications": [ "MCSADA", "Azure Developer Associate", "MCAAF", "Azure AI Fundamentals", "AWS Certified Developer", "Google Professional Cloud Developer" ],
+      "Roles": [ "Project lead", "Developer", "Architect", "DevOps" ]
+    },
+    {
+      "Id": "4",
+      "Name": "Sanjay Puranik",
+      "Email": "sanjay@treyresearch.com",
+      "Phone": "1-555-562-7890",
+      "ConsultantPhotoUrl": "https://bobgerman.github.io/fictitiousAiGenerated/Sanjay.jpg",
+      "Location": {
+        "Street": "2 Kingdom St.",
+        "City": "Paddington, London",
+        "State": "EN",
+        "Country": "GBR",
+        "PostalCode": "W2 6BD",
+        "Latitude": 51.5194,
+        "Longitude": -0.1781
+      },
+      "Skills": [ "TypeScript", "JavaScript", "Angular", "React", "Node.js" ],
+      "Certifications": [ "MCPPSAE", "Power Platform Solution Architect Expert", "MCAF", "Azure Fundamentals" ],
+      "Roles": [ "Project lead", "Developer" ]
+    },
+    {
+      "Id": "5",
+      "Name": "Lois Wyn",
+      "Email": "lois@treyresearch.com",
+      "Phone": "1-555-664-7890",
+      "ConsultantPhotoUrl": "https://bobgerman.github.io/fictitiousAiGenerated/Lois.jpg",
+      "Location": {
+        "Street": "4220 Duncan Ave., Suite 501",
+        "City": "St. Louis",
+        "State": "MO",
+        "Country": "USA",
+        "PostalCode": "63110",
+        "Latitude": 38.6283,
+        "Longitude": -90.2545
+      },
+      "Skills": [ "Project management", "Agile" ],
+      "Certifications": [ "Project Management Professional", "PMP", "Agile Leader" ],
+      "Roles": [ "Project lead" ]
+    }
+  ]
+}
