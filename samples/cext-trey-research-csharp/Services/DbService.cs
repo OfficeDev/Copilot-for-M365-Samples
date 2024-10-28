@@ -60,7 +60,6 @@ namespace cext_trey_research_csharp.Services
                 {
                     if (_entityCache.Find(e => e.RowKey == entity.RowKey) == null)
                     {
-                        //var expandedEntity = ExpandPropertyValues(entity);
                         _entityCache.Add(entity as DbEntity);
                     }
                 }
@@ -85,7 +84,6 @@ namespace cext_trey_research_csharp.Services
 
         public async Task UpdateEntityAsync(string tableName, DbEntityType updatedEntity)
         {
-            //var entity = CompressPropertyValues(updatedEntity);
             var tableClient = new TableClient(_storageAccountConnectionString, tableName);
             var tableEntity = new TableEntity(tableName, updatedEntity.RowKey);
 

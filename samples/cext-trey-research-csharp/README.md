@@ -53,7 +53,7 @@ The sample showcases the following features:
 
 ### Setup instructions (one-time setup)
 
-1. Install Teams Toolkit for Visual Studio [Teams Toolkit](https://learn.microsoft.com/en-us/microsoftteams/platform/toolkit/toolkit-v4/install-teams-toolkit-vs?pivots=visual-studio-v17-7)
+1. [Install](https://learn.microsoft.com/microsoftteams/platform/toolkit/toolkit-v4/install-teams-toolkit-vs?pivots=visual-studio-v17-7) Teams Toolkit for Visual Studio
 
 ![Installing Teams Toolkit in Visual Studio](./images/01-04-visual-studio-install.png)
 
@@ -85,31 +85,9 @@ The sample showcases the following features:
 
 > If you do not have permission to upload custom apps (sideloading), Teams Toolkit will recommend creating and using a Microsoft 365 Developer Program account - a free program to get your own dev environment sandbox that includes Teams.
 
-1. Copy the values from ./local.settings.json.sample into your ./local.settings.json file. Ensure that the final file includes this line.
-
-~~~text
-"AzureWebJobsStorage": "UseDevelopmentStorage=true"
-~~~
-
 1. OPTIONAL: Copy the files from the **/sampleDocs** folder to OneDrive or SharePoint. Add the location of these files in the `OneDriveAndSharePoint` capability in the declarative copilot (**/appPackage/trey-declarative-copilot.json**).
 
-### Running Azurite from an ASP.NET project
-
-Right-click on "Connected Services" in Solution Explorer and select **Add** from the dropdown menu. Choose **Azure Storage**.
-
-![Running Azurite](./images/02-01-Running-Azurite-01.png)
-
-Select service dependency **Storage Azurite emulator(local)** and click **Next**.
-
-![Running Azurite](./images/02-01-Running-Azurite-02.png)
-
-Provide connection string name as **StorageConnectionString** and click **Finish**.
-
-![Running Azurite](./images/02-01-Running-Azurite-03.png)
-
-When the configuration completes, select Close, and the Azurite emulator starts automatically. The output looks similar to the following screenshot.
-
-![Running Azurite](./images/02-01-Running-Azurite-04.png)
+### Running the solution (after each build)
 
 - Enable Multi-Project Launch Profiles
 
@@ -120,8 +98,6 @@ Click the "Debug" menu in Visual Studio and then select "Options".
 Navigate to Environment > Preview Features and check the checkbox labeled "Enable Multi-Project Launch Profiles".
 
 ![Enable Multi-Project](./images/02-01-Enable-multiprojects-02.png)
-
-### Running the solution (after each build)
 
 Click F5 to start debugging, or click the start button 1️⃣. Make sure that the debug profile is **Microsoft Teams (browser)** 2️⃣.
 

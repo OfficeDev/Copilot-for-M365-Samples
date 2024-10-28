@@ -8,11 +8,14 @@ additionalMetadata:
 
 provision:
   # Set TAB_DOMAIN and TAB_ENDPOINT for local launch
-  - uses: script 
+  - uses: file/createOrUpdateJsonFile 
     with:
-      run:
-        echo "::set-teamsfx-env TAB_DOMAIN=localhost:44302";
-        echo "::set-teamsfx-env TAB_ENDPOINT=https://localhost:44302";
+      target: ../local.settings.json
+      content:
+        IsEncrypted: false
+        Values: 
+          AzureWebJobsStorage: UseDevelopmentStorage=true
+          FUNCTIONS_WORKER_RUNTIME: dotnet
 
   # Creates a Teams app
   - uses: teamsApp/create

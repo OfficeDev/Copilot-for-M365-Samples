@@ -5,6 +5,11 @@
 		<RootNamespace>cext_trey_research_csharp</RootNamespace>
 	</PropertyGroup>
 	<ItemGroup>
+		<Compile Remove="TeamsApp\**" />
+		<EmbeddedResource Remove="TeamsApp\**" />
+		<None Remove="TeamsApp\**" />
+	</ItemGroup>
+	<ItemGroup>
 		<PackageReference Include="Azure.Data.Tables" Version="12.9.0" />
 		<PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
 		<PackageReference Include="Microsoft.Azure.Functions.Worker" Version="1.23.0" />
