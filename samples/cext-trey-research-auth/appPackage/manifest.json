@@ -1,8 +1,7 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/teams/vDevPreview/MicrosoftTeams.schema.json",
-  "manifestVersion": "devPreview",
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.19/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.19",
   "id": "${{TEAMS_APP_ID}}",
-  "packageName": "com.microsoft.teams.extension",
   "version": "1.0.0",
   "developer": {
     "name": "Teams App, Inc.",
@@ -23,17 +22,11 @@
     "full": "This application allows you to find Trey Research projects and consultants, to bill time to a project, and to assign a consultant to a project."
   },
   "accentColor": "#FFFFFF",
-  "copilotExtensions": {
-    "declarativeCopilots": [
+  "copilotAgents": {
+    "declarativeAgents": [
       {
         "id": "treygenie",
         "file": "trey-declarative-agent.json"
-      }
-    ],
-    "plugins": [
-      {
-        "id": "treyresearch",
-        "file": "trey-plugin.json"
       }
     ]
   }, 
