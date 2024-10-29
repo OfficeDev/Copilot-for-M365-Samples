@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace cext_trey_research_csharp.Models
+namespace Trey.Research.Declarative.Agent.Models
 {
     // Represents a project assignment for a consultant
     public class ApiProjectAssignment

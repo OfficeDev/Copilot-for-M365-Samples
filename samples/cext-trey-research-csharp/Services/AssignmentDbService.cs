@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using cext_trey_research_csharp.Models;
+using Trey.Research.Declarative.Agent.Models;
 using Microsoft.Extensions.Configuration;
 
-namespace cext_trey_research_csharp.Services
+namespace Trey.Research.Declarative.Agent.Services
 {
     public class AssignmentDbService
     {

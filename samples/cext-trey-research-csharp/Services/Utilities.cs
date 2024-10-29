@@ -1,8 +1,8 @@
-﻿using cext_trey_research_csharp.Models;
+﻿using Trey.Research.Declarative.Agent.Models;
 using Microsoft.Extensions.Configuration;
 using System;
 
-namespace cext_trey_research_csharp.Utilities
+namespace Trey.Research.Declarative.Agent.Utilities
 {
     // Custom exception to represent an HTTP error
     public class HttpError : Exception

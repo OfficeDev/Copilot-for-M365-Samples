@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace cext_trey_research_csharp.Models
+namespace Trey.Research.Declarative.Agent.Models
 {
     public class Location
     {

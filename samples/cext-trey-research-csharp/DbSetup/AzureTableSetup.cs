@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Azure;
 using Azure.Data.Tables;
 
-namespace cext_trey_research_csharp.DbSetup
+namespace Trey.Research.Declarative.Agent.DbSetup
 {
     public class AzureTableSetup
     {

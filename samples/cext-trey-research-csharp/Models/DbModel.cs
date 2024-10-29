@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json;
 
-namespace cext_trey_research_csharp.Models
+namespace Trey.Research.Declarative.Agent.Models
 {
     public class DbEntity : ITableEntity
     {

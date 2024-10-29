@@ -2,7 +2,7 @@
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<AzureFunctionsVersion>v4</AzureFunctionsVersion>
-		<RootNamespace>cext_trey_research_csharp</RootNamespace>
+		<RootNamespace>Trey.Research.Declarative.Agent</RootNamespace>
 	</PropertyGroup>
 	<ItemGroup>
 		<Compile Remove="TeamsApp\**" />
@@ -14,7 +14,7 @@
 		<PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
 		<PackageReference Include="Microsoft.Azure.Functions.Worker" Version="1.23.0" />
 		<PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Http" Version="3.2.0" />
-		<PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.1.1" />
+		<PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.5.0" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Update="host.json">

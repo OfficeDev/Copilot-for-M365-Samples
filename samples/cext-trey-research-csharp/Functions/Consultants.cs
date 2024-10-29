@@ -7,11 +7,11 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using cext_trey_research_csharp.Services;
-using cext_trey_research_csharp.Utilities;
+using Trey.Research.Declarative.Agent.Services;
+using Trey.Research.Declarative.Agent.Utilities;
 using Microsoft.Extensions.Configuration;
 
-namespace cext_trey_research_csharp.Functions
+namespace Trey.Research.Declarative.Agent.Functions
 {
     public class ConsultantsFunction
     {

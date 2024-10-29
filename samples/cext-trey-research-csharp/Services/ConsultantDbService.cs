@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using cext_trey_research_csharp.Services;  
-using cext_trey_research_csharp.Models;
+using Trey.Research.Declarative.Agent.Services;  
+using Trey.Research.Declarative.Agent.Models;
 using Microsoft.Extensions.Configuration;
 using System;
 
-namespace cext_trey_research_csharp.Services
+namespace Trey.Research.Declarative.Agent.Services
 {
     public class ConsultantDbService
     {

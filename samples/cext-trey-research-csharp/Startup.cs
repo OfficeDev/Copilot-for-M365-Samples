@@ -1,13 +1,13 @@
 ﻿using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
-using cext_trey_research_csharp.DbSetup;
-using cext_trey_research_csharp.Services;
+using Trey.Research.Declarative.Agent.DbSetup;
+using Trey.Research.Declarative.Agent.Services;
 using System;
-using cext_trey_research_csharp.Models;
+using Trey.Research.Declarative.Agent.Models;
 
-[assembly: FunctionsStartup(typeof(cext_trey_research_csharp.Startup))]
+[assembly: FunctionsStartup(typeof(Trey.Research.Declarative.Agent.Startup))]
 
-namespace cext_trey_research_csharp
+namespace Trey.Research.Declarative.Agent
 {
     public class Startup : FunctionsStartup
     {

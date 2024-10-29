@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using cext_trey_research_csharp.Models;
-using cext_trey_research_csharp.Services;
-using cext_trey_research_csharp.Utilities;
+using Trey.Research.Declarative.Agent.Models;
+using Trey.Research.Declarative.Agent.Services;
+using Trey.Research.Declarative.Agent.Utilities;
 using Microsoft.Extensions.Configuration; // Import for IConfiguration
 
-namespace cext_trey_research_csharp.Services
+namespace Trey.Research.Declarative.Agent.Services
 {
     public class ConsultantApiService
     {

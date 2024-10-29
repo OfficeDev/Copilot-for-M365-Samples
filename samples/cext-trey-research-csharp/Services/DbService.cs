@@ -1,14 +1,14 @@
 ﻿using Azure;
 using Azure.Data.Tables;
-using cext_trey_research_csharp.Models;
-using cext_trey_research_csharp.Utilities;
+using Trey.Research.Declarative.Agent.Models;
+using Trey.Research.Declarative.Agent.Utilities;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace cext_trey_research_csharp.Services
+namespace Trey.Research.Declarative.Agent.Services
 {
     public class DbService<DbEntityType> where DbEntityType : class, ITableEntity, new()
     {

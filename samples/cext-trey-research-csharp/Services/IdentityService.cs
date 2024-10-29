@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Azure.Functions.Worker.Http;
 using Azure;
-using cext_trey_research_csharp.Models;
+using Trey.Research.Declarative.Agent.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 
-namespace cext_trey_research_csharp.Services
+namespace Trey.Research.Declarative.Agent.Services
 {
     public class IdentityService
     {
