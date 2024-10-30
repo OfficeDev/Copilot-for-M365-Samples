@@ -1,0 +1,158 @@
+{
+    "Rows": [
+        {
+            "Id": "10,1",
+            "ProjectId": "10",
+            "ConsultantId": "1",
+            "Role": "Architect",
+            "Billable": true,
+            "Rate": 100,
+            "Forecast": [
+                {
+                    "Month": 3,
+                    "Year": 2024,
+                    "Hours": 23
+                },
+                {
+                    "Month": 4,
+                    "Year": 2024,
+                    "Hours": 80
+                },
+                {
+                    "Month": 5,
+                    "Year": 2024,
+                    "Hours": 100
+                },
+                {
+                    "Month": 6,
+                    "Year": 2024,
+                    "Hours": 1
+                },
+                {
+                    "Month": 7,
+                    "Year": 2024,
+                    "Hours": 120
+                },
+                {
+                    "Month": 8,
+                    "Year": 2024,
+                    "Hours": 120
+                },
+                {
+                    "Month": 9,
+                    "Year": 2024,
+                    "Hours": 120
+                },
+                {
+                    "Month": 10,
+                    "Year": 2024,
+                    "Hours": 120
+                }
+            ],
+            "Delivered": [ ]
+        },
+        {
+            "Id": "10,2",
+            "ProjectId": "10",
+            "ConsultantId": "2",
+            "Role": "Designer",
+            "Billable": true,
+            "Rate": 100,
+            "Forecast": [
+                {
+                    "Month": 3,
+                    "Year": 2024,
+                    "Hours": 100
+                },
+                {
+                    "Month": 4,
+                    "Year": 2024,
+                    "Hours": 20
+                },
+                {
+                    "Month": 5,
+                    "Year": 2024,
+                    "Hours": 20
+                },
+                {
+                    "Month": 6,
+                    "Year": 2024,
+                    "Hours": 20
+                },
+                {
+                    "Month": 7,
+                    "Year": 2024,
+                    "Hours": 20
+                },
+                {
+                    "Month": 8,
+                    "Year": 2024,
+                    "Hours": 10
+                },
+                {
+                    "Month": 9,
+                    "Year": 2024,
+                    "Hours": 10
+                },
+                {
+                    "Month": 10,
+                    "Year": 2024,
+                    "Hours": 10
+                }
+            ],
+            "Delivered": [ ]
+        },
+        {
+            "Id": "4,1",
+            "ProjectId": "4",
+            "ConsultantId": "1",
+            "Role": "Developer",
+            "Billable": true,
+            "Rate": 100,
+            "Forecast": [
+                {
+                    "Month": 3,
+                    "Year": 2024,
+                    "Hours": 40
+                },
+                {
+                    "Month": 4,
+                    "Year": 2024,
+                    "Hours": 40
+                },
+                {
+                    "Month": 5,
+                    "Year": 2024,
+                    "Hours": 40
+                },
+                {
+                    "Month": 6,
+                    "Year": 2024,
+                    "Hours": 40
+                },
+                {
+                    "Month": 7,
+                    "Year": 2024,
+                    "Hours": 40
+                },
+                {
+                    "Month": 8,
+                    "Year": 2024,
+                    "Hours": 40
+                },
+                {
+                    "Month": 9,
+                    "Year": 2024,
+                    "Hours": 40
+                },
+                {
+                    "Month": 10,
+                    "Year": 2024,
+                    "Hours": 40
+                }
+            ],
+            "Delivered": [ ]
+        }
+    ]
+}
+

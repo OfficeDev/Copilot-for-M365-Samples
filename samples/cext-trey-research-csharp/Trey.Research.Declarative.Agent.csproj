@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<AzureFunctionsVersion>v4</AzureFunctionsVersion>
+		<RootNamespace>Trey.Research.Declarative.Agent</RootNamespace>
+	</PropertyGroup>
+	<ItemGroup>
+		<Compile Remove="TeamsApp\**" />
+		<EmbeddedResource Remove="TeamsApp\**" />
+		<None Remove="TeamsApp\**" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Azure.Data.Tables" Version="12.9.0" />
+		<PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
+		<PackageReference Include="Microsoft.Azure.Functions.Worker" Version="1.23.0" />
+		<PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Http" Version="3.2.0" />
+		<PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.5.0" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Update="host.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="local.settings.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<CopyToPublishDirectory>Never</CopyToPublishDirectory>
+		</None>
+		<None Update="DbSetup\db\*.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="DbSetup\" />
+		<Folder Include="Models\" />
+		<Folder Include="Services\" />
+	</ItemGroup>
+</Project>

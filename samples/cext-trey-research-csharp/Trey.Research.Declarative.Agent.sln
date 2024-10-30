@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35219.272
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trey.Research.Declarative.Agent", "Trey.Research.Declarative.Agent.csproj", "{092B5616-ABC1-4B8E-AAFF-872631573ED1}"
+EndProject
+Project("{A9E3F50B-275E-4AF7-ADCE-8BE12D41E305}") = "TeamsApp", "TeamsApp\TeamsApp.ttkproj", "{DC95CA02-D660-40BE-B020-3D679A87275B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{849366B9-5AF6-47E2-982B-4AEEF18B6B46}"
+	ProjectSection(SolutionItems) = preProject
+		cext-trey-research-csharp.slnLaunch.user = cext-trey-research-csharp.slnLaunch.user
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{092B5616-ABC1-4B8E-AAFF-872631573ED1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{092B5616-ABC1-4B8E-AAFF-872631573ED1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{092B5616-ABC1-4B8E-AAFF-872631573ED1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{092B5616-ABC1-4B8E-AAFF-872631573ED1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC95CA02-D660-40BE-B020-3D679A87275B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC95CA02-D660-40BE-B020-3D679A87275B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC95CA02-D660-40BE-B020-3D679A87275B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC95CA02-D660-40BE-B020-3D679A87275B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E40E0E66-79AB-4A33-9DAF-F9ED7C9D8810}
+	EndGlobalSection
+EndGlobal
